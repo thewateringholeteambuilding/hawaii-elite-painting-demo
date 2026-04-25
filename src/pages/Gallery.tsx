@@ -134,9 +134,9 @@ export default function Gallery() {
                 maxWidth: "600px",
               }}
             >
-              Work Across
+              Before the Brush.
               <br />
-              <span style={{ color: "var(--color-accent)" }}>All of Oahu</span>
+              <span style={{ color: "var(--color-accent)" }}>After the Crew.</span>
             </h1>
           </div>
           <p
@@ -151,6 +151,65 @@ export default function Gallery() {
           </p>
         </div>
       </header>
+
+      {/* Portfolio metrics strip */}
+      <section
+        style={{
+          borderBottom: "1px solid var(--color-border)",
+          background: "var(--color-surface)",
+        }}
+      >
+        <div
+          style={{
+            maxWidth: "1280px",
+            margin: "0 auto",
+            padding: "0 1.5rem",
+            display: "grid",
+            gridTemplateColumns: "repeat(2, 1fr)",
+          }}
+          className="md:grid-cols-4"
+        >
+          {[
+            { value: "483", label: "Projects Completed" },
+            { value: "12", label: "Oahu Neighborhoods" },
+            { value: "4.8", label: "Average Rating" },
+            { value: "9", label: "Day Avg. Timeline" },
+          ].map((stat, i) => (
+            <div
+              key={i}
+              style={{
+                padding: "1.5rem 1.25rem",
+                borderRight: i < 3 ? "1px solid var(--color-border)" : "none",
+              }}
+            >
+              <span
+                style={{
+                  display: "block",
+                  fontFamily: "var(--font-heading)",
+                  fontWeight: 700,
+                  fontSize: "clamp(1.5rem, 1.75rem + 0.5vw, 2.25rem)",
+                  color: "var(--color-accent)",
+                  lineHeight: 1,
+                  marginBottom: "0.2rem",
+                }}
+              >
+                {stat.value}
+              </span>
+              <span
+                style={{
+                  fontFamily: "var(--font-accent)",
+                  fontSize: "0.68rem",
+                  textTransform: "uppercase",
+                  letterSpacing: "0.14em",
+                  color: "var(--color-text-muted)",
+                }}
+              >
+                {stat.label}
+              </span>
+            </div>
+          ))}
+        </div>
+      </section>
 
       {/* Gallery grid */}
       <section style={{ maxWidth: "1280px", margin: "0 auto", padding: "4rem 1.5rem" }}>

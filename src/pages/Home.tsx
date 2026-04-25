@@ -194,6 +194,7 @@ export default function Home() {
             alt="Painter working on interior walls in a Honolulu home"
             fetchPriority="high"
             loading="eager"
+            className="hero-ken-burns"
             style={{
               position: "absolute",
               inset: 0,

@@ -253,6 +253,16 @@ img {
   box-shadow: 6px 6px 0 0 var(--color-accent);
 }
 
+/* Ken Burns slow zoom for hero imagery */
+@keyframes ken-burns {
+  0%   { transform: scale(1); }
+  100% { transform: scale(1.06); }
+}
+
+.hero-ken-burns {
+  animation: ken-burns 12s alternate infinite ease-in-out;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .btn-primary:hover,
@@ -261,5 +271,8 @@ img {
   .card-iron:hover {
     transform: none;
     box-shadow: none;
+  }
+  .hero-ken-burns {
+    animation: none;
   }
 }

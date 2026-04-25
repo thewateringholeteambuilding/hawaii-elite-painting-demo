@@ -194,7 +194,7 @@ export default function About() {
               }}
             >
               {[
-                { val: "500+", lbl: "Projects" },
+                { val: "483", lbl: "Projects" },
                 { val: "Oahu", lbl: "Only. No Splits." },
                 { val: "100%", lbl: "Licensed Work" },
               ].map((s) => (
@@ -340,6 +340,81 @@ export default function About() {
                 </div>
               );
             })}
+          </div>
+        </div>
+      </section>
+
+      {/* Owner Note */}
+      <section
+        style={{
+          padding: "var(--space-block) 1.5rem",
+          background: "var(--color-bg)",
+        }}
+      >
+        <div
+          style={{
+            maxWidth: "720px",
+            margin: "0 auto",
+            display: "flex",
+            gap: "1.5rem",
+            alignItems: "flex-start",
+          }}
+        >
+          <div
+            style={{
+              width: "56px",
+              height: "56px",
+              background: "var(--color-accent)",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              flexShrink: 0,
+              fontFamily: "var(--font-heading)",
+              fontWeight: 700,
+              fontSize: "1.25rem",
+              color: "hsl(220 45% 7%)",
+            }}
+          >
+            HE
+          </div>
+          <div>
+            <span
+              style={{
+                display: "block",
+                fontFamily: "var(--font-heading)",
+                fontWeight: 700,
+                textTransform: "uppercase",
+                fontSize: "0.85rem",
+                letterSpacing: "0.06em",
+                color: "var(--color-text)",
+                marginBottom: "0.5rem",
+              }}
+            >
+              A Note from the Owner
+            </span>
+            <p
+              style={{
+                color: "var(--color-text-muted)",
+                fontSize: "0.9rem",
+                lineHeight: 1.7,
+                marginBottom: "0.75rem",
+              }}
+            >
+              Every estimate comes through me. I walk the job, write the scope, and
+              my cell number is on the contract. If something goes wrong at 6 AM on a
+              Saturday, you're calling the person who signed the quote. That's how a
+              14-year company stays a 4.8-star company.
+            </p>
+            <span
+              style={{
+                fontFamily: "var(--font-accent)",
+                fontSize: "0.78rem",
+                color: "var(--color-accent)",
+                fontWeight: 600,
+              }}
+            >
+              Owner-operated since day one.
+            </span>
           </div>
         </div>
       </section>
