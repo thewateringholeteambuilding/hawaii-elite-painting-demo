@@ -1,0 +1,326 @@
+import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
+import { ArrowRight } from "lucide-react";
+
+const SERVICES = [
+  {
+    title: "Interior Painting",
+    img: "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&w=800&q=75",
+    alt: "Interior painting in a Honolulu home",
+    scope: "Walls, ceilings, trim, doors, window frames, built-ins, and cabinetry.",
+    detail: [
+      "Surface prep: hole filling, crack repair, sanding",
+      "Two-coat prime + finish on new drywall",
+      "Low-VOC and standard coating options",
+      "Furniture moved and protected before start",
+      "Daily cleanup: no dried roller trays left overnight",
+    ],
+    note: "We match existing paint colors using spectrophotometer readings. Bring a paint chip or we take one from your wall.",
+  },
+  {
+    title: "Exterior Painting",
+    img: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=800&q=75",
+    alt: "Exterior house painting Oahu",
+    scope: "Siding, stucco, concrete block, wood trim, fascia, soffits, gates, fences.",
+    detail: [
+      "Full pressure wash before any coating",
+      "Substrate assessment: identify rot, spall, efflorescence",
+      "Coastal-rated UV-resistant coatings specified per surface",
+      "Caulk all penetrations and cracks before first coat",
+      "Two finish coats minimum on sun-exposed surfaces",
+    ],
+    note: "We specify coatings by the surface type, not just the brand. Stucco, wood, and concrete all need different primers.",
+  },
+  {
+    title: "Drywall Repair",
+    img: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=75",
+    alt: "Drywall repair and finishing",
+    scope: "Patches, water damage repairs, texture matching, full skim coats.",
+    detail: [
+      "Damage assessment: mold inspection before close-up",
+      "Like-for-like texture matching on all patches",
+      "Three-coat mud process on larger repairs",
+      "Feathering and skim where required for invisible finish",
+      "Prime + paint to match existing wall",
+    ],
+    note: "We don't close up water-damaged drywall until moisture readings confirm the source is resolved.",
+  },
+  {
+    title: "Deck Refinishing",
+    img: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=800&q=75",
+    alt: "Deck sanding and refinishing",
+    scope: "Wood decks, composite decks, railings, stairs, and pool surrounds.",
+    detail: [
+      "Full strip of existing finish down to bare wood",
+      "Deck board inspection: replace splits and soft spots before refinishing",
+      "Power sand entire deck surface",
+      "Apply penetrating stain or film-forming finish per wood species",
+      "Seal all end grain and cut surfaces",
+    ],
+    note: "Hawaii's UV load destroys mainland deck stains in 18 months. We specify products tested in high-UV coastal climates.",
+  },
+  {
+    title: "Kitchen Remodeling",
+    img: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=800&q=75",
+    alt: "Kitchen cabinet painting and remodeling in Honolulu",
+    scope: "Cabinet painting, hardware replacement, backsplash tile, countertop coordination.",
+    detail: [
+      "Cabinet door and drawer front removal, sanding, and spray finish",
+      "Cabinet box painting in place",
+      "New hardware installation (client-supplied or we source)",
+      "Tile backsplash installation with custom cuts",
+      "Coordinate countertop timeline with fabricator",
+    ],
+    note: "Cabinet painting saves 60-70% compared to cabinet replacement with equivalent visual impact.",
+  },
+  {
+    title: "Bathroom Remodeling",
+    img: "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?auto=format&fit=crop&w=800&q=75",
+    alt: "Bathroom renovation with tile and paint",
+    scope: "Full paint refresh, tile replacement, vanity painting, fixture coordination.",
+    detail: [
+      "Mildew-resistant primer on all walls and ceiling",
+      "Tile removal and substrate repair before new tile",
+      "Grout sealing included on all tile work",
+      "Vanity cabinet painting to match or contrast walls",
+      "Coordinate plumber timing for fixture replacements",
+    ],
+    note: "Bathrooms are the highest-risk surface for moisture intrusion in Hawaii. We use mold-resistant coatings standard on all bath jobs.",
+  },
+  {
+    title: "Commercial Painting",
+    img: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=75",
+    alt: "Commercial painting project on Oahu",
+    scope: "Office interiors, retail spaces, warehouses, common areas, and exterior facades.",
+    detail: [
+      "Off-hours scheduling to minimize business disruption",
+      "Low-odor coatings for occupied spaces",
+      "Single-day small suite refreshes available",
+      "Multi-phase large projects with phased access",
+      "Written scope and certificate of insurance for property managers",
+    ],
+    note: "We carry liability limits required by major property management firms. COI available before first day on site.",
+  },
+];
+
+export default function Services() {
+  return (
+    <>
+      <Helmet>
+        <title>Services | Hawaii Elite Painting and Renovation</title>
+        <meta
+          name="description"
+          content="Interior painting, exterior painting, drywall repair, deck refinishing, kitchen remodeling, bathroom remodeling, and commercial painting on Oahu."
+        />
+      </Helmet>
+
+      {/* Page header */}
+      <header
+        style={{
+          background: "var(--color-surface)",
+          borderBottom: "1px solid var(--color-border)",
+          padding: "calc(64px + 4rem) 1.5rem 4rem",
+        }}
+      >
+        <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
+          <span className="section-label" style={{ display: "block", marginBottom: "1rem" }}>
+            § What We Do
+          </span>
+          <h1
+            style={{
+              fontFamily: "var(--font-heading)",
+              fontWeight: 700,
+              textTransform: "uppercase",
+              fontSize: "var(--text-h1)",
+              lineHeight: 0.9,
+              color: "var(--color-text)",
+              maxWidth: "600px",
+            }}
+          >
+            Full-Scope
+            <br />
+            <span style={{ color: "var(--color-accent)" }}>Services</span>
+          </h1>
+        </div>
+      </header>
+
+      {/* Service list */}
+      <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
+        {SERVICES.map((svc, i) => (
+          <section
+            key={svc.title}
+            id={svc.title.toLowerCase().replace(/\s+/g, "-")}
+            style={{
+              borderBottom: "1px solid var(--color-border)",
+              padding: "4rem 1.5rem",
+            }}
+          >
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "1fr",
+                gap: "3rem",
+                alignItems: "start",
+              }}
+              className={`md:grid-cols-2 ${i % 2 === 1 ? "md:direction-rtl" : ""}`}
+            >
+              {/* Photo */}
+              <div
+                style={{
+                  overflow: "hidden",
+                  order: i % 2 === 1 ? 2 : 1,
+                }}
+                className="md:order-auto"
+              >
+                <img
+                  src={svc.img}
+                  alt={svc.alt}
+                  loading="lazy"
+                  width={800}
+                  height={500}
+                  style={{
+                    width: "100%",
+                    aspectRatio: "4/3",
+                    objectFit: "cover",
+                    display: "block",
+                  }}
+                />
+              </div>
+
+              {/* Content */}
+              <div style={{ order: i % 2 === 1 ? 1 : 2 }} className="md:order-auto">
+                <h2
+                  style={{
+                    fontFamily: "var(--font-heading)",
+                    fontWeight: 700,
+                    textTransform: "uppercase",
+                    fontSize: "var(--text-h2)",
+                    lineHeight: 0.92,
+                    color: "var(--color-text)",
+                    marginBottom: "0.75rem",
+                  }}
+                >
+                  {svc.title}
+                </h2>
+                <p
+                  style={{
+                    color: "var(--color-accent)",
+                    fontSize: "0.85rem",
+                    fontFamily: "var(--font-accent)",
+                    marginBottom: "1.5rem",
+                    lineHeight: 1.5,
+                  }}
+                >
+                  {svc.scope}
+                </p>
+
+                <ul
+                  style={{
+                    listStyle: "none",
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "0",
+                    marginBottom: "1.5rem",
+                  }}
+                >
+                  {svc.detail.map((d) => (
+                    <li
+                      key={d}
+                      style={{
+                        padding: "0.625rem 0",
+                        borderBottom: "1px solid var(--color-border)",
+                        color: "var(--color-text-muted)",
+                        fontSize: "0.9rem",
+                        lineHeight: 1.5,
+                        display: "flex",
+                        gap: "0.75rem",
+                        alignItems: "flex-start",
+                      }}
+                    >
+                      <span
+                        style={{
+                          width: "5px",
+                          height: "5px",
+                          background: "var(--color-accent)",
+                          display: "inline-block",
+                          marginTop: "8px",
+                          flexShrink: 0,
+                        }}
+                      />
+                      {d}
+                    </li>
+                  ))}
+                </ul>
+
+                <div
+                  style={{
+                    background: "var(--color-surface-raised)",
+                    borderLeft: "2px solid var(--color-accent)",
+                    padding: "1rem 1.25rem",
+                    marginBottom: "1.75rem",
+                  }}
+                >
+                  <p
+                    style={{
+                      color: "var(--color-text-muted)",
+                      fontSize: "0.85rem",
+                      lineHeight: 1.6,
+                      fontStyle: "italic",
+                    }}
+                  >
+                    {svc.note}
+                  </p>
+                </div>
+
+                <Link to="/contact" className="btn-primary">
+                  Get Estimate for This Service <ArrowRight size={13} />
+                </Link>
+              </div>
+            </div>
+          </section>
+        ))}
+      </div>
+
+      {/* CTA */}
+      <section
+        style={{
+          background: "var(--color-surface)",
+          borderTop: "1px solid var(--color-border)",
+          padding: "5rem 1.5rem",
+          textAlign: "center",
+        }}
+      >
+        <h2
+          style={{
+            fontFamily: "var(--font-heading)",
+            fontWeight: 700,
+            textTransform: "uppercase",
+            fontSize: "var(--text-h2)",
+            lineHeight: 0.92,
+            color: "var(--color-text)",
+            marginBottom: "1.25rem",
+          }}
+        >
+          Not Sure Which
+          <br />
+          <span style={{ color: "var(--color-accent)" }}>Service You Need?</span>
+        </h2>
+        <p
+          style={{
+            color: "var(--color-text-muted)",
+            fontSize: "0.95rem",
+            lineHeight: 1.65,
+            maxWidth: "400px",
+            margin: "0 auto 2rem",
+          }}
+        >
+          Send us photos of the space or describe what you're trying to accomplish.
+          We'll tell you exactly what scope of work it takes.
+        </p>
+        <Link to="/contact" className="btn-primary">
+          Tell Us About Your Project <ArrowRight size={14} />
+        </Link>
+      </section>
+    </>
+  );
+}
