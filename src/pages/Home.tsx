@@ -52,19 +52,19 @@ const TESTIMONIALS = [
   {
     quote: "They painted our entire exterior while we were in Seattle for two weeks. Came home to a house that looked brand new. Neighbors thought we moved.",
     name: "Marcus T.",
-    detail: "Kailua, Oahu · Exterior repaint · Crew: Jason & Mike",
+    detail: "Kailua, Oahu · Exterior repaint · Crew: Jason & Mike · November 2024",
     stars: 5,
   },
   {
     quote: "Every contractor I called wanted to do a partial job. Hawaii Elite came out, walked the whole house, gave me a real scope with real numbers. No guessing.",
     name: "Lynn H.",
-    detail: "Manoa · Interior + drywall repair · Foreman: Derek",
+    detail: "Manoa · Interior + drywall repair · Foreman: Derek · February 2025",
     stars: 5,
   },
   {
     quote: "The kitchen cabinet painting saved us $18k over replacement. Looks better than new and they matched the trim color exactly.",
     name: "Ray & Suki F.",
-    detail: "Pearl City · Cabinet refinishing · Crew: Kai & Brandon",
+    detail: "Pearl City · Cabinet refinishing · Crew: Kai & Brandon · March 2025",
     stars: 5,
   },
 ];
@@ -552,9 +552,17 @@ export default function Home() {
           {SERVICES_TEASER.slice(2, 5).map((svc) => (
             <div
               key={svc.title}
+              className="card-iron"
               style={{
                 background: "var(--color-surface)",
-                padding: "1.75rem",
+                borderLeft: "3px solid transparent",
+                transition: "transform var(--duration-fast) var(--ease-out), box-shadow var(--duration-fast) var(--ease-out), border-color var(--duration-fast) var(--ease-out)",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.borderLeftColor = "var(--color-accent)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.borderLeftColor = "transparent";
               }}
             >
               <h3
@@ -613,7 +621,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── PROCESS STRIP ── */}
+      {/* ── PROCESS STRIP — THE ELITE SEQUENCE ── */}
       <section
         style={{
           borderTop: "1px solid var(--color-border)",
@@ -622,6 +630,19 @@ export default function Home() {
           padding: "var(--space-block) 1.5rem",
         }}
       >
+        <div
+          style={{
+            maxWidth: "1280px",
+            margin: "0 auto",
+          }}
+        >
+          <span
+            className="section-label"
+            style={{ display: "block", marginBottom: "1.5rem" }}
+          >
+            The Elite Sequence
+          </span>
+        </div>
         <div
           style={{
             maxWidth: "1280px",
@@ -672,6 +693,119 @@ export default function Home() {
               </div>
             </div>
           ))}
+        </div>
+      </section>
+
+      {/* ── FEATURED PROJECT ── */}
+      <section
+        style={{
+          background: "var(--color-surface)",
+          borderTop: "1px solid var(--color-border)",
+          padding: "var(--space-block) 1.5rem",
+        }}
+      >
+        <div
+          style={{
+            maxWidth: "1280px",
+            margin: "0 auto",
+            display: "grid",
+            gridTemplateColumns: "1fr",
+            gap: "2rem",
+            alignItems: "center",
+          }}
+          className="md:grid-cols-2"
+        >
+          <div
+            style={{
+              position: "relative",
+              overflow: "hidden",
+              minHeight: "260px",
+            }}
+          >
+            <img
+              src="https://images.unsplash.com/photo-1560185127-6ed189bf02f4?auto=format&fit=crop&w=800&q=75"
+              alt="Completed exterior repaint on a Kailua home"
+              loading="lazy"
+              width={800}
+              height={260}
+              style={{
+                position: "absolute",
+                inset: 0,
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+              }}
+            />
+          </div>
+          <div>
+            <span className="section-label" style={{ display: "block", marginBottom: "0.75rem" }}>
+              Recent Project
+            </span>
+            <h3
+              style={{
+                fontFamily: "var(--font-heading)",
+                fontWeight: 700,
+                textTransform: "uppercase",
+                fontSize: "clamp(1.25rem, 2vw, 1.75rem)",
+                color: "var(--color-text)",
+                lineHeight: 0.95,
+                marginBottom: "1rem",
+              }}
+            >
+              Kailua Beach Road
+              <br />
+              <span style={{ color: "var(--color-accent)" }}>Full Exterior</span>
+            </h3>
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(2, 1fr)",
+                gap: "0.75rem",
+                marginBottom: "1.25rem",
+              }}
+            >
+              {[
+                { label: "Area", value: "2,800 sq ft" },
+                { label: "Timeline", value: "9 days" },
+                { label: "Coating", value: "Sherwin-Williams Duration" },
+                { label: "Scope", value: "Exterior walls, trim, fascia, lanai" },
+              ].map((item) => (
+                <div key={item.label}>
+                  <span
+                    style={{
+                      display: "block",
+                      fontFamily: "var(--font-accent)",
+                      fontSize: "0.62rem",
+                      textTransform: "uppercase",
+                      letterSpacing: "0.2em",
+                      color: "var(--color-accent)",
+                      marginBottom: "0.2rem",
+                    }}
+                  >
+                    {item.label}
+                  </span>
+                  <span
+                    style={{
+                      fontSize: "0.88rem",
+                      color: "var(--color-text)",
+                      lineHeight: 1.4,
+                    }}
+                  >
+                    {item.value}
+                  </span>
+                </div>
+              ))}
+            </div>
+            <p
+              style={{
+                color: "var(--color-text-muted)",
+                fontSize: "0.85rem",
+                lineHeight: 1.55,
+              }}
+            >
+              Salt-air rated coating system. Power wash, scrape, two coats primer on bare wood, two coats finish. Homeowner stayed in residence throughout.
+            </p>
+          </div>
         </div>
       </section>
 
@@ -810,8 +944,8 @@ export default function Home() {
               color: "var(--color-text)",
             }}
           >
-            What Oahu
-            <br />Homeowners Say
+            483 Projects.
+            <br />Zero Callbacks.
           </h2>
 
           {/* Google badge */}
@@ -1057,9 +1191,9 @@ export default function Home() {
               marginBottom: "1.25rem",
             }}
           >
-            Ready to Change
+            Your House. Your Colors.
             <br />
-            <span style={{ color: "var(--color-accent)" }}>What You Come Home To?</span>
+            <span style={{ color: "var(--color-accent)" }}>One Call.</span>
           </h2>
           <p
             style={{
