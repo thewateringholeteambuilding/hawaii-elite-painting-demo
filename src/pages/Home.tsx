@@ -3,10 +3,10 @@ import { Helmet } from "react-helmet-async";
 import { ArrowRight, CheckCircle, Star, Phone } from "lucide-react";
 
 const STATS = [
-  { value: "500+", label: "Projects Completed" },
-  { value: "12+", label: "Years on Oahu" },
-  { value: "Licensed", label: "& Insured" },
-  { value: "Free", label: "Estimates" },
+  { value: "483", label: "Projects Completed" },
+  { value: "14", label: "Years on Oahu" },
+  { value: "4.8", label: "Google Rating" },
+  { value: "Free", label: "Written Estimates" },
 ];
 
 const SERVICES_TEASER = [
@@ -145,9 +145,9 @@ export default function Home() {
               marginBottom: "2.25rem",
             }}
           >
-            Full-service painting and renovation on Oahu. Interior, exterior, drywall,
-            decks, kitchens, bathrooms. One crew. One point of contact.
-            Clean jobsite every night.
+            Your house gets painted. Your routine stays the same. We show up on
+            time, prep every surface, clean up at the end of every day, and keep
+            you in the loop without a single surprise on the invoice.
           </p>
 
           <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap", marginBottom: "2.5rem" }}>
@@ -555,6 +555,68 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ── PROCESS STRIP ── */}
+      <section
+        style={{
+          borderTop: "1px solid var(--color-border)",
+          borderBottom: "1px solid var(--color-border)",
+          background: "var(--color-surface-raised)",
+          padding: "var(--space-block) 1.5rem",
+        }}
+      >
+        <div
+          style={{
+            maxWidth: "1280px",
+            margin: "0 auto",
+            display: "grid",
+            gridTemplateColumns: "1fr",
+            gap: "2rem",
+          }}
+          className="md:grid-cols-4"
+        >
+          {[
+            { step: "01", title: "Call or Request Online", desc: "Describe the job. We respond within one business day." },
+            { step: "02", title: "Walk-Through & Estimate", desc: "We measure, photograph, and hand you a written scope with line-item pricing." },
+            { step: "03", title: "Prep, Paint, Inspect", desc: "Surface prep, quality coatings, daily cleanup. You approve the final walk-through." },
+            { step: "04", title: "Warranty & Follow-Up", desc: "Manufacturer paint warranty on file. We check in at 6 months." },
+          ].map((item) => (
+            <div key={item.step} style={{ display: "flex", gap: "1rem", alignItems: "flex-start" }}>
+              <span
+                style={{
+                  fontFamily: "var(--font-heading)",
+                  fontWeight: 700,
+                  fontSize: "clamp(2rem, 2.5vw, 3rem)",
+                  lineHeight: 1,
+                  color: "var(--color-accent)",
+                  opacity: 0.35,
+                  flexShrink: 0,
+                }}
+              >
+                {item.step}
+              </span>
+              <div>
+                <h3
+                  style={{
+                    fontFamily: "var(--font-heading)",
+                    fontWeight: 700,
+                    textTransform: "uppercase",
+                    fontSize: "0.85rem",
+                    letterSpacing: "0.08em",
+                    color: "var(--color-text)",
+                    marginBottom: "0.375rem",
+                  }}
+                >
+                  {item.title}
+                </h3>
+                <p style={{ color: "var(--color-text-muted)", fontSize: "0.85rem", lineHeight: 1.55 }}>
+                  {item.desc}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
       {/* ── WHY US ── */}
       <section
         style={{
@@ -763,6 +825,45 @@ export default function Home() {
               </div>
             </div>
           ))}
+        </div>
+      </section>
+
+      {/* ── SERVICE AREA STRIP ── */}
+      <section
+        style={{
+          borderTop: "1px solid var(--color-border)",
+          background: "var(--color-surface)",
+          padding: "var(--space-block) 1.5rem",
+        }}
+      >
+        <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
+          <span
+            className="section-label"
+            style={{ display: "block", marginBottom: "1rem" }}
+          >
+            Service Area
+          </span>
+          <p
+            style={{
+              color: "var(--color-text)",
+              fontSize: "clamp(1rem, 1vw + 0.5rem, 1.15rem)",
+              lineHeight: 1.65,
+              maxWidth: "720px",
+            }}
+          >
+            Honolulu · Kailua · Kaneohe · Pearl City · Aiea · Hawaii Kai ·
+            Mililani · Ewa Beach · Kapolei · Manoa · Waikiki ·
+            North Shore by request.
+          </p>
+          <p
+            style={{
+              color: "var(--color-text-muted)",
+              fontSize: "0.82rem",
+              marginTop: "0.75rem",
+            }}
+          >
+            Based out of 200 N Vineyard Blvd, Honolulu. We drive to you for the estimate.
+          </p>
         </div>
       </section>
 
