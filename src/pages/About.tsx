@@ -6,7 +6,9 @@ const VALUES = [
   {
     icon: Wrench,
     title: "Prep First, Always",
-    desc: "Ninety percent of a good paint job is prep. We sand, patch, prime, and caulk before a single coat goes on. It takes longer. It's why the finish lasts.",
+    desc: "70% of every project is preparation. We sand, patch, prime, and caulk before a single coat goes on. It takes longer. It's why the finish lasts.",
+    stat: "70/30",
+    statLabel: "Prep-to-Paint Ratio",
   },
   {
     icon: Users,
@@ -277,19 +279,47 @@ export default function About() {
                     padding: "2rem",
                   }}
                 >
-                  <div
-                    style={{
-                      width: "40px",
-                      height: "40px",
-                      background: "var(--color-accent-subtle, hsla(38, 85%, 55%, 0.12))",
-                      border: "1px solid var(--color-accent)",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      marginBottom: "1.25rem",
-                    }}
-                  >
-                    <Icon size={18} color="var(--color-accent)" />
+                  <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", marginBottom: "1.25rem" }}>
+                    <div
+                      style={{
+                        width: "40px",
+                        height: "40px",
+                        background: "var(--color-accent-subtle, hsla(38, 85%, 55%, 0.12))",
+                        border: "1px solid var(--color-accent)",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                      }}
+                    >
+                      <Icon size={18} color="var(--color-accent)" />
+                    </div>
+                    {"stat" in v && v.stat && (
+                      <div style={{ textAlign: "right" }}>
+                        <span
+                          style={{
+                            fontFamily: "var(--font-heading)",
+                            fontWeight: 700,
+                            fontSize: "1.5rem",
+                            color: "var(--color-accent)",
+                            lineHeight: 1,
+                            display: "block",
+                          }}
+                        >
+                          {v.stat}
+                        </span>
+                        <span
+                          style={{
+                            fontSize: "0.6rem",
+                            textTransform: "uppercase",
+                            letterSpacing: "0.14em",
+                            color: "var(--color-text-muted)",
+                            fontFamily: "var(--font-accent)",
+                          }}
+                        >
+                          {(v as { statLabel: string }).statLabel}
+                        </span>
+                      </div>
+                    )}
                   </div>
                   <h3
                     style={{

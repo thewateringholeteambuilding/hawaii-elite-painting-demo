@@ -52,29 +52,29 @@ const TESTIMONIALS = [
   {
     quote: "They painted our entire exterior while we were in Seattle for two weeks. Came home to a house that looked brand new. Neighbors thought we moved.",
     name: "Marcus T.",
-    detail: "Kailua, Oahu · Exterior repaint",
+    detail: "Kailua, Oahu · Exterior repaint · Crew: Jason & Mike",
     stars: 5,
   },
   {
     quote: "Every contractor I called wanted to do a partial job. Hawaii Elite came out, walked the whole house, gave me a real scope with real numbers. No guessing.",
     name: "Lynn H.",
-    detail: "Manoa · Interior + drywall repair",
+    detail: "Manoa · Interior + drywall repair · Foreman: Derek",
     stars: 5,
   },
   {
     quote: "The kitchen cabinet painting saved us $18k over replacement. Looks better than new and they matched the trim color exactly.",
     name: "Ray & Suki F.",
-    detail: "Pearl City · Cabinet refinishing",
+    detail: "Pearl City · Cabinet refinishing · Crew: Kai & Brandon",
     stars: 5,
   },
 ];
 
 const WHY_ITEMS = [
-  "Detailed written estimate before any work starts",
-  "Prep work included: no shortcuts on sanding, caulking, or priming",
-  "Jobsite cleaned daily during multi-day projects",
-  "Paint warranties honored through the manufacturer",
-  "Hawaii contractors license on file",
+  { phrase: "Written Scope First", detail: "Detailed line-item estimate before any work starts. No surprises on the invoice." },
+  { phrase: "70/30 Prep Ratio", detail: "70% of every project is surface prep. No shortcuts on sanding, caulking, or priming." },
+  { phrase: "Clean Site Daily", detail: "Jobsite cleaned at the end of every work day during multi-day projects." },
+  { phrase: "Manufacturer Warranty", detail: "Paint warranties honored through the manufacturer. Documentation on file." },
+  { phrase: "Licensed in Hawaii", detail: "Active Hawaii contractors license. Full liability and workers comp coverage." },
 ];
 
 export default function Home() {
@@ -325,6 +325,64 @@ export default function Home() {
                 }}
               >
                 {stat.label}
+              </span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ── CERTIFICATION BADGES ── */}
+      <section
+        style={{
+          background: "var(--color-bg)",
+          padding: "2rem 1.5rem",
+        }}
+      >
+        <div
+          style={{
+            maxWidth: "1280px",
+            margin: "0 auto",
+            display: "flex",
+            flexWrap: "wrap",
+            gap: "1rem",
+            justifyContent: "center",
+          }}
+        >
+          {[
+            "Licensed Hawaii Contractor",
+            "Fully Insured",
+            "Written Warranties",
+            "Free Estimates",
+          ].map((badge) => (
+            <div
+              key={badge}
+              style={{
+                border: "1px solid var(--color-border)",
+                padding: "0.625rem 1.25rem",
+                display: "flex",
+                alignItems: "center",
+                gap: "0.5rem",
+              }}
+            >
+              <div
+                style={{
+                  width: "6px",
+                  height: "6px",
+                  background: "var(--color-accent)",
+                  flexShrink: 0,
+                }}
+              />
+              <span
+                style={{
+                  fontFamily: "var(--font-accent)",
+                  fontSize: "0.68rem",
+                  fontWeight: 600,
+                  textTransform: "uppercase",
+                  letterSpacing: "0.14em",
+                  color: "var(--color-text-muted)",
+                }}
+              >
+                {badge}
               </span>
             </div>
           ))}
@@ -699,9 +757,25 @@ export default function Home() {
                   size={16}
                   style={{ color: "var(--color-accent)", marginTop: "3px", flexShrink: 0 }}
                 />
-                <span style={{ fontSize: "0.925rem", color: "var(--color-text)", lineHeight: 1.55 }}>
-                  {item}
-                </span>
+                <div>
+                  <span
+                    style={{
+                      display: "block",
+                      fontFamily: "var(--font-heading)",
+                      fontWeight: 700,
+                      textTransform: "uppercase",
+                      fontSize: "0.82rem",
+                      letterSpacing: "0.06em",
+                      color: "var(--color-text)",
+                      marginBottom: "0.25rem",
+                    }}
+                  >
+                    {item.phrase}
+                  </span>
+                  <span style={{ fontSize: "0.85rem", color: "var(--color-text-muted)", lineHeight: 1.55 }}>
+                    {item.detail}
+                  </span>
+                </div>
               </li>
             ))}
           </ul>
@@ -825,6 +899,69 @@ export default function Home() {
               </div>
             </div>
           ))}
+        </div>
+      </section>
+
+      {/* ── WARRANTY CALLOUT ── */}
+      <section
+        style={{
+          borderTop: "1px solid var(--color-border)",
+          background: "var(--color-surface-raised)",
+          padding: "var(--space-block) 1.5rem",
+        }}
+      >
+        <div
+          style={{
+            maxWidth: "1280px",
+            margin: "0 auto",
+            display: "flex",
+            flexDirection: "column",
+            gap: "0.5rem",
+            alignItems: "center",
+            textAlign: "center",
+          }}
+          className="md:flex-row md:text-left md:justify-between"
+        >
+          <div style={{ display: "flex", alignItems: "center", gap: "1.25rem" }}>
+            <span
+              style={{
+                fontFamily: "var(--font-heading)",
+                fontWeight: 700,
+                fontSize: "clamp(2rem, 2.5vw, 3rem)",
+                lineHeight: 1,
+                color: "var(--color-accent)",
+              }}
+            >
+              5 yr
+            </span>
+            <div>
+              <span
+                style={{
+                  display: "block",
+                  fontFamily: "var(--font-heading)",
+                  fontWeight: 700,
+                  textTransform: "uppercase",
+                  fontSize: "0.95rem",
+                  letterSpacing: "0.06em",
+                  color: "var(--color-text)",
+                }}
+              >
+                Written Paint Warranty
+              </span>
+              <span
+                style={{
+                  fontSize: "0.85rem",
+                  color: "var(--color-text-muted)",
+                  lineHeight: 1.5,
+                }}
+              >
+                Manufacturer-backed coverage on labor and materials. Certificate provided at project close.
+              </span>
+            </div>
+          </div>
+          <Link to="/contact" className="btn-outline" style={{ flexShrink: 0 }}>
+            Ask About Coverage
+          </Link>
         </div>
       </section>
 
