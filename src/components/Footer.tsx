@@ -141,16 +141,28 @@ export default function Footer() {
             </h4>
             <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "0.5rem" }}>
               {[
-                "Interior Painting",
-                "Exterior Painting",
-                "Drywall Repair",
-                "Deck Refinishing",
-                "Kitchen Remodeling",
-                "Bathroom Remodeling",
-                "Commercial Painting",
+                { name: "Interior Painting", id: "interior-painting" },
+                { name: "Exterior Painting", id: "exterior-painting" },
+                { name: "Drywall Repair", id: "drywall-repair" },
+                { name: "Deck Refinishing", id: "deck-refinishing" },
+                { name: "Kitchen Remodeling", id: "kitchen-remodeling" },
+                { name: "Bathroom Remodeling", id: "bathroom-remodeling" },
+                { name: "Commercial Painting", id: "commercial-painting" },
               ].map((svc) => (
-                <li key={svc} style={{ color: "var(--color-text-muted)", fontSize: "0.875rem" }}>
-                  {svc}
+                <li key={svc.id}>
+                  <Link
+                    to={`/services#${svc.id}`}
+                    style={{
+                      color: "var(--color-text-muted)",
+                      fontSize: "0.875rem",
+                      textDecoration: "none",
+                      transition: "color 200ms ease",
+                    }}
+                    onMouseEnter={(e) => (e.currentTarget.style.color = "var(--color-accent)")}
+                    onMouseLeave={(e) => (e.currentTarget.style.color = "var(--color-text-muted)")}
+                  >
+                    {svc.name}
+                  </Link>
                 </li>
               ))}
             </ul>

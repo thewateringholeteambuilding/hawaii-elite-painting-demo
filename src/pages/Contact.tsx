@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Helmet } from "react-helmet-async";
-import { MapPin, Mail, Clock, CheckCircle, Phone } from "lucide-react";
+import { MapPin, Mail, Clock, CheckCircle } from "lucide-react";
 
 interface FormState {
   name: string;
@@ -41,6 +41,17 @@ export default function Contact() {
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setError(null);
+
+    // Honeypot, real users leave this empty; bots fill every field they see.
+    const honeypot = (e.currentTarget as HTMLFormElement).elements.namedItem(
+      "company_website"
+    ) as HTMLInputElement | null;
+    if (honeypot && honeypot.value.trim() !== "") {
+      // Silently succeed for bots, they think they got through
+      setSubmitted(true);
+      return;
+    }
+
     if (!form.name.trim() || !form.email.trim() || !form.message.trim()) {
       setError("Please fill in your name, email, and project description.");
       return;
@@ -93,7 +104,7 @@ export default function Contact() {
       >
         <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
           <span className="section-label" style={{ display: "block", marginBottom: "1rem" }}>
-            § Free Estimate
+            Free Estimate
           </span>
           <h1
             style={{
@@ -126,7 +137,7 @@ export default function Contact() {
         }}
         className="md:grid-cols-5"
       >
-        {/* Contact info — 2 cols */}
+        {/* Contact info, 2 cols */}
         <aside
           style={{ display: "flex", flexDirection: "column", gap: "2rem" }}
           className="md:col-span-2"
@@ -162,35 +173,7 @@ export default function Contact() {
                   flexShrink: 0,
                 }}
               >
-                <Phone size={16} color="hsl(220 45% 7%)" />
-              </div>
-              <div>
-                <span style={{ display: "block", fontFamily: "var(--font-accent)", fontSize: "0.7rem", textTransform: "uppercase", letterSpacing: "0.18em", color: "var(--color-text-muted)", marginBottom: "0.25rem" }}>
-                  Phone
-                </span>
-                <a
-                  href="tel:+18085550192"
-                  style={{ color: "var(--color-text)", fontSize: "1rem", fontWeight: 600, fontFamily: "var(--font-heading)", textTransform: "uppercase", letterSpacing: "0.05em" }}
-                >
-                  (808) 555-0192
-                </a>
-              </div>
-            </li>
-
-            <li style={{ display: "flex", gap: "1rem", alignItems: "flex-start" }}>
-              <div
-                style={{
-                  width: "36px",
-                  height: "36px",
-                  background: "var(--color-surface-raised)",
-                  border: "1px solid var(--color-border)",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  flexShrink: 0,
-                }}
-              >
-                <Mail size={16} color="var(--color-accent)" />
+                <Mail size={16} color="hsl(220 45% 7%)" />
               </div>
               <div>
                 <span style={{ display: "block", fontFamily: "var(--font-accent)", fontSize: "0.7rem", textTransform: "uppercase", letterSpacing: "0.18em", color: "var(--color-text-muted)", marginBottom: "0.25rem" }}>
@@ -280,7 +263,7 @@ export default function Contact() {
           </div>
         </aside>
 
-        {/* Form — 3 cols */}
+        {/* Form, 3 cols */}
         <div className="md:col-span-3">
           {submitted ? (
             <div
@@ -320,7 +303,6 @@ export default function Contact() {
               </h2>
               <p style={{ color: "var(--color-text-muted)", fontSize: "0.9rem", lineHeight: 1.65, maxWidth: "360px" }}>
                 We'll review your project details and follow up within one business day.
-                If you need a faster response, call us at (808) 555-0192.
               </p>
             </div>
           ) : (
@@ -329,6 +311,19 @@ export default function Contact() {
               style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}
               noValidate
             >
+              {/* Honeypot field, hidden from real users via aria-hidden + off-screen positioning. Bots fill it; we drop those submissions. */}
+              <div aria-hidden="true" style={{ position: "absolute", left: "-9999px", width: 1, height: 1, overflow: "hidden" }}>
+                <label htmlFor="company_website">Leave this field empty</label>
+                <input
+                  type="text"
+                  id="company_website"
+                  name="company_website"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  defaultValue=""
+                />
+              </div>
+
               {error && (
                 <div
                   style={{

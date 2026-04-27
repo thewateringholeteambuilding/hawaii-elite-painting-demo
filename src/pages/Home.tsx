@@ -1,6 +1,7 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
-import { ArrowRight, CheckCircle, Star, Phone } from "lucide-react";
+import { ArrowRight, CheckCircle, Star, Mail, ChevronDown } from "lucide-react";
 
 const STATS = [
   { value: "483", label: "Projects Completed" },
@@ -13,36 +14,42 @@ const SERVICES_TEASER = [
   {
     title: "Interior Painting",
     desc: "Walls, ceilings, trim, and cabinetry. We prep surfaces right so paint holds for years.",
+    idealFor: "Homeowners refreshing rooms, preparing for sale, or moving in.",
     img: "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&w=600&q=75",
     alt: "Interior painting in progress",
   },
   {
     title: "Exterior Painting",
     desc: "Weather-rated coatings built for Hawaii's sun, salt air, and heavy rain.",
+    idealFor: "Homeowners with fading, peeling, or chalking exterior coatings.",
     img: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=600&q=75",
     alt: "Exterior house painting",
   },
   {
     title: "Drywall Repair",
     desc: "Patch, skim, sand, prime. Invisible repairs before we roll a single drop of paint.",
+    idealFor: "Homes with water damage, cracks, or holes before a repaint.",
     img: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=600&q=75",
     alt: "Drywall repair and finishing",
   },
   {
     title: "Deck Refinishing",
     desc: "Strip, sand, stain, seal. Decks that take the sun beating without cracking or peeling.",
+    idealFor: "Homeowners with graying, splintering, or peeling deck surfaces.",
     img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=75",
     alt: "Deck refinishing and staining",
   },
   {
     title: "Kitchen Remodeling",
     desc: "Cabinet painting, new hardware, tile work, countertop coordination. Full kitchen refresh without a full demo.",
+    idealFor: "Homeowners who want a new kitchen look without $40k+ gut renovation.",
     img: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=600&q=75",
     alt: "Kitchen cabinet painting and remodeling",
   },
   {
     title: "Bathroom Remodeling",
     desc: "Tile, paint, fixtures, and finish work. We coordinate trades so you get one crew, one timeline.",
+    idealFor: "Homeowners updating tile, vanities, or dealing with mildew-prone surfaces.",
     img: "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?auto=format&fit=crop&w=600&q=75",
     alt: "Bathroom renovation and tile work",
   },
@@ -69,6 +76,29 @@ const TESTIMONIALS = [
   },
 ];
 
+const FAQ_ITEMS = [
+  {
+    q: "How often should I repaint my exterior in Hawaii?",
+    a: "Sun-exposed walls need recoating every 3-5 years. Shaded surfaces last 5-7 years. Salt air, UV load, and humidity cycling accelerate coating breakdown faster than mainland climate guides suggest. We assess your specific exposure during the estimate walk-through.",
+  },
+  {
+    q: "What paint brands do you use?",
+    a: "We specify coatings by the surface, not by a single brand. Sherwin-Williams Duration for most exteriors, Benjamin Moore Regal for interiors, and specialty products like elastomeric coatings for stucco. Every spec is documented in your written scope before work begins.",
+  },
+  {
+    q: "How long does a typical interior repaint take?",
+    a: "A 1,200-1,500 sq ft home interior typically takes 3-4 days: day one is prep (furniture move, masking, patching), days two and three are paint, day four is touch-up and walk-through. Larger homes or homes with extensive drywall repair may take 5-7 days.",
+  },
+  {
+    q: "Do I need to move out during the project?",
+    a: "No. We work room by room and seal off active areas with plastic sheeting. You keep access to kitchens, bathrooms, and bedrooms at all times. We clean at the end of every work day so your routine stays the same.",
+  },
+  {
+    q: "What does the written estimate include?",
+    a: "Line-item pricing for every surface: walls, ceilings, trim, doors. Coating manufacturer and product name for each area. Timeline in calendar days. Payment schedule. Warranty terms. No lump-sum guessing.",
+  },
+];
+
 const WHY_ITEMS = [
   { phrase: "Written Scope First", detail: "Detailed line-item estimate before any work starts. No surprises on the invoice." },
   { phrase: "70/30 Prep Ratio", detail: "70% of every project is surface prep. No shortcuts on sanding, caulking, or priming." },
@@ -76,6 +106,116 @@ const WHY_ITEMS = [
   { phrase: "Manufacturer Warranty", detail: "Paint warranties honored through the manufacturer. Documentation on file." },
   { phrase: "Licensed in Hawaii", detail: "Active Hawaii contractors license. Full liability and workers comp coverage." },
 ];
+
+function FaqSection() {
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+
+  return (
+    <section
+      style={{
+        background: "var(--color-surface)",
+        borderTop: "1px solid var(--color-border)",
+        padding: "var(--space-section) 1.5rem",
+      }}
+    >
+      <div
+        style={{
+          maxWidth: "800px",
+          margin: "0 auto",
+        }}
+      >
+        <span className="section-label" style={{ display: "block", marginBottom: "1rem" }}>
+          Common Questions
+        </span>
+        <h2
+          style={{
+            fontSize: "var(--text-h2)",
+            fontFamily: "var(--font-heading)",
+            fontWeight: 700,
+            textTransform: "uppercase",
+            lineHeight: 0.92,
+            color: "var(--color-text)",
+            marginBottom: "2.5rem",
+          }}
+        >
+          Before You Call
+        </h2>
+
+        <div style={{ display: "flex", flexDirection: "column", gap: "0" }}>
+          {FAQ_ITEMS.map((item, i) => {
+            const isOpen = openIndex === i;
+            return (
+              <div
+                key={i}
+                style={{
+                  borderBottom: "1px solid var(--color-border)",
+                }}
+              >
+                <button
+                  onClick={() => setOpenIndex(isOpen ? null : i)}
+                  style={{
+                    width: "100%",
+                    textAlign: "left",
+                    background: "none",
+                    border: "none",
+                    cursor: "pointer",
+                    padding: "1.25rem 0",
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                    gap: "1rem",
+                  }}
+                >
+                  <span
+                    style={{
+                      fontFamily: "var(--font-heading)",
+                      fontWeight: 700,
+                      textTransform: "uppercase",
+                      fontSize: "0.85rem",
+                      letterSpacing: "0.04em",
+                      color: isOpen ? "var(--color-accent)" : "var(--color-text)",
+                      transition: "color 200ms ease",
+                    }}
+                  >
+                    {item.q}
+                  </span>
+                  <ChevronDown
+                    size={16}
+                    style={{
+                      color: "var(--color-accent)",
+                      flexShrink: 0,
+                      transform: isOpen ? "rotate(180deg)" : "rotate(0deg)",
+                      transition: "transform 200ms ease",
+                    }}
+                  />
+                </button>
+                <div
+                  style={{
+                    maxHeight: isOpen ? "300px" : "0",
+                    overflow: "hidden",
+                    transition: "max-height 300ms ease",
+                  }}
+                >
+                  <p
+                    style={{
+                      color: "var(--color-text-muted)",
+                      fontSize: "0.9rem",
+                      lineHeight: 1.7,
+                      paddingBottom: "1.25rem",
+                      maxWidth: "640px",
+                    }}
+                  >
+                    {item.a}
+                  </p>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
 
 export default function Home() {
   return (
@@ -100,7 +240,7 @@ export default function Home() {
         }}
         className="md:grid-cols-2"
       >
-        {/* Left — content */}
+        {/* Left, content */}
         <div
           style={{
             background: "var(--color-bg)",
@@ -111,7 +251,7 @@ export default function Home() {
           }}
         >
           <span className="section-label" style={{ marginBottom: "1.25rem" }}>
-            § Honolulu, Oahu
+            Honolulu, Oahu · Licensed in Hawaii
           </span>
 
           <h1
@@ -127,13 +267,11 @@ export default function Home() {
               marginBottom: "1.75rem",
             }}
           >
-            Paint It
+            483 Houses
             <br />
-            <span style={{ color: "var(--color-accent)" }}>Right.</span>
+            <span style={{ color: "var(--color-accent)" }}>on Oahu.</span>
             <br />
-            Renovate
-            <br />
-            It Better.
+            Same Crew.
           </h1>
 
           <p
@@ -160,8 +298,8 @@ export default function Home() {
             </Link>
           </div>
 
-          <a
-            href="tel:+18085550192"
+          <Link
+            to="/contact"
             style={{
               display: "inline-flex",
               alignItems: "center",
@@ -175,12 +313,12 @@ export default function Home() {
             onMouseEnter={(e) => (e.currentTarget.style.color = "var(--color-accent)")}
             onMouseLeave={(e) => (e.currentTarget.style.color = "var(--color-text-muted)")}
           >
-            <Phone size={14} />
-            (808) 555-0192
-          </a>
+            <Mail size={14} />
+            Send a message
+          </Link>
         </div>
 
-        {/* Right — photo */}
+        {/* Right, photo */}
         <div
           style={{
             position: "relative",
@@ -437,7 +575,7 @@ export default function Home() {
           }}
           className="md:grid-cols-3"
         >
-          {/* Featured card — col-span-2 */}
+          {/* Featured card, col-span-2 */}
           <div
             style={{
               position: "relative",
@@ -498,6 +636,9 @@ export default function Home() {
               >
                 {SERVICES_TEASER[0].desc}
               </p>
+              <span style={{ display: "block", marginTop: "0.5rem", fontSize: "0.72rem", fontFamily: "var(--font-accent)", textTransform: "uppercase", letterSpacing: "0.12em", color: "var(--color-accent)" }}>
+                Ideal for: {SERVICES_TEASER[0].idealFor}
+              </span>
             </div>
           </div>
 
@@ -546,6 +687,9 @@ export default function Home() {
               <p style={{ color: "hsl(40 30% 92% / 0.75)", fontSize: "0.85rem", lineHeight: 1.5 }}>
                 {SERVICES_TEASER[1].desc}
               </p>
+              <span style={{ display: "block", marginTop: "0.375rem", fontSize: "0.68rem", fontFamily: "var(--font-accent)", textTransform: "uppercase", letterSpacing: "0.12em", color: "var(--color-accent)" }}>
+                Ideal for: {SERVICES_TEASER[1].idealFor}
+              </span>
             </div>
           </div>
 
@@ -582,6 +726,9 @@ export default function Home() {
               <p style={{ color: "var(--color-text-muted)", fontSize: "0.875rem", lineHeight: 1.6 }}>
                 {svc.desc}
               </p>
+              <span style={{ display: "block", marginTop: "0.5rem", fontSize: "0.68rem", fontFamily: "var(--font-accent)", textTransform: "uppercase", letterSpacing: "0.12em", color: "var(--color-accent)" }}>
+                Ideal for: {svc.idealFor}
+              </span>
             </div>
           ))}
 
@@ -614,6 +761,9 @@ export default function Home() {
               <p style={{ color: "var(--color-text-muted)", fontSize: "0.875rem", lineHeight: 1.6, maxWidth: "500px" }}>
                 {SERVICES_TEASER[5].desc}
               </p>
+              <span style={{ display: "block", marginTop: "0.375rem", fontSize: "0.68rem", fontFamily: "var(--font-accent)", textTransform: "uppercase", letterSpacing: "0.12em", color: "var(--color-accent)" }}>
+                Ideal for: {SERVICES_TEASER[5].idealFor}
+              </span>
             </div>
             <Link to="/services" className="btn-outline" style={{ flexShrink: 0 }}>
               All Services <ArrowRight size={13} />
@@ -622,7 +772,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── PROCESS STRIP — THE ELITE SEQUENCE ── */}
+      {/* ── PROCESS STRIP, THE ELITE SEQUENCE ── */}
       <section
         style={{
           borderTop: "1px solid var(--color-border)",
@@ -832,7 +982,7 @@ export default function Home() {
         >
           <div>
             <span className="section-label" style={{ marginBottom: "1rem", display: "block" }}>
-              § How We Work
+              How We Work
             </span>
             <h2
               style={{
@@ -1036,6 +1186,9 @@ export default function Home() {
           ))}
         </div>
       </section>
+
+      {/* ── FAQ ── */}
+      <FaqSection />
 
       {/* ── WARRANTY CALLOUT ── */}
       <section

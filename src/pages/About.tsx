@@ -45,7 +45,7 @@ export default function About() {
       >
         <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
           <span className="section-label" style={{ display: "block", marginBottom: "1rem" }}>
-            § About Us
+            About Us
           </span>
           <h1
             style={{

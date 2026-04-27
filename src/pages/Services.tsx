@@ -15,7 +15,7 @@ const SERVICES = [
       "Furniture moved and protected before start",
       "Daily cleanup: no dried roller trays left overnight",
     ],
-    note: "We match existing paint colors using spectrophotometer readings. Bring a paint chip or we take one from your wall.",
+    note: "Interior repaints hold 7-10 years in most rooms. High-humidity areas (bathrooms, kitchens) may need attention at 4-5 years. We match existing colors using spectrophotometer readings.",
   },
   {
     title: "Exterior Painting",
@@ -29,7 +29,7 @@ const SERVICES = [
       "Caulk all penetrations and cracks before first coat",
       "Two finish coats minimum on sun-exposed surfaces",
     ],
-    note: "We specify coatings by the surface type, not just the brand. Stucco, wood, and concrete all need different primers.",
+    note: "Exterior repaints in Hawaii last 3-5 years on sun-exposed surfaces, 5-7 for shaded walls. Salt air, UV load, and humidity cycling accelerate coating breakdown faster than mainland guides suggest. We specify coatings by substrate type, not brand.",
   },
   {
     title: "Drywall Repair",
@@ -57,7 +57,7 @@ const SERVICES = [
       "Apply penetrating stain or film-forming finish per wood species",
       "Seal all end grain and cut surfaces",
     ],
-    note: "Hawaii's UV load destroys mainland deck stains in 18 months. We specify products tested in high-UV coastal climates.",
+    note: "Deck refinishing in Hawaii runs on a 12-18 month cycle for penetrating stains, 2-3 years for film-forming finishes. Mainland stain products rated for 3-5 years last half that here. We specify products tested in high-UV coastal climates.",
   },
   {
     title: "Kitchen Remodeling",
@@ -124,7 +124,7 @@ export default function Services() {
       >
         <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
           <span className="section-label" style={{ display: "block", marginBottom: "1rem" }}>
-            § What We Do
+            What We Do
           </span>
           <h1
             style={{

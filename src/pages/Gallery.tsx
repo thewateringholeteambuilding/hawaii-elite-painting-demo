@@ -121,7 +121,7 @@ export default function Gallery() {
         >
           <div>
             <span className="section-label" style={{ display: "block", marginBottom: "1rem" }}>
-              § Completed Work
+              Completed Work
             </span>
             <h1
               style={{
@@ -228,6 +228,14 @@ export default function Gallery() {
                 background: "var(--color-bg)",
                 overflow: "hidden",
                 position: "relative",
+                borderLeft: "3px solid transparent",
+                transition: "border-color 300ms ease",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.borderLeftColor = "var(--color-accent)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.borderLeftColor = "transparent";
               }}
               className="group"
             >
