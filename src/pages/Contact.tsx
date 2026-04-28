@@ -117,10 +117,21 @@ export default function Contact() {
               maxWidth: "600px",
             }}
           >
-            Tell Us About
+            Color That Feels
             <br />
-            <span style={{ color: "var(--color-accent)" }}>Your Project</span>
+            <span style={{ color: "var(--color-accent)" }}>Like Yours</span>
           </h1>
+          <p
+            style={{
+              color: "var(--color-text-muted)",
+              fontSize: "0.95rem",
+              lineHeight: 1.65,
+              maxWidth: "440px",
+              marginTop: "1.25rem",
+            }}
+          >
+            Tell us about the space. We'll walk it, spec the right coatings, and hand you a written scope before any work begins.
+          </p>
         </div>
       </header>
 

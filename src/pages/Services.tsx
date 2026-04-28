@@ -11,7 +11,7 @@ const SERVICES = [
     detail: [
       "Surface prep: hole filling, crack repair, sanding",
       "Two-coat prime + finish on new drywall",
-      "Low-VOC and standard coating options",
+      "Benjamin Moore Regal Select and Sherwin-Williams Harmony low-VOC lines standard",
       "Furniture moved and protected before start",
       "Daily cleanup: no dried roller trays left overnight",
     ],
@@ -25,7 +25,7 @@ const SERVICES = [
     detail: [
       "Full pressure wash before any coating",
       "Substrate assessment: identify rot, spall, efflorescence",
-      "Coastal-rated UV-resistant coatings specified per surface",
+      "Sherwin-Williams Duration and PPG Diamond exterior lines rated for coastal UV",
       "Caulk all penetrations and cracks before first coat",
       "Two finish coats minimum on sun-exposed surfaces",
     ],
@@ -54,7 +54,7 @@ const SERVICES = [
       "Full strip of existing finish down to bare wood",
       "Deck board inspection: replace splits and soft spots before refinishing",
       "Power sand entire deck surface",
-      "Apply penetrating stain or film-forming finish per wood species",
+      "Penofin or TWP penetrating stain, or Arborcoat film-forming finish per wood species",
       "Seal all end grain and cut surfaces",
     ],
     note: "Deck refinishing in Hawaii runs on a 12-18 month cycle for penetrating stains, 2-3 years for film-forming finishes. Mainland stain products rated for 3-5 years last half that here. We specify products tested in high-UV coastal climates.",
@@ -79,7 +79,7 @@ const SERVICES = [
     alt: "Bathroom renovation with tile and paint",
     scope: "Full paint refresh, tile replacement, vanity painting, fixture coordination.",
     detail: [
-      "Mildew-resistant primer on all walls and ceiling",
+      "Zinsser Mold Killing Primer on all walls and ceiling",
       "Tile removal and substrate repair before new tile",
       "Grout sealing included on all tile work",
       "Vanity cabinet painting to match or contrast walls",
@@ -94,7 +94,7 @@ const SERVICES = [
     scope: "Office interiors, retail spaces, warehouses, common areas, and exterior facades.",
     detail: [
       "Off-hours scheduling to minimize business disruption",
-      "Low-odor coatings for occupied spaces",
+      "Benjamin Moore Natura zero-VOC coatings for occupied spaces",
       "Single-day small suite refreshes available",
       "Multi-phase large projects with phased access",
       "Written scope and certificate of insurance for property managers",

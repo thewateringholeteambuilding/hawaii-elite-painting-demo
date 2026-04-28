@@ -528,6 +528,75 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ── ECO RESPONSIBILITY STRIP ── */}
+      <section
+        style={{
+          background: "var(--color-surface)",
+          borderBottom: "1px solid var(--color-border)",
+          padding: "1.75rem 1.5rem",
+        }}
+      >
+        <div
+          style={{
+            maxWidth: "1280px",
+            margin: "0 auto",
+            display: "flex",
+            flexDirection: "column",
+            gap: "0.75rem",
+          }}
+        >
+          <span
+            style={{
+              fontFamily: "var(--font-accent)",
+              fontSize: "0.62rem",
+              fontWeight: 600,
+              textTransform: "uppercase",
+              letterSpacing: "0.2em",
+              color: "var(--color-accent)",
+            }}
+          >
+            Painting Responsibly on Oahu
+          </span>
+          <div
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              gap: "1.5rem 2.5rem",
+            }}
+          >
+            {[
+              "Low-VOC coatings standard on all interiors",
+              "EPA Lead-Safe Certified for pre-1978 homes",
+              "Leftover paint recycled through PaintCare Hawaii",
+              "Zero job-site waste to storm drains",
+            ].map((item) => (
+              <span
+                key={item}
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "0.5rem",
+                  fontSize: "0.82rem",
+                  color: "var(--color-text-muted)",
+                  lineHeight: 1.4,
+                }}
+              >
+                <span
+                  style={{
+                    width: "4px",
+                    height: "4px",
+                    background: "var(--color-accent)",
+                    flexShrink: 0,
+                    opacity: 0.6,
+                  }}
+                />
+                {item}
+              </span>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ── SERVICES TEASER ── */}
       <section
         aria-labelledby="services-heading"
@@ -1289,6 +1358,122 @@ export default function Home() {
           >
             Based out of 200 N Vineyard Blvd, Honolulu. We drive to you for the estimate.
           </p>
+        </div>
+      </section>
+
+      {/* ── COLOR ADVISORY CALLOUT ── */}
+      <section
+        style={{
+          background: "var(--color-bg)",
+          borderTop: "1px solid var(--color-border)",
+          padding: "var(--space-block) 1.5rem",
+        }}
+      >
+        <div
+          style={{
+            maxWidth: "800px",
+            margin: "0 auto",
+            display: "grid",
+            gridTemplateColumns: "1fr",
+            gap: "2rem",
+            alignItems: "center",
+          }}
+          className="md:grid-cols-5"
+        >
+          <div className="md:col-span-3">
+            <span className="section-label" style={{ display: "block", marginBottom: "0.75rem" }}>
+              Free with Every Estimate
+            </span>
+            <h2
+              style={{
+                fontFamily: "var(--font-heading)",
+                fontWeight: 700,
+                textTransform: "uppercase",
+                fontSize: "clamp(1.25rem, 2vw, 1.75rem)",
+                lineHeight: 0.95,
+                color: "var(--color-text)",
+                marginBottom: "1rem",
+              }}
+            >
+              Color Advisory
+            </h2>
+            <p
+              style={{
+                color: "var(--color-text-muted)",
+                fontSize: "0.9rem",
+                lineHeight: 1.65,
+                marginBottom: "0.75rem",
+              }}
+            >
+              Not sure what color works with your flooring, light exposure, or existing
+              trim? We bring Sherwin-Williams and Benjamin Moore fan decks to the
+              walk-through and help you narrow from 3,500 options to the three that
+              actually work in your room, at your latitude, with your light.
+            </p>
+            <p
+              style={{
+                color: "var(--color-text-muted)",
+                fontSize: "0.82rem",
+                lineHeight: 1.55,
+              }}
+            >
+              No upcharge. No pressure. Just paint knowledge from 483 houses worth of
+              matching colors on Oahu.
+            </p>
+          </div>
+          <div
+            className="md:col-span-2"
+            style={{
+              background: "var(--color-surface)",
+              border: "1px solid var(--color-border)",
+              padding: "1.5rem",
+              display: "flex",
+              flexDirection: "column",
+              gap: "0.875rem",
+            }}
+          >
+            <span
+              style={{
+                fontFamily: "var(--font-accent)",
+                fontSize: "0.62rem",
+                fontWeight: 600,
+                textTransform: "uppercase",
+                letterSpacing: "0.2em",
+                color: "var(--color-accent)",
+              }}
+            >
+              What You Get
+            </span>
+            {[
+              "On-site color consultation during estimate walk-through",
+              "Fan deck review with Sherwin-Williams and Benjamin Moore palettes",
+              "Light exposure assessment for each room",
+              "Written color spec included in your scope document",
+            ].map((item) => (
+              <div
+                key={item}
+                style={{
+                  display: "flex",
+                  gap: "0.625rem",
+                  alignItems: "flex-start",
+                }}
+              >
+                <CheckCircle
+                  size={13}
+                  style={{ color: "var(--color-accent)", marginTop: "3px", flexShrink: 0 }}
+                />
+                <span
+                  style={{
+                    fontSize: "0.82rem",
+                    color: "var(--color-text-muted)",
+                    lineHeight: 1.5,
+                  }}
+                >
+                  {item}
+                </span>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 

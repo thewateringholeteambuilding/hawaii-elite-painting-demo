@@ -77,7 +77,7 @@ export default function Footer() {
                 maxWidth: "260px",
               }}
             >
-              Full-service painting and renovation contractor serving Oahu homeowners and businesses.
+              Prep first. Paint right. Clean up every day.
             </p>
           </div>
 
@@ -226,7 +226,7 @@ export default function Footer() {
             &copy; {year} Hawaii Elite Painting and Renovation. All rights reserved.
           </p>
           <p style={{ color: "var(--color-text-muted)", fontSize: "0.8rem" }}>
-            Licensed &amp; Insured · Serving Oahu, HI
+            Licensed &amp; Insured · Honolulu, HI · Est. 2012
           </p>
         </div>
       </div>
