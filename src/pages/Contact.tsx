@@ -21,6 +21,16 @@ const SERVICE_OPTIONS = [
   "Multiple / Not Sure",
 ];
 
+const SERVICE_HINTS: Record<string, string> = {
+  "Interior Painting": "Helpful to mention: number of rooms, ceiling height, any wallpaper removal needed, and if furniture needs to stay in place.",
+  "Exterior Painting": "Helpful to mention: home square footage, siding material (wood, stucco, concrete), and any peeling or bare wood areas.",
+  "Drywall Repair": "Helpful to mention: number of areas, size of damage (small holes vs. full sections), and whether water damage is involved.",
+  "Deck Refinishing": "Helpful to mention: deck square footage, wood type, current condition (graying, peeling, splintering), and if railing is included.",
+  "Kitchen Remodeling": "Helpful to mention: cabinet count, whether you want new doors or paint-only, and any countertop or tile work.",
+  "Bathroom Remodeling": "Helpful to mention: number of bathrooms, scope (paint only vs. tile + fixtures), and any mold or moisture issues.",
+  "Commercial Painting": "Helpful to mention: building type, total square footage, any after-hours scheduling requirements, and access details.",
+};
+
 export default function Contact() {
   const [form, setForm] = useState<FormState>({
     name: "",
@@ -268,8 +278,9 @@ export default function Contact() {
               Service Area
             </h3>
             <p style={{ color: "var(--color-text-muted)", fontSize: "0.875rem", lineHeight: 1.65 }}>
-              We work across all of Oahu: Honolulu, Kailua, Kaneohe, Pearl City,
-              Aiea, Mililani, Ewa Beach, Hawaii Kai, and in between.
+              Kailua Beachside to Ewa Beach, Lanikai to Mililani Mauka.
+              We've painted in Kahala, Portlock, Hawaii Loa Ridge, Aina Haina,
+              Manoa, Kaneohe Bay, Aiea Heights, and most neighborhoods in between.
             </p>
           </div>
         </aside>
@@ -417,6 +428,22 @@ export default function Contact() {
                   ))}
                 </select>
               </div>
+
+              {form.service && SERVICE_HINTS[form.service] && (
+                <div
+                  style={{
+                    background: "var(--color-surface)",
+                    border: "1px solid var(--color-border)",
+                    borderLeft: "3px solid var(--color-accent)",
+                    padding: "0.75rem 1rem",
+                    fontSize: "0.82rem",
+                    color: "var(--color-text-muted)",
+                    lineHeight: 1.55,
+                  }}
+                >
+                  {SERVICE_HINTS[form.service]}
+                </div>
+              )}
 
               <div>
                 <label htmlFor="message" style={labelStyle}>Project Description *</label>

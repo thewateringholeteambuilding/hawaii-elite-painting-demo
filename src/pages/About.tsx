@@ -110,28 +110,28 @@ export default function About() {
               }}
             >
               <p>
-                Hawaii Elite Painting and Renovation started with a straightforward observation:
-                Oahu homes need coatings that actually hold up to island conditions. The
-                mainland paints, primers, and timelines contractors import from the continent
-                don't account for the UV load, the salt air, or the year-round humidity
-                cycles that drive moisture into every surface.
+                We started this company because we kept seeing the same thing: mainland coatings
+                failing in two years on Oahu homes. The primers aren't rated for our UV load.
+                The timelines don't account for humidity cycling. The spec sheets assume a climate
+                that doesn't exist here.
               </p>
               <p>
-                We built our process around those realities. Every exterior project starts with
-                a substrate assessment. We specify coatings rated for coastal exposure and UV
-                fade resistance. On interiors, we account for the mold and mildew risk that
-                comes standard in Hawaii bathrooms and kitchen walls.
+                So we built our process around island conditions. Every exterior starts with a
+                substrate assessment. We specify coatings rated for coastal salt exposure and
+                UV fade resistance. On interiors, we account for the mold and mildew risk that
+                comes with Hawaii bathrooms and kitchen walls year-round.
               </p>
               <p>
-                Our renovation work grew out of the painting side because clients kept asking
-                us to coordinate the full project. Tile after paint. Cabinets before walls.
-                Drywall before any of it. We built the capability to handle the whole scope
-                so homeowners don't have to manage four separate contractor relationships.
+                The renovation side grew because clients kept asking us to handle the full
+                scope. Tile after paint. Cabinets before walls. Drywall before any of it. We
+                built the capability so homeowners deal with one crew instead of juggling four
+                separate contractor relationships.
               </p>
               <p>
-                We're based in Honolulu and work across Oahu: Kailua, Pearl City,
-                Kaneohe. Every project gets the same crew, the same process, and the same
-                written scope before work begins.
+                We're based out of Vineyard Blvd in Honolulu and we've painted in most
+                neighborhoods on this island. Kailua Beachside, Kahala, Portlock, Manoa,
+                Pearl City, Kaneohe. Every project gets the same crew, the same process,
+                and a written scope before we touch a brush.
               </p>
             </div>
           </div>
@@ -168,7 +168,7 @@ export default function About() {
                     lineHeight: 1,
                   }}
                 >
-                  12+
+                  14
                 </span>
                 <span
                   style={{
@@ -195,7 +195,7 @@ export default function About() {
             >
               {[
                 { val: "483", lbl: "Projects" },
-                { val: "Oahu", lbl: "Only. No Splits." },
+                { val: "1.2M+", lbl: "Sq Ft Painted" },
                 { val: "100%", lbl: "Licensed Work" },
               ].map((s) => (
                 <div
@@ -255,7 +255,7 @@ export default function About() {
               marginBottom: "3rem",
             }}
           >
-            What 12 Years
+            What 14 Years
             <br />
             <span style={{ color: "var(--color-accent)" }}>Teaches You</span>
           </h2>
@@ -402,8 +402,8 @@ export default function About() {
             >
               Every estimate comes through me. I walk the job, write the scope, and
               my cell number is on the contract. If something goes wrong at 6 AM on a
-              Saturday, you're calling the person who signed the quote. That's how a
-              14-year company stays a 4.8-star company.
+              Saturday, you're calling the person who signed the quote. After 483 houses
+              on this island, we've probably already painted on your street.
             </p>
             <span
               style={{

@@ -6,8 +6,8 @@ import { ArrowRight, CheckCircle, Star, Mail, ChevronDown } from "lucide-react";
 const STATS = [
   { value: "483", label: "Projects Completed" },
   { value: "14", label: "Years on Oahu" },
+  { value: "1.2M+", label: "Sq Ft Painted" },
   { value: "4.8", label: "Google Rating" },
-  { value: "Free", label: "Written Estimates" },
 ];
 
 const SERVICES_TEASER = [
@@ -1345,9 +1345,10 @@ export default function Home() {
               maxWidth: "720px",
             }}
           >
-            Honolulu · Kailua · Kaneohe · Pearl City · Aiea · Hawaii Kai ·
-            Mililani · Ewa Beach · Kapolei · Manoa · Waikiki ·
-            North Shore by request.
+            Kailua Beachside · Lanikai · Enchanted Lake · Kaneohe Bay ·
+            Manoa · Kahala · Portlock · Hawaii Loa Ridge · Aina Haina ·
+            Pearl City · Aiea Heights · Mililani Mauka · Ewa Beach ·
+            Kapolei · Waikiki · Downtown Honolulu · North Shore by request.
           </p>
           <p
             style={{

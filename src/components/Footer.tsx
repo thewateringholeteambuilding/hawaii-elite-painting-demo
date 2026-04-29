@@ -79,6 +79,17 @@ export default function Footer() {
             >
               Prep first. Paint right. Clean up every day.
             </p>
+            <p
+              style={{
+                color: "var(--color-text-muted)",
+                fontSize: "0.78rem",
+                lineHeight: "1.55",
+                marginTop: "0.5rem",
+                opacity: 0.7,
+              }}
+            >
+              483 houses on Oahu and counting. We've probably already painted on your street.
+            </p>
           </div>
 
           {/* Navigation */}
