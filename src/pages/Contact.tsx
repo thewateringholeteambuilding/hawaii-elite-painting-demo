@@ -7,6 +7,7 @@ interface FormState {
   email: string;
   phone: string;
   service: string;
+  customerType: string;
   message: string;
 }
 
@@ -37,6 +38,7 @@ export default function Contact() {
     email: "",
     phone: "",
     service: "",
+    customerType: "",
     message: "",
   });
   const [submitted, setSubmitted] = useState(false);
@@ -444,6 +446,24 @@ export default function Contact() {
                   {SERVICE_HINTS[form.service]}
                 </div>
               )}
+
+              <div>
+                <label htmlFor="customerType" style={labelStyle}>Have we worked together before?</label>
+                <select
+                  id="customerType"
+                  name="customerType"
+                  value={form.customerType}
+                  onChange={handleChange}
+                  style={{ ...inputStyle, cursor: "pointer" }}
+                  onFocus={(e) => (e.currentTarget.style.borderColor = "var(--color-accent)")}
+                  onBlur={(e) => (e.currentTarget.style.borderColor = "var(--color-border)")}
+                >
+                  <option value="">Select...</option>
+                  <option value="new">First time working with Hawaii Elite</option>
+                  <option value="returning">Yes, you've painted for me before</option>
+                  <option value="referral">Referred by a previous client</option>
+                </select>
+              </div>
 
               <div>
                 <label htmlFor="message" style={labelStyle}>Project Description *</label>

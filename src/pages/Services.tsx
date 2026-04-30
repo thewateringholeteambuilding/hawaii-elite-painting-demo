@@ -144,6 +144,71 @@ export default function Services() {
         </div>
       </header>
 
+      {/* Sticky service quick-nav */}
+      <nav
+        aria-label="Jump to service"
+        style={{
+          position: "sticky",
+          top: "64px",
+          zIndex: 40,
+          background: "var(--color-bg)",
+          borderBottom: "1px solid var(--color-border)",
+          padding: "0.875rem 1.5rem",
+          overflowX: "auto",
+        }}
+      >
+        <div
+          style={{
+            maxWidth: "1280px",
+            margin: "0 auto",
+            display: "flex",
+            gap: "0.5rem",
+            flexWrap: "nowrap",
+          }}
+        >
+          {SERVICES.map((svc) => {
+            const id = svc.title.toLowerCase().replace(/\s+/g, "-");
+            return (
+              <a
+                key={id}
+                href={`#${id}`}
+                onClick={(e) => {
+                  e.preventDefault();
+                  const el = document.getElementById(id);
+                  if (el) {
+                    const y = el.getBoundingClientRect().top + window.scrollY - 120;
+                    window.scrollTo({ top: y, behavior: "smooth" });
+                  }
+                }}
+                style={{
+                  border: "1px solid var(--color-border)",
+                  padding: "0.375rem 0.875rem",
+                  fontFamily: "var(--font-accent)",
+                  fontSize: "0.68rem",
+                  fontWeight: 600,
+                  textTransform: "uppercase",
+                  letterSpacing: "0.1em",
+                  color: "var(--color-text-muted)",
+                  textDecoration: "none",
+                  whiteSpace: "nowrap",
+                  transition: "border-color 200ms ease, color 200ms ease",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.borderColor = "var(--color-accent)";
+                  e.currentTarget.style.color = "var(--color-accent)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.borderColor = "var(--color-border)";
+                  e.currentTarget.style.color = "var(--color-text-muted)";
+                }}
+              >
+                {svc.title}
+              </a>
+            );
+          })}
+        </div>
+      </nav>
+
       {/* Service list */}
       <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
         {SERVICES.map((svc, i) => (

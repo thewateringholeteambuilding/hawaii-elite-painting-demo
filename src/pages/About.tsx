@@ -402,8 +402,9 @@ export default function About() {
             >
               Every estimate comes through me. I walk the job, write the scope, and
               my cell number is on the contract. If something goes wrong at 6 AM on a
-              Saturday, you're calling the person who signed the quote. After 483 houses
-              on this island, we've probably already painted on your street.
+              Saturday, you're calling the person who signed the quote. Our lead
+              painter has been with us since 2016. The prep crew averages 6 years.
+              After 483 houses on this island, we've probably already painted on your street.
             </p>
             <span
               style={{
@@ -413,7 +414,7 @@ export default function About() {
                 fontWeight: 600,
               }}
             >
-              Owner-operated since day one.
+              Prep first. Paint right. Every house.
             </span>
           </div>
         </div>

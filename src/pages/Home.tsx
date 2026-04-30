@@ -858,9 +858,21 @@ export default function Home() {
         >
           <span
             className="section-label"
-            style={{ display: "block", marginBottom: "1.5rem" }}
+            style={{ display: "block", marginBottom: "0.5rem" }}
           >
             The Elite Sequence
+          </span>
+          <span
+            style={{
+              display: "block",
+              fontFamily: "var(--font-accent)",
+              fontSize: "0.72rem",
+              color: "var(--color-text-muted)",
+              marginBottom: "1.5rem",
+              letterSpacing: "0.06em",
+            }}
+          >
+            Prep first. Paint right. Every house.
           </span>
         </div>
         <div
@@ -876,8 +888,8 @@ export default function Home() {
           {[
             { step: "01", title: "Call or Request Online", desc: "Describe the job. We respond within one business day." },
             { step: "02", title: "Walk-Through & Estimate", desc: "We measure, photograph, and hand you a written scope with line-item pricing." },
-            { step: "03", title: "Prep, Paint, Inspect", desc: "Surface prep, quality coatings, daily cleanup. You approve the final walk-through." },
-            { step: "04", title: "Warranty & Follow-Up", desc: "Manufacturer paint warranty on file. We check in at 6 months." },
+            { step: "03", title: "Prep, Paint, Inspect", desc: "Surface prep, quality coatings, daily cleanup. Average crew tenure: 6 years. You approve the final walk-through." },
+            { step: "04", title: "Warranty & Follow-Up", desc: "Manufacturer paint warranty on file. We check in at 6 months and 12 months." },
           ].map((item) => (
             <div key={item.step} style={{ display: "flex", gap: "1rem", alignItems: "flex-start" }}>
               <span
@@ -1025,6 +1037,73 @@ export default function Home() {
             >
               Salt-air rated coating system. Power wash, scrape, two coats primer on bare wood, two coats finish. Homeowner stayed in residence throughout.
             </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ── RECENT JOBS STRIP ── */}
+      <section
+        style={{
+          background: "var(--color-bg)",
+          borderTop: "1px solid var(--color-border)",
+          padding: "2rem 1.5rem",
+        }}
+      >
+        <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
+          <span
+            className="section-label"
+            style={{ display: "block", marginBottom: "1.25rem" }}
+          >
+            Recent Jobs
+          </span>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              gap: "0",
+            }}
+          >
+            {[
+              { date: "Apr 2025", job: "Full exterior repaint, Kailua Beachside. Two coats Duration on lap siding." },
+              { date: "Mar 2025", job: "Kitchen cabinet refinish, Manoa. 36 doors sprayed off-site, reinstalled day four." },
+              { date: "Feb 2025", job: "Interior walls + ceiling, Pearl City split-level. Color consultation included." },
+              { date: "Jan 2025", job: "Deck strip and restain, Hawaii Kai. Penofin penetrating stain, 380 sq ft." },
+            ].map((entry) => (
+              <div
+                key={entry.date}
+                style={{
+                  display: "flex",
+                  gap: "1.25rem",
+                  alignItems: "baseline",
+                  padding: "0.75rem 0",
+                  borderBottom: "1px solid var(--color-border)",
+                }}
+              >
+                <span
+                  style={{
+                    fontFamily: "var(--font-accent)",
+                    fontSize: "0.68rem",
+                    fontWeight: 600,
+                    textTransform: "uppercase",
+                    letterSpacing: "0.14em",
+                    color: "var(--color-accent)",
+                    flexShrink: 0,
+                    minWidth: "72px",
+                  }}
+                >
+                  {entry.date}
+                </span>
+                <span
+                  style={{
+                    color: "var(--color-text-muted)",
+                    fontSize: "0.85rem",
+                    lineHeight: 1.5,
+                  }}
+                >
+                  {entry.job}
+                </span>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -1312,7 +1391,7 @@ export default function Home() {
                   lineHeight: 1.5,
                 }}
               >
-                Manufacturer-backed coverage on labor and materials. Certificate provided at project close.
+                Manufacturer-backed coverage on labor and materials. Certificate provided at project close. Prep first. Paint right.
               </span>
             </div>
           </div>
