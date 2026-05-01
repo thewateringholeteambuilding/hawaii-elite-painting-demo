@@ -264,7 +264,7 @@ export default function Home() {
               lineHeight: 0.9,
               letterSpacing: "-0.01em",
               color: "var(--color-text)",
-              marginBottom: "1.75rem",
+              marginBottom: "1.25rem",
             }}
           >
             483 Houses
@@ -273,6 +273,22 @@ export default function Home() {
             <br />
             Same Crew.
           </h1>
+
+          <span
+            style={{
+              display: "block",
+              fontFamily: "var(--font-heading)",
+              fontWeight: 700,
+              textTransform: "uppercase",
+              fontSize: "clamp(0.82rem, 0.8rem + 0.2vw, 0.95rem)",
+              letterSpacing: "0.1em",
+              color: "var(--color-accent)",
+              marginBottom: "1.5rem",
+              lineHeight: 1.4,
+            }}
+          >
+            24-hour quotes. Start in 5 business days.
+          </span>
 
           <p
             style={{
@@ -597,6 +613,77 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ── WHO WE PAINT FOR ── */}
+      <section
+        style={{
+          background: "var(--color-bg)",
+          borderBottom: "1px solid var(--color-border)",
+          padding: "var(--space-block) 1.5rem",
+        }}
+      >
+        <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
+          <span className="section-label" style={{ display: "block", marginBottom: "0.5rem" }}>
+            Who We Paint For
+          </span>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(2, 1fr)",
+              gap: "1px",
+              background: "var(--color-border)",
+              marginTop: "1.5rem",
+            }}
+            className="md:grid-cols-4"
+          >
+            {[
+              {
+                type: "Homeowners",
+                scenario: "Refreshing rooms before a move-in, prepping for sale, or recoating after years of island sun.",
+              },
+              {
+                type: "Vacation Rental Owners",
+                scenario: "Quick turnaround between bookings. Neutrals that photograph well and coatings that handle guest traffic.",
+              },
+              {
+                type: "Property Managers",
+                scenario: "Multi-unit touch-ups, common area repaints, and tenant turnover timelines that can't slip.",
+              },
+              {
+                type: "Commercial Tenants",
+                scenario: "Office refreshes, retail storefronts, and restaurant interiors. Off-hours scheduling available.",
+              },
+            ].map((c) => (
+              <div
+                key={c.type}
+                style={{
+                  background: "var(--color-surface)",
+                  padding: "1.25rem",
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "0.5rem",
+                }}
+              >
+                <span
+                  style={{
+                    fontFamily: "var(--font-heading)",
+                    fontWeight: 700,
+                    textTransform: "uppercase",
+                    fontSize: "0.82rem",
+                    letterSpacing: "0.06em",
+                    color: "var(--color-text)",
+                  }}
+                >
+                  {c.type}
+                </span>
+                <p style={{ fontSize: "0.8rem", color: "var(--color-text-muted)", lineHeight: 1.55 }}>
+                  {c.scenario}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ── SERVICES TEASER ── */}
       <section
         aria-labelledby="services-heading"
@@ -762,8 +849,8 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Three equal */}
-          {SERVICES_TEASER.slice(2, 5).map((svc) => (
+          {/* Three equal — numbered index */}
+          {SERVICES_TEASER.slice(2, 5).map((svc, idx) => (
             <div
               key={svc.title}
               className="card-iron"
@@ -771,6 +858,7 @@ export default function Home() {
                 background: "var(--color-surface)",
                 borderLeft: "3px solid transparent",
                 transition: "transform var(--duration-fast) var(--ease-out), box-shadow var(--duration-fast) var(--ease-out), border-color var(--duration-fast) var(--ease-out)",
+                position: "relative",
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.borderLeftColor = "var(--color-accent)";
@@ -779,6 +867,21 @@ export default function Home() {
                 e.currentTarget.style.borderLeftColor = "transparent";
               }}
             >
+              <span
+                style={{
+                  position: "absolute",
+                  top: "1rem",
+                  right: "1rem",
+                  fontFamily: "var(--font-heading)",
+                  fontWeight: 700,
+                  fontSize: "1.5rem",
+                  lineHeight: 1,
+                  color: "var(--color-accent)",
+                  opacity: 0.15,
+                }}
+              >
+                {String(idx + 3).padStart(2, "0")}
+              </span>
               <h3
                 style={{
                   fontFamily: "var(--font-heading)",
@@ -1064,13 +1167,13 @@ export default function Home() {
             }}
           >
             {[
-              { date: "Apr 2025", job: "Full exterior repaint, Kailua Beachside. Two coats Duration on lap siding." },
-              { date: "Mar 2025", job: "Kitchen cabinet refinish, Manoa. 36 doors sprayed off-site, reinstalled day four." },
-              { date: "Feb 2025", job: "Interior walls + ceiling, Pearl City split-level. Color consultation included." },
-              { date: "Jan 2025", job: "Deck strip and restain, Hawaii Kai. Penofin penetrating stain, 380 sq ft." },
+              { date: "Apr 2025", ref: "HEP-051", job: "Full exterior repaint, Kailua Beachside. Two coats Duration on lap siding." },
+              { date: "Mar 2025", ref: "HEP-049", job: "Kitchen cabinet refinish, Manoa. 36 doors sprayed off-site, reinstalled day four." },
+              { date: "Feb 2025", ref: "HEP-047", job: "Interior walls + ceiling, Pearl City split-level. Color consultation included." },
+              { date: "Jan 2025", ref: "HEP-044", job: "Deck strip and restain, Hawaii Kai. Penofin penetrating stain, 380 sq ft." },
             ].map((entry) => (
               <div
-                key={entry.date}
+                key={entry.ref}
                 style={{
                   display: "flex",
                   gap: "1.25rem",
@@ -1092,6 +1195,20 @@ export default function Home() {
                   }}
                 >
                   {entry.date}
+                </span>
+                <span
+                  style={{
+                    fontFamily: "var(--font-accent)",
+                    fontSize: "0.62rem",
+                    fontWeight: 500,
+                    letterSpacing: "0.08em",
+                    color: "var(--color-text-muted)",
+                    opacity: 0.5,
+                    flexShrink: 0,
+                    minWidth: "56px",
+                  }}
+                >
+                  {entry.ref}
                 </span>
                 <span
                   style={{
@@ -1438,6 +1555,134 @@ export default function Home() {
           >
             Based out of 200 N Vineyard Blvd, Honolulu. We drive to you for the estimate.
           </p>
+        </div>
+      </section>
+
+      {/* ── SEASONAL BOOKING STRIP ── */}
+      <section
+        style={{
+          background: "var(--color-bg)",
+          borderTop: "1px solid var(--color-border)",
+          padding: "var(--space-block) 1.5rem",
+        }}
+      >
+        <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
+          <span className="section-label" style={{ display: "block", marginBottom: "0.5rem" }}>
+            Scheduling
+          </span>
+          <h2
+            style={{
+              fontFamily: "var(--font-heading)",
+              fontWeight: 700,
+              textTransform: "uppercase",
+              fontSize: "clamp(1.25rem, 2vw, 1.75rem)",
+              lineHeight: 0.95,
+              color: "var(--color-text)",
+              marginBottom: "2rem",
+            }}
+          >
+            When to Book
+          </h2>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "1fr",
+              gap: "1px",
+              background: "var(--color-border)",
+            }}
+            className="md:grid-cols-4"
+          >
+            {[
+              {
+                season: "Winter",
+                months: "Dec - Feb",
+                demand: "Low",
+                lead: "1-2 weeks",
+                note: "Lowest demand. Fastest scheduling. Ideal for interior projects and cabinet work.",
+              },
+              {
+                season: "Spring",
+                months: "Mar - May",
+                demand: "High",
+                lead: "3-4 weeks",
+                note: "Peak exterior season. Trade winds keep humidity manageable. Book early.",
+              },
+              {
+                season: "Summer",
+                months: "Jun - Aug",
+                demand: "Moderate",
+                lead: "2-3 weeks",
+                note: "Strong UV accelerates dry time. Morning starts beat afternoon rain.",
+              },
+              {
+                season: "Fall",
+                months: "Sep - Nov",
+                demand: "Moderate",
+                lead: "2-3 weeks",
+                note: "Good exterior window before winter rain. Interior projects year-round.",
+              },
+            ].map((s) => (
+              <div
+                key={s.season}
+                style={{
+                  background: "var(--color-surface)",
+                  padding: "1.5rem",
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "0.75rem",
+                }}
+              >
+                <div>
+                  <span
+                    style={{
+                      fontFamily: "var(--font-heading)",
+                      fontWeight: 700,
+                      textTransform: "uppercase",
+                      fontSize: "0.95rem",
+                      letterSpacing: "0.06em",
+                      color: "var(--color-text)",
+                    }}
+                  >
+                    {s.season}
+                  </span>
+                  <span
+                    style={{
+                      display: "block",
+                      fontFamily: "var(--font-accent)",
+                      fontSize: "0.68rem",
+                      textTransform: "uppercase",
+                      letterSpacing: "0.14em",
+                      color: "var(--color-text-muted)",
+                      marginTop: "0.125rem",
+                    }}
+                  >
+                    {s.months}
+                  </span>
+                </div>
+                <div style={{ display: "flex", gap: "1.5rem" }}>
+                  <div>
+                    <span style={{ display: "block", fontFamily: "var(--font-accent)", fontSize: "0.58rem", textTransform: "uppercase", letterSpacing: "0.2em", color: "var(--color-accent)", marginBottom: "0.125rem" }}>
+                      Demand
+                    </span>
+                    <span style={{ fontSize: "0.82rem", color: "var(--color-text)", fontWeight: 600 }}>
+                      {s.demand}
+                    </span>
+                  </div>
+                  <div>
+                    <span style={{ display: "block", fontFamily: "var(--font-accent)", fontSize: "0.58rem", textTransform: "uppercase", letterSpacing: "0.2em", color: "var(--color-accent)", marginBottom: "0.125rem" }}>
+                      Lead Time
+                    </span>
+                    <span style={{ fontSize: "0.82rem", color: "var(--color-text)", fontWeight: 600 }}>
+                      {s.lead}
+                    </span>
+                  </div>
+                </div>
+                <p style={{ fontSize: "0.8rem", color: "var(--color-text-muted)", lineHeight: 1.5 }}>
+                  {s.note}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
