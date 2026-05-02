@@ -11,7 +11,7 @@ const SERVICES = [
     detail: [
       "Surface prep: hole filling, crack repair, sanding",
       "Two-coat prime + finish on new drywall",
-      "Benjamin Moore Regal Select and Sherwin-Williams Harmony low-VOC lines standard",
+      "Benjamin Moore Regal Select and Sherwin-Williams Harmony low-VOC lines standard; specialty finishes available (limewash, Venetian plaster, roman clay)",
       "Furniture moved and protected before start",
       "Daily cleanup: no dried roller trays left overnight",
     ],

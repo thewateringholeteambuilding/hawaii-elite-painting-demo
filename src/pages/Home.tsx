@@ -13,7 +13,7 @@ const STATS = [
 const SERVICES_TEASER = [
   {
     title: "Interior Painting",
-    desc: "Walls, ceilings, trim, and cabinetry. We prep surfaces right so paint holds for years.",
+    desc: "Walls, ceilings, trim, and cabinetry. Specialty finishes available: limewash, Venetian plaster, roman clay.",
     idealFor: "Homeowners refreshing rooms, preparing for sale, or moving in.",
     img: "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&w=600&q=75",
     alt: "Interior painting in progress",
@@ -508,6 +508,8 @@ export default function Home() {
             "Fully Insured",
             "Written Warranties",
             "Free Estimates",
+            "Best of Houzz 2023, 2024, 2025",
+            "EPA Lead-Safe Certified",
           ].map((badge) => (
             <div
               key={badge}
@@ -610,6 +612,68 @@ export default function Home() {
               </span>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* ── COMMUNITY INVOLVEMENT ── */}
+      <section
+        style={{
+          background: "var(--color-bg)",
+          borderBottom: "1px solid var(--color-border)",
+          padding: "1.5rem",
+        }}
+      >
+        <div
+          style={{
+            maxWidth: "1280px",
+            margin: "0 auto",
+            display: "flex",
+            flexWrap: "wrap",
+            gap: "1rem 2.5rem",
+            alignItems: "center",
+          }}
+        >
+          <span
+            style={{
+              fontFamily: "var(--font-accent)",
+              fontSize: "0.62rem",
+              fontWeight: 600,
+              textTransform: "uppercase",
+              letterSpacing: "0.2em",
+              color: "var(--color-accent)",
+              flexShrink: 0,
+            }}
+          >
+            In the Community
+          </span>
+          {[
+            "Partnered with Habitat for Humanity Honolulu on 3 home repaints in 2024",
+            "Annual Paint Day at Kailua Elementary (4th year running)",
+            "120 gallons donated to community cleanups since 2021",
+          ].map((item) => (
+            <span
+              key={item}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "0.5rem",
+                fontSize: "0.82rem",
+                color: "var(--color-text-muted)",
+                lineHeight: 1.4,
+              }}
+            >
+              <span
+                style={{
+                  width: "4px",
+                  height: "4px",
+                  background: "var(--color-accent)",
+                  flexShrink: 0,
+                  opacity: 0.6,
+                }}
+              />
+              {item}
+            </span>
+          ))}
         </div>
       </section>
 
@@ -1167,10 +1231,10 @@ export default function Home() {
             }}
           >
             {[
-              { date: "Apr 2025", ref: "HEP-051", job: "Full exterior repaint, Kailua Beachside. Two coats Duration on lap siding." },
-              { date: "Mar 2025", ref: "HEP-049", job: "Kitchen cabinet refinish, Manoa. 36 doors sprayed off-site, reinstalled day four." },
-              { date: "Feb 2025", ref: "HEP-047", job: "Interior walls + ceiling, Pearl City split-level. Color consultation included." },
-              { date: "Jan 2025", ref: "HEP-044", job: "Deck strip and restain, Hawaii Kai. Penofin penetrating stain, 380 sq ft." },
+              { date: "Apr 2025", ref: "HEP-051", job: "Full exterior repaint, Kailua Beachside. Two coats Duration on lap siding.", lead: "Lead: Jason" },
+              { date: "Mar 2025", ref: "HEP-049", job: "Kitchen cabinet refinish, Manoa. 36 doors sprayed off-site, reinstalled day four.", lead: "Lead: Kai" },
+              { date: "Feb 2025", ref: "HEP-047", job: "Interior walls + ceiling, Pearl City split-level. Color consultation included.", lead: "Lead: Derek" },
+              { date: "Jan 2025", ref: "HEP-044", job: "Deck strip and restain, Hawaii Kai. Penofin penetrating stain, 380 sq ft.", lead: "Lead: Brandon" },
             ].map((entry) => (
               <div
                 key={entry.ref}
@@ -1215,9 +1279,25 @@ export default function Home() {
                     color: "var(--color-text-muted)",
                     fontSize: "0.85rem",
                     lineHeight: 1.5,
+                    flex: 1,
                   }}
                 >
                   {entry.job}
+                </span>
+                <span
+                  style={{
+                    fontFamily: "var(--font-accent)",
+                    fontSize: "0.62rem",
+                    fontWeight: 500,
+                    textTransform: "uppercase",
+                    letterSpacing: "0.1em",
+                    color: "var(--color-text-muted)",
+                    opacity: 0.6,
+                    flexShrink: 0,
+                    whiteSpace: "nowrap",
+                  }}
+                >
+                  {entry.lead}
                 </span>
               </div>
             ))}
@@ -1475,41 +1555,68 @@ export default function Home() {
           }}
           className="md:flex-row md:text-left md:justify-between"
         >
-          <div style={{ display: "flex", alignItems: "center", gap: "1.25rem" }}>
-            <span
-              style={{
-                fontFamily: "var(--font-heading)",
-                fontWeight: 700,
-                fontSize: "clamp(2rem, 2.5vw, 3rem)",
-                lineHeight: 1,
-                color: "var(--color-accent)",
-              }}
-            >
-              5 yr
-            </span>
-            <div>
+          <div style={{ display: "flex", gap: "2.5rem", flexWrap: "wrap", alignItems: "flex-start" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
               <span
                 style={{
-                  display: "block",
                   fontFamily: "var(--font-heading)",
                   fontWeight: 700,
-                  textTransform: "uppercase",
-                  fontSize: "0.95rem",
-                  letterSpacing: "0.06em",
-                  color: "var(--color-text)",
+                  fontSize: "clamp(1.75rem, 2.5vw, 2.5rem)",
+                  lineHeight: 1,
+                  color: "var(--color-accent)",
                 }}
               >
-                Written Paint Warranty
+                2 yr
               </span>
+              <div>
+                <span
+                  style={{
+                    display: "block",
+                    fontFamily: "var(--font-heading)",
+                    fontWeight: 700,
+                    textTransform: "uppercase",
+                    fontSize: "0.82rem",
+                    letterSpacing: "0.06em",
+                    color: "var(--color-text)",
+                  }}
+                >
+                  Workmanship Warranty
+                </span>
+                <span style={{ fontSize: "0.8rem", color: "var(--color-text-muted)", lineHeight: 1.5 }}>
+                  Peeling, cracking, or adhesion failure from prep or application. We come back and fix it.
+                </span>
+              </div>
+            </div>
+            <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
               <span
                 style={{
-                  fontSize: "0.85rem",
-                  color: "var(--color-text-muted)",
-                  lineHeight: 1.5,
+                  fontFamily: "var(--font-heading)",
+                  fontWeight: 700,
+                  fontSize: "clamp(1.75rem, 2.5vw, 2.5rem)",
+                  lineHeight: 1,
+                  color: "var(--color-accent)",
                 }}
               >
-                Manufacturer-backed coverage on labor and materials. Certificate provided at project close. Prep first. Paint right.
+                5 yr
               </span>
+              <div>
+                <span
+                  style={{
+                    display: "block",
+                    fontFamily: "var(--font-heading)",
+                    fontWeight: 700,
+                    textTransform: "uppercase",
+                    fontSize: "0.82rem",
+                    letterSpacing: "0.06em",
+                    color: "var(--color-text)",
+                  }}
+                >
+                  Manufacturer Warranty
+                </span>
+                <span style={{ fontSize: "0.8rem", color: "var(--color-text-muted)", lineHeight: 1.5 }}>
+                  Coating performance backed by Sherwin-Williams or Benjamin Moore. Certificate on file.
+                </span>
+              </div>
             </div>
           </div>
           <Link to="/contact" className="btn-outline" style={{ flexShrink: 0 }}>
