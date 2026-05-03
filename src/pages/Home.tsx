@@ -57,19 +57,19 @@ const SERVICES_TEASER = [
 
 const TESTIMONIALS = [
   {
-    quote: "They painted our entire exterior while we were in Seattle for two weeks. Came home to a house that looked brand new. Neighbors thought we moved.",
+    quote: "They painted our entire exterior while we were in Seattle for two weeks. Jason texted us a photo every evening so we could see the progress. Came home to a house that looked brand new. Neighbors thought we moved.",
     name: "Marcus T.",
     detail: "Kailua, Oahu · Exterior repaint · Crew: Jason & Mike · November 2024",
     stars: 5,
   },
   {
-    quote: "Every contractor I called wanted to do a partial job. Hawaii Elite came out, walked the whole house, gave me a real scope with real numbers. No guessing.",
+    quote: "Every contractor I called wanted to do a partial job. Derek walked the whole house with a clipboard, measured every wall, and handed me a scope with line-item pricing before he left. No guessing.",
     name: "Lynn H.",
     detail: "Manoa · Interior + drywall repair · Foreman: Derek · February 2025",
     stars: 5,
   },
   {
-    quote: "The kitchen cabinet painting saved us $18k over replacement. Looks better than new and they matched the trim color exactly.",
+    quote: "The kitchen cabinet painting saved us $18k over replacement. Kai brought three sample doors home from the spray booth so we could compare the sheen in our own kitchen light before they did the full set.",
     name: "Ray & Suki F.",
     detail: "Pearl City · Cabinet refinishing · Crew: Kai & Brandon · March 2025",
     stars: 5,
@@ -251,7 +251,7 @@ export default function Home() {
           }}
         >
           <span className="section-label" style={{ marginBottom: "1.25rem" }}>
-            Honolulu, Oahu · Licensed in Hawaii
+            Est. 2012 · Honolulu, Oahu
           </span>
 
           <h1
@@ -506,6 +506,8 @@ export default function Home() {
           {[
             "Licensed Hawaii Contractor",
             "Fully Insured",
+            "Background Checked Crew",
+            "6-Year Avg Crew Tenure",
             "Written Warranties",
             "Free Estimates",
             "Best of Houzz 2023, 2024, 2025",
@@ -725,6 +727,15 @@ export default function Home() {
                   display: "flex",
                   flexDirection: "column",
                   gap: "0.5rem",
+                  borderLeft: "3px solid transparent",
+                  transition: "border-color 200ms ease",
+                  cursor: "default",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.borderLeftColor = "var(--color-accent)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.borderLeftColor = "transparent";
                 }}
               >
                 <span
@@ -1027,7 +1038,7 @@ export default function Home() {
             className="section-label"
             style={{ display: "block", marginBottom: "0.5rem" }}
           >
-            The Elite Sequence
+            The Elite Sequence™
           </span>
           <span
             style={{
@@ -1039,7 +1050,7 @@ export default function Home() {
               letterSpacing: "0.06em",
             }}
           >
-            Prep first. Paint right. Every house.
+            Four steps. 483 houses. Zero callbacks.
           </span>
         </div>
         <div
