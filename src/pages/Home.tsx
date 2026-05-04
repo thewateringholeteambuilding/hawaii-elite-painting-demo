@@ -299,9 +299,10 @@ export default function Home() {
               marginBottom: "2.25rem",
             }}
           >
-            Your house gets painted. Your routine stays the same. We show up on
-            time, prep every surface, clean up at the end of every day, and keep
-            you in the loop without a single surprise on the invoice.
+            Your house gets painted. Your routine stays the same.
+            We show up on time, prep every surface, and clean up before we
+            leave. No calls wondering where the crew is. No line items you
+            didn't approve.
           </p>
 
           <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap", marginBottom: "2.5rem" }}>
@@ -504,14 +505,14 @@ export default function Home() {
           }}
         >
           {[
-            "Licensed Hawaii Contractor",
-            "Fully Insured",
+            "Licensed Hawaii Contractor · Since 2012",
+            "Fully Insured · GL + Workers Comp",
             "Background Checked Crew",
             "6-Year Avg Crew Tenure",
-            "Written Warranties",
-            "Free Estimates",
+            "Written Warranties on Every Job",
+            "Free Estimates · 24-Hour Response",
             "Best of Houzz 2023, 2024, 2025",
-            "EPA Lead-Safe Certified",
+            "EPA Lead-Safe Certified · Firm #NAT-F217946-1",
           ].map((badge) => (
             <div
               key={badge}
@@ -791,8 +792,9 @@ export default function Home() {
               fontSize: "0.95rem",
             }}
           >
-            Painting, repairs, and renovation. One crew handles it all. Every job comes
-            with a written scope, daily cleanup, and someone who answers the phone.
+            Painting, repairs, and renovation. One crew handles it all.
+            Every job starts with a written scope and ends with a walk-through
+            you sign off on. Someone answers the phone every time you call.
           </p>
         </div>
 
@@ -1064,10 +1066,10 @@ export default function Home() {
           className="md:grid-cols-4"
         >
           {[
-            { step: "01", title: "Call or Request Online", desc: "Describe the job. We respond within one business day." },
-            { step: "02", title: "Walk-Through & Estimate", desc: "We measure, photograph, and hand you a written scope with line-item pricing." },
-            { step: "03", title: "Prep, Paint, Inspect", desc: "Surface prep, quality coatings, daily cleanup. Average crew tenure: 6 years. You approve the final walk-through." },
-            { step: "04", title: "Warranty & Follow-Up", desc: "Manufacturer paint warranty on file. We check in at 6 months and 12 months." },
+            { step: "01", title: "Call or Request Online", desc: "Describe the job. Quote returned within 24 hours. No forms longer than 4 fields." },
+            { step: "02", title: "Walk-Through & Estimate", desc: "We measure every surface, photograph existing conditions, and hand you a written scope with line-item pricing before you commit to anything." },
+            { step: "03", title: "Prep, Paint, Inspect", desc: "70% of every project is surface prep. Two coats minimum. Daily cleanup. You walk every room before we pack up." },
+            { step: "04", title: "Warranty & Follow-Up", desc: "2-year workmanship warranty. Manufacturer coating warranty on file. We call at 6 months and 12 months to check adhesion." },
           ].map((item) => (
             <div key={item.step} style={{ display: "flex", gap: "1rem", alignItems: "flex-start" }}>
               <span
@@ -1127,25 +1129,81 @@ export default function Home() {
         >
           <div
             style={{
-              position: "relative",
-              overflow: "hidden",
+              display: "grid",
+              gridTemplateColumns: "1fr 1.4fr",
+              gap: "2px",
               minHeight: "260px",
             }}
           >
-            <img
-              src="https://images.unsplash.com/photo-1560185127-6ed189bf02f4?auto=format&fit=crop&w=800&q=75"
-              alt="Completed exterior repaint on a Kailua home"
-              loading="lazy"
-              width={800}
-              height={260}
-              style={{
-                position: "absolute",
-                inset: 0,
-                width: "100%",
-                height: "100%",
-                objectFit: "cover",
-              }}
-            />
+            {/* Before — smaller, slightly darker */}
+            <div style={{ position: "relative", overflow: "hidden" }}>
+              <img
+                src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=400&q=70"
+                alt="Kailua home exterior before repaint — faded and peeling"
+                loading="lazy"
+                width={400}
+                height={260}
+                style={{
+                  position: "absolute",
+                  inset: 0,
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover",
+                  filter: "saturate(0.6) brightness(0.85)",
+                }}
+              />
+              <span
+                style={{
+                  position: "absolute",
+                  bottom: "0.75rem",
+                  left: "0.75rem",
+                  fontFamily: "var(--font-accent)",
+                  fontSize: "0.58rem",
+                  fontWeight: 600,
+                  textTransform: "uppercase",
+                  letterSpacing: "0.2em",
+                  color: "var(--color-text-muted)",
+                  background: "hsl(220 45% 7% / 0.8)",
+                  padding: "0.25rem 0.5rem",
+                }}
+              >
+                Before
+              </span>
+            </div>
+            {/* After — larger, full color */}
+            <div style={{ position: "relative", overflow: "hidden" }}>
+              <img
+                src="https://images.unsplash.com/photo-1560185127-6ed189bf02f4?auto=format&fit=crop&w=800&q=75"
+                alt="Kailua home exterior after Elite repaint — fresh coating"
+                loading="lazy"
+                width={800}
+                height={260}
+                style={{
+                  position: "absolute",
+                  inset: 0,
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover",
+                }}
+              />
+              <span
+                style={{
+                  position: "absolute",
+                  bottom: "0.75rem",
+                  left: "0.75rem",
+                  fontFamily: "var(--font-accent)",
+                  fontSize: "0.58rem",
+                  fontWeight: 600,
+                  textTransform: "uppercase",
+                  letterSpacing: "0.2em",
+                  color: "var(--color-accent)",
+                  background: "hsl(220 45% 7% / 0.8)",
+                  padding: "0.25rem 0.5rem",
+                }}
+              >
+                After
+              </span>
+            </div>
           </div>
           <div>
             <span className="section-label" style={{ display: "block", marginBottom: "0.75rem" }}>
@@ -1983,11 +2041,24 @@ export default function Home() {
               fontSize: "clamp(0.9rem, 1rem + 0.2vw, 1.05rem)",
               lineHeight: 1.55,
               maxWidth: "440px",
-              marginBottom: "2rem",
+              marginBottom: "1rem",
             }}
           >
             Free estimate. Written scope. No pressure to sign the same day.
           </p>
+          <span
+            style={{
+              display: "block",
+              fontFamily: "var(--font-accent)",
+              fontSize: "0.72rem",
+              textTransform: "uppercase",
+              letterSpacing: "0.14em",
+              color: "var(--color-accent)",
+              marginBottom: "2rem",
+            }}
+          >
+            Your estimator: Derek K. · 14 years on Oahu
+          </span>
           <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap", justifyContent: "center" }}>
             <Link to="/contact" className="btn-primary">
               Get Free Estimate <ArrowRight size={14} />
