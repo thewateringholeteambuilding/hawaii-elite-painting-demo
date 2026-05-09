@@ -97,6 +97,10 @@ const FAQ_ITEMS = [
     q: "What does the written estimate include?",
     a: "Line-item pricing for every surface: walls, ceilings, trim, doors. Coating manufacturer and product name for each area. Timeline in calendar days. Payment schedule. Warranty terms. No lump-sum guessing.",
   },
+  {
+    q: "What does a typical project cost?",
+    a: "A single-room interior repaint starts around $1,800-$2,500 depending on ceiling height, trim detail, and prep work. Full interior for a 3-bedroom home runs $5,500-$8,000. Exterior repaints range from $4,500 for a single-story to $9,000+ for two-story homes with extensive wood trim. Cabinet refinishing averages $3,200-$5,500 per kitchen. Every number depends on condition and scope, which is why the walk-through matters.",
+  },
 ];
 
 const WHY_ITEMS = [
@@ -299,10 +303,10 @@ export default function Home() {
               marginBottom: "2.25rem",
             }}
           >
-            Your house gets painted. Your routine stays the same.
-            We show up on time, prep every surface, and clean up before we
-            leave. No calls wondering where the crew is. No line items you
-            didn't approve.
+            We paint. You live your life. Same crew shows up at 7:30,
+            preps every surface, and cleans the jobsite before they leave
+            for the day. No calls wondering where the crew went. No line
+            items you didn't approve.
           </p>
 
           <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap", marginBottom: "2.5rem" }}>
@@ -549,6 +553,53 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ── CREW TRUST STRIP ── */}
+      <section
+        style={{
+          background: "var(--color-surface-raised)",
+          borderTop: "1px solid var(--color-border)",
+          borderBottom: "1px solid var(--color-border)",
+          padding: "2.5rem 1.5rem",
+        }}
+      >
+        <div
+          style={{
+            maxWidth: "800px",
+            margin: "0 auto",
+            textAlign: "center",
+          }}
+        >
+          <h2
+            style={{
+              fontFamily: "var(--font-heading)",
+              fontWeight: 700,
+              textTransform: "uppercase",
+              fontSize: "clamp(1.1rem, 1.5vw, 1.4rem)",
+              letterSpacing: "0.06em",
+              color: "var(--color-text)",
+              marginBottom: "0.75rem",
+              lineHeight: 1.1,
+            }}
+          >
+            Background Checked. Drug Tested.{" "}
+            <span style={{ color: "var(--color-accent)" }}>Trusted in Your Home.</span>
+          </h2>
+          <p
+            style={{
+              color: "var(--color-text-muted)",
+              fontSize: "0.88rem",
+              lineHeight: 1.6,
+              maxWidth: "560px",
+              margin: "0 auto",
+            }}
+          >
+            Every crew member passes a background check and drug screening before
+            their first job. Average tenure on our crew is 6 years. You get the
+            same faces on day one and day five.
+          </p>
+        </div>
+      </section>
+
       {/* ── ECO RESPONSIBILITY STRIP ── */}
       <section
         style={{
@@ -586,10 +637,10 @@ export default function Home() {
             }}
           >
             {[
-              "Low-VOC coatings standard on all interiors",
-              "EPA Lead-Safe Certified for pre-1978 homes",
-              "Leftover paint recycled through PaintCare Hawaii",
-              "Zero job-site waste to storm drains",
+              "Sherwin-Williams Harmony zero-VOC on all interiors",
+              "EPA Lead-Safe Certified for pre-1978 homes (Firm #NAT-F217946-1)",
+              "Leftover paint recycled through PaintCare Hawaii drop-off in Kapolei",
+              "Zero job-site waste to storm drains (tarps under every ladder)",
             ].map((item) => (
               <span
                 key={item}
@@ -2046,19 +2097,55 @@ export default function Home() {
           >
             Free estimate. Written scope. No pressure to sign the same day.
           </p>
-          <span
+          <div
             style={{
-              display: "block",
-              fontFamily: "var(--font-accent)",
-              fontSize: "0.72rem",
-              textTransform: "uppercase",
-              letterSpacing: "0.14em",
-              color: "var(--color-accent)",
+              background: "hsl(220 45% 7% / 0.55)",
+              border: "1px solid hsl(38 85% 55% / 0.25)",
+              padding: "1rem 1.5rem",
               marginBottom: "2rem",
+              maxWidth: "420px",
+              textAlign: "left",
             }}
           >
-            Your estimator: Derek K. · 14 years on Oahu
-          </span>
+            <span
+              style={{
+                display: "block",
+                fontFamily: "var(--font-heading)",
+                fontWeight: 700,
+                textTransform: "uppercase",
+                fontSize: "0.78rem",
+                letterSpacing: "0.08em",
+                color: "var(--color-accent)",
+                marginBottom: "0.375rem",
+              }}
+            >
+              Your Estimator: Derek K.
+            </span>
+            <span
+              style={{
+                display: "block",
+                fontFamily: "var(--font-accent)",
+                fontSize: "0.68rem",
+                textTransform: "uppercase",
+                letterSpacing: "0.14em",
+                color: "hsl(40 30% 92% / 0.6)",
+                marginBottom: "0.5rem",
+              }}
+            >
+              14 years on Oahu · 483 estimates written
+            </span>
+            <p
+              style={{
+                color: "hsl(40 30% 92% / 0.75)",
+                fontSize: "0.82rem",
+                lineHeight: 1.55,
+                margin: 0,
+              }}
+            >
+              "I measure every wall myself. If I wouldn't sign the scope,
+              I don't hand it to you."
+            </p>
+          </div>
           <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap", justifyContent: "center" }}>
             <Link to="/contact" className="btn-primary">
               Get Free Estimate <ArrowRight size={14} />
