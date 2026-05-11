@@ -63,13 +63,13 @@ const TESTIMONIALS = [
     stars: 5,
   },
   {
-    quote: "Every contractor I called wanted to do a partial job. Derek walked the whole house with a clipboard, measured every wall, and handed me a scope with line-item pricing before he left. No guessing.",
+    quote: "Derek measured every wall before he quoted. Line-item pricing, no guessing.",
     name: "Lynn H.",
     detail: "Manoa · Interior + drywall repair · Foreman: Derek · February 2025",
     stars: 5,
   },
   {
-    quote: "The kitchen cabinet painting saved us $18k over replacement. Kai brought three sample doors home from the spray booth so we could compare the sheen in our own kitchen light before they did the full set.",
+    quote: "The kitchen cabinet painting saved us $18k over replacement. Kai brought three sample doors home from the spray booth so we could compare the sheen in our own kitchen light before they did the full set. We went with the satin. Perfect call.",
     name: "Ray & Suki F.",
     detail: "Pearl City · Cabinet refinishing · Crew: Kai & Brandon · March 2025",
     stars: 5,
@@ -303,10 +303,10 @@ export default function Home() {
               marginBottom: "2.25rem",
             }}
           >
-            We paint. You live your life. Same crew shows up at 7:30,
-            preps every surface, and cleans the jobsite before they leave
-            for the day. No calls wondering where the crew went. No line
-            items you didn't approve.
+            Same crew every day. They show up at 7:30, prep every
+            surface, and clean the jobsite before they leave. No calls
+            wondering where the crew went. No line items you didn't
+            approve. Just paint on the wall and a scope you signed.
           </p>
 
           <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap", marginBottom: "2.5rem" }}>
@@ -516,7 +516,6 @@ export default function Home() {
             "Written Warranties on Every Job",
             "Free Estimates · 24-Hour Response",
             "Best of Houzz 2023, 2024, 2025",
-            "EPA Lead-Safe Certified · Firm #NAT-F217946-1",
           ].map((badge) => (
             <div
               key={badge}
@@ -550,6 +549,77 @@ export default function Home() {
               </span>
             </div>
           ))}
+        </div>
+      </section>
+
+      {/* ── EPA LEAD-SAFE BADGE ── */}
+      <section
+        style={{
+          background: "var(--color-bg)",
+          borderBottom: "1px solid var(--color-border)",
+          padding: "1.25rem 1.5rem",
+        }}
+      >
+        <div
+          style={{
+            maxWidth: "1280px",
+            margin: "0 auto",
+            display: "flex",
+            alignItems: "center",
+            gap: "1rem",
+            justifyContent: "center",
+          }}
+        >
+          <div
+            style={{
+              border: "2px solid var(--color-accent)",
+              padding: "0.625rem 1.5rem",
+              display: "flex",
+              alignItems: "center",
+              gap: "1rem",
+              background: "var(--color-surface)",
+            }}
+          >
+            <div
+              style={{
+                width: "36px",
+                height: "36px",
+                border: "2px solid var(--color-accent)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                flexShrink: 0,
+              }}
+            >
+              <CheckCircle size={18} style={{ color: "var(--color-accent)" }} />
+            </div>
+            <div>
+              <span
+                style={{
+                  display: "block",
+                  fontFamily: "var(--font-heading)",
+                  fontWeight: 700,
+                  textTransform: "uppercase",
+                  fontSize: "0.78rem",
+                  letterSpacing: "0.06em",
+                  color: "var(--color-text)",
+                  lineHeight: 1.2,
+                }}
+              >
+                EPA Lead-Safe Certified
+              </span>
+              <span
+                style={{
+                  fontFamily: "var(--font-accent)",
+                  fontSize: "0.65rem",
+                  letterSpacing: "0.1em",
+                  color: "var(--color-text-muted)",
+                }}
+              >
+                Firm #NAT-F217946-1 · Required for pre-1978 homes
+              </span>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -773,21 +843,14 @@ export default function Home() {
             ].map((c) => (
               <div
                 key={c.type}
+                className="card-audience"
+                tabIndex={0}
                 style={{
                   background: "var(--color-surface)",
                   padding: "1.25rem",
                   display: "flex",
                   flexDirection: "column",
                   gap: "0.5rem",
-                  borderLeft: "3px solid transparent",
-                  transition: "border-color 200ms ease",
-                  cursor: "default",
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.borderLeftColor = "var(--color-accent)";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.borderLeftColor = "transparent";
                 }}
               >
                 <span
@@ -1351,10 +1414,10 @@ export default function Home() {
             }}
           >
             {[
-              { date: "Apr 2025", ref: "HEP-051", job: "Full exterior repaint, Kailua Beachside. Two coats Duration on lap siding.", lead: "Lead: Jason" },
-              { date: "Mar 2025", ref: "HEP-049", job: "Kitchen cabinet refinish, Manoa. 36 doors sprayed off-site, reinstalled day four.", lead: "Lead: Kai" },
-              { date: "Feb 2025", ref: "HEP-047", job: "Interior walls + ceiling, Pearl City split-level. Color consultation included.", lead: "Lead: Derek" },
-              { date: "Jan 2025", ref: "HEP-044", job: "Deck strip and restain, Hawaii Kai. Penofin penetrating stain, 380 sq ft.", lead: "Lead: Brandon" },
+              { date: "Apr 2025", ref: "HEP-051", job: "Full exterior repaint, Kailua Beachside. Salt-side ranch, two coats Duration on lap siding. Trade winds kept dry time under 90 min.", lead: "Lead: Jason" },
+              { date: "Mar 2025", ref: "HEP-049", job: "Kitchen cabinet refinish, Manoa valley cottage. 36 doors sprayed off-site, reinstalled day four.", lead: "Lead: Kai" },
+              { date: "Feb 2025", ref: "HEP-047", job: "Interior walls + ceiling, Pearl City split-level near the bike path. Color consultation included.", lead: "Lead: Derek" },
+              { date: "Jan 2025", ref: "HEP-044", job: "Deck strip and restain, Hawaii Kai slope lot. Penofin penetrating stain, 380 sq ft. Owner's dog supervised every coat.", lead: "Lead: Brandon" },
             ].map((entry) => (
               <div
                 key={entry.ref}

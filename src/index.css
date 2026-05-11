@@ -253,6 +253,21 @@ img {
   box-shadow: 6px 6px 0 0 var(--color-accent);
 }
 
+/* Audience card — left-border accent on hover/focus */
+.card-audience {
+  border-left: 3px solid transparent;
+  transition: border-color var(--duration-fast) var(--ease-out);
+  cursor: default;
+}
+.card-audience:hover,
+.card-audience:focus-visible {
+  border-left-color: var(--color-accent);
+}
+.card-audience:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: -2px;
+}
+
 /* Ken Burns slow zoom for hero imagery */
 @keyframes ken-burns {
   0%   { transform: scale(1); }
