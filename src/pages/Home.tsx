@@ -104,11 +104,11 @@ const FAQ_ITEMS = [
 ];
 
 const WHY_ITEMS = [
-  { phrase: "Written Scope First", detail: "Detailed line-item estimate before any work starts. No surprises on the invoice." },
-  { phrase: "70/30 Prep Ratio", detail: "70% of every project is surface prep. No shortcuts on sanding, caulking, or priming." },
-  { phrase: "Clean Site Daily", detail: "Jobsite cleaned at the end of every work day during multi-day projects." },
-  { phrase: "Manufacturer Warranty", detail: "Paint warranties honored through the manufacturer. Documentation on file." },
-  { phrase: "Licensed in Hawaii", detail: "Active Hawaii contractors license. Full liability and workers comp coverage." },
+  { phrase: "We quote it before we touch it", detail: "Line-item pricing for every surface. You sign the scope before we open a can." },
+  { phrase: "We prep like the paint depends on it", detail: "70% of every project is surface prep. Sanding, caulking, priming. No shortcuts." },
+  { phrase: "We clean up every single day", detail: "Jobsite cleared at the end of every work day. Your routine stays the same." },
+  { phrase: "We answer the phone when you call", detail: "Same number, same crew. No call center, no voicemail maze." },
+  { phrase: "We stand behind the finish", detail: "2-year workmanship warranty. Manufacturer coating warranty on file. We call at 6 and 12 months." },
 ];
 
 function FaqSection() {
@@ -1166,7 +1166,7 @@ export default function Home() {
               letterSpacing: "0.06em",
             }}
           >
-            Four steps. 483 houses. Zero callbacks.
+            Four steps. One scope. Zero guesswork.
           </span>
         </div>
         <div
@@ -1510,7 +1510,7 @@ export default function Home() {
         >
           <div>
             <span className="section-label" style={{ marginBottom: "1rem", display: "block" }}>
-              How We Work
+              The Hawaii Elite Promise™
             </span>
             <h2
               style={{
@@ -1523,9 +1523,9 @@ export default function Home() {
                 marginBottom: "1.5rem",
               }}
             >
-              No Surprises.
+              Five Things
               <br />
-              <span style={{ color: "var(--color-accent)" }}>Ever.</span>
+              <span style={{ color: "var(--color-accent)" }}>We Never Break.</span>
             </h2>
             <p
               style={{
@@ -1536,8 +1536,8 @@ export default function Home() {
                 fontSize: "0.95rem",
               }}
             >
-              Every project gets a written scope before we touch a brush. If something changes
-              on the job, you hear about it the same day. No change orders you didn't approve.
+              Not guidelines. Not aspirations. These are commitments we make on every job.
+              If we break one, you tell us and we fix it the same day.
             </p>
             <Link to="/contact" className="btn-primary">
               Request Estimate <ArrowRight size={14} />
@@ -1623,8 +1623,8 @@ export default function Home() {
               color: "var(--color-text)",
             }}
           >
-            483 Projects.
-            <br />Zero Callbacks.
+            68% Come Back.
+            <br />The Rest Refer.
           </h2>
 
           {/* Google badge */}
@@ -1667,6 +1667,7 @@ export default function Home() {
           {TESTIMONIALS.map((t, i) => (
             <div
               key={i}
+              className="testimonial-card"
               style={{
                 background: "var(--color-surface)",
                 padding: "2rem",
@@ -1738,7 +1739,14 @@ export default function Home() {
           }}
           className="md:flex-row md:text-left md:justify-between"
         >
-          <div style={{ display: "flex", gap: "2.5rem", flexWrap: "wrap", alignItems: "flex-start" }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: "1.25rem", alignItems: "flex-start" }}>
+            <span
+              className="section-label"
+              style={{ display: "block" }}
+            >
+              The Hawaii Elite Promise™
+            </span>
+            <div style={{ display: "flex", gap: "2.5rem", flexWrap: "wrap", alignItems: "flex-start" }}>
             <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
               <span
                 style={{
@@ -1802,6 +1810,7 @@ export default function Home() {
               </div>
             </div>
           </div>
+          </div>
           <Link to="/contact" className="btn-outline" style={{ flexShrink: 0 }}>
             Ask About Coverage
           </Link>
@@ -1821,26 +1830,87 @@ export default function Home() {
             className="section-label"
             style={{ display: "block", marginBottom: "1rem" }}
           >
-            Service Area
+            Where We Paint
           </span>
-          <p
+          <div
             style={{
-              color: "var(--color-text)",
-              fontSize: "clamp(1rem, 1vw + 0.5rem, 1.15rem)",
-              lineHeight: 1.65,
-              maxWidth: "720px",
+              display: "grid",
+              gridTemplateColumns: "1fr",
+              gap: "1px",
+              background: "var(--color-border)",
+              marginBottom: "1.25rem",
             }}
+            className="md:grid-cols-4"
           >
-            Kailua Beachside · Lanikai · Enchanted Lake · Kaneohe Bay ·
-            Manoa · Kahala · Portlock · Hawaii Loa Ridge · Aina Haina ·
-            Pearl City · Aiea Heights · Mililani Mauka · Ewa Beach ·
-            Kapolei · Waikiki · Downtown Honolulu · North Shore by request.
-          </p>
+            {[
+              {
+                region: "Windward",
+                count: 187,
+                towns: "Kailua Beachside, Lanikai, Enchanted Lake, Kaneohe Bay",
+              },
+              {
+                region: "Metro Honolulu",
+                count: 164,
+                towns: "Manoa, Kahala, Portlock, Hawaii Loa Ridge, Aina Haina, Waikiki, Downtown",
+              },
+              {
+                region: "Leeward",
+                count: 108,
+                towns: "Pearl City, Aiea Heights, Mililani Mauka, Ewa Beach, Kapolei",
+              },
+              {
+                region: "North Shore",
+                count: 24,
+                towns: "Haleiwa, Waialua, Sunset Beach (by request)",
+              },
+            ].map((r) => (
+              <div
+                key={r.region}
+                className="card-audience"
+                tabIndex={0}
+                style={{
+                  background: "var(--color-bg)",
+                  padding: "1.25rem",
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "0.5rem",
+                }}
+              >
+                <div style={{ display: "flex", alignItems: "baseline", gap: "0.75rem" }}>
+                  <span
+                    style={{
+                      fontFamily: "var(--font-heading)",
+                      fontWeight: 700,
+                      fontSize: "1.5rem",
+                      lineHeight: 1,
+                      color: "var(--color-accent)",
+                    }}
+                  >
+                    {r.count}
+                  </span>
+                  <span
+                    style={{
+                      fontFamily: "var(--font-heading)",
+                      fontWeight: 700,
+                      textTransform: "uppercase",
+                      fontSize: "0.82rem",
+                      letterSpacing: "0.06em",
+                      color: "var(--color-text)",
+                    }}
+                  >
+                    {r.region}
+                  </span>
+                </div>
+                <p style={{ fontSize: "0.78rem", color: "var(--color-text-muted)", lineHeight: 1.5 }}>
+                  {r.towns}
+                </p>
+              </div>
+            ))}
+          </div>
           <p
             style={{
               color: "var(--color-text-muted)",
               fontSize: "0.82rem",
-              marginTop: "0.75rem",
             }}
           >
             Based out of 200 N Vineyard Blvd, Honolulu. We drive to you for the estimate.

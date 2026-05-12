@@ -268,6 +268,19 @@ img {
   outline-offset: -2px;
 }
 
+/* Testimonial card — subtle lift on hover */
+.testimonial-card {
+  transition: transform var(--duration-fast) var(--ease-out),
+              border-color var(--duration-fast) var(--ease-out),
+              box-shadow var(--duration-fast) var(--ease-out);
+  border: 1px solid var(--color-border);
+}
+.testimonial-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--color-accent);
+  box-shadow: 0 4px 12px hsl(38 85% 55% / 0.08);
+}
+
 /* Ken Burns slow zoom for hero imagery */
 @keyframes ken-burns {
   0%   { transform: scale(1); }
