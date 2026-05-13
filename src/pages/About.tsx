@@ -111,9 +111,10 @@ export default function About() {
             >
               <p>
                 We started this company because we kept seeing the same thing: mainland coatings
-                failing in two years on Oahu homes. The primers aren't rated for our UV load.
-                The timelines don't account for humidity cycling. The spec sheets assume a climate
-                that doesn't exist here.
+                failing in two years on Oahu homes. Do that math. In 10 years, that's four
+                repaints and eight coats stacked on your siding. The primers aren't rated for
+                our UV load. The timelines don't account for humidity cycling. The spec sheets
+                assume a climate that doesn't exist here.
               </p>
               <p>
                 So we built our process around island conditions. Every exterior starts with a
@@ -257,7 +258,7 @@ export default function About() {
           >
             What 14 Years
             <br />
-            <span style={{ color: "var(--color-accent)" }}>Teaches You</span>
+            <span style={{ color: "var(--color-accent)" }}>Burned Into Us</span>
           </h2>
 
           <div
@@ -344,6 +345,104 @@ export default function About() {
         </div>
       </section>
 
+      {/* Crew Roster Strip */}
+      <section
+        style={{
+          background: "var(--color-bg)",
+          borderTop: "1px solid var(--color-border)",
+          padding: "var(--space-block) 1.5rem",
+        }}
+      >
+        <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
+          <span className="section-label" style={{ display: "block", marginBottom: "1.5rem" }}>
+            The Crew
+          </span>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "1fr",
+              gap: "1px",
+              background: "var(--color-border)",
+            }}
+            className="md:grid-cols-4"
+          >
+            {[
+              { initials: "DK", name: "Derek K.", role: "Lead Estimator", tenure: "Since 2016", detail: "Walks every job. Writes every scope." },
+              { initials: "JM", name: "Jason M.", role: "Exterior Lead", tenure: "Since 2018", detail: "Ran the Kailua Beach Road full exterior." },
+              { initials: "KW", name: "Kai W.", role: "Cabinet Specialist", tenure: "Since 2019", detail: "Sprays all cabinet doors off-site." },
+              { initials: "BT", name: "Brandon T.", role: "Deck & Stain Lead", tenure: "Since 2020", detail: "Penofin certified. 120+ decks refinished." },
+            ].map((crew) => (
+              <div
+                key={crew.initials}
+                style={{
+                  background: "var(--color-surface)",
+                  padding: "1.5rem",
+                  display: "flex",
+                  gap: "1rem",
+                  alignItems: "flex-start",
+                }}
+              >
+                <div
+                  style={{
+                    width: "44px",
+                    height: "44px",
+                    background: "var(--color-accent)",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    flexShrink: 0,
+                    fontFamily: "var(--font-heading)",
+                    fontWeight: 700,
+                    fontSize: "0.85rem",
+                    color: "hsl(220 45% 7%)",
+                  }}
+                >
+                  {crew.initials}
+                </div>
+                <div>
+                  <span
+                    style={{
+                      display: "block",
+                      fontFamily: "var(--font-heading)",
+                      fontWeight: 700,
+                      textTransform: "uppercase",
+                      fontSize: "0.82rem",
+                      letterSpacing: "0.06em",
+                      color: "var(--color-text)",
+                      marginBottom: "0.125rem",
+                    }}
+                  >
+                    {crew.name}
+                  </span>
+                  <span
+                    style={{
+                      display: "block",
+                      fontFamily: "var(--font-accent)",
+                      fontSize: "0.68rem",
+                      textTransform: "uppercase",
+                      letterSpacing: "0.12em",
+                      color: "var(--color-accent)",
+                      marginBottom: "0.375rem",
+                    }}
+                  >
+                    {crew.role} · {crew.tenure}
+                  </span>
+                  <span
+                    style={{
+                      fontSize: "0.78rem",
+                      color: "var(--color-text-muted)",
+                      lineHeight: 1.4,
+                    }}
+                  >
+                    {crew.detail}
+                  </span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Owner Note */}
       <section
         style={{
@@ -400,10 +499,11 @@ export default function About() {
                 marginBottom: "0.75rem",
               }}
             >
-              Every estimate comes through me. I walk the job, write the scope, and
-              my cell number is on the contract. If something goes wrong at 6 AM on a
-              Saturday, you're calling the person who signed the quote. Our lead
+              Every estimate comes through me. I walk the job, measure every wall,
+              and my cell number is on the contract. Something goes sideways at 6 AM
+              on a Saturday? You're calling the person who signed the quote. Our lead
               painter has been with us since 2016. The prep crew averages 6 years.
+              We are unapologetically slow on prep and unapologetically fast on callbacks.
               After 483 houses on this island, we've probably already painted on your street.
             </p>
             <span

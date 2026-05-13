@@ -1536,8 +1536,9 @@ export default function Home() {
                 fontSize: "0.95rem",
               }}
             >
-              Not guidelines. Not aspirations. These are commitments we make on every job.
-              If we break one, you tell us and we fix it the same day.
+              If you want the lowest bid on Oahu, it won't come from us.
+              If you want the last paint job your house needs for 7 years, keep reading.
+              These are commitments we make on every job. Break one, tell us, we fix it the same day.
             </p>
             <Link to="/contact" className="btn-primary">
               Request Estimate <ArrowRight size={14} />
@@ -1774,7 +1775,7 @@ export default function Home() {
                   Workmanship Warranty
                 </span>
                 <span style={{ fontSize: "0.8rem", color: "var(--color-text-muted)", lineHeight: 1.5 }}>
-                  Peeling, cracking, or adhesion failure from prep or application. We come back and fix it.
+                  Peeling, cracking, or adhesion failure from prep or application. We come back and fix it. Expected coating life: 5-7 years exterior, 8-10 interior.
                 </span>
               </div>
             </div>
@@ -1805,7 +1806,7 @@ export default function Home() {
                   Manufacturer Warranty
                 </span>
                 <span style={{ fontSize: "0.8rem", color: "var(--color-text-muted)", lineHeight: 1.5 }}>
-                  Coating performance backed by Sherwin-Williams or Benjamin Moore. Certificate on file.
+                  Coating performance backed by Sherwin-Williams or Benjamin Moore. Certificate on file. Lifetime touchups on prep-related callbacks.
                 </span>
               </div>
             </div>
