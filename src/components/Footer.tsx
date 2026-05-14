@@ -211,10 +211,11 @@ export default function Footer() {
                   info@hawaiielitepainting.com
                 </a>
               </li>
-              <li style={{ display: "flex", gap: "0.625rem", alignItems: "center" }}>
-                <Clock size={14} style={{ color: "var(--color-accent)", flexShrink: 0 }} />
-                <span style={{ color: "var(--color-text-muted)", fontSize: "0.875rem" }}>
-                  Mon - Sat: 7am - 6pm
+              <li style={{ display: "flex", gap: "0.625rem", alignItems: "flex-start" }}>
+                <Clock size={14} style={{ color: "var(--color-accent)", flexShrink: 0, marginTop: "3px" }} />
+                <span style={{ color: "var(--color-text-muted)", fontSize: "0.875rem", lineHeight: 1.5 }}>
+                  Mon-Fri: 7:30am - 4:30pm<br />
+                  <span style={{ fontSize: "0.78rem", opacity: 0.7 }}>Sat estimates by appointment · Closed Sun</span>
                 </span>
               </li>
             </ul>
@@ -237,7 +238,7 @@ export default function Footer() {
             &copy; {year} Hawaii Elite Painting and Renovation. All rights reserved.
           </p>
           <p style={{ color: "var(--color-text-muted)", fontSize: "0.8rem" }}>
-            Licensed &amp; Insured · Honolulu, HI · Est. 2012
+            Licensed &amp; Insured · CT-35891 · Honolulu, HI · Est. 2012
           </p>
         </div>
       </div>

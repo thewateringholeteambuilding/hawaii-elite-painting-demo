@@ -58,20 +58,20 @@ const SERVICES_TEASER = [
 const TESTIMONIALS = [
   {
     quote: "They painted our entire exterior while we were in Seattle for two weeks. Jason texted us a photo every evening so we could see the progress. Came home to a house that looked brand new. Neighbors thought we moved.",
-    name: "Marcus T.",
-    detail: "Kailua, Oahu · Exterior repaint · Crew: Jason & Mike · November 2024",
+    name: "Marcus T., Kailua",
+    detail: "Exterior repaint · Crew: Jason & Mike · November 2024",
     stars: 5,
   },
   {
     quote: "Derek measured every wall before he quoted. Line-item pricing, no guessing.",
-    name: "Lynn H.",
-    detail: "Manoa · Interior + drywall repair · Foreman: Derek · February 2025",
+    name: "Lynn H., Manoa",
+    detail: "Interior + drywall repair · Foreman: Derek · February 2025",
     stars: 5,
   },
   {
     quote: "The kitchen cabinet painting saved us $18k over replacement. Kai brought three sample doors home from the spray booth so we could compare the sheen in our own kitchen light before they did the full set. We went with the satin. Perfect call.",
-    name: "Ray & Suki F.",
-    detail: "Pearl City · Cabinet refinishing · Crew: Kai & Brandon · March 2025",
+    name: "Ray & Suki F., Pearl City",
+    detail: "Cabinet refinishing · Crew: Kai & Brandon · March 2025",
     stars: 5,
   },
 ];
@@ -516,6 +516,7 @@ export default function Home() {
             "Written Warranties on Every Job",
             "Free Estimates · 24-Hour Response",
             "Best of Houzz 2023, 2024, 2025",
+            "2024 PCA Image Award · Residential Exterior",
           ].map((badge) => (
             <div
               key={badge}
@@ -906,9 +907,10 @@ export default function Home() {
               fontSize: "0.95rem",
             }}
           >
-            Painting, repairs, and renovation. One crew handles it all.
-            Every job starts with a written scope and ends with a walk-through
-            you sign off on. Someone answers the phone every time you call.
+            We care for surfaces before we coat them. Every job starts
+            with a written scope, hands-on prep, and ends with a
+            walk-through you sign off on. One crew from estimate to
+            final touch-up.
           </p>
         </div>
 
@@ -1131,6 +1133,125 @@ export default function Home() {
             <Link to="/services" className="btn-outline" style={{ flexShrink: 0 }}>
               All Services <ArrowRight size={13} />
             </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ── SPECIALTY SPOTLIGHT: CABINET PAINTING ── */}
+      <section
+        style={{
+          background: "var(--color-surface)",
+          borderTop: "1px solid var(--color-border)",
+          padding: "var(--space-block) 1.5rem",
+        }}
+      >
+        <div
+          style={{
+            maxWidth: "900px",
+            margin: "0 auto",
+            display: "grid",
+            gridTemplateColumns: "1fr",
+            gap: "2rem",
+            alignItems: "center",
+          }}
+          className="md:grid-cols-5"
+        >
+          <div className="md:col-span-3">
+            <span className="section-label" style={{ display: "block", marginBottom: "0.75rem" }}>
+              Most Requested
+            </span>
+            <h2
+              style={{
+                fontFamily: "var(--font-heading)",
+                fontWeight: 700,
+                textTransform: "uppercase",
+                fontSize: "clamp(1.25rem, 2vw, 1.75rem)",
+                lineHeight: 0.95,
+                color: "var(--color-text)",
+                marginBottom: "1rem",
+              }}
+            >
+              Cabinet Refinishing
+            </h2>
+            <p
+              style={{
+                color: "var(--color-text-muted)",
+                fontSize: "0.9rem",
+                lineHeight: 1.65,
+                marginBottom: "0.75rem",
+              }}
+            >
+              A full kitchen gut-reno on Oahu runs $35k-$55k. Refinishing your
+              existing cabinets gets you a new kitchen look for $3,200-$5,500.
+              We spray doors off-site in our booth, reinstall on day four.
+              Same boxes, new finish, fraction of the cost.
+            </p>
+            <p
+              style={{
+                fontFamily: "var(--font-accent)",
+                fontSize: "0.72rem",
+                fontWeight: 600,
+                textTransform: "uppercase",
+                letterSpacing: "0.12em",
+                color: "var(--color-accent)",
+              }}
+            >
+              Avg savings vs. replacement: $18,000
+            </p>
+          </div>
+          <div
+            className="md:col-span-2"
+            style={{
+              background: "var(--color-bg)",
+              border: "1px solid var(--color-border)",
+              padding: "1.5rem",
+              display: "flex",
+              flexDirection: "column",
+              gap: "0.875rem",
+            }}
+          >
+            <span
+              style={{
+                fontFamily: "var(--font-accent)",
+                fontSize: "0.62rem",
+                fontWeight: 600,
+                textTransform: "uppercase",
+                letterSpacing: "0.2em",
+                color: "var(--color-accent)",
+              }}
+            >
+              What's Included
+            </span>
+            {[
+              "36 doors avg per kitchen, sprayed in controlled booth",
+              "Benjamin Moore Advance or Sherwin-Williams ProClassic",
+              "Hardware removal, label, reinstall",
+              "Hinges replaced if worn (soft-close upgrade available)",
+              "Touch-up kit left on-site for future scuffs",
+            ].map((item) => (
+              <div
+                key={item}
+                style={{
+                  display: "flex",
+                  gap: "0.625rem",
+                  alignItems: "flex-start",
+                }}
+              >
+                <CheckCircle
+                  size={13}
+                  style={{ color: "var(--color-accent)", marginTop: "3px", flexShrink: 0 }}
+                />
+                <span
+                  style={{
+                    fontSize: "0.82rem",
+                    color: "var(--color-text-muted)",
+                    lineHeight: 1.5,
+                  }}
+                >
+                  {item}
+                </span>
+              </div>
+            ))}
           </div>
         </div>
       </section>
