@@ -13,43 +13,55 @@ const STATS = [
 const SERVICES_TEASER = [
   {
     title: "Interior Painting",
+    hook: "Nobody sees the prep. Everyone sees the finish.",
     desc: "Walls, ceilings, trim, and cabinetry. Specialty finishes available: limewash, Venetian plaster, roman clay.",
     idealFor: "Homeowners refreshing rooms, preparing for sale, or moving in.",
+    startingAt: "From $1,800",
     img: "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&w=600&q=75",
     alt: "Interior painting in progress",
   },
   {
     title: "Exterior Painting",
+    hook: "Salt air punishes every surface it touches.",
     desc: "Weather-rated coatings built for Hawaii's sun, salt air, and heavy rain.",
     idealFor: "Homeowners with fading, peeling, or chalking exterior coatings.",
+    startingAt: "From $4,500",
     img: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=600&q=75",
     alt: "Exterior house painting",
   },
   {
     title: "Drywall Repair",
+    hook: "The wall underneath determines the wall you see.",
     desc: "Patch, skim, sand, prime. Invisible repairs before we roll a single drop of paint.",
     idealFor: "Homes with water damage, cracks, or holes before a repaint.",
+    startingAt: "From $400",
     img: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=600&q=75",
     alt: "Drywall repair and finishing",
   },
   {
     title: "Deck Refinishing",
+    hook: "Mainland stains last 18 months here. Ours last longer.",
     desc: "Strip, sand, stain, seal. Decks that take the sun beating without cracking or peeling.",
     idealFor: "Homeowners with graying, splintering, or peeling deck surfaces.",
+    startingAt: "From $1,200",
     img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=75",
     alt: "Deck refinishing and staining",
   },
   {
     title: "Kitchen Remodeling",
+    hook: "A new kitchen look without the $40k gut job.",
     desc: "Cabinet painting, new hardware, tile work, countertop coordination. Full kitchen refresh without a full demo.",
     idealFor: "Homeowners who want a new kitchen look without $40k+ gut renovation.",
+    startingAt: "From $3,200",
     img: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=600&q=75",
     alt: "Kitchen cabinet painting and remodeling",
   },
   {
     title: "Bathroom Remodeling",
+    hook: "Humidity, mildew, grout. We handle all three.",
     desc: "Tile, paint, fixtures, and finish work. We coordinate trades so you get one crew, one timeline.",
     idealFor: "Homeowners updating tile, vanities, or dealing with mildew-prone surfaces.",
+    startingAt: "From $2,800",
     img: "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?auto=format&fit=crop&w=600&q=75",
     alt: "Bathroom renovation and tile work",
   },
@@ -57,18 +69,21 @@ const SERVICES_TEASER = [
 
 const TESTIMONIALS = [
   {
+    headline: "Came home to a new house",
     quote: "They painted our entire exterior while we were in Seattle for two weeks. Jason texted us a photo every evening so we could see the progress. Came home to a house that looked brand new. Neighbors thought we moved.",
     name: "Marcus T., Kailua",
     detail: "Exterior repaint · Crew: Jason & Mike · November 2024",
     stars: 5,
   },
   {
+    headline: "Line-item. No guessing.",
     quote: "Derek measured every wall before he quoted. Line-item pricing, no guessing.",
     name: "Lynn H., Manoa",
     detail: "Interior + drywall repair · Foreman: Derek · February 2025",
     stars: 5,
   },
   {
+    headline: "Saved us $18k",
     quote: "The kitchen cabinet painting saved us $18k over replacement. Kai brought three sample doors home from the spray booth so we could compare the sheen in our own kitchen light before they did the full set. We went with the satin. Perfect call.",
     name: "Ray & Suki F., Pearl City",
     detail: "Cabinet refinishing · Crew: Kai & Brandon · March 2025",
@@ -372,8 +387,11 @@ export default function Home() {
             }}
           />
 
-          {/* Floating trust badge */}
-          <div
+          {/* Floating trust badge — linked to Google Maps listing */}
+          <a
+            href="https://maps.google.com/?cid=12364976460210408014"
+            target="_blank"
+            rel="noopener noreferrer"
             style={{
               position: "absolute",
               bottom: "2.5rem",
@@ -385,6 +403,16 @@ export default function Home() {
               flexDirection: "column",
               gap: "0.25rem",
               boxShadow: "6px 6px 0 0 var(--color-accent)",
+              textDecoration: "none",
+              transition: "transform 150ms ease, box-shadow 150ms ease",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = "translateY(-2px)";
+              e.currentTarget.style.boxShadow = "6px 8px 0 0 var(--color-accent)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = "translateY(0)";
+              e.currentTarget.style.boxShadow = "6px 6px 0 0 var(--color-accent)";
             }}
           >
             <span
@@ -429,9 +457,9 @@ export default function Home() {
                 fontFamily: "var(--font-accent)",
               }}
             >
-              47 reviews
+              47 reviews · Verify on Google →
             </span>
-          </div>
+          </a>
         </div>
       </section>
 
@@ -635,39 +663,129 @@ export default function Home() {
       >
         <div
           style={{
-            maxWidth: "800px",
+            maxWidth: "1280px",
             margin: "0 auto",
-            textAlign: "center",
           }}
         >
-          <h2
+          <div style={{ textAlign: "center", marginBottom: "2rem" }}>
+            <h2
+              style={{
+                fontFamily: "var(--font-heading)",
+                fontWeight: 700,
+                textTransform: "uppercase",
+                fontSize: "clamp(1.1rem, 1.5vw, 1.4rem)",
+                letterSpacing: "0.06em",
+                color: "var(--color-text)",
+                marginBottom: "0.75rem",
+                lineHeight: 1.1,
+              }}
+            >
+              Background Checked. Drug Tested.{" "}
+              <span style={{ color: "var(--color-accent)" }}>Trusted in Your Home.</span>
+            </h2>
+            <p
+              style={{
+                color: "var(--color-text-muted)",
+                fontSize: "0.88rem",
+                lineHeight: 1.6,
+                maxWidth: "560px",
+                margin: "0 auto",
+              }}
+            >
+              Every crew member passes a background check and drug screening before
+              their first job. You get the same faces on day one and day five.
+            </p>
+          </div>
+          <div
             style={{
-              fontFamily: "var(--font-heading)",
-              fontWeight: 700,
-              textTransform: "uppercase",
-              fontSize: "clamp(1.1rem, 1.5vw, 1.4rem)",
-              letterSpacing: "0.06em",
-              color: "var(--color-text)",
-              marginBottom: "0.75rem",
-              lineHeight: 1.1,
+              display: "grid",
+              gridTemplateColumns: "repeat(2, 1fr)",
+              gap: "1px",
+              background: "var(--color-border)",
             }}
+            className="md:grid-cols-4"
           >
-            Background Checked. Drug Tested.{" "}
-            <span style={{ color: "var(--color-accent)" }}>Trusted in Your Home.</span>
-          </h2>
-          <p
-            style={{
-              color: "var(--color-text-muted)",
-              fontSize: "0.88rem",
-              lineHeight: 1.6,
-              maxWidth: "560px",
-              margin: "0 auto",
-            }}
-          >
-            Every crew member passes a background check and drug screening before
-            their first job. Average tenure on our crew is 6 years. You get the
-            same faces on day one and day five.
-          </p>
+            {[
+              { initials: "JK", name: "Jason K.", years: 8, specialty: "Exteriors & salt-air coatings" },
+              { initials: "DK", name: "Derek K.", years: 14, specialty: "Interiors & color consulting" },
+              { initials: "KM", name: "Kai M.", years: 6, specialty: "Cabinet refinishing & spray work" },
+              { initials: "BT", name: "Brandon T.", years: 4, specialty: "Deck staining & wood restoration" },
+            ].map((crew) => (
+              <div
+                key={crew.initials}
+                style={{
+                  background: "var(--color-surface)",
+                  padding: "1.25rem",
+                  display: "flex",
+                  gap: "0.875rem",
+                  alignItems: "center",
+                }}
+              >
+                <div
+                  style={{
+                    width: "44px",
+                    height: "44px",
+                    border: "2px solid var(--color-accent)",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    flexShrink: 0,
+                  }}
+                >
+                  <span
+                    style={{
+                      fontFamily: "var(--font-heading)",
+                      fontWeight: 700,
+                      fontSize: "0.82rem",
+                      color: "var(--color-accent)",
+                      letterSpacing: "0.04em",
+                    }}
+                  >
+                    {crew.initials}
+                  </span>
+                </div>
+                <div>
+                  <span
+                    style={{
+                      display: "block",
+                      fontFamily: "var(--font-heading)",
+                      fontWeight: 700,
+                      textTransform: "uppercase",
+                      fontSize: "0.78rem",
+                      letterSpacing: "0.06em",
+                      color: "var(--color-text)",
+                      lineHeight: 1.2,
+                    }}
+                  >
+                    {crew.name}
+                  </span>
+                  <span
+                    style={{
+                      display: "block",
+                      fontFamily: "var(--font-accent)",
+                      fontSize: "0.68rem",
+                      color: "var(--color-accent)",
+                      fontWeight: 600,
+                      marginTop: "0.125rem",
+                    }}
+                  >
+                    {crew.years} years
+                  </span>
+                  <span
+                    style={{
+                      display: "block",
+                      fontSize: "0.72rem",
+                      color: "var(--color-text-muted)",
+                      lineHeight: 1.4,
+                      marginTop: "0.125rem",
+                    }}
+                  >
+                    {crew.specialty}
+                  </span>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -970,11 +1088,14 @@ export default function Home() {
                   textTransform: "uppercase",
                   fontSize: "clamp(1.5rem, 2vw, 2rem)",
                   color: "var(--color-text)",
-                  marginBottom: "0.5rem",
+                  marginBottom: "0.375rem",
                 }}
               >
                 {SERVICES_TEASER[0].title}
               </h3>
+              <span style={{ display: "block", fontSize: "0.82rem", fontWeight: 600, color: "hsl(40 30% 92%)", marginBottom: "0.375rem", fontStyle: "italic" }}>
+                {SERVICES_TEASER[0].hook}
+              </span>
               <p
                 style={{
                   color: "hsl(40 30% 92% / 0.8)",
@@ -985,9 +1106,14 @@ export default function Home() {
               >
                 {SERVICES_TEASER[0].desc}
               </p>
-              <span style={{ display: "block", marginTop: "0.5rem", fontSize: "0.72rem", fontFamily: "var(--font-accent)", textTransform: "uppercase", letterSpacing: "0.12em", color: "var(--color-accent)" }}>
-                Ideal for: {SERVICES_TEASER[0].idealFor}
-              </span>
+              <div style={{ display: "flex", gap: "1.5rem", marginTop: "0.5rem", alignItems: "baseline" }}>
+                <span style={{ fontSize: "0.72rem", fontFamily: "var(--font-accent)", textTransform: "uppercase", letterSpacing: "0.12em", color: "var(--color-accent)" }}>
+                  {SERVICES_TEASER[0].startingAt}
+                </span>
+                <span style={{ fontSize: "0.68rem", fontFamily: "var(--font-accent)", textTransform: "uppercase", letterSpacing: "0.1em", color: "hsl(40 30% 92% / 0.5)" }}>
+                  Ideal for: {SERVICES_TEASER[0].idealFor}
+                </span>
+              </div>
             </div>
           </div>
 
@@ -1028,17 +1154,25 @@ export default function Home() {
                   textTransform: "uppercase",
                   fontSize: "1.25rem",
                   color: "var(--color-text)",
-                  marginBottom: "0.375rem",
+                  marginBottom: "0.25rem",
                 }}
               >
                 {SERVICES_TEASER[1].title}
               </h3>
+              <span style={{ display: "block", fontSize: "0.78rem", fontWeight: 600, color: "hsl(40 30% 92%)", marginBottom: "0.375rem", fontStyle: "italic" }}>
+                {SERVICES_TEASER[1].hook}
+              </span>
               <p style={{ color: "hsl(40 30% 92% / 0.75)", fontSize: "0.85rem", lineHeight: 1.5 }}>
                 {SERVICES_TEASER[1].desc}
               </p>
-              <span style={{ display: "block", marginTop: "0.375rem", fontSize: "0.68rem", fontFamily: "var(--font-accent)", textTransform: "uppercase", letterSpacing: "0.12em", color: "var(--color-accent)" }}>
-                Ideal for: {SERVICES_TEASER[1].idealFor}
-              </span>
+              <div style={{ display: "flex", gap: "1rem", marginTop: "0.375rem", alignItems: "baseline" }}>
+                <span style={{ fontSize: "0.68rem", fontFamily: "var(--font-accent)", textTransform: "uppercase", letterSpacing: "0.12em", color: "var(--color-accent)" }}>
+                  {SERVICES_TEASER[1].startingAt}
+                </span>
+                <span style={{ fontSize: "0.62rem", fontFamily: "var(--font-accent)", textTransform: "uppercase", letterSpacing: "0.1em", color: "hsl(40 30% 92% / 0.5)" }}>
+                  Ideal for: {SERVICES_TEASER[1].idealFor}
+                </span>
+              </div>
             </div>
           </div>
 
@@ -1082,18 +1216,26 @@ export default function Home() {
                   textTransform: "uppercase",
                   fontSize: "1rem",
                   color: "var(--color-text)",
-                  marginBottom: "0.5rem",
+                  marginBottom: "0.25rem",
                   letterSpacing: "0.05em",
                 }}
               >
                 {svc.title}
               </h3>
+              <span style={{ display: "block", fontSize: "0.78rem", fontWeight: 600, color: "var(--color-text)", marginBottom: "0.375rem", fontStyle: "italic" }}>
+                {svc.hook}
+              </span>
               <p style={{ color: "var(--color-text-muted)", fontSize: "0.875rem", lineHeight: 1.6 }}>
                 {svc.desc}
               </p>
-              <span style={{ display: "block", marginTop: "0.5rem", fontSize: "0.68rem", fontFamily: "var(--font-accent)", textTransform: "uppercase", letterSpacing: "0.12em", color: "var(--color-accent)" }}>
-                Ideal for: {svc.idealFor}
-              </span>
+              <div style={{ display: "flex", gap: "1rem", marginTop: "0.5rem", alignItems: "baseline" }}>
+                <span style={{ fontSize: "0.72rem", fontFamily: "var(--font-accent)", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.12em", color: "var(--color-accent)" }}>
+                  {svc.startingAt}
+                </span>
+                <span style={{ fontSize: "0.62rem", fontFamily: "var(--font-accent)", textTransform: "uppercase", letterSpacing: "0.1em", color: "var(--color-text-muted)", opacity: 0.7 }}>
+                  Ideal for: {svc.idealFor}
+                </span>
+              </div>
             </div>
           ))}
 
@@ -1117,18 +1259,26 @@ export default function Home() {
                   textTransform: "uppercase",
                   fontSize: "1rem",
                   color: "var(--color-text)",
-                  marginBottom: "0.375rem",
+                  marginBottom: "0.25rem",
                   letterSpacing: "0.05em",
                 }}
               >
                 {SERVICES_TEASER[5].title}
               </h3>
+              <span style={{ display: "block", fontSize: "0.78rem", fontWeight: 600, color: "var(--color-text)", marginBottom: "0.375rem", fontStyle: "italic" }}>
+                {SERVICES_TEASER[5].hook}
+              </span>
               <p style={{ color: "var(--color-text-muted)", fontSize: "0.875rem", lineHeight: 1.6, maxWidth: "500px" }}>
                 {SERVICES_TEASER[5].desc}
               </p>
-              <span style={{ display: "block", marginTop: "0.375rem", fontSize: "0.68rem", fontFamily: "var(--font-accent)", textTransform: "uppercase", letterSpacing: "0.12em", color: "var(--color-accent)" }}>
-                Ideal for: {SERVICES_TEASER[5].idealFor}
-              </span>
+              <div style={{ display: "flex", gap: "1rem", marginTop: "0.375rem", alignItems: "baseline" }}>
+                <span style={{ fontSize: "0.72rem", fontFamily: "var(--font-accent)", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.12em", color: "var(--color-accent)" }}>
+                  {SERVICES_TEASER[5].startingAt}
+                </span>
+                <span style={{ fontSize: "0.62rem", fontFamily: "var(--font-accent)", textTransform: "uppercase", letterSpacing: "0.1em", color: "var(--color-text-muted)", opacity: 0.7 }}>
+                  Ideal for: {SERVICES_TEASER[5].idealFor}
+                </span>
+              </div>
             </div>
             <Link to="/services" className="btn-outline" style={{ flexShrink: 0 }}>
               All Services <ArrowRight size={13} />
@@ -1749,8 +1899,11 @@ export default function Home() {
             <br />The Rest Refer.
           </h2>
 
-          {/* Google badge */}
-          <div
+          {/* Google badge — linked to verify */}
+          <a
+            href="https://maps.google.com/?cid=12364976460210408014"
+            target="_blank"
+            rel="noopener noreferrer"
             style={{
               display: "flex",
               alignItems: "center",
@@ -1758,7 +1911,11 @@ export default function Home() {
               border: "1px solid var(--color-border)",
               padding: "0.75rem 1.25rem",
               background: "var(--color-surface)",
+              textDecoration: "none",
+              transition: "border-color 150ms ease",
             }}
+            onMouseEnter={(e) => { e.currentTarget.style.borderColor = "var(--color-accent)"; }}
+            onMouseLeave={(e) => { e.currentTarget.style.borderColor = "var(--color-border)"; }}
           >
             <div style={{ display: "flex", gap: "2px" }}>
               {[...Array(5)].map((_, i) => (
@@ -1772,9 +1929,9 @@ export default function Home() {
                 color: "var(--color-text-muted)",
               }}
             >
-              4.8 · 47 Google reviews
+              4.8 · 47 Google reviews · Verify →
             </span>
-          </div>
+          </a>
         </div>
 
         <div
@@ -1803,6 +1960,19 @@ export default function Home() {
                   <Star key={j} size={12} fill="hsl(38 85% 55%)" color="hsl(38 85% 55%)" />
                 ))}
               </div>
+              <span
+                style={{
+                  fontFamily: "var(--font-heading)",
+                  fontWeight: 700,
+                  textTransform: "uppercase",
+                  fontSize: "0.78rem",
+                  letterSpacing: "0.06em",
+                  color: "var(--color-accent)",
+                  lineHeight: 1.2,
+                }}
+              >
+                {t.headline}
+              </span>
               <blockquote
                 style={{
                   color: "var(--color-text)",
