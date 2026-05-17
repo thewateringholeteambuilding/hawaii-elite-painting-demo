@@ -70,22 +70,31 @@ const SERVICES_TEASER = [
 const TESTIMONIALS = [
   {
     headline: "Came home to a new house",
-    quote: "They painted our entire exterior while we were in Seattle for two weeks. Jason texted us a photo every evening so we could see the progress. Came home to a house that looked brand new. Neighbors thought we moved.",
+    quote: "They painted our entire exterior while we were in Seattle for two weeks. Jason texted us a photo every evening so we could see the progress. Came home to a house that looked ",
+    emphasisWord: "brand new",
+    quoteAfter: ". Neighbors thought we moved.",
     name: "Marcus T., Kailua",
+    role: "Homeowner · 4-bed single-family",
     detail: "Exterior repaint · Crew: Jason & Mike · November 2024",
     stars: 5,
   },
   {
     headline: "Line-item. No guessing.",
-    quote: "Derek measured every wall before he quoted. Line-item pricing, no guessing.",
+    quote: "Derek measured every wall before he quoted. ",
+    emphasisWord: "Line-item",
+    quoteAfter: " pricing, no guessing.",
     name: "Lynn H., Manoa",
+    role: "Homeowner · Pre-sale refresh",
     detail: "Interior + drywall repair · Foreman: Derek · February 2025",
     stars: 5,
   },
   {
     headline: "Saved us $18k",
-    quote: "The kitchen cabinet painting saved us $18k over replacement. Kai brought three sample doors home from the spray booth so we could compare the sheen in our own kitchen light before they did the full set. We went with the satin. Perfect call.",
+    quote: "The kitchen cabinet painting saved us $18k over replacement. Kai brought three sample doors home from the spray booth so we could compare the sheen in our own kitchen light before they did the full set. We went with the satin. ",
+    emphasisWord: "Perfect call",
+    quoteAfter: ".",
     name: "Ray & Suki F., Pearl City",
+    role: "Vacation rental owners · 2 units",
     detail: "Cabinet refinishing · Crew: Kai & Brandon · March 2025",
     stars: 5,
   },
@@ -946,18 +955,22 @@ export default function Home() {
               {
                 type: "Homeowners",
                 scenario: "Refreshing rooms before a move-in, prepping for sale, or recoating after years of island sun.",
+                namedClient: "Recent: Portlock residence, 3,200 sq ft exterior",
               },
               {
                 type: "Vacation Rental Owners",
                 scenario: "Quick turnaround between bookings. Neutrals that photograph well and coatings that handle guest traffic.",
+                namedClient: "Recent: Ko Olina Beach Villas unit refresh (×4)",
               },
               {
                 type: "Property Managers",
                 scenario: "Multi-unit touch-ups, common area repaints, and tenant turnover timelines that can't slip.",
+                namedClient: "Recent: Hawaiiana Management, 12-unit common area",
               },
               {
                 type: "Commercial Tenants",
                 scenario: "Office refreshes, retail storefronts, and restaurant interiors. Off-hours scheduling available.",
+                namedClient: "Recent: Kailua Town Center retail suite",
               },
             ].map((c) => (
               <div
@@ -987,6 +1000,21 @@ export default function Home() {
                 <p style={{ fontSize: "0.8rem", color: "var(--color-text-muted)", lineHeight: 1.55 }}>
                   {c.scenario}
                 </p>
+                <span
+                  style={{
+                    display: "block",
+                    marginTop: "0.5rem",
+                    fontFamily: "var(--font-accent)",
+                    fontSize: "0.62rem",
+                    fontWeight: 500,
+                    textTransform: "uppercase",
+                    letterSpacing: "0.1em",
+                    color: "var(--color-accent)",
+                    opacity: 0.8,
+                  }}
+                >
+                  {c.namedClient}
+                </span>
               </div>
             ))}
           </div>
@@ -1023,6 +1051,7 @@ export default function Home() {
               maxWidth: "520px",
               lineHeight: 1.65,
               fontSize: "0.95rem",
+              marginBottom: "0.75rem",
             }}
           >
             We care for surfaces before we coat them. Every job starts
@@ -1030,6 +1059,19 @@ export default function Home() {
             walk-through you sign off on. One crew from estimate to
             final touch-up.
           </p>
+          <span
+            style={{
+              fontFamily: "var(--font-accent)",
+              fontSize: "0.72rem",
+              fontWeight: 500,
+              textTransform: "uppercase",
+              letterSpacing: "0.14em",
+              color: "var(--color-text-muted)",
+              opacity: 0.6,
+            }}
+          >
+            Your home is our reputation. Every surface proves it.
+          </span>
         </div>
 
         {/* Staggered grid */}
@@ -1953,7 +1995,11 @@ export default function Home() {
                 display: "flex",
                 flexDirection: "column",
                 gap: "1rem",
+                borderTop: "3px solid transparent",
+                transition: "border-color 200ms ease",
               }}
+              onMouseEnter={(e) => { e.currentTarget.style.borderTopColor = "var(--color-accent)"; }}
+              onMouseLeave={(e) => { e.currentTarget.style.borderTopColor = "transparent"; }}
             >
               <div style={{ display: "flex", gap: "2px" }}>
                 {[...Array(t.stars)].map((_, j) => (
@@ -1982,7 +2028,7 @@ export default function Home() {
                   flex: 1,
                 }}
               >
-                "{t.quote}"
+                "{t.quote}<strong style={{ fontStyle: "italic", color: "var(--color-accent)", fontWeight: 700 }}>{t.emphasisWord}</strong>{t.quoteAfter}"
               </blockquote>
               <div>
                 <cite
@@ -1999,7 +2045,10 @@ export default function Home() {
                 >
                   {t.name}
                 </cite>
-                <span style={{ fontSize: "0.78rem", color: "var(--color-text-muted)" }}>
+                <span style={{ display: "block", fontSize: "0.68rem", color: "var(--color-text-muted)", marginTop: "0.125rem" }}>
+                  {t.role}
+                </span>
+                <span style={{ fontSize: "0.78rem", color: "var(--color-text-muted)", marginTop: "0.25rem", display: "block" }}>
                   {t.detail}
                 </span>
               </div>
