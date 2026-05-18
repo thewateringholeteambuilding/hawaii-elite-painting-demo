@@ -43,6 +43,7 @@ export default function Contact() {
   });
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [touched, setTouched] = useState<Record<string, boolean>>({});
 
   function handleChange(
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -375,11 +376,22 @@ export default function Contact() {
                     required
                     value={form.name}
                     onChange={handleChange}
-                    style={inputStyle}
+                    style={{
+                      ...inputStyle,
+                      borderColor: touched.name && !form.name.trim() ? "hsl(0 80% 55%)" : undefined,
+                    }}
                     placeholder="Your name"
                     onFocus={(e) => (e.currentTarget.style.borderColor = "var(--color-accent)")}
-                    onBlur={(e) => (e.currentTarget.style.borderColor = "var(--color-border)")}
+                    onBlur={(e) => {
+                      setTouched((p) => ({ ...p, name: true }));
+                      e.currentTarget.style.borderColor = !form.name.trim() ? "hsl(0 80% 55%)" : "var(--color-border)";
+                    }}
                   />
+                  {touched.name && !form.name.trim() && (
+                    <span style={{ fontSize: "0.72rem", color: "hsl(0 80% 65%)", marginTop: "0.25rem", display: "block" }}>
+                      Name is required for your estimate.
+                    </span>
+                  )}
                 </div>
                 <div>
                   <label htmlFor="phone" style={labelStyle}>Phone</label>
@@ -406,11 +418,22 @@ export default function Contact() {
                   required
                   value={form.email}
                   onChange={handleChange}
-                  style={inputStyle}
+                  style={{
+                    ...inputStyle,
+                    borderColor: touched.email && !form.email.trim() ? "hsl(0 80% 55%)" : undefined,
+                  }}
                   placeholder="your@email.com"
                   onFocus={(e) => (e.currentTarget.style.borderColor = "var(--color-accent)")}
-                  onBlur={(e) => (e.currentTarget.style.borderColor = "var(--color-border)")}
+                  onBlur={(e) => {
+                    setTouched((p) => ({ ...p, email: true }));
+                    e.currentTarget.style.borderColor = !form.email.trim() ? "hsl(0 80% 55%)" : "var(--color-border)";
+                  }}
                 />
+                {touched.email && !form.email.trim() && (
+                  <span style={{ fontSize: "0.72rem", color: "hsl(0 80% 65%)", marginTop: "0.25rem", display: "block" }}>
+                    Email is required so we can send your estimate.
+                  </span>
+                )}
               </div>
 
               <div>
@@ -485,8 +508,8 @@ export default function Contact() {
                 Send Estimate Request
               </button>
 
-              <p style={{ color: "var(--color-text-muted)", fontSize: "0.78rem" }}>
-                No spam. We use your contact info only to respond to this request.
+              <p style={{ color: "var(--color-text-muted)", fontSize: "0.75rem", lineHeight: 1.55 }}>
+                Your information is used only to prepare and deliver your estimate. We do not sell or share your data. You may receive a follow-up call or email about your project. No mailing lists, no third parties.
               </p>
             </form>
           )}

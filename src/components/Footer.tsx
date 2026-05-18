@@ -77,7 +77,7 @@ export default function Footer() {
                 maxWidth: "260px",
               }}
             >
-              Prep first. Paint right. Clean up every day.
+              Prep-First Painting™. Every surface, every time.
             </p>
             <p
               style={{

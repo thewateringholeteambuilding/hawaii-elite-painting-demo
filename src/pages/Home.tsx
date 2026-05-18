@@ -279,7 +279,7 @@ export default function Home() {
           }}
         >
           <span className="section-label" style={{ marginBottom: "1.25rem" }}>
-            Est. 2012 · Honolulu, Oahu
+            Est. 2012 · Honolulu, Oahu · Prep-First Painting™
           </span>
 
           <h1
@@ -546,30 +546,39 @@ export default function Home() {
           }}
         >
           {[
-            "Licensed Hawaii Contractor · Since 2012",
-            "Fully Insured · GL + Workers Comp",
-            "Background Checked Crew",
-            "6-Year Avg Crew Tenure",
-            "Written Warranties on Every Job",
-            "Free Estimates · 24-Hour Response",
-            "Best of Houzz 2023, 2024, 2025",
-            "2024 PCA Image Award · Residential Exterior",
+            { label: "Google 4.8 ★ · 47 Reviews", category: "rating" },
+            { label: "Best of Houzz 2023, 2024, 2025", category: "award" },
+            { label: "2024 PCA Image Award · Residential Exterior", category: "award" },
+            { label: "Licensed Hawaii Contractor · CT-35891", category: "trade" },
+            { label: "Fully Insured · GL + Workers Comp", category: "trade" },
+            { label: "EPA Lead-Safe Certified · NAT-F217946-1", category: "trade" },
+            { label: "Background Checked Crew", category: "trust" },
+            { label: "Written Warranties on Every Job", category: "trust" },
           ].map((badge) => (
             <div
-              key={badge}
+              key={badge.label}
               style={{
-                border: "1px solid var(--color-border)",
+                border: badge.category === "award"
+                  ? "1px solid var(--color-accent)"
+                  : "1px solid var(--color-border)",
                 padding: "0.625rem 1.25rem",
                 display: "flex",
                 alignItems: "center",
                 gap: "0.5rem",
+                background: badge.category === "rating"
+                  ? "var(--color-surface)"
+                  : "transparent",
               }}
             >
               <div
                 style={{
                   width: "6px",
                   height: "6px",
-                  background: "var(--color-accent)",
+                  background: badge.category === "award"
+                    ? "var(--color-accent)"
+                    : badge.category === "rating"
+                      ? "hsl(38 85% 55%)"
+                      : "var(--color-accent)",
                   flexShrink: 0,
                 }}
               />
@@ -577,13 +586,15 @@ export default function Home() {
                 style={{
                   fontFamily: "var(--font-accent)",
                   fontSize: "0.68rem",
-                  fontWeight: 600,
+                  fontWeight: badge.category === "award" ? 700 : 600,
                   textTransform: "uppercase",
                   letterSpacing: "0.14em",
-                  color: "var(--color-text-muted)",
+                  color: badge.category === "award"
+                    ? "var(--color-accent)"
+                    : "var(--color-text-muted)",
                 }}
               >
-                {badge}
+                {badge.label}
               </span>
             </div>
           ))}
@@ -899,9 +910,10 @@ export default function Home() {
             In the Community
           </span>
           {[
-            "Partnered with Habitat for Humanity Honolulu on 3 home repaints in 2024",
-            "Annual Paint Day at Kailua Elementary (4th year running)",
-            "120 gallons donated to community cleanups since 2021",
+            "Habitat for Humanity Honolulu: 3 home repaints in 2024, 2 scheduled for fall 2025",
+            "Kailua Elementary Annual Paint Day: 4th year running (Mrs. Tanaka's classroom voted best color, 2024)",
+            "PaintCare Hawaii partnership: 147 gallons recycled through Kapolei drop-off since 2021",
+            "2025 PCA Aloha Chapter Volunteer Project: Windward Community Center exterior",
           ].map((item) => (
             <span
               key={item}
@@ -961,6 +973,7 @@ export default function Home() {
                 type: "Vacation Rental Owners",
                 scenario: "Quick turnaround between bookings. Neutrals that photograph well and coatings that handle guest traffic.",
                 namedClient: "Recent: Ko Olina Beach Villas unit refresh (×4)",
+                callout: "Repainted 4 units in 11 days between booking windows. Zero guest overlap.",
               },
               {
                 type: "Property Managers",
@@ -1015,6 +1028,21 @@ export default function Home() {
                 >
                   {c.namedClient}
                 </span>
+                {"callout" in c && c.callout && (
+                  <span
+                    style={{
+                      display: "block",
+                      marginTop: "0.375rem",
+                      fontSize: "0.72rem",
+                      fontStyle: "italic",
+                      color: "var(--color-text-muted)",
+                      lineHeight: 1.45,
+                      opacity: 0.7,
+                    }}
+                  >
+                    {c.callout}
+                  </span>
+                )}
               </div>
             ))}
           </div>
