@@ -44,6 +44,7 @@ export default function Contact() {
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [touched, setTouched] = useState<Record<string, boolean>>({});
+  const [step, setStep] = useState<1 | 2>(1);
 
   function handleChange(
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -349,6 +350,39 @@ export default function Contact() {
                 />
               </div>
 
+              {/* Progress indicator */}
+              <div style={{ display: "flex", gap: "0.5rem", alignItems: "center" }}>
+                <div
+                  style={{
+                    flex: 1,
+                    height: "3px",
+                    background: "var(--color-accent)",
+                    transition: "background 200ms ease",
+                  }}
+                />
+                <div
+                  style={{
+                    flex: 1,
+                    height: "3px",
+                    background: step === 2 ? "var(--color-accent)" : "var(--color-border)",
+                    transition: "background 200ms ease",
+                  }}
+                />
+                <span
+                  style={{
+                    fontFamily: "var(--font-accent)",
+                    fontSize: "0.65rem",
+                    fontWeight: 600,
+                    textTransform: "uppercase",
+                    letterSpacing: "0.14em",
+                    color: "var(--color-text-muted)",
+                    marginLeft: "0.5rem",
+                  }}
+                >
+                  Step {step} of 2
+                </span>
+              </div>
+
               {error && (
                 <div
                   style={{
@@ -363,150 +397,200 @@ export default function Contact() {
                 </div>
               )}
 
-              <div
-                style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem" }}
-                className="grid-cols-1 sm:grid-cols-2"
-              >
-                <div>
-                  <label htmlFor="name" style={labelStyle}>Name *</label>
-                  <input
-                    id="name"
-                    name="name"
-                    type="text"
-                    required
-                    value={form.name}
-                    onChange={handleChange}
-                    style={{
-                      ...inputStyle,
-                      borderColor: touched.name && !form.name.trim() ? "hsl(0 80% 55%)" : undefined,
+              {/* Step 1: Contact info */}
+              {step === 1 && (
+                <>
+                  <div
+                    style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem" }}
+                    className="grid-cols-1 sm:grid-cols-2"
+                  >
+                    <div>
+                      <label htmlFor="name" style={labelStyle}>Name *</label>
+                      <input
+                        id="name"
+                        name="name"
+                        type="text"
+                        required
+                        value={form.name}
+                        onChange={handleChange}
+                        style={{
+                          ...inputStyle,
+                          borderColor: touched.name && !form.name.trim() ? "hsl(0 80% 55%)" : undefined,
+                        }}
+                        placeholder="Your name"
+                        onFocus={(e) => (e.currentTarget.style.borderColor = "var(--color-accent)")}
+                        onBlur={(e) => {
+                          setTouched((p) => ({ ...p, name: true }));
+                          e.currentTarget.style.borderColor = !form.name.trim() ? "hsl(0 80% 55%)" : "var(--color-border)";
+                        }}
+                      />
+                      {touched.name && !form.name.trim() && (
+                        <span style={{ fontSize: "0.72rem", color: "hsl(0 80% 65%)", marginTop: "0.25rem", display: "block" }}>
+                          Name is required for your estimate.
+                        </span>
+                      )}
+                    </div>
+                    <div>
+                      <label htmlFor="phone" style={labelStyle}>Phone</label>
+                      <input
+                        id="phone"
+                        name="phone"
+                        type="tel"
+                        value={form.phone}
+                        onChange={handleChange}
+                        style={inputStyle}
+                        placeholder="(808) 000-0000"
+                        onFocus={(e) => (e.currentTarget.style.borderColor = "var(--color-accent)")}
+                        onBlur={(e) => (e.currentTarget.style.borderColor = "var(--color-border)")}
+                      />
+                    </div>
+                  </div>
+
+                  <div>
+                    <label htmlFor="email" style={labelStyle}>Email *</label>
+                    <input
+                      id="email"
+                      name="email"
+                      type="email"
+                      required
+                      value={form.email}
+                      onChange={handleChange}
+                      style={{
+                        ...inputStyle,
+                        borderColor: touched.email && !form.email.trim() ? "hsl(0 80% 55%)" : undefined,
+                      }}
+                      placeholder="your@email.com"
+                      onFocus={(e) => (e.currentTarget.style.borderColor = "var(--color-accent)")}
+                      onBlur={(e) => {
+                        setTouched((p) => ({ ...p, email: true }));
+                        e.currentTarget.style.borderColor = !form.email.trim() ? "hsl(0 80% 55%)" : "var(--color-border)";
+                      }}
+                    />
+                    {touched.email && !form.email.trim() && (
+                      <span style={{ fontSize: "0.72rem", color: "hsl(0 80% 65%)", marginTop: "0.25rem", display: "block" }}>
+                        Email is required so we can send your estimate.
+                      </span>
+                    )}
+                  </div>
+
+                  <div>
+                    <label htmlFor="customerType" style={labelStyle}>Have we worked together before?</label>
+                    <select
+                      id="customerType"
+                      name="customerType"
+                      value={form.customerType}
+                      onChange={handleChange}
+                      style={{ ...inputStyle, cursor: "pointer" }}
+                      onFocus={(e) => (e.currentTarget.style.borderColor = "var(--color-accent)")}
+                      onBlur={(e) => (e.currentTarget.style.borderColor = "var(--color-border)")}
+                    >
+                      <option value="">Select...</option>
+                      <option value="new">First time working with Hawaii Elite</option>
+                      <option value="returning">Yes, you've painted for me before</option>
+                      <option value="referral">Referred by a previous client</option>
+                    </select>
+                  </div>
+
+                  <button
+                    type="button"
+                    className="btn-primary"
+                    style={{ alignSelf: "flex-start" }}
+                    onClick={() => {
+                      setError(null);
+                      if (!form.name.trim() || !form.email.trim()) {
+                        setError("Please fill in your name and email to continue.");
+                        setTouched((p) => ({ ...p, name: true, email: true }));
+                        return;
+                      }
+                      setStep(2);
                     }}
-                    placeholder="Your name"
-                    onFocus={(e) => (e.currentTarget.style.borderColor = "var(--color-accent)")}
-                    onBlur={(e) => {
-                      setTouched((p) => ({ ...p, name: true }));
-                      e.currentTarget.style.borderColor = !form.name.trim() ? "hsl(0 80% 55%)" : "var(--color-border)";
-                    }}
-                  />
-                  {touched.name && !form.name.trim() && (
-                    <span style={{ fontSize: "0.72rem", color: "hsl(0 80% 65%)", marginTop: "0.25rem", display: "block" }}>
-                      Name is required for your estimate.
-                    </span>
-                  )}
-                </div>
-                <div>
-                  <label htmlFor="phone" style={labelStyle}>Phone</label>
-                  <input
-                    id="phone"
-                    name="phone"
-                    type="tel"
-                    value={form.phone}
-                    onChange={handleChange}
-                    style={inputStyle}
-                    placeholder="(808) 000-0000"
-                    onFocus={(e) => (e.currentTarget.style.borderColor = "var(--color-accent)")}
-                    onBlur={(e) => (e.currentTarget.style.borderColor = "var(--color-border)")}
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label htmlFor="email" style={labelStyle}>Email *</label>
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  required
-                  value={form.email}
-                  onChange={handleChange}
-                  style={{
-                    ...inputStyle,
-                    borderColor: touched.email && !form.email.trim() ? "hsl(0 80% 55%)" : undefined,
-                  }}
-                  placeholder="your@email.com"
-                  onFocus={(e) => (e.currentTarget.style.borderColor = "var(--color-accent)")}
-                  onBlur={(e) => {
-                    setTouched((p) => ({ ...p, email: true }));
-                    e.currentTarget.style.borderColor = !form.email.trim() ? "hsl(0 80% 55%)" : "var(--color-border)";
-                  }}
-                />
-                {touched.email && !form.email.trim() && (
-                  <span style={{ fontSize: "0.72rem", color: "hsl(0 80% 65%)", marginTop: "0.25rem", display: "block" }}>
-                    Email is required so we can send your estimate.
-                  </span>
-                )}
-              </div>
-
-              <div>
-                <label htmlFor="service" style={labelStyle}>Service Type</label>
-                <select
-                  id="service"
-                  name="service"
-                  value={form.service}
-                  onChange={handleChange}
-                  style={{ ...inputStyle, cursor: "pointer" }}
-                  onFocus={(e) => (e.currentTarget.style.borderColor = "var(--color-accent)")}
-                  onBlur={(e) => (e.currentTarget.style.borderColor = "var(--color-border)")}
-                >
-                  <option value="">Select a service...</option>
-                  {SERVICE_OPTIONS.map((opt) => (
-                    <option key={opt} value={opt}>{opt}</option>
-                  ))}
-                </select>
-              </div>
-
-              {form.service && SERVICE_HINTS[form.service] && (
-                <div
-                  style={{
-                    background: "var(--color-surface)",
-                    border: "1px solid var(--color-border)",
-                    borderLeft: "3px solid var(--color-accent)",
-                    padding: "0.75rem 1rem",
-                    fontSize: "0.82rem",
-                    color: "var(--color-text-muted)",
-                    lineHeight: 1.55,
-                  }}
-                >
-                  {SERVICE_HINTS[form.service]}
-                </div>
+                  >
+                    Next: Project Details
+                  </button>
+                </>
               )}
 
-              <div>
-                <label htmlFor="customerType" style={labelStyle}>Have we worked together before?</label>
-                <select
-                  id="customerType"
-                  name="customerType"
-                  value={form.customerType}
-                  onChange={handleChange}
-                  style={{ ...inputStyle, cursor: "pointer" }}
-                  onFocus={(e) => (e.currentTarget.style.borderColor = "var(--color-accent)")}
-                  onBlur={(e) => (e.currentTarget.style.borderColor = "var(--color-border)")}
-                >
-                  <option value="">Select...</option>
-                  <option value="new">First time working with Hawaii Elite</option>
-                  <option value="returning">Yes, you've painted for me before</option>
-                  <option value="referral">Referred by a previous client</option>
-                </select>
-              </div>
+              {/* Step 2: Project details */}
+              {step === 2 && (
+                <>
+                  <div>
+                    <label htmlFor="service" style={labelStyle}>Service Type</label>
+                    <select
+                      id="service"
+                      name="service"
+                      value={form.service}
+                      onChange={handleChange}
+                      style={{ ...inputStyle, cursor: "pointer" }}
+                      onFocus={(e) => (e.currentTarget.style.borderColor = "var(--color-accent)")}
+                      onBlur={(e) => (e.currentTarget.style.borderColor = "var(--color-border)")}
+                    >
+                      <option value="">Select a service...</option>
+                      {SERVICE_OPTIONS.map((opt) => (
+                        <option key={opt} value={opt}>{opt}</option>
+                      ))}
+                    </select>
+                  </div>
 
-              <div>
-                <label htmlFor="message" style={labelStyle}>Project Description *</label>
-                <textarea
-                  id="message"
-                  name="message"
-                  required
-                  rows={5}
-                  value={form.message}
-                  onChange={handleChange}
-                  style={{ ...inputStyle, resize: "vertical", minHeight: "120px" }}
-                  placeholder="Tell us about the space, approximate size, and what you're hoping to accomplish..."
-                  onFocus={(e) => (e.currentTarget.style.borderColor = "var(--color-accent)")}
-                  onBlur={(e) => (e.currentTarget.style.borderColor = "var(--color-border)")}
-                />
-              </div>
+                  {form.service && SERVICE_HINTS[form.service] && (
+                    <div
+                      style={{
+                        background: "var(--color-surface)",
+                        border: "1px solid var(--color-border)",
+                        borderLeft: "3px solid var(--color-accent)",
+                        padding: "0.75rem 1rem",
+                        fontSize: "0.82rem",
+                        color: "var(--color-text-muted)",
+                        lineHeight: 1.55,
+                      }}
+                    >
+                      {SERVICE_HINTS[form.service]}
+                    </div>
+                  )}
 
-              <button type="submit" className="btn-primary" style={{ alignSelf: "flex-start" }}>
-                Send Estimate Request
-              </button>
+                  <div>
+                    <label htmlFor="message" style={labelStyle}>Project Description *</label>
+                    <textarea
+                      id="message"
+                      name="message"
+                      required
+                      rows={5}
+                      value={form.message}
+                      onChange={handleChange}
+                      style={{ ...inputStyle, resize: "vertical", minHeight: "120px" }}
+                      placeholder="Tell us about the space, approximate size, and what you're hoping to accomplish..."
+                      onFocus={(e) => (e.currentTarget.style.borderColor = "var(--color-accent)")}
+                      onBlur={(e) => (e.currentTarget.style.borderColor = "var(--color-border)")}
+                    />
+                  </div>
+
+                  <div style={{ display: "flex", gap: "1rem", alignItems: "center" }}>
+                    <button
+                      type="button"
+                      style={{
+                        background: "none",
+                        border: "1px solid var(--color-border)",
+                        padding: "0.75rem 1.25rem",
+                        color: "var(--color-text-muted)",
+                        fontFamily: "var(--font-accent)",
+                        fontSize: "0.78rem",
+                        fontWeight: 600,
+                        textTransform: "uppercase",
+                        letterSpacing: "0.1em",
+                        cursor: "pointer",
+                        transition: "border-color 200ms ease",
+                      }}
+                      onClick={() => setStep(1)}
+                      onMouseEnter={(e) => (e.currentTarget.style.borderColor = "var(--color-accent)")}
+                      onMouseLeave={(e) => (e.currentTarget.style.borderColor = "var(--color-border)")}
+                    >
+                      Back
+                    </button>
+                    <button type="submit" className="btn-primary">
+                      Send Estimate Request
+                    </button>
+                  </div>
+                </>
+              )}
 
               <p style={{ color: "var(--color-text-muted)", fontSize: "0.75rem", lineHeight: 1.55 }}>
                 Your information is used only to prepare and deliver your estimate. We do not sell or share your data. You may receive a follow-up call or email about your project. No mailing lists, no third parties.

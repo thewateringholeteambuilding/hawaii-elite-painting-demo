@@ -73,19 +73,21 @@ const TESTIMONIALS = [
     quote: "They painted our entire exterior while we were in Seattle for two weeks. Jason texted us a photo every evening so we could see the progress. Came home to a house that looked ",
     emphasisWord: "brand new",
     quoteAfter: ". Neighbors thought we moved.",
-    name: "Marcus T., Kailua",
-    role: "Homeowner · 4-bed single-family",
+    name: "Marcus T.",
+    role: "Homeowner | Kailua Beachside",
     detail: "Exterior repaint · Crew: Jason & Mike · November 2024",
+    followUp: "They called us at 6 months to check if the south-facing wall was holding. It was.",
     stars: 5,
   },
   {
     headline: "Line-item. No guessing.",
     quote: "Derek measured every wall before he quoted. ",
     emphasisWord: "Line-item",
-    quoteAfter: " pricing, no guessing.",
-    name: "Lynn H., Manoa",
-    role: "Homeowner · Pre-sale refresh",
+    quoteAfter: " pricing, no guessing. He even flagged a water stain behind the dresser we hadn't noticed.",
+    name: "Lynn H.",
+    role: "Homeowner | Manoa Valley",
     detail: "Interior + drywall repair · Foreman: Derek · February 2025",
+    followUp: "House sold in 9 days. Agent said the paint job was the first thing buyers mentioned.",
     stars: 5,
   },
   {
@@ -93,9 +95,10 @@ const TESTIMONIALS = [
     quote: "The kitchen cabinet painting saved us $18k over replacement. Kai brought three sample doors home from the spray booth so we could compare the sheen in our own kitchen light before they did the full set. We went with the satin. ",
     emphasisWord: "Perfect call",
     quoteAfter: ".",
-    name: "Ray & Suki F., Pearl City",
-    role: "Vacation rental owners · 2 units",
+    name: "Ray & Suki F.",
+    role: "Vacation Rental Owners | Pearl City",
     detail: "Cabinet refinishing · Crew: Kai & Brandon · March 2025",
+    followUp: "Guests started commenting on the kitchen in reviews within two weeks of relisting.",
     stars: 5,
   },
 ];
@@ -354,6 +357,7 @@ export default function Home() {
               fontFamily: "var(--font-accent)",
               textDecoration: "none",
               transition: "color 200ms ease",
+              marginBottom: "2rem",
             }}
             onMouseEnter={(e) => (e.currentTarget.style.color = "var(--color-accent)")}
             onMouseLeave={(e) => (e.currentTarget.style.color = "var(--color-text-muted)")}
@@ -361,6 +365,65 @@ export default function Home() {
             <Mail size={14} />
             Send a message
           </Link>
+
+          {/* Warranty trust badge */}
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "1rem",
+            }}
+          >
+            <div
+              style={{
+                width: "52px",
+                height: "52px",
+                border: "2px solid var(--color-accent)",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center",
+                flexShrink: 0,
+              }}
+            >
+              <span
+                style={{
+                  fontFamily: "var(--font-heading)",
+                  fontWeight: 700,
+                  fontSize: "1.1rem",
+                  lineHeight: 1,
+                  color: "var(--color-accent)",
+                }}
+              >
+                2yr
+              </span>
+            </div>
+            <div>
+              <span
+                style={{
+                  display: "block",
+                  fontFamily: "var(--font-accent)",
+                  fontSize: "0.65rem",
+                  fontWeight: 600,
+                  textTransform: "uppercase",
+                  letterSpacing: "0.14em",
+                  color: "var(--color-text)",
+                  lineHeight: 1.2,
+                }}
+              >
+                Workmanship Warranty
+              </span>
+              <span
+                style={{
+                  fontSize: "0.7rem",
+                  color: "var(--color-text-muted)",
+                  lineHeight: 1.4,
+                }}
+              >
+                Peeling, cracking, adhesion. We come back.
+              </span>
+            </div>
+          </div>
         </div>
 
         {/* Right, photo */}
@@ -883,61 +946,98 @@ export default function Home() {
         style={{
           background: "var(--color-bg)",
           borderBottom: "1px solid var(--color-border)",
-          padding: "1.5rem",
+          padding: "var(--space-block) 1.5rem",
         }}
       >
-        <div
-          style={{
-            maxWidth: "1280px",
-            margin: "0 auto",
-            display: "flex",
-            flexWrap: "wrap",
-            gap: "1rem 2.5rem",
-            alignItems: "center",
-          }}
-        >
-          <span
-            style={{
-              fontFamily: "var(--font-accent)",
-              fontSize: "0.62rem",
-              fontWeight: 600,
-              textTransform: "uppercase",
-              letterSpacing: "0.2em",
-              color: "var(--color-accent)",
-              flexShrink: 0,
-            }}
-          >
+        <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
+          <span className="section-label" style={{ display: "block", marginBottom: "0.5rem" }}>
             In the Community
           </span>
-          {[
-            "Habitat for Humanity Honolulu: 3 home repaints in 2024, 2 scheduled for fall 2025",
-            "Kailua Elementary Annual Paint Day: 4th year running (Mrs. Tanaka's classroom voted best color, 2024)",
-            "PaintCare Hawaii partnership: 147 gallons recycled through Kapolei drop-off since 2021",
-            "2025 PCA Aloha Chapter Volunteer Project: Windward Community Center exterior",
-          ].map((item) => (
-            <span
-              key={item}
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: "0.5rem",
-                fontSize: "0.82rem",
-                color: "var(--color-text-muted)",
-                lineHeight: 1.4,
-              }}
-            >
-              <span
+          <h2
+            style={{
+              fontFamily: "var(--font-heading)",
+              fontWeight: 700,
+              textTransform: "uppercase",
+              fontSize: "clamp(1.25rem, 2vw, 1.75rem)",
+              lineHeight: 0.95,
+              color: "var(--color-text)",
+              marginBottom: "1.5rem",
+            }}
+          >
+            Paint It <span style={{ color: "var(--color-accent)" }}>Forward</span>
+          </h2>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "1fr",
+              gap: "1px",
+              background: "var(--color-border)",
+            }}
+            className="md:grid-cols-2"
+          >
+            {[
+              {
+                org: "Habitat for Humanity Honolulu",
+                detail: "3 home repaints in 2024, 2 scheduled for fall 2025",
+                hours: "240+ volunteer hours",
+              },
+              {
+                org: "Kailua Elementary Annual Paint Day",
+                detail: "4th year running. Mrs. Tanaka's classroom voted best color, 2024.",
+                hours: "4 classrooms per year",
+              },
+              {
+                org: "PaintCare Hawaii Partnership",
+                detail: "147 gallons recycled through Kapolei drop-off since 2021.",
+                hours: "Zero waste to landfill",
+              },
+              {
+                org: "2025 PCA Aloha Chapter Volunteer Project",
+                detail: "Windward Community Center exterior. Full crew, donated materials.",
+                hours: "Weekend build",
+              },
+            ].map((c) => (
+              <div
+                key={c.org}
                 style={{
-                  width: "4px",
-                  height: "4px",
-                  background: "var(--color-accent)",
-                  flexShrink: 0,
-                  opacity: 0.6,
+                  background: "var(--color-surface)",
+                  padding: "1.25rem",
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "0.375rem",
                 }}
-              />
-              {item}
-            </span>
-          ))}
+              >
+                <span
+                  style={{
+                    fontFamily: "var(--font-heading)",
+                    fontWeight: 700,
+                    textTransform: "uppercase",
+                    fontSize: "0.78rem",
+                    letterSpacing: "0.06em",
+                    color: "var(--color-text)",
+                  }}
+                >
+                  {c.org}
+                </span>
+                <p style={{ fontSize: "0.82rem", color: "var(--color-text-muted)", lineHeight: 1.5 }}>
+                  {c.detail}
+                </p>
+                <span
+                  style={{
+                    fontFamily: "var(--font-accent)",
+                    fontSize: "0.62rem",
+                    fontWeight: 600,
+                    textTransform: "uppercase",
+                    letterSpacing: "0.14em",
+                    color: "var(--color-accent)",
+                    marginTop: "0.25rem",
+                  }}
+                >
+                  {c.hours}
+                </span>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -2079,6 +2179,23 @@ export default function Home() {
                 <span style={{ fontSize: "0.78rem", color: "var(--color-text-muted)", marginTop: "0.25rem", display: "block" }}>
                   {t.detail}
                 </span>
+                {t.followUp && (
+                  <span
+                    style={{
+                      display: "block",
+                      marginTop: "0.5rem",
+                      fontSize: "0.75rem",
+                      fontStyle: "italic",
+                      color: "var(--color-text-muted)",
+                      lineHeight: 1.5,
+                      borderLeft: "2px solid var(--color-accent)",
+                      paddingLeft: "0.625rem",
+                      opacity: 0.75,
+                    }}
+                  >
+                    {t.followUp}
+                  </span>
+                )}
               </div>
             </div>
           ))}
