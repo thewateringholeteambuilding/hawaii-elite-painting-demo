@@ -735,6 +735,58 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ── LUXURY COVERAGE STRIP ── */}
+      <section
+        style={{
+          background: "var(--color-surface)",
+          borderBottom: "1px solid var(--color-border)",
+          padding: "1.25rem 1.5rem",
+        }}
+      >
+        <div
+          style={{
+            maxWidth: "1280px",
+            margin: "0 auto",
+            display: "flex",
+            alignItems: "center",
+            gap: "1rem",
+            justifyContent: "center",
+            flexWrap: "wrap",
+          }}
+        >
+          <span
+            style={{
+              fontFamily: "var(--font-accent)",
+              fontSize: "0.62rem",
+              fontWeight: 600,
+              textTransform: "uppercase",
+              letterSpacing: "0.2em",
+              color: "var(--color-accent)",
+            }}
+          >
+            Insurance
+          </span>
+          <span
+            style={{
+              width: "1px",
+              height: "16px",
+              background: "var(--color-border)",
+            }}
+          />
+          <span
+            style={{
+              fontSize: "0.82rem",
+              color: "var(--color-text-muted)",
+              lineHeight: 1.4,
+            }}
+          >
+            General Liability · Workers Comp · Luxury Property Rider up to $5M.
+            Your $2M Portlock home or $800k Kailua bungalow is fully covered
+            while we work.
+          </span>
+        </div>
+      </section>
+
       {/* ── CREW TRUST STRIP ── */}
       <section
         style={{
@@ -1929,6 +1981,219 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ── COLOR VISUALIZER CALLOUT ── */}
+      <section
+        style={{
+          background: "var(--color-surface)",
+          borderTop: "1px solid var(--color-border)",
+          borderBottom: "1px solid var(--color-border)",
+          padding: "1.5rem",
+        }}
+      >
+        <div
+          style={{
+            maxWidth: "1280px",
+            margin: "0 auto",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            flexWrap: "wrap",
+            gap: "1rem",
+          }}
+        >
+          <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
+            <div
+              style={{
+                display: "flex",
+                gap: "3px",
+              }}
+            >
+              {["hsl(38 85% 55%)", "hsl(220 45% 35%)", "hsl(160 30% 40%)", "hsl(15 60% 50%)"].map(
+                (c) => (
+                  <div
+                    key={c}
+                    style={{
+                      width: "12px",
+                      height: "24px",
+                      background: c,
+                    }}
+                  />
+                )
+              )}
+            </div>
+            <div>
+              <span
+                style={{
+                  display: "block",
+                  fontFamily: "var(--font-heading)",
+                  fontWeight: 700,
+                  textTransform: "uppercase",
+                  fontSize: "0.78rem",
+                  letterSpacing: "0.04em",
+                  color: "var(--color-text)",
+                  lineHeight: 1.2,
+                }}
+              >
+                Not sure on the color?
+              </span>
+              <span
+                style={{
+                  fontSize: "0.78rem",
+                  color: "var(--color-text-muted)",
+                  lineHeight: 1.4,
+                }}
+              >
+                We spec Benjamin Moore Regal for interiors and Sherwin-Williams
+                Duration for exteriors. Try the Benjamin Moore Color Visualizer
+                before your estimate.
+              </span>
+            </div>
+          </div>
+          <a
+            href="https://www.benjaminmoore.com/color-selection-tools"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-outline"
+            style={{ fontSize: "0.7rem", whiteSpace: "nowrap" }}
+          >
+            Explore Colors →
+          </a>
+        </div>
+      </section>
+
+      {/* ── THE PREP-FIRST PROCESS ── */}
+      <section
+        style={{
+          background: "var(--color-bg)",
+          borderTop: "1px solid var(--color-border)",
+          padding: "var(--space-block) 1.5rem",
+        }}
+      >
+        <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
+          <span className="section-label" style={{ display: "block", marginBottom: "0.5rem" }}>
+            How Every Job Runs
+          </span>
+          <h2
+            style={{
+              fontFamily: "var(--font-heading)",
+              fontWeight: 700,
+              textTransform: "uppercase",
+              fontSize: "clamp(1.25rem, 2vw, 1.75rem)",
+              lineHeight: 0.95,
+              color: "var(--color-text)",
+              marginBottom: "2rem",
+            }}
+          >
+            The Prep-First{" "}
+            <span style={{ color: "var(--color-accent)" }}>Process</span>
+          </h2>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "1fr",
+              gap: "0",
+            }}
+            className="md:grid-cols-4"
+          >
+            {[
+              {
+                step: "01",
+                title: "Walk-Through & Scope",
+                detail:
+                  "We measure every wall, photograph every surface, and write a line-item scope you sign before we open a can.",
+                timeline: "Day 0",
+              },
+              {
+                step: "02",
+                title: "Prep & Protect",
+                detail:
+                  "Furniture moved. Floors masked. Holes patched, caulk laid, surfaces sanded. 70% of the job happens before paint touches a wall.",
+                timeline: "Day 1",
+              },
+              {
+                step: "03",
+                title: "Paint & Inspect",
+                detail:
+                  "Two coats minimum on every surface. Foreman inspects each room against the scope before calling it done.",
+                timeline: "Days 2-3",
+              },
+              {
+                step: "04",
+                title: "Walk-Through & Warranty",
+                detail:
+                  "Final walk-through with you. Touch-ups on the spot. Warranty card on file. We call at 6 and 12 months.",
+                timeline: "Final day",
+              },
+            ].map((s, i) => (
+              <div
+                key={s.step}
+                style={{
+                  padding: "1.5rem",
+                  borderRight:
+                    i < 3 ? "1px solid var(--color-border)" : "none",
+                  borderBottom: "1px solid var(--color-border)",
+                  position: "relative",
+                }}
+              >
+                <span
+                  style={{
+                    fontFamily: "var(--font-heading)",
+                    fontWeight: 700,
+                    fontSize: "2rem",
+                    color: "var(--color-accent)",
+                    lineHeight: 1,
+                    opacity: 0.3,
+                    position: "absolute",
+                    top: "1rem",
+                    right: "1rem",
+                  }}
+                >
+                  {s.step}
+                </span>
+                <span
+                  style={{
+                    display: "block",
+                    fontFamily: "var(--font-accent)",
+                    fontSize: "0.6rem",
+                    fontWeight: 600,
+                    textTransform: "uppercase",
+                    letterSpacing: "0.2em",
+                    color: "var(--color-accent)",
+                    marginBottom: "0.5rem",
+                  }}
+                >
+                  {s.timeline}
+                </span>
+                <span
+                  style={{
+                    display: "block",
+                    fontFamily: "var(--font-heading)",
+                    fontWeight: 700,
+                    textTransform: "uppercase",
+                    fontSize: "0.82rem",
+                    letterSpacing: "0.04em",
+                    color: "var(--color-text)",
+                    lineHeight: 1.2,
+                    marginBottom: "0.625rem",
+                  }}
+                >
+                  {s.title}
+                </span>
+                <p
+                  style={{
+                    fontSize: "0.82rem",
+                    color: "var(--color-text-muted)",
+                    lineHeight: 1.6,
+                  }}
+                >
+                  {s.detail}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ── WHY US ── */}
       <section
         style={{
@@ -2034,6 +2299,103 @@ export default function Home() {
               </li>
             ))}
           </ul>
+        </div>
+      </section>
+
+      {/* ── WHERE WE PAINT ON OAHU ── */}
+      <section
+        style={{
+          background: "var(--color-surface)",
+          borderTop: "1px solid var(--color-border)",
+          borderBottom: "1px solid var(--color-border)",
+          padding: "2rem 1.5rem",
+        }}
+      >
+        <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "baseline",
+              justifyContent: "space-between",
+              flexWrap: "wrap",
+              gap: "0.75rem",
+              marginBottom: "1.25rem",
+            }}
+          >
+            <h2
+              style={{
+                fontFamily: "var(--font-heading)",
+                fontWeight: 700,
+                textTransform: "uppercase",
+                fontSize: "clamp(1rem, 1.5vw, 1.25rem)",
+                letterSpacing: "0.04em",
+                color: "var(--color-text)",
+                lineHeight: 1.1,
+              }}
+            >
+              Where We Paint on{" "}
+              <span style={{ color: "var(--color-accent)" }}>Oahu</span>
+            </h2>
+            <span
+              style={{
+                fontFamily: "var(--font-accent)",
+                fontSize: "0.68rem",
+                fontWeight: 600,
+                textTransform: "uppercase",
+                letterSpacing: "0.14em",
+                color: "var(--color-text-muted)",
+              }}
+            >
+              Serving the full island since 2012
+            </span>
+          </div>
+          <div
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              gap: "0.5rem",
+            }}
+          >
+            {[
+              "Honolulu",
+              "Kailua",
+              "Kaneohe",
+              "Manoa",
+              "Hawaii Kai",
+              "Portlock",
+              "Pearl City",
+              "Kapolei",
+              "Ko Olina",
+              "Mililani",
+              "Ewa Beach",
+              "North Shore",
+            ].map((area) => (
+              <span
+                key={area}
+                style={{
+                  border: "1px solid var(--color-border)",
+                  padding: "0.5rem 1rem",
+                  fontFamily: "var(--font-accent)",
+                  fontSize: "0.72rem",
+                  fontWeight: 600,
+                  textTransform: "uppercase",
+                  letterSpacing: "0.12em",
+                  color: "var(--color-text-muted)",
+                  transition: "border-color 200ms ease, color 200ms ease",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.borderColor = "var(--color-accent)";
+                  e.currentTarget.style.color = "var(--color-accent)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.borderColor = "var(--color-border)";
+                  e.currentTarget.style.color = "var(--color-text-muted)";
+                }}
+              >
+                {area}
+              </span>
+            ))}
+          </div>
         </div>
       </section>
 

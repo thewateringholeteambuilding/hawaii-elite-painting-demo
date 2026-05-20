@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { Menu, X, PaintBucket } from "lucide-react";
+import { Menu, X, PaintBucket, Phone } from "lucide-react";
 
 const NAV_LINKS = [
   { label: "Home", href: "/" },
@@ -133,6 +133,26 @@ export default function Navbar() {
               {link.label}
             </button>
           ))}
+          <a
+            href="tel:+18085550192"
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "0.375rem",
+              color: "var(--color-text-muted)",
+              fontSize: "0.78rem",
+              fontFamily: "var(--font-accent)",
+              fontWeight: 600,
+              textDecoration: "none",
+              letterSpacing: "0.04em",
+              transition: "color 200ms ease",
+            }}
+            onMouseEnter={(e) => (e.currentTarget.style.color = "var(--color-accent)")}
+            onMouseLeave={(e) => (e.currentTarget.style.color = "var(--color-text-muted)")}
+          >
+            <Phone size={13} />
+            (808) 555-0192
+          </a>
           <Link to="/contact" className="btn-primary" style={{ fontSize: "0.7rem", padding: "0.7rem 1.25rem" }}>
             Free Estimate
           </Link>
@@ -194,6 +214,29 @@ export default function Navbar() {
               </li>
             ))}
             <li style={{ marginTop: "1rem" }}>
+              <a
+                href="tel:+18085550192"
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  gap: "0.5rem",
+                  padding: "0.75rem",
+                  border: "1px solid var(--color-border)",
+                  color: "var(--color-text)",
+                  fontFamily: "var(--font-accent)",
+                  fontWeight: 600,
+                  fontSize: "0.85rem",
+                  letterSpacing: "0.06em",
+                  textDecoration: "none",
+                  marginBottom: "0.75rem",
+                }}
+              >
+                <Phone size={14} style={{ color: "var(--color-accent)" }} />
+                (808) 555-0192
+              </a>
+            </li>
+            <li>
               <Link
                 to="/contact"
                 className="btn-primary"
