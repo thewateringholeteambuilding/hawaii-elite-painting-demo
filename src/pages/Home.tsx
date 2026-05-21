@@ -17,6 +17,7 @@ const SERVICES_TEASER = [
     desc: "Walls, ceilings, trim, and cabinetry. Specialty finishes available: limewash, Venetian plaster, roman clay.",
     idealFor: "Homeowners refreshing rooms, preparing for sale, or moving in.",
     startingAt: "From $1,800",
+    ratePer: "$2.80–$4.50/sq ft · based on 175 sq ft avg room",
     img: "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&w=600&q=75",
     alt: "Interior painting in progress",
   },
@@ -26,6 +27,7 @@ const SERVICES_TEASER = [
     desc: "Weather-rated coatings built for Hawaii's sun, salt air, and heavy rain.",
     idealFor: "Homeowners with fading, peeling, or chalking exterior coatings.",
     startingAt: "From $4,500",
+    ratePer: "$3.50–$6.00/sq ft · varies by siding type and sun exposure",
     img: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=600&q=75",
     alt: "Exterior house painting",
   },
@@ -35,6 +37,7 @@ const SERVICES_TEASER = [
     desc: "Patch, skim, sand, prime. Invisible repairs before we roll a single drop of paint.",
     idealFor: "Homes with water damage, cracks, or holes before a repaint.",
     startingAt: "From $400",
+    ratePer: "$8–$15/sq ft of damaged area · most patches under $600",
     img: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=600&q=75",
     alt: "Drywall repair and finishing",
   },
@@ -44,6 +47,7 @@ const SERVICES_TEASER = [
     desc: "Strip, sand, stain, seal. Decks that take the sun beating without cracking or peeling.",
     idealFor: "Homeowners with graying, splintering, or peeling deck surfaces.",
     startingAt: "From $1,200",
+    ratePer: "$4–$7/sq ft · strip + sand + 2 coats · 200 sq ft avg deck",
     img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=75",
     alt: "Deck refinishing and staining",
   },
@@ -53,6 +57,7 @@ const SERVICES_TEASER = [
     desc: "Cabinet painting, new hardware, tile work, countertop coordination. Full kitchen refresh without a full demo.",
     idealFor: "Homeowners who want a new kitchen look without $40k+ gut renovation.",
     startingAt: "From $3,200",
+    ratePer: "$120–$180/cabinet door · avg kitchen 20–30 doors",
     img: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=600&q=75",
     alt: "Kitchen cabinet painting and remodeling",
   },
@@ -62,6 +67,7 @@ const SERVICES_TEASER = [
     desc: "Tile, paint, fixtures, and finish work. We coordinate trades so you get one crew, one timeline.",
     idealFor: "Homeowners updating tile, vanities, or dealing with mildew-prone surfaces.",
     startingAt: "From $2,800",
+    ratePer: "$45–$65/sq ft · tile + paint + fixtures · avg bath 40–60 sq ft",
     img: "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?auto=format&fit=crop&w=600&q=75",
     alt: "Bathroom renovation and tile work",
   },
@@ -126,7 +132,7 @@ const FAQ_ITEMS = [
   },
   {
     q: "What does a typical project cost?",
-    a: "A single-room interior repaint starts around $1,800-$2,500 depending on ceiling height, trim detail, and prep work. Full interior for a 3-bedroom home runs $5,500-$8,000. Exterior repaints range from $4,500 for a single-story to $9,000+ for two-story homes with extensive wood trim. Cabinet refinishing averages $3,200-$5,500 per kitchen. Every number depends on condition and scope, which is why the walk-through matters.",
+    a: "Interior rooms run $2.80–$4.50/sq ft (roughly $490–$790 per room, assuming 175 sq ft walls). A 3-bedroom full interior: $5,500–$8,000. Exterior single-story: $4,500–$6,500 ($3.50–$6.00/sq ft depending on siding). Two-story with wood trim: $7,000–$9,000+. Cabinet refinishing: $3,200–$5,500 per kitchen ($120–$180 per door, average kitchen has 20–30 doors). These are 2026 Oahu rates. Surface condition, access, and coating choice shift the number. Walk-through required for a real quote.",
   },
 ];
 
@@ -242,6 +248,241 @@ function FaqSection() {
               </div>
             );
           })}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+const ESTIMATE_PROJECTS = [
+  { label: "Interior (per room)", baseLow: 490, baseHigh: 790, unit: "room" },
+  { label: "Exterior (whole house)", baseLow: 4500, baseHigh: 9000, unit: "project" },
+  { label: "Kitchen cabinets", baseLow: 3200, baseHigh: 5500, unit: "project" },
+  { label: "Deck refinishing", baseLow: 1200, baseHigh: 2800, unit: "project" },
+  { label: "Drywall repair", baseLow: 400, baseHigh: 1200, unit: "project" },
+  { label: "Bathroom remodel", baseLow: 2800, baseHigh: 6500, unit: "project" },
+];
+
+const CONDITION_MULT: Record<string, number> = {
+  good: 0.85,
+  average: 1.0,
+  rough: 1.25,
+};
+
+function QuickEstimateCalculator() {
+  const [projectIdx, setProjectIdx] = useState(0);
+  const [quantity, setQuantity] = useState(1);
+  const [condition, setCondition] = useState("average");
+
+  const project = ESTIMATE_PROJECTS[projectIdx];
+  const mult = CONDITION_MULT[condition];
+  const low = Math.round(project.baseLow * quantity * mult);
+  const high = Math.round(project.baseHigh * quantity * mult);
+
+  return (
+    <section
+      style={{
+        background: "var(--color-bg)",
+        borderTop: "1px solid var(--color-border)",
+        borderBottom: "1px solid var(--color-border)",
+        padding: "var(--space-block) 1.5rem",
+      }}
+    >
+      <div style={{ maxWidth: "720px", margin: "0 auto" }}>
+        <span className="section-label" style={{ display: "block", marginBottom: "0.75rem" }}>
+          Quick Estimate
+        </span>
+        <h2
+          style={{
+            fontFamily: "var(--font-heading)",
+            fontWeight: 700,
+            textTransform: "uppercase",
+            fontSize: "clamp(1.25rem, 2vw, 1.75rem)",
+            lineHeight: 0.95,
+            color: "var(--color-text)",
+            marginBottom: "0.5rem",
+          }}
+        >
+          What Will It <span style={{ color: "var(--color-accent)" }}>Cost?</span>
+        </h2>
+        <p
+          style={{
+            color: "var(--color-text-muted)",
+            fontSize: "0.85rem",
+            lineHeight: 1.6,
+            marginBottom: "2rem",
+            maxWidth: "480px",
+          }}
+        >
+          Ballpark range based on 2026 Oahu market rates. Your actual quote depends on
+          surface condition, access, and coating spec. Walk-through required for a real number.
+        </p>
+
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "1fr",
+            gap: "1rem",
+          }}
+          className="md:grid-cols-3"
+        >
+          {/* Project type */}
+          <div style={{ display: "flex", flexDirection: "column", gap: "0.375rem" }}>
+            <label
+              style={{
+                fontFamily: "var(--font-accent)",
+                fontSize: "0.62rem",
+                fontWeight: 600,
+                textTransform: "uppercase",
+                letterSpacing: "0.14em",
+                color: "var(--color-accent)",
+              }}
+            >
+              Project Type
+            </label>
+            <select
+              value={projectIdx}
+              onChange={(e) => {
+                setProjectIdx(Number(e.target.value));
+                setQuantity(1);
+              }}
+              style={{
+                background: "var(--color-surface)",
+                border: "1px solid var(--color-border)",
+                color: "var(--color-text)",
+                padding: "0.625rem 0.875rem",
+                fontFamily: "var(--font-body)",
+                fontSize: "0.85rem",
+                appearance: "auto",
+              }}
+            >
+              {ESTIMATE_PROJECTS.map((p, i) => (
+                <option key={i} value={i}>{p.label}</option>
+              ))}
+            </select>
+          </div>
+
+          {/* Quantity */}
+          <div style={{ display: "flex", flexDirection: "column", gap: "0.375rem" }}>
+            <label
+              style={{
+                fontFamily: "var(--font-accent)",
+                fontSize: "0.62rem",
+                fontWeight: 600,
+                textTransform: "uppercase",
+                letterSpacing: "0.14em",
+                color: "var(--color-accent)",
+              }}
+            >
+              {project.unit === "room" ? "Number of Rooms" : "Projects"}
+            </label>
+            <select
+              value={quantity}
+              onChange={(e) => setQuantity(Number(e.target.value))}
+              style={{
+                background: "var(--color-surface)",
+                border: "1px solid var(--color-border)",
+                color: "var(--color-text)",
+                padding: "0.625rem 0.875rem",
+                fontFamily: "var(--font-body)",
+                fontSize: "0.85rem",
+                appearance: "auto",
+              }}
+            >
+              {[1, 2, 3, 4, 5, 6, 7, 8].map((n) => (
+                <option key={n} value={n}>{n}</option>
+              ))}
+            </select>
+          </div>
+
+          {/* Condition */}
+          <div style={{ display: "flex", flexDirection: "column", gap: "0.375rem" }}>
+            <label
+              style={{
+                fontFamily: "var(--font-accent)",
+                fontSize: "0.62rem",
+                fontWeight: 600,
+                textTransform: "uppercase",
+                letterSpacing: "0.14em",
+                color: "var(--color-accent)",
+              }}
+            >
+              Surface Condition
+            </label>
+            <select
+              value={condition}
+              onChange={(e) => setCondition(e.target.value)}
+              style={{
+                background: "var(--color-surface)",
+                border: "1px solid var(--color-border)",
+                color: "var(--color-text)",
+                padding: "0.625rem 0.875rem",
+                fontFamily: "var(--font-body)",
+                fontSize: "0.85rem",
+                appearance: "auto",
+              }}
+            >
+              <option value="good">Good (minor touch-up)</option>
+              <option value="average">Average (standard prep)</option>
+              <option value="rough">Rough (heavy prep/repair)</option>
+            </select>
+          </div>
+        </div>
+
+        {/* Result */}
+        <div
+          style={{
+            marginTop: "1.5rem",
+            padding: "1.25rem",
+            background: "var(--color-surface)",
+            border: "1px solid var(--color-border)",
+            display: "flex",
+            flexDirection: "column",
+            gap: "0.5rem",
+          }}
+        >
+          <span
+            style={{
+              fontFamily: "var(--font-accent)",
+              fontSize: "0.62rem",
+              fontWeight: 600,
+              textTransform: "uppercase",
+              letterSpacing: "0.14em",
+              color: "var(--color-accent)",
+            }}
+          >
+            Estimated Range
+          </span>
+          <div style={{ display: "flex", alignItems: "baseline", gap: "0.5rem" }}>
+            <span
+              style={{
+                fontFamily: "var(--font-heading)",
+                fontWeight: 700,
+                fontSize: "clamp(1.5rem, 2.5vw, 2rem)",
+                color: "var(--color-text)",
+                lineHeight: 1,
+              }}
+            >
+              ${low.toLocaleString()} – ${high.toLocaleString()}
+            </span>
+          </div>
+          <span
+            style={{
+              fontSize: "0.72rem",
+              color: "var(--color-text-muted)",
+              lineHeight: 1.5,
+            }}
+          >
+            Based on {quantity} {project.unit}{quantity > 1 ? "s" : ""}, {condition} condition.
+            Actual quote requires a walk-through. Call for a 24-hour written estimate.
+          </span>
+          <Link
+            to="/contact"
+            className="btn-primary"
+            style={{ alignSelf: "flex-start", marginTop: "0.5rem" }}
+          >
+            Get Real Quote <ArrowRight size={14} />
+          </Link>
         </div>
       </div>
     </section>
@@ -612,11 +853,11 @@ export default function Home() {
             { label: "Google 4.8 ★ · 47 Reviews", category: "rating" },
             { label: "Best of Houzz 2023, 2024, 2025", category: "award" },
             { label: "2024 PCA Image Award · Residential Exterior", category: "award" },
-            { label: "Licensed Hawaii Contractor · CT-35891", category: "trade" },
-            { label: "Fully Insured · GL + Workers Comp", category: "trade" },
-            { label: "EPA Lead-Safe Certified · NAT-F217946-1", category: "trade" },
-            { label: "Background Checked Crew", category: "trust" },
-            { label: "Written Warranties on Every Job", category: "trust" },
+            { label: "Licensed Hawaii Contractor · CT-35891 — on file", category: "trade" },
+            { label: "GL + Workers Comp — on file with every estimate", category: "trade" },
+            { label: "EPA Lead-Safe Certified · NAT-F217946-1 — verifiable", category: "trade" },
+            { label: "Background Checked Crew — cleared before first job", category: "trust" },
+            { label: "Written Warranties — copy included with every scope", category: "trust" },
           ].map((badge) => (
             <div
               key={badge.label}
@@ -1328,12 +1569,17 @@ export default function Home() {
               >
                 {SERVICES_TEASER[0].desc}
               </p>
-              <div style={{ display: "flex", gap: "1.5rem", marginTop: "0.5rem", alignItems: "baseline" }}>
-                <span style={{ fontSize: "0.72rem", fontFamily: "var(--font-accent)", textTransform: "uppercase", letterSpacing: "0.12em", color: "var(--color-accent)" }}>
-                  {SERVICES_TEASER[0].startingAt}
-                </span>
-                <span style={{ fontSize: "0.68rem", fontFamily: "var(--font-accent)", textTransform: "uppercase", letterSpacing: "0.1em", color: "hsl(40 30% 92% / 0.5)" }}>
-                  Ideal for: {SERVICES_TEASER[0].idealFor}
+              <div style={{ display: "flex", flexDirection: "column", gap: "0.25rem", marginTop: "0.5rem" }}>
+                <div style={{ display: "flex", gap: "1.5rem", alignItems: "baseline" }}>
+                  <span style={{ fontSize: "0.72rem", fontFamily: "var(--font-accent)", textTransform: "uppercase", letterSpacing: "0.12em", color: "var(--color-accent)" }}>
+                    {SERVICES_TEASER[0].startingAt}
+                  </span>
+                  <span style={{ fontSize: "0.68rem", fontFamily: "var(--font-accent)", textTransform: "uppercase", letterSpacing: "0.1em", color: "hsl(40 30% 92% / 0.5)" }}>
+                    Ideal for: {SERVICES_TEASER[0].idealFor}
+                  </span>
+                </div>
+                <span style={{ fontSize: "0.62rem", fontFamily: "var(--font-body)", letterSpacing: "0.02em", color: "hsl(40 30% 92% / 0.4)", fontStyle: "italic" }}>
+                  {SERVICES_TEASER[0].ratePer}
                 </span>
               </div>
             </div>
@@ -1387,12 +1633,17 @@ export default function Home() {
               <p style={{ color: "hsl(40 30% 92% / 0.75)", fontSize: "0.85rem", lineHeight: 1.5 }}>
                 {SERVICES_TEASER[1].desc}
               </p>
-              <div style={{ display: "flex", gap: "1rem", marginTop: "0.375rem", alignItems: "baseline" }}>
-                <span style={{ fontSize: "0.68rem", fontFamily: "var(--font-accent)", textTransform: "uppercase", letterSpacing: "0.12em", color: "var(--color-accent)" }}>
-                  {SERVICES_TEASER[1].startingAt}
-                </span>
-                <span style={{ fontSize: "0.62rem", fontFamily: "var(--font-accent)", textTransform: "uppercase", letterSpacing: "0.1em", color: "hsl(40 30% 92% / 0.5)" }}>
-                  Ideal for: {SERVICES_TEASER[1].idealFor}
+              <div style={{ display: "flex", flexDirection: "column", gap: "0.25rem", marginTop: "0.375rem" }}>
+                <div style={{ display: "flex", gap: "1rem", alignItems: "baseline" }}>
+                  <span style={{ fontSize: "0.68rem", fontFamily: "var(--font-accent)", textTransform: "uppercase", letterSpacing: "0.12em", color: "var(--color-accent)" }}>
+                    {SERVICES_TEASER[1].startingAt}
+                  </span>
+                  <span style={{ fontSize: "0.62rem", fontFamily: "var(--font-accent)", textTransform: "uppercase", letterSpacing: "0.1em", color: "hsl(40 30% 92% / 0.5)" }}>
+                    Ideal for: {SERVICES_TEASER[1].idealFor}
+                  </span>
+                </div>
+                <span style={{ fontSize: "0.58rem", fontFamily: "var(--font-body)", letterSpacing: "0.02em", color: "hsl(40 30% 92% / 0.4)", fontStyle: "italic" }}>
+                  {SERVICES_TEASER[1].ratePer}
                 </span>
               </div>
             </div>
@@ -1450,12 +1701,17 @@ export default function Home() {
               <p style={{ color: "var(--color-text-muted)", fontSize: "0.875rem", lineHeight: 1.6 }}>
                 {svc.desc}
               </p>
-              <div style={{ display: "flex", gap: "1rem", marginTop: "0.5rem", alignItems: "baseline" }}>
-                <span style={{ fontSize: "0.72rem", fontFamily: "var(--font-accent)", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.12em", color: "var(--color-accent)" }}>
-                  {svc.startingAt}
-                </span>
-                <span style={{ fontSize: "0.62rem", fontFamily: "var(--font-accent)", textTransform: "uppercase", letterSpacing: "0.1em", color: "var(--color-text-muted)", opacity: 0.7 }}>
-                  Ideal for: {svc.idealFor}
+              <div style={{ display: "flex", flexDirection: "column", gap: "0.25rem", marginTop: "0.5rem" }}>
+                <div style={{ display: "flex", gap: "1rem", alignItems: "baseline" }}>
+                  <span style={{ fontSize: "0.72rem", fontFamily: "var(--font-accent)", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.12em", color: "var(--color-accent)" }}>
+                    {svc.startingAt}
+                  </span>
+                  <span style={{ fontSize: "0.62rem", fontFamily: "var(--font-accent)", textTransform: "uppercase", letterSpacing: "0.1em", color: "var(--color-text-muted)", opacity: 0.7 }}>
+                    Ideal for: {svc.idealFor}
+                  </span>
+                </div>
+                <span style={{ fontSize: "0.6rem", fontFamily: "var(--font-body)", letterSpacing: "0.02em", color: "var(--color-text-muted)", opacity: 0.5, fontStyle: "italic" }}>
+                  {svc.ratePer}
                 </span>
               </div>
             </div>
@@ -1493,18 +1749,148 @@ export default function Home() {
               <p style={{ color: "var(--color-text-muted)", fontSize: "0.875rem", lineHeight: 1.6, maxWidth: "500px" }}>
                 {SERVICES_TEASER[5].desc}
               </p>
-              <div style={{ display: "flex", gap: "1rem", marginTop: "0.375rem", alignItems: "baseline" }}>
-                <span style={{ fontSize: "0.72rem", fontFamily: "var(--font-accent)", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.12em", color: "var(--color-accent)" }}>
-                  {SERVICES_TEASER[5].startingAt}
-                </span>
-                <span style={{ fontSize: "0.62rem", fontFamily: "var(--font-accent)", textTransform: "uppercase", letterSpacing: "0.1em", color: "var(--color-text-muted)", opacity: 0.7 }}>
-                  Ideal for: {SERVICES_TEASER[5].idealFor}
+              <div style={{ display: "flex", flexDirection: "column", gap: "0.25rem", marginTop: "0.375rem" }}>
+                <div style={{ display: "flex", gap: "1rem", alignItems: "baseline" }}>
+                  <span style={{ fontSize: "0.72rem", fontFamily: "var(--font-accent)", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.12em", color: "var(--color-accent)" }}>
+                    {SERVICES_TEASER[5].startingAt}
+                  </span>
+                  <span style={{ fontSize: "0.62rem", fontFamily: "var(--font-accent)", textTransform: "uppercase", letterSpacing: "0.1em", color: "var(--color-text-muted)", opacity: 0.7 }}>
+                    Ideal for: {SERVICES_TEASER[5].idealFor}
+                  </span>
+                </div>
+                <span style={{ fontSize: "0.6rem", fontFamily: "var(--font-body)", letterSpacing: "0.02em", color: "var(--color-text-muted)", opacity: 0.5, fontStyle: "italic" }}>
+                  {SERVICES_TEASER[5].ratePer}
                 </span>
               </div>
             </div>
             <Link to="/services" className="btn-outline" style={{ flexShrink: 0 }}>
               All Services <ArrowRight size={13} />
             </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ── QUICK ESTIMATE CALCULATOR ── */}
+      <QuickEstimateCalculator />
+
+      {/* ── HOW WE PRICE ── */}
+      <section
+        style={{
+          background: "var(--color-surface)",
+          borderTop: "1px solid var(--color-border)",
+          borderBottom: "1px solid var(--color-border)",
+          padding: "2rem 1.5rem",
+        }}
+      >
+        <div
+          style={{
+            maxWidth: "1280px",
+            margin: "0 auto",
+          }}
+        >
+          <div style={{ display: "flex", alignItems: "center", gap: "1rem", marginBottom: "1.25rem", flexWrap: "wrap" }}>
+            <span
+              style={{
+                fontFamily: "var(--font-accent)",
+                fontSize: "0.62rem",
+                fontWeight: 600,
+                textTransform: "uppercase",
+                letterSpacing: "0.2em",
+                color: "var(--color-accent)",
+              }}
+            >
+              How We Price
+            </span>
+            <span style={{ width: "1px", height: "14px", background: "var(--color-border)" }} />
+            <span
+              style={{
+                fontFamily: "var(--font-heading)",
+                fontWeight: 700,
+                textTransform: "uppercase",
+                fontSize: "0.82rem",
+                letterSpacing: "0.06em",
+                color: "var(--color-text)",
+              }}
+            >
+              The Math Behind Every Quote
+            </span>
+          </div>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "1fr",
+              gap: "1px",
+              background: "var(--color-border)",
+            }}
+            className="md:grid-cols-4"
+          >
+            {[
+              {
+                step: "01",
+                label: "Measure",
+                detail: "We measure every surface in square feet. Walls, ceilings, trim, doors counted separately. No lump sums.",
+              },
+              {
+                step: "02",
+                label: "Rate × Condition",
+                detail: "Base rate per sq ft ($2.80–$6.00 depending on surface type) multiplied by condition factor. Heavy prep costs more than a clean recoat.",
+              },
+              {
+                step: "03",
+                label: "Materials Spec",
+                detail: "Coating manufacturer and product line priced at cost plus 15%. You see the brand, the product code, and the gallon count.",
+              },
+              {
+                step: "04",
+                label: "Timeline",
+                detail: "Quote includes start date, calendar day count, and crew size. Summer books 3–4 weeks out. Winter: 1–2 weeks.",
+              },
+            ].map((item) => (
+              <div
+                key={item.step}
+                style={{
+                  background: "var(--color-bg)",
+                  padding: "1.25rem",
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "0.5rem",
+                }}
+              >
+                <span
+                  style={{
+                    fontFamily: "var(--font-heading)",
+                    fontWeight: 700,
+                    fontSize: "1.25rem",
+                    color: "var(--color-accent)",
+                    opacity: 0.25,
+                    lineHeight: 1,
+                  }}
+                >
+                  {item.step}
+                </span>
+                <span
+                  style={{
+                    fontFamily: "var(--font-heading)",
+                    fontWeight: 700,
+                    textTransform: "uppercase",
+                    fontSize: "0.78rem",
+                    letterSpacing: "0.06em",
+                    color: "var(--color-text)",
+                  }}
+                >
+                  {item.label}
+                </span>
+                <p
+                  style={{
+                    fontSize: "0.8rem",
+                    color: "var(--color-text-muted)",
+                    lineHeight: 1.55,
+                  }}
+                >
+                  {item.detail}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
