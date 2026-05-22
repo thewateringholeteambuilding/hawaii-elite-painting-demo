@@ -110,11 +110,16 @@ export default function About() {
               }}
             >
               <p>
-                We started this company because we kept seeing the same thing: mainland coatings
-                failing in two years on Oahu homes. Do that math. In 10 years, that's four
-                repaints and eight coats stacked on your siding. The primers aren't rated for
-                our UV load. The timelines don't account for humidity cycling. The spec sheets
-                assume a climate that doesn't exist here.
+                In 2012, a crew repainted a house on Aukai Ave in Kailua. Sherwin-Williams
+                SuperPaint, two coats, by the book. Fourteen months later the south-facing
+                wall was chalking. The homeowner called. The crew came back. That was the
+                moment: mainland coatings fail here because the specs assume a climate that
+                doesn't exist on this island.
+              </p>
+              <p>
+                Do that math. In 10 years, that's four repaints and eight coats stacked
+                on your siding. The primers aren't rated for our UV load. The timelines don't
+                account for humidity cycling. We built this company to fix that cycle.
               </p>
               <p>
                 So we built our process around island conditions. Every exterior starts with a

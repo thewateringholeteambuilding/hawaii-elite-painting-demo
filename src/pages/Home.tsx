@@ -81,6 +81,7 @@ const TESTIMONIALS = [
     quoteAfter: ". Neighbors thought we moved.",
     name: "Marcus T.",
     role: "Homeowner | Kailua Beachside",
+    source: "via Google Reviews",
     detail: "Exterior repaint · Crew: Jason & Mike · November 2024",
     followUp: "They called us at 6 months to check if the south-facing wall was holding. It was.",
     stars: 5,
@@ -92,6 +93,7 @@ const TESTIMONIALS = [
     quoteAfter: " pricing, no guessing. He even flagged a water stain behind the dresser we hadn't noticed.",
     name: "Lynn H.",
     role: "Homeowner | Manoa Valley",
+    source: "via Yelp",
     detail: "Interior + drywall repair · Foreman: Derek · February 2025",
     followUp: "House sold in 9 days. Agent said the paint job was the first thing buyers mentioned.",
     stars: 5,
@@ -103,6 +105,7 @@ const TESTIMONIALS = [
     quoteAfter: ".",
     name: "Ray & Suki F.",
     role: "Vacation Rental Owners | Pearl City",
+    source: "via Nextdoor referral",
     detail: "Cabinet refinishing · Crew: Kai & Brandon · March 2025",
     followUp: "Guests started commenting on the kitchen in reviews within two weeks of relisting.",
     stars: 5,
@@ -559,7 +562,7 @@ export default function Home() {
               lineHeight: 1.4,
             }}
           >
-            24-hour quotes. Start in 5 business days.
+            24-hour quotes · (808) 555-0192 · Start in 5 business days
           </span>
 
           <p
@@ -2785,6 +2788,147 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ── BEFORE & AFTER ── */}
+      <section
+        style={{
+          background: "var(--color-surface)",
+          borderTop: "1px solid var(--color-border)",
+          borderBottom: "1px solid var(--color-border)",
+          padding: "var(--space-section) 1.5rem",
+        }}
+      >
+        <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
+          <span className="section-label" style={{ display: "block", marginBottom: "1rem" }}>
+            The Difference
+          </span>
+          <h2
+            style={{
+              fontSize: "var(--text-h2)",
+              fontFamily: "var(--font-heading)",
+              fontWeight: 700,
+              textTransform: "uppercase",
+              lineHeight: 0.92,
+              color: "var(--color-text)",
+              marginBottom: "2.5rem",
+            }}
+          >
+            Before <span style={{ color: "var(--color-accent)" }}>&amp; After</span>
+          </h2>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "1fr",
+              gap: "2rem",
+            }}
+            className="md:grid-cols-2"
+          >
+            {[
+              {
+                label: "Kailua Beachside Exterior",
+                detail: "Sherwin-Williams Duration, 2 coats over full sand + prime. South-facing wall had chalking and UV peel from 6 years of direct exposure.",
+                before: "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=600&q=75",
+                after: "https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=600&q=75",
+              },
+              {
+                label: "Pearl City Cabinet Refinishing",
+                detail: "Factory-satin spray finish on 26 doors. Owners saved $18k over full cabinet replacement. Completed in 5 working days.",
+                before: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=600&q=75",
+                after: "https://images.unsplash.com/photo-1556909172-54557c7e4fb7?auto=format&fit=crop&w=600&q=75",
+              },
+            ].map((project) => (
+              <div key={project.label}>
+                <div
+                  style={{
+                    display: "grid",
+                    gridTemplateColumns: "1fr 1fr",
+                    gap: "0.5rem",
+                    marginBottom: "1rem",
+                  }}
+                >
+                  <div style={{ position: "relative" }}>
+                    <img
+                      src={project.before}
+                      alt={`Before: ${project.label}`}
+                      loading="lazy"
+                      width={600}
+                      height={400}
+                      style={{ width: "100%", height: "200px", objectFit: "cover", display: "block" }}
+                    />
+                    <span
+                      style={{
+                        position: "absolute",
+                        top: "0.5rem",
+                        left: "0.5rem",
+                        background: "hsl(220 45% 7% / 0.8)",
+                        padding: "0.25rem 0.625rem",
+                        fontFamily: "var(--font-accent)",
+                        fontSize: "0.6rem",
+                        fontWeight: 700,
+                        textTransform: "uppercase",
+                        letterSpacing: "0.14em",
+                        color: "var(--color-text-muted)",
+                      }}
+                    >
+                      Before
+                    </span>
+                  </div>
+                  <div style={{ position: "relative" }}>
+                    <img
+                      src={project.after}
+                      alt={`After: ${project.label}`}
+                      loading="lazy"
+                      width={600}
+                      height={400}
+                      style={{ width: "100%", height: "200px", objectFit: "cover", display: "block" }}
+                    />
+                    <span
+                      style={{
+                        position: "absolute",
+                        top: "0.5rem",
+                        left: "0.5rem",
+                        background: "hsl(38 85% 55%)",
+                        padding: "0.25rem 0.625rem",
+                        fontFamily: "var(--font-accent)",
+                        fontSize: "0.6rem",
+                        fontWeight: 700,
+                        textTransform: "uppercase",
+                        letterSpacing: "0.14em",
+                        color: "hsl(220 45% 7%)",
+                      }}
+                    >
+                      After
+                    </span>
+                  </div>
+                </div>
+                <h3
+                  style={{
+                    fontFamily: "var(--font-heading)",
+                    fontWeight: 700,
+                    textTransform: "uppercase",
+                    fontSize: "0.9rem",
+                    letterSpacing: "0.06em",
+                    color: "var(--color-text)",
+                    marginBottom: "0.375rem",
+                  }}
+                >
+                  {project.label}
+                </h3>
+                <p
+                  style={{
+                    color: "var(--color-text-muted)",
+                    fontSize: "0.82rem",
+                    lineHeight: 1.6,
+                    maxWidth: "420px",
+                  }}
+                >
+                  {project.detail}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ── TESTIMONIALS ── */}
       <section
         style={{
@@ -2922,7 +3066,7 @@ export default function Home() {
                   {t.name}
                 </cite>
                 <span style={{ display: "block", fontSize: "0.68rem", color: "var(--color-text-muted)", marginTop: "0.125rem" }}>
-                  {t.role}
+                  {t.role}{t.source ? ` · ${t.source}` : ""}
                 </span>
                 <span style={{ fontSize: "0.78rem", color: "var(--color-text-muted)", marginTop: "0.25rem", display: "block" }}>
                   {t.detail}
@@ -3521,6 +3665,24 @@ export default function Home() {
               See Gallery
             </Link>
           </div>
+          <a
+            href="tel:+18085550192"
+            style={{
+              display: "inline-block",
+              marginTop: "1.25rem",
+              fontFamily: "var(--font-heading)",
+              fontWeight: 700,
+              fontSize: "clamp(1rem, 1.5vw, 1.25rem)",
+              letterSpacing: "0.06em",
+              color: "var(--color-accent)",
+              textDecoration: "none",
+              transition: "opacity 200ms ease",
+            }}
+            onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.75")}
+            onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
+          >
+            (808) 555-0192
+          </a>
         </div>
       </section>
     </>

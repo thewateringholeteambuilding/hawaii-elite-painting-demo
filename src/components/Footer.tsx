@@ -214,8 +214,9 @@ export default function Footer() {
               <li style={{ display: "flex", gap: "0.625rem", alignItems: "flex-start" }}>
                 <Clock size={14} style={{ color: "var(--color-accent)", flexShrink: 0, marginTop: "3px" }} />
                 <span style={{ color: "var(--color-text-muted)", fontSize: "0.875rem", lineHeight: 1.5 }}>
-                  Mon-Fri: 7:30am - 4:30pm<br />
-                  <span style={{ fontSize: "0.78rem", opacity: 0.7 }}>Sat estimates by appointment · Closed Sun</span>
+                  Mon–Fri: 7:30 AM – 4:30 PM HST<br />
+                  Sat: 8:00 AM – 12:00 PM (estimates only)<br />
+                  <span style={{ fontSize: "0.78rem", opacity: 0.7 }}>Closed Sunday · Voicemails returned within 4 hours</span>
                 </span>
               </li>
             </ul>
