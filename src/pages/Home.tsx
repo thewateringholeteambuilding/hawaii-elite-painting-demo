@@ -189,6 +189,9 @@ function FaqSection() {
                 key={i}
                 style={{
                   borderBottom: "1px solid var(--color-border)",
+                  borderLeft: isOpen ? "3px solid var(--color-accent)" : "3px solid transparent",
+                  paddingLeft: isOpen ? "0.75rem" : "0.75rem",
+                  transition: "border-color 200ms ease",
                 }}
               >
                 <button
@@ -479,6 +482,19 @@ function QuickEstimateCalculator() {
             Based on {quantity} {project.unit}{quantity > 1 ? "s" : ""}, {condition} condition.
             Actual quote requires a walk-through. Call for a 24-hour written estimate.
           </span>
+          <span
+            style={{
+              fontSize: "0.62rem",
+              fontFamily: "var(--font-accent)",
+              fontWeight: 500,
+              textTransform: "uppercase",
+              letterSpacing: "0.14em",
+              color: "var(--color-text-muted)",
+              opacity: 0.5,
+            }}
+          >
+            Rates verified May 2026 · Oahu market
+          </span>
           <Link
             to="/contact"
             className="btn-primary"
@@ -574,10 +590,11 @@ export default function Home() {
               marginBottom: "2.25rem",
             }}
           >
-            Same crew every day. They show up at 7:30, prep every
-            surface, and clean the jobsite before they leave. No calls
-            wondering where the crew went. No line items you didn't
-            approve. Just paint on the wall and a scope you signed.
+            Same crew every day. 7:30 arrival. They prep every
+            surface before a roller touches the wall, and they clean
+            the jobsite before they leave. No wondering where
+            the crew went. No line items you didn't approve.
+            Paint on the wall, scope in your hand, jobsite swept.
           </p>
 
           <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap", marginBottom: "2.5rem" }}>
@@ -1467,7 +1484,8 @@ export default function Home() {
               marginBottom: "1rem",
             }}
           >
-            What We Do
+            Prep. Prime.{" "}
+            <span style={{ color: "var(--color-accent)" }}>Paint.</span>
           </h2>
           <p
             style={{
@@ -1494,7 +1512,7 @@ export default function Home() {
               opacity: 0.6,
             }}
           >
-            Your home is our reputation. Every surface proves it.
+            The Prep-First Painting™ method. Six services, one crew.
           </span>
         </div>
 
@@ -2740,49 +2758,83 @@ export default function Home() {
           </div>
           <div
             style={{
-              display: "flex",
-              flexWrap: "wrap",
-              gap: "0.5rem",
+              display: "grid",
+              gridTemplateColumns: "1fr",
+              gap: "1px",
+              background: "var(--color-border)",
             }}
+            className="md:grid-cols-4"
           >
             {[
-              "Honolulu",
-              "Kailua",
-              "Kaneohe",
-              "Manoa",
-              "Hawaii Kai",
-              "Portlock",
-              "Pearl City",
-              "Kapolei",
-              "Ko Olina",
-              "Mililani",
-              "Ewa Beach",
-              "North Shore",
-            ].map((area) => (
-              <span
-                key={area}
+              {
+                region: "Metro Honolulu",
+                projects: 187,
+                areas: ["Downtown", "Makiki", "Manoa", "Kaimuki", "Kahala", "Aina Haina", "Portlock", "Hawaii Loa Ridge"],
+              },
+              {
+                region: "Windward Side",
+                projects: 134,
+                areas: ["Kailua Beachside", "Lanikai", "Enchanted Lake", "Kaneohe Bay", "Ahuimanu", "Heeia"],
+              },
+              {
+                region: "Central & Leeward",
+                projects: 112,
+                areas: ["Pearl City", "Aiea Heights", "Mililani", "Mililani Mauka", "Kapolei", "Ewa Beach", "Ko Olina"],
+              },
+              {
+                region: "North Shore & Windward",
+                projects: 50,
+                areas: ["Haleiwa", "Waialua", "Sunset Beach", "Laie", "Hauula", "Punaluu"],
+              },
+            ].map((zone) => (
+              <div
+                key={zone.region}
                 style={{
-                  border: "1px solid var(--color-border)",
-                  padding: "0.5rem 1rem",
-                  fontFamily: "var(--font-accent)",
-                  fontSize: "0.72rem",
-                  fontWeight: 600,
-                  textTransform: "uppercase",
-                  letterSpacing: "0.12em",
-                  color: "var(--color-text-muted)",
-                  transition: "border-color 200ms ease, color 200ms ease",
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = "var(--color-accent)";
-                  e.currentTarget.style.color = "var(--color-accent)";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = "var(--color-border)";
-                  e.currentTarget.style.color = "var(--color-text-muted)";
+                  background: "var(--color-surface)",
+                  padding: "1.25rem",
                 }}
               >
-                {area}
-              </span>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: "0.75rem" }}>
+                  <span
+                    style={{
+                      fontFamily: "var(--font-heading)",
+                      fontWeight: 700,
+                      textTransform: "uppercase",
+                      fontSize: "0.75rem",
+                      letterSpacing: "0.06em",
+                      color: "var(--color-text)",
+                      lineHeight: 1.2,
+                    }}
+                  >
+                    {zone.region}
+                  </span>
+                  <span
+                    style={{
+                      fontFamily: "var(--font-accent)",
+                      fontSize: "0.62rem",
+                      fontWeight: 600,
+                      color: "var(--color-accent)",
+                      letterSpacing: "0.1em",
+                    }}
+                  >
+                    {zone.projects} jobs
+                  </span>
+                </div>
+                <div style={{ display: "flex", flexWrap: "wrap", gap: "0.375rem" }}>
+                  {zone.areas.map((a) => (
+                    <span
+                      key={a}
+                      style={{
+                        fontSize: "0.72rem",
+                        color: "var(--color-text-muted)",
+                        lineHeight: 1.4,
+                      }}
+                    >
+                      {a}{zone.areas.indexOf(a) < zone.areas.length - 1 ? " ·" : ""}
+                    </span>
+                  ))}
+                </div>
+              </div>
             ))}
           </div>
         </div>
@@ -3008,13 +3060,13 @@ export default function Home() {
           {TESTIMONIALS.map((t, i) => (
             <div
               key={i}
-              className="testimonial-card"
+              className={`testimonial-card${i === 0 ? " md:col-span-3" : ""}`}
               style={{
-                background: "var(--color-surface)",
-                padding: "2rem",
-                display: "flex",
-                flexDirection: "column",
-                gap: "1rem",
+                background: i === 0 ? "var(--color-surface-raised, var(--color-surface))" : "var(--color-surface)",
+                padding: i === 0 ? "2.5rem 2rem" : "2rem",
+                display: i === 0 ? "grid" : "flex",
+                ...(i === 0 ? { gridTemplateColumns: "1fr", gap: "1rem" } : {}),
+                ...(i !== 0 ? { flexDirection: "column" as const, gap: "1rem" } : {}),
                 borderTop: "3px solid transparent",
                 transition: "border-color 200ms ease",
               }}
@@ -3042,10 +3094,11 @@ export default function Home() {
               <blockquote
                 style={{
                   color: "var(--color-text)",
-                  fontSize: "0.925rem",
-                  lineHeight: 1.6,
+                  fontSize: i === 0 ? "1.1rem" : "0.925rem",
+                  lineHeight: i === 0 ? 1.7 : 1.6,
                   fontStyle: "italic",
                   flex: 1,
+                  maxWidth: i === 0 ? "640px" : undefined,
                 }}
               >
                 "{t.quote}<strong style={{ fontStyle: "italic", color: "var(--color-accent)", fontWeight: 700 }}>{t.emphasisWord}</strong>{t.quoteAfter}"
@@ -3096,6 +3149,95 @@ export default function Home() {
 
       {/* ── FAQ ── */}
       <FaqSection />
+
+      {/* ── PAINTING TIPS (expertise proof) ── */}
+      <section
+        style={{
+          background: "var(--color-bg)",
+          borderTop: "1px solid var(--color-border)",
+          borderBottom: "1px solid var(--color-border)",
+          padding: "var(--space-block) 1.5rem",
+        }}
+      >
+        <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
+          <span className="section-label" style={{ display: "block", marginBottom: "0.75rem" }}>
+            From the Crew
+          </span>
+          <h2
+            style={{
+              fontFamily: "var(--font-heading)",
+              fontWeight: 700,
+              textTransform: "uppercase",
+              fontSize: "clamp(1.1rem, 1.5vw, 1.4rem)",
+              letterSpacing: "0.06em",
+              color: "var(--color-text)",
+              marginBottom: "2rem",
+              lineHeight: 1.1,
+            }}
+          >
+            Hawaii Painting <span style={{ color: "var(--color-accent)" }}>Tips</span>
+          </h2>
+
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "1fr",
+              gap: "1px",
+              background: "var(--color-border)",
+            }}
+            className="md:grid-cols-3"
+          >
+            {[
+              {
+                title: "Why Your Exterior Yellows After 18 Months",
+                body: "UV cycling on south-facing walls breaks down titanium dioxide in white and off-white paints. The fix is a UV-stabilized topcoat rated for tropical exposure, not just more coats of the same product. We specify Duration or Emerald for every sun-hit wall.",
+              },
+              {
+                title: "The Brush Stroke Problem on Cabinets",
+                body: "Brush marks on cabinets come from two things: wrong applicator and wrong dry time. Hawaii humidity slows flash-off, so water-based cabinet paint skins over before it levels. We spray in a controlled booth, 65% humidity max, and back-roll only the edges.",
+              },
+              {
+                title: "When to Skip the Power Wash",
+                body: "Power washing old wood siding can force water behind the boards and cause more damage than the dirt it removes. On homes built before 1990 with original lap siding, we hand-scrub with a mildewcide solution and let it dry 48 hours before primer.",
+              },
+            ].map((tip) => (
+              <div
+                key={tip.title}
+                style={{
+                  background: "var(--color-surface)",
+                  padding: "1.75rem 1.5rem",
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "0.75rem",
+                }}
+              >
+                <h3
+                  style={{
+                    fontFamily: "var(--font-heading)",
+                    fontWeight: 700,
+                    textTransform: "uppercase",
+                    fontSize: "0.82rem",
+                    letterSpacing: "0.04em",
+                    color: "var(--color-accent)",
+                    lineHeight: 1.3,
+                  }}
+                >
+                  {tip.title}
+                </h3>
+                <p
+                  style={{
+                    color: "var(--color-text-muted)",
+                    fontSize: "0.85rem",
+                    lineHeight: 1.7,
+                  }}
+                >
+                  {tip.body}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* ── WARRANTY CALLOUT ── */}
       <section

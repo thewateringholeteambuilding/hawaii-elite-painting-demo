@@ -266,6 +266,40 @@ export default function Contact() {
             </li>
           </ul>
 
+          {/* Response time promise */}
+          <div
+            style={{
+              borderTop: "1px solid var(--color-border)",
+              paddingTop: "1.25rem",
+              paddingBottom: "1.25rem",
+              display: "flex",
+              gap: "0.75rem",
+              alignItems: "flex-start",
+            }}
+          >
+            <CheckCircle size={16} style={{ color: "var(--color-accent)", flexShrink: 0, marginTop: "2px" }} />
+            <div>
+              <span
+                style={{
+                  display: "block",
+                  fontFamily: "var(--font-heading)",
+                  fontWeight: 700,
+                  textTransform: "uppercase",
+                  fontSize: "0.78rem",
+                  letterSpacing: "0.06em",
+                  color: "var(--color-text)",
+                  lineHeight: 1.2,
+                  marginBottom: "0.25rem",
+                }}
+              >
+                24-Hour Response
+              </span>
+              <span style={{ color: "var(--color-text-muted)", fontSize: "0.82rem", lineHeight: 1.5 }}>
+                Every estimate request gets a personal callback within 24 hours. If you submit after 6 pm, expect a call by noon the next business day.
+              </span>
+            </div>
+          </div>
+
           {/* Service area */}
           <div style={{ borderTop: "1px solid var(--color-border)", paddingTop: "1.5rem" }}>
             <h3

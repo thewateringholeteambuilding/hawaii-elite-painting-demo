@@ -140,6 +140,59 @@ export default function About() {
                 and a written scope before we touch a brush.
               </p>
             </div>
+
+            {/* Owner's note — first-person voice */}
+            <div
+              style={{
+                marginTop: "2rem",
+                borderLeft: "3px solid var(--color-accent)",
+                paddingLeft: "1.25rem",
+              }}
+            >
+              <span
+                style={{
+                  display: "block",
+                  fontFamily: "var(--font-accent)",
+                  fontSize: "0.62rem",
+                  fontWeight: 600,
+                  textTransform: "uppercase",
+                  letterSpacing: "0.2em",
+                  color: "var(--color-accent)",
+                  marginBottom: "0.75rem",
+                }}
+              >
+                A note from the owner
+              </span>
+              <p
+                style={{
+                  color: "var(--color-text-muted)",
+                  fontSize: "0.92rem",
+                  lineHeight: 1.7,
+                  fontStyle: "italic",
+                }}
+              >
+                I am on every job site. Planning, painting, or checking the work before
+                the crew wraps for the day. As a homeowner myself, I have hired contractors
+                who were careful with my home and others who left me wondering if they had
+                ever held a brush before. That experience is why I run this company the way
+                I do. You get my phone number. You get my crew. And if something is off,
+                you call me directly and I make it right the same week.
+              </p>
+              <span
+                style={{
+                  display: "block",
+                  marginTop: "0.5rem",
+                  fontFamily: "var(--font-heading)",
+                  fontWeight: 700,
+                  textTransform: "uppercase",
+                  fontSize: "0.78rem",
+                  letterSpacing: "0.06em",
+                  color: "var(--color-text)",
+                }}
+              >
+                — Owner, Hawaii Elite Painting
+              </span>
+            </div>
           </div>
 
           {/* Photo + stat aside */}

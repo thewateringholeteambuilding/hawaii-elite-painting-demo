@@ -217,6 +217,8 @@ export default function Footer() {
                   Mon–Fri: 7:30 AM – 4:30 PM HST<br />
                   Sat: 8:00 AM – 12:00 PM (estimates only)<br />
                   <span style={{ fontSize: "0.78rem", opacity: 0.7 }}>Closed Sunday · Voicemails returned within 4 hours</span>
+                  <br />
+                  <span style={{ fontSize: "0.78rem", opacity: 0.7 }}>Estimate requests: personal callback within 24 hours</span>
                 </span>
               </li>
             </ul>
