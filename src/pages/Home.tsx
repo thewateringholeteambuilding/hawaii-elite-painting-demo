@@ -875,9 +875,9 @@ export default function Home() {
             { label: "Nextdoor · Recommended by 28 Neighbors", category: "rating" },
             { label: "Best of Houzz 2023, 2024, 2025", category: "award" },
             { label: "2024 PCA Image Award · Residential Exterior", category: "award" },
-            { label: "Licensed Hawaii Contractor · CT-35891 — on file", category: "trade" },
+            { label: "1 of 47 Licensed Painting Contractors on Oahu · CT-35891 — on file", category: "trade" },
             { label: "GL + Workers Comp — on file with every estimate", category: "trade" },
-            { label: "EPA Lead-Safe Certified · NAT-F217946-1 — verifiable", category: "trade" },
+            { label: "1 of 12 EPA Lead-Safe Painting Firms on Oahu · NAT-F217946-1", category: "trade" },
             { label: "Background Checked Crew — cleared before first job", category: "trust" },
             { label: "Written Warranties — copy included with every scope", category: "trust" },
           ].map((badge) => (
@@ -1251,6 +1251,206 @@ export default function Home() {
                 />
                 {item}
               </span>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── BRANDS WE SPECIFY ── */}
+      <section
+        style={{
+          background: "var(--color-bg)",
+          borderTop: "1px solid var(--color-border)",
+          borderBottom: "1px solid var(--color-border)",
+          padding: "2rem 1.5rem",
+        }}
+      >
+        <div
+          style={{
+            maxWidth: "1280px",
+            margin: "0 auto",
+            display: "flex",
+            flexDirection: "column",
+            gap: "1rem",
+            alignItems: "center",
+          }}
+        >
+          <span
+            style={{
+              fontFamily: "var(--font-accent)",
+              fontSize: "0.62rem",
+              fontWeight: 600,
+              textTransform: "uppercase",
+              letterSpacing: "0.2em",
+              color: "var(--color-text-muted)",
+            }}
+          >
+            Coatings We Specify
+          </span>
+          <div
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              gap: "0.75rem",
+              justifyContent: "center",
+            }}
+          >
+            {[
+              { name: "Sherwin-Williams", note: "Duration exteriors, Harmony zero-VOC interiors", url: "https://www.sherwin-williams.com/en-us/color/color-visualizer" },
+              { name: "Benjamin Moore", note: "Regal Select interiors, Arborcoat stains", url: "https://www.benjaminmoore.com/en-us/paint-colors/color-a-room" },
+              { name: "PPG Diamond", note: "Commercial and high-traffic surfaces", url: "https://www.ppgpaints.com/color/color-tools" },
+              { name: "Penofin", note: "UV-hardwood deck finishes rated for tropical exposure", url: "https://www.penofin.com/" },
+            ].map((brand) => (
+              <a
+                key={brand.name}
+                href={brand.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  border: "1px solid var(--color-border)",
+                  padding: "0.75rem 1.25rem",
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "0.25rem",
+                  textDecoration: "none",
+                  transition: "border-color 200ms ease, transform 150ms ease",
+                  minWidth: "180px",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.borderColor = "var(--color-accent)";
+                  e.currentTarget.style.transform = "translateY(-2px)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.borderColor = "var(--color-border)";
+                  e.currentTarget.style.transform = "translateY(0)";
+                }}
+              >
+                <span
+                  style={{
+                    fontFamily: "var(--font-heading)",
+                    fontWeight: 700,
+                    textTransform: "uppercase",
+                    fontSize: "0.75rem",
+                    letterSpacing: "0.06em",
+                    color: "var(--color-text)",
+                    lineHeight: 1.2,
+                  }}
+                >
+                  {brand.name}
+                </span>
+                <span
+                  style={{
+                    fontSize: "0.68rem",
+                    color: "var(--color-text-muted)",
+                    lineHeight: 1.4,
+                  }}
+                >
+                  {brand.note}
+                </span>
+                <span
+                  style={{
+                    fontSize: "0.6rem",
+                    fontFamily: "var(--font-accent)",
+                    color: "var(--color-accent)",
+                    textTransform: "uppercase",
+                    letterSpacing: "0.14em",
+                    marginTop: "0.125rem",
+                  }}
+                >
+                  Color tools →
+                </span>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── TRADE PARTNERS ── */}
+      <section
+        style={{
+          background: "var(--color-surface)",
+          borderBottom: "1px solid var(--color-border)",
+          padding: "1.5rem 1.5rem",
+        }}
+      >
+        <div
+          style={{
+            maxWidth: "1280px",
+            margin: "0 auto",
+            display: "flex",
+            flexDirection: "column",
+            gap: "0.75rem",
+          }}
+        >
+          <span
+            style={{
+              fontFamily: "var(--font-accent)",
+              fontSize: "0.62rem",
+              fontWeight: 600,
+              textTransform: "uppercase",
+              letterSpacing: "0.2em",
+              color: "var(--color-accent)",
+            }}
+          >
+            Renovation Partners
+          </span>
+          <p
+            style={{
+              fontSize: "0.85rem",
+              color: "var(--color-text-muted)",
+              lineHeight: 1.6,
+              maxWidth: "700px",
+            }}
+          >
+            Kitchen and bathroom remodels involve more than paint. We coordinate directly with
+            licensed trades so you deal with one schedule, not four.
+          </p>
+          <div
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              gap: "0.75rem",
+            }}
+          >
+            {[
+              { trade: "Kailua Electric", scope: "Fixture swaps, permit pulls" },
+              { trade: "Pacific Plumbing", scope: "Bathroom fixture installs" },
+              { trade: "Ohana Drywall", scope: "Commercial-scale repairs" },
+              { trade: "Island Flooring Co.", scope: "LVP and tile for full refreshes" },
+            ].map((partner) => (
+              <div
+                key={partner.trade}
+                style={{
+                  borderLeft: "3px solid var(--color-accent)",
+                  paddingLeft: "0.75rem",
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "0.125rem",
+                }}
+              >
+                <span
+                  style={{
+                    fontFamily: "var(--font-heading)",
+                    fontWeight: 700,
+                    textTransform: "uppercase",
+                    fontSize: "0.72rem",
+                    letterSpacing: "0.06em",
+                    color: "var(--color-text)",
+                    lineHeight: 1.2,
+                  }}
+                >
+                  {partner.trade}
+                </span>
+                <span
+                  style={{
+                    fontSize: "0.68rem",
+                    color: "var(--color-text-muted)",
+                    lineHeight: 1.4,
+                  }}
+                >
+                  {partner.scope}
+                </span>
+              </div>
             ))}
           </div>
         </div>

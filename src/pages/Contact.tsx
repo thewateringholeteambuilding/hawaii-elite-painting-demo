@@ -7,6 +7,7 @@ interface FormState {
   email: string;
   phone: string;
   service: string;
+  budget: string;
   customerType: string;
   message: string;
 }
@@ -38,6 +39,7 @@ export default function Contact() {
     email: "",
     phone: "",
     service: "",
+    budget: "",
     customerType: "",
     message: "",
   });
@@ -144,7 +146,7 @@ export default function Contact() {
               marginTop: "1.25rem",
             }}
           >
-            Tell us about the space. We'll walk it, spec the right coatings, and hand you a written scope before any work begins.
+            We walk the space with you, test how light hits each wall, and narrow 3,500 colors to three. Then we hand you a written scope before any work begins.
           </p>
         </div>
       </header>
@@ -580,6 +582,29 @@ export default function Contact() {
                       {SERVICE_HINTS[form.service]}
                     </div>
                   )}
+
+                  <div>
+                    <label htmlFor="budget" style={labelStyle}>Approximate Budget</label>
+                    <select
+                      id="budget"
+                      name="budget"
+                      value={form.budget}
+                      onChange={handleChange}
+                      style={{ ...inputStyle, cursor: "pointer" }}
+                      onFocus={(e) => (e.currentTarget.style.borderColor = "var(--color-accent)")}
+                      onBlur={(e) => (e.currentTarget.style.borderColor = "var(--color-border)")}
+                    >
+                      <option value="">Select a range...</option>
+                      <option value="under-2k">Under $2,000</option>
+                      <option value="2k-5k">$2,000 – $5,000</option>
+                      <option value="5k-10k">$5,000 – $10,000</option>
+                      <option value="10k-plus">$10,000+</option>
+                      <option value="not-sure">Not sure yet</option>
+                    </select>
+                    <span style={{ fontSize: "0.68rem", color: "var(--color-text-muted)", marginTop: "0.25rem", display: "block", opacity: 0.7 }}>
+                      Helps us prepare the right scope. Your walk-through quote is always free.
+                    </span>
+                  </div>
 
                   <div>
                     <label htmlFor="message" style={labelStyle}>Project Description *</label>
