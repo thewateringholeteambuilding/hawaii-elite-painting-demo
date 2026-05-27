@@ -599,7 +599,7 @@ export default function Home() {
 
           <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap", marginBottom: "2.5rem" }}>
             <Link to="/contact" className="btn-primary">
-              Get Free Estimate
+              Book Your Walk-Through
               <ArrowRight size={14} />
             </Link>
             <Link to="/gallery" className="btn-outline">
@@ -871,6 +871,8 @@ export default function Home() {
         >
           {[
             { label: "Google 4.8 ★ · 47 Reviews", category: "rating" },
+            { label: "Yelp 4.6 ★ · 43 Reviews", category: "rating" },
+            { label: "Nextdoor · Recommended by 28 Neighbors", category: "rating" },
             { label: "Best of Houzz 2023, 2024, 2025", category: "award" },
             { label: "2024 PCA Image Award · Residential Exterior", category: "award" },
             { label: "Licensed Hawaii Contractor · CT-35891 — on file", category: "trade" },
@@ -2149,8 +2151,18 @@ export default function Home() {
               minHeight: "260px",
             }}
           >
-            {/* Before — smaller, slightly darker */}
-            <div style={{ position: "relative", overflow: "hidden" }}>
+            {/* Before — smaller, slightly darker, reveals color on hover */}
+            <div
+              style={{ position: "relative", overflow: "hidden", cursor: "pointer" }}
+              onMouseEnter={(e) => {
+                const img = e.currentTarget.querySelector("img");
+                if (img) img.style.filter = "saturate(1) brightness(1)";
+              }}
+              onMouseLeave={(e) => {
+                const img = e.currentTarget.querySelector("img");
+                if (img) img.style.filter = "saturate(0.6) brightness(0.85)";
+              }}
+            >
               <img
                 src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=400&q=70"
                 alt="Kailua home exterior before repaint — faded and peeling"
@@ -2164,6 +2176,7 @@ export default function Home() {
                   height: "100%",
                   objectFit: "cover",
                   filter: "saturate(0.6) brightness(0.85)",
+                  transition: "filter 400ms ease",
                 }}
               />
               <span
@@ -2221,7 +2234,7 @@ export default function Home() {
           </div>
           <div>
             <span className="section-label" style={{ display: "block", marginBottom: "0.75rem" }}>
-              Recent Project
+              Recent Project · Completed March 2025
             </span>
             <h3
               style={{
@@ -2287,6 +2300,22 @@ export default function Home() {
             >
               Salt-air rated coating system. Power wash, scrape, two coats primer on bare wood, two coats finish. Homeowner stayed in residence throughout.
             </p>
+            <span
+              style={{
+                display: "inline-block",
+                marginTop: "0.75rem",
+                fontFamily: "var(--font-accent)",
+                fontSize: "0.62rem",
+                fontWeight: 600,
+                textTransform: "uppercase",
+                letterSpacing: "0.14em",
+                color: "var(--color-accent)",
+                border: "1px solid var(--color-accent)",
+                padding: "0.375rem 0.75rem",
+              }}
+            >
+              Current lead time: 2–3 weeks · booking into July 2026
+            </span>
           </div>
         </div>
       </section>
@@ -2897,14 +2926,24 @@ export default function Home() {
                     marginBottom: "1rem",
                   }}
                 >
-                  <div style={{ position: "relative" }}>
+                  <div
+                    style={{ position: "relative", cursor: "pointer" }}
+                    onMouseEnter={(e) => {
+                      const img = e.currentTarget.querySelector("img");
+                      if (img) img.style.filter = "saturate(1) brightness(1)";
+                    }}
+                    onMouseLeave={(e) => {
+                      const img = e.currentTarget.querySelector("img");
+                      if (img) img.style.filter = "saturate(0.5) brightness(0.88)";
+                    }}
+                  >
                     <img
                       src={project.before}
                       alt={`Before: ${project.label}`}
                       loading="lazy"
                       width={600}
                       height={400}
-                      style={{ width: "100%", height: "200px", objectFit: "cover", display: "block" }}
+                      style={{ width: "100%", height: "200px", objectFit: "cover", display: "block", filter: "saturate(0.5) brightness(0.88)", transition: "filter 400ms ease" }}
                     />
                     <span
                       style={{
@@ -3144,6 +3183,96 @@ export default function Home() {
               </div>
             </div>
           ))}
+        </div>
+      </section>
+
+      {/* ── WHY HOMEOWNERS SWITCH ── */}
+      <section
+        style={{
+          background: "var(--color-surface-raised)",
+          borderTop: "1px solid var(--color-border)",
+          borderBottom: "1px solid var(--color-border)",
+          padding: "2.5rem 1.5rem",
+        }}
+      >
+        <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
+          <span className="section-label" style={{ display: "block", marginBottom: "0.5rem" }}>
+            Why Homeowners Switch
+          </span>
+          <h2
+            style={{
+              fontFamily: "var(--font-heading)",
+              fontWeight: 700,
+              textTransform: "uppercase",
+              fontSize: "clamp(1.1rem, 1.5vw, 1.4rem)",
+              letterSpacing: "0.06em",
+              color: "var(--color-text)",
+              marginBottom: "1.5rem",
+              lineHeight: 1.1,
+            }}
+          >
+            Three things we hear{" "}
+            <span style={{ color: "var(--color-accent)" }}>every week</span>
+          </h2>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "1fr",
+              gap: "1px",
+              background: "var(--color-border)",
+            }}
+            className="md:grid-cols-3"
+          >
+            {[
+              {
+                trigger: "Previous painter skipped prep",
+                detail: "Paint peeled within 18 months. No written scope meant no warranty claim. 62% of our estimates are second opinions after a bad experience.",
+              },
+              {
+                trigger: "Got a lump-sum quote with no breakdown",
+                detail: "One number, no line items, no product names. When the bill changed, there was nothing on paper to reference. We hand you the math before we pick up a brush.",
+              },
+              {
+                trigger: "Crew changed every visit",
+                detail: "Different faces on Monday and Thursday. Nobody owned the job. Our crews average 6 years together. You see the same team from tape to touch-up.",
+              },
+            ].map((item) => (
+              <div
+                key={item.trigger}
+                style={{
+                  background: "var(--color-surface)",
+                  padding: "1.5rem",
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "0.625rem",
+                }}
+              >
+                <span
+                  style={{
+                    fontFamily: "var(--font-heading)",
+                    fontWeight: 700,
+                    textTransform: "uppercase",
+                    fontSize: "0.82rem",
+                    letterSpacing: "0.06em",
+                    color: "var(--color-text)",
+                    lineHeight: 1.2,
+                  }}
+                >
+                  "{item.trigger}"
+                </span>
+                <p
+                  style={{
+                    fontSize: "0.82rem",
+                    color: "var(--color-text-muted)",
+                    lineHeight: 1.6,
+                    margin: 0,
+                  }}
+                >
+                  {item.detail}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -3748,7 +3877,7 @@ export default function Home() {
               marginBottom: "1rem",
             }}
           >
-            Free estimate. Written scope. No pressure to sign the same day.
+            Free walk-through. Written scope. No pressure to sign the same day.
           </p>
           <div
             style={{
@@ -3801,7 +3930,7 @@ export default function Home() {
           </div>
           <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap", justifyContent: "center" }}>
             <Link to="/contact" className="btn-primary">
-              Get Free Estimate <ArrowRight size={14} />
+              Book Your Walk-Through <ArrowRight size={14} />
             </Link>
             <Link to="/gallery" className="btn-outline" style={{ borderColor: "rgba(255,255,255,0.3)", color: "hsl(40 30% 92%)" }}>
               See Gallery
