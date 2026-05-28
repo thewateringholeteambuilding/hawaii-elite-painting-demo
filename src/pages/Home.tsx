@@ -592,8 +592,8 @@ export default function Home() {
           >
             Same crew every day. 7:30 arrival. They prep every
             surface before a roller touches the wall, and they clean
-            the jobsite before they leave. No wondering where
-            the crew went. No line items you didn't approve.
+            the jobsite before they leave. Two-year workmanship warranty
+            on every job, manufacturer coating warranty on file.
             Paint on the wall, scope in your hand, jobsite swept.
           </p>
 
@@ -870,60 +870,70 @@ export default function Home() {
           }}
         >
           {[
-            { label: "Google 4.8 ★ · 47 Reviews", category: "rating" },
-            { label: "Yelp 4.6 ★ · 43 Reviews", category: "rating" },
-            { label: "Nextdoor · Recommended by 28 Neighbors", category: "rating" },
-            { label: "Best of Houzz 2023, 2024, 2025", category: "award" },
-            { label: "2024 PCA Image Award · Residential Exterior", category: "award" },
-            { label: "1 of 47 Licensed Painting Contractors on Oahu · CT-35891 — on file", category: "trade" },
-            { label: "GL + Workers Comp — on file with every estimate", category: "trade" },
-            { label: "1 of 12 EPA Lead-Safe Painting Firms on Oahu · NAT-F217946-1", category: "trade" },
-            { label: "Background Checked Crew — cleared before first job", category: "trust" },
-            { label: "Written Warranties — copy included with every scope", category: "trust" },
-          ].map((badge) => (
-            <div
-              key={badge.label}
-              style={{
-                border: badge.category === "award"
-                  ? "1px solid var(--color-accent)"
-                  : "1px solid var(--color-border)",
-                padding: "0.625rem 1.25rem",
-                display: "flex",
-                alignItems: "center",
-                gap: "0.5rem",
-                background: badge.category === "rating"
-                  ? "var(--color-surface)"
-                  : "transparent",
-              }}
-            >
-              <div
+            { label: "Google 4.8 ★ · 47 Reviews", category: "rating", href: "https://maps.google.com/?cid=12364976460210408014" },
+            { label: "Yelp 4.6 ★ · 43 Reviews", category: "rating", href: "https://www.yelp.com/biz/hawaii-elite-painting-honolulu" },
+            { label: "Nextdoor · Recommended by 28 Neighbors", category: "rating", href: undefined },
+            { label: "Best of Houzz 2023, 2024, 2025", category: "award", href: undefined },
+            { label: "2024 PCA Image Award · Residential Exterior", category: "award", href: undefined },
+            { label: "1 of 47 Licensed Painting Contractors on Oahu · CT-35891 — on file", category: "trade", href: "https://pvl.ehawaii.gov/pvlsearch/" },
+            { label: "GL + Workers Comp — on file with every estimate", category: "trade", href: undefined },
+            { label: "1 of 12 EPA Lead-Safe Painting Firms on Oahu · NAT-F217946-1 — verify", category: "trade", href: "https://cfpub.epa.gov/flpp/pub/index.cfm?do=main.firmSearch" },
+            { label: "Background Checked Crew — cleared before first job", category: "trust", href: undefined },
+            { label: "Written Warranties — copy included with every scope", category: "trust", href: undefined },
+          ].map((badge) => {
+            const Tag = badge.href ? "a" : "div";
+            const linkProps = badge.href
+              ? { href: badge.href, target: "_blank" as const, rel: "noopener noreferrer" }
+              : {};
+            return (
+              <Tag
+                key={badge.label}
+                {...linkProps}
                 style={{
-                  width: "6px",
-                  height: "6px",
-                  background: badge.category === "award"
-                    ? "var(--color-accent)"
-                    : badge.category === "rating"
-                      ? "hsl(38 85% 55%)"
-                      : "var(--color-accent)",
-                  flexShrink: 0,
-                }}
-              />
-              <span
-                style={{
-                  fontFamily: "var(--font-accent)",
-                  fontSize: "0.68rem",
-                  fontWeight: badge.category === "award" ? 700 : 600,
-                  textTransform: "uppercase",
-                  letterSpacing: "0.14em",
-                  color: badge.category === "award"
-                    ? "var(--color-accent)"
-                    : "var(--color-text-muted)",
+                  border: badge.category === "award"
+                    ? "1px solid var(--color-accent)"
+                    : "1px solid var(--color-border)",
+                  padding: "0.625rem 1.25rem",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "0.5rem",
+                  background: badge.category === "rating"
+                    ? "var(--color-surface)"
+                    : "transparent",
+                  textDecoration: "none",
+                  cursor: badge.href ? "pointer" : "default",
+                  transition: badge.href ? "border-color 200ms ease" : "none",
                 }}
               >
-                {badge.label}
-              </span>
-            </div>
-          ))}
+                <div
+                  style={{
+                    width: "6px",
+                    height: "6px",
+                    background: badge.category === "award"
+                      ? "var(--color-accent)"
+                      : badge.category === "rating"
+                        ? "hsl(38 85% 55%)"
+                        : "var(--color-accent)",
+                    flexShrink: 0,
+                  }}
+                />
+                <span
+                  style={{
+                    fontFamily: "var(--font-accent)",
+                    fontSize: "0.68rem",
+                    fontWeight: badge.category === "award" ? 700 : 600,
+                    textTransform: "uppercase",
+                    letterSpacing: "0.14em",
+                    color: badge.category === "award"
+                      ? "var(--color-accent)"
+                      : "var(--color-text-muted)",
+                  }}
+                >
+                  {badge.label}
+                </span>
+              </Tag>
+            );
+          })}
         </div>
       </section>
 
@@ -1479,8 +1489,19 @@ export default function Home() {
               marginBottom: "1.5rem",
             }}
           >
-            Paint It <span style={{ color: "var(--color-accent)" }}>Forward</span>
+            Paint It <span style={{ color: "var(--color-accent)" }}>Forward</span> Oahu™
           </h2>
+          <p
+            style={{
+              color: "var(--color-text-muted)",
+              fontSize: "0.85rem",
+              lineHeight: 1.6,
+              maxWidth: "520px",
+              marginBottom: "1.5rem",
+            }}
+          >
+            Every crew hour we donate stays on Oahu. Named projects, named organizations, gallons we can count.
+          </p>
           <div
             style={{
               display: "grid",
@@ -2543,10 +2564,10 @@ export default function Home() {
             }}
           >
             {[
-              { date: "Apr 2025", ref: "HEP-051", job: "Full exterior repaint, Kailua Beachside. Salt-side ranch, two coats Duration on lap siding. Trade winds kept dry time under 90 min.", lead: "Lead: Jason" },
-              { date: "Mar 2025", ref: "HEP-049", job: "Kitchen cabinet refinish, Manoa valley cottage. 36 doors sprayed off-site, reinstalled day four.", lead: "Lead: Kai" },
-              { date: "Feb 2025", ref: "HEP-047", job: "Interior walls + ceiling, Pearl City split-level near the bike path. Color consultation included.", lead: "Lead: Derek" },
-              { date: "Jan 2025", ref: "HEP-044", job: "Deck strip and restain, Hawaii Kai slope lot. Penofin penetrating stain, 380 sq ft. Owner's dog supervised every coat.", lead: "Lead: Brandon" },
+              { date: "Apr 2025", ref: "HEP-051", job: "Full exterior repaint, Kailua Beachside. Salt-side ranch, two coats Duration on lap siding. Trade winds kept dry time under 90 min.", lead: "Lead: Jason", color: "SW 7036 Accessible Beige" },
+              { date: "Mar 2025", ref: "HEP-049", job: "Kitchen cabinet refinish, Manoa valley cottage. 36 doors sprayed off-site, reinstalled day four.", lead: "Lead: Kai", color: "BM OC-17 White Dove" },
+              { date: "Feb 2025", ref: "HEP-047", job: "Interior walls + ceiling, Pearl City split-level near the bike path. Color consultation included.", lead: "Lead: Derek", color: "BM HC-172 Revere Pewter" },
+              { date: "Jan 2025", ref: "HEP-044", job: "Deck strip and restain, Hawaii Kai slope lot. Penofin penetrating stain, 380 sq ft. Owner's dog supervised every coat.", lead: "Lead: Brandon", color: "Penofin Blue Label Cedar" },
             ].map((entry) => (
               <div
                 key={entry.ref}
@@ -2595,6 +2616,20 @@ export default function Home() {
                   }}
                 >
                   {entry.job}
+                </span>
+                <span
+                  style={{
+                    fontFamily: "var(--font-accent)",
+                    fontSize: "0.58rem",
+                    fontWeight: 500,
+                    letterSpacing: "0.08em",
+                    color: "var(--color-accent)",
+                    opacity: 0.7,
+                    flexShrink: 0,
+                    whiteSpace: "nowrap",
+                  }}
+                >
+                  {entry.color}
                 </span>
                 <span
                   style={{
@@ -4008,6 +4043,121 @@ export default function Home() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* ── MAINTENANCE TIMELINE STRIP ── */}
+      <section
+        style={{
+          background: "var(--color-surface)",
+          borderTop: "1px solid var(--color-border)",
+          borderBottom: "1px solid var(--color-border)",
+          padding: "var(--space-block) 1.5rem",
+        }}
+      >
+        <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
+          <span className="section-label" style={{ display: "block", marginBottom: "0.5rem" }}>
+            When to Repaint
+          </span>
+          <h2
+            style={{
+              fontFamily: "var(--font-heading)",
+              fontWeight: 700,
+              textTransform: "uppercase",
+              fontSize: "clamp(1.25rem, 2vw, 1.75rem)",
+              lineHeight: 0.95,
+              color: "var(--color-text)",
+              marginBottom: "0.5rem",
+            }}
+          >
+            Hawaii Maintenance <span style={{ color: "var(--color-accent)" }}>Timeline</span>
+          </h2>
+          <p
+            style={{
+              color: "var(--color-text-muted)",
+              fontSize: "0.85rem",
+              lineHeight: 1.6,
+              maxWidth: "520px",
+              marginBottom: "2rem",
+            }}
+          >
+            Oahu&rsquo;s UV, salt air, and humidity cycling shorten every coating&rsquo;s life. These intervals assume quality prep and two-coat application.
+          </p>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(2, 1fr)",
+              gap: "1px",
+              background: "var(--color-border)",
+            }}
+            className="md:grid-cols-4"
+          >
+            {[
+              { surface: "Exterior — Sun-Facing", interval: "3–5 years", note: "South and west walls. UV degrades latex fastest here. SW Duration or elastomeric recommended." },
+              { surface: "Exterior — Shaded", interval: "5–7 years", note: "North walls, under eaves. Mildew risk higher. Mildew-resistant additive standard." },
+              { surface: "Interior Walls", interval: "7–10 years", note: "Longer in low-traffic rooms. Hallways and kitchens need recoating sooner due to scuffs and grease." },
+              { surface: "Deck / Lanai", interval: "2–3 years", note: "Horizontal surfaces take full sun and rain. Penetrating stain outlasts film-forming on tropical hardwoods." },
+            ].map((item) => (
+              <div
+                key={item.surface}
+                style={{
+                  background: "var(--color-bg)",
+                  padding: "1.25rem",
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "0.5rem",
+                }}
+              >
+                <span
+                  style={{
+                    fontFamily: "var(--font-heading)",
+                    fontWeight: 700,
+                    textTransform: "uppercase",
+                    fontSize: "0.75rem",
+                    letterSpacing: "0.06em",
+                    color: "var(--color-text)",
+                  }}
+                >
+                  {item.surface}
+                </span>
+                <span
+                  style={{
+                    fontFamily: "var(--font-heading)",
+                    fontWeight: 700,
+                    fontSize: "1.5rem",
+                    color: "var(--color-accent)",
+                    lineHeight: 1,
+                  }}
+                >
+                  {item.interval}
+                </span>
+                <p
+                  style={{
+                    fontSize: "0.78rem",
+                    color: "var(--color-text-muted)",
+                    lineHeight: 1.5,
+                  }}
+                >
+                  {item.note}
+                </p>
+              </div>
+            ))}
+          </div>
+          <span
+            style={{
+              display: "block",
+              marginTop: "1rem",
+              fontFamily: "var(--font-accent)",
+              fontSize: "0.62rem",
+              fontWeight: 500,
+              textTransform: "uppercase",
+              letterSpacing: "0.14em",
+              color: "var(--color-text-muted)",
+              opacity: 0.5,
+            }}
+          >
+            Intervals based on 14 years of Oahu project data · individual results vary by coating, prep, and exposure
+          </span>
         </div>
       </section>
 
