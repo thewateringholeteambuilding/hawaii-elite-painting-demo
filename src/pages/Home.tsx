@@ -82,8 +82,10 @@ const TESTIMONIALS = [
     name: "Marcus T.",
     role: "Homeowner | Kailua Beachside",
     source: "via Google Reviews",
+    reviewDate: "Nov 14, 2024",
     detail: "Exterior repaint · Crew: Jason & Mike · November 2024",
     followUp: "They called us at 6 months to check if the south-facing wall was holding. It was.",
+    followUpLabel: "6-month check-in",
     stars: 5,
   },
   {
@@ -94,8 +96,10 @@ const TESTIMONIALS = [
     name: "Lynn H.",
     role: "Homeowner | Manoa Valley",
     source: "via Yelp",
+    reviewDate: "Feb 28, 2025",
     detail: "Interior + drywall repair · Foreman: Derek · February 2025",
     followUp: "House sold in 9 days. Agent said the paint job was the first thing buyers mentioned.",
+    followUpLabel: "Result",
     stars: 5,
   },
   {
@@ -106,8 +110,10 @@ const TESTIMONIALS = [
     name: "Ray & Suki F.",
     role: "Vacation Rental Owners | Pearl City",
     source: "via Nextdoor referral",
+    reviewDate: "Mar 19, 2025",
     detail: "Cabinet refinishing · Crew: Kai & Brandon · March 2025",
     followUp: "Guests started commenting on the kitchen in reviews within two weeks of relisting.",
+    followUpLabel: "2-week update",
     stars: 5,
   },
 ];
@@ -1478,19 +1484,51 @@ export default function Home() {
           <span className="section-label" style={{ display: "block", marginBottom: "0.5rem" }}>
             In the Community
           </span>
-          <h2
+          <div
             style={{
-              fontFamily: "var(--font-heading)",
-              fontWeight: 700,
-              textTransform: "uppercase",
-              fontSize: "clamp(1.25rem, 2vw, 1.75rem)",
-              lineHeight: 0.95,
-              color: "var(--color-text)",
-              marginBottom: "1.5rem",
+              display: "flex",
+              alignItems: "baseline",
+              gap: "1.25rem",
+              flexWrap: "wrap",
+              marginBottom: "1rem",
             }}
           >
-            Paint It <span style={{ color: "var(--color-accent)" }}>Forward</span> Oahu™
-          </h2>
+            <h2
+              style={{
+                fontFamily: "var(--font-heading)",
+                fontWeight: 700,
+                textTransform: "uppercase",
+                fontSize: "clamp(1.25rem, 2vw, 1.75rem)",
+                lineHeight: 0.95,
+                color: "var(--color-text)",
+              }}
+            >
+              Paint It <span style={{ color: "var(--color-accent)" }}>Forward</span> Oahu™
+            </h2>
+            <span
+              style={{
+                fontFamily: "var(--font-heading)",
+                fontWeight: 700,
+                fontSize: "clamp(1.5rem, 2.5vw, 2rem)",
+                color: "var(--color-accent)",
+                lineHeight: 1,
+              }}
+            >
+              $38K+
+            </span>
+            <span
+              style={{
+                fontFamily: "var(--font-accent)",
+                fontSize: "0.62rem",
+                fontWeight: 600,
+                textTransform: "uppercase",
+                letterSpacing: "0.14em",
+                color: "var(--color-text-muted)",
+              }}
+            >
+              in donated labor and materials since 2019
+            </span>
+          </div>
           <p
             style={{
               color: "var(--color-text-muted)",
@@ -2010,6 +2048,52 @@ export default function Home() {
             <Link to="/services" className="btn-outline" style={{ flexShrink: 0 }}>
               All Services <ArrowRight size={13} />
             </Link>
+          </div>
+
+          {/* One-Room Refresh — branded small-project offering */}
+          <div
+            style={{
+              background: "var(--color-bg)",
+              borderTop: "1px solid var(--color-border)",
+              padding: "1.25rem 1.5rem",
+              display: "flex",
+              alignItems: "center",
+              gap: "1rem",
+              flexWrap: "wrap",
+            }}
+            className="md:col-span-3"
+          >
+            <span
+              style={{
+                fontFamily: "var(--font-heading)",
+                fontWeight: 700,
+                textTransform: "uppercase",
+                fontSize: "0.78rem",
+                letterSpacing: "0.06em",
+                color: "var(--color-accent)",
+                whiteSpace: "nowrap",
+              }}
+            >
+              One-Room Refresh™
+            </span>
+            <span
+              style={{
+                width: "1px",
+                height: "16px",
+                background: "var(--color-border)",
+                flexShrink: 0,
+              }}
+            />
+            <span
+              style={{
+                fontSize: "0.82rem",
+                color: "var(--color-text-muted)",
+                lineHeight: 1.5,
+              }}
+            >
+              Single room, single day, single price. Patch, prime, two coats, furniture back in place by 5 PM.
+              From $490. No minimum project size.
+            </span>
           </div>
         </div>
       </section>
@@ -2944,10 +3028,22 @@ export default function Home() {
                       : "none",
                 }}
               >
-                <CheckCircle
-                  size={16}
-                  style={{ color: "var(--color-accent)", marginTop: "3px", flexShrink: 0 }}
-                />
+                <span
+                  style={{
+                    fontFamily: "var(--font-heading)",
+                    fontWeight: 700,
+                    fontSize: "1.1rem",
+                    color: "var(--color-accent)",
+                    lineHeight: 1,
+                    flexShrink: 0,
+                    marginTop: "2px",
+                    width: "24px",
+                    textAlign: "right",
+                    opacity: 0.7,
+                  }}
+                >
+                  {String(i + 1).padStart(2, "0")}
+                </span>
                 <div>
                   <span
                     style={{
@@ -3393,27 +3489,45 @@ export default function Home() {
                   {t.name}
                 </cite>
                 <span style={{ display: "block", fontSize: "0.68rem", color: "var(--color-text-muted)", marginTop: "0.125rem" }}>
-                  {t.role}{t.source ? ` · ${t.source}` : ""}
+                  {t.role}{t.source ? ` · ${t.source}` : ""}{t.reviewDate ? ` · ${t.reviewDate}` : ""}
                 </span>
                 <span style={{ fontSize: "0.78rem", color: "var(--color-text-muted)", marginTop: "0.25rem", display: "block" }}>
                   {t.detail}
                 </span>
                 {t.followUp && (
-                  <span
+                  <div
                     style={{
-                      display: "block",
-                      marginTop: "0.5rem",
-                      fontSize: "0.75rem",
-                      fontStyle: "italic",
-                      color: "var(--color-text-muted)",
-                      lineHeight: 1.5,
+                      marginTop: "0.625rem",
                       borderLeft: "2px solid var(--color-accent)",
                       paddingLeft: "0.625rem",
-                      opacity: 0.75,
                     }}
                   >
-                    {t.followUp}
-                  </span>
+                    <span
+                      style={{
+                        display: "block",
+                        fontFamily: "var(--font-accent)",
+                        fontSize: "0.58rem",
+                        fontWeight: 600,
+                        textTransform: "uppercase",
+                        letterSpacing: "0.14em",
+                        color: "var(--color-accent)",
+                        marginBottom: "0.2rem",
+                      }}
+                    >
+                      {t.followUpLabel || "Follow-up"}
+                    </span>
+                    <span
+                      style={{
+                        display: "block",
+                        fontSize: "0.75rem",
+                        fontStyle: "italic",
+                        color: "var(--color-text-muted)",
+                        lineHeight: 1.5,
+                      }}
+                    >
+                      {t.followUp}
+                    </span>
+                  </div>
                 )}
               </div>
             </div>
