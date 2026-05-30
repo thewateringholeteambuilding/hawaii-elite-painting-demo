@@ -24,12 +24,13 @@ const SERVICES = [
     scope: "Siding, stucco, concrete block, wood trim, fascia, soffits, gates, fences.",
     detail: [
       "Full pressure wash before any coating",
-      "Substrate assessment: identify rot, spall, efflorescence",
+      "Substrate assessment: identify rot, spall, efflorescence on wood, stucco, CMU block, and lava rock veneer",
       "Sherwin-Williams Duration and PPG Diamond exterior lines rated for coastal UV",
+      "Elastomeric coatings spec'd for CMU block and poured concrete (standard latex peels within 18 months on block)",
       "Caulk all penetrations and cracks before first coat",
       "Two finish coats minimum on sun-exposed surfaces",
     ],
-    note: "Exterior repaints in Hawaii last 3-5 years on sun-exposed surfaces, 5-7 for shaded walls. Salt air, UV load, and humidity cycling accelerate coating breakdown faster than mainland guides suggest. We specify coatings by substrate type, not brand.",
+    note: "Exterior repaints in Hawaii last 3-5 years on sun-exposed surfaces, 5-7 for shaded walls. Salt air, UV load, and humidity cycling accelerate coating breakdown faster than mainland guides suggest. Pre-1978 homes get lead testing before any scraping begins (EPA RRP Rule). We specify coatings by substrate type, not brand.",
   },
   {
     title: "Drywall Repair",
@@ -37,8 +38,8 @@ const SERVICES = [
     alt: "Drywall repair and finishing",
     scope: "Patches, water damage repairs, texture matching, full skim coats.",
     detail: [
-      "Damage assessment: mold inspection before close-up",
-      "Like-for-like texture matching on all patches",
+      "Damage assessment: mold inspection and moisture meter readings before close-up",
+      "Like-for-like texture matching on all patches (orange peel, knockdown, skip trowel)",
       "Three-coat mud process on larger repairs",
       "Feathering and skim where required for invisible finish",
       "Prime + paint to match existing wall",

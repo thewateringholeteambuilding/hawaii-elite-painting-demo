@@ -18,7 +18,12 @@ const VALUES = [
   {
     icon: Shield,
     title: "Licensed and Insured",
-    desc: "Hawaii contractors license, full liability coverage, and workers comp on every employee. Current certificates available on request.",
+    desc: "Hawaii contractors license CT-35891, full liability coverage, and workers comp on every employee. Current certificates available on request.",
+    credentials: [
+      { label: "Verify CT-35891 (DCCA)", href: "https://pvl.ehawaii.gov/pvlsearch/" },
+      { label: "EPA Lead-Safe NAT-F217946-1", href: "https://cfpub.epa.gov/flpp/pub/index.cfm?do=main.firmSearch" },
+      { label: "BBB Profile (A+ Since 2018)", href: "https://www.bbb.org/us/hi/honolulu" },
+    ],
   },
 ];
 
@@ -396,6 +401,36 @@ export default function About() {
                   <p style={{ color: "var(--color-text-muted)", fontSize: "0.9rem", lineHeight: 1.65 }}>
                     {v.desc}
                   </p>
+                  {"credentials" in v && (v as { credentials: { label: string; href: string }[] }).credentials && (
+                    <div style={{ display: "flex", flexDirection: "column", gap: "0.375rem", marginTop: "0.75rem" }}>
+                      {(v as { credentials: { label: string; href: string }[] }).credentials.map((cred) => (
+                        <a
+                          key={cred.label}
+                          href={cred.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          style={{
+                            fontFamily: "var(--font-accent)",
+                            fontSize: "0.65rem",
+                            fontWeight: 600,
+                            textTransform: "uppercase",
+                            letterSpacing: "0.12em",
+                            color: "var(--color-accent)",
+                            textDecoration: "none",
+                            display: "inline-flex",
+                            alignItems: "center",
+                            gap: "0.375rem",
+                            transition: "opacity 200ms ease",
+                          }}
+                          onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.7")}
+                          onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
+                        >
+                          <span style={{ width: "4px", height: "4px", background: "var(--color-accent)" }} />
+                          {cred.label} →
+                        </a>
+                      ))}
+                    </div>
+                  )}
                 </div>
               );
             })}

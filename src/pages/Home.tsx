@@ -18,6 +18,7 @@ const SERVICES_TEASER = [
     idealFor: "Homeowners refreshing rooms, preparing for sale, or moving in.",
     startingAt: "From $1,800",
     ratePer: "$2.80–$4.50/sq ft · based on 175 sq ft avg room",
+    timeline: "3–4 days (avg 3BR home)",
     img: "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&w=600&q=75",
     alt: "Interior painting in progress",
   },
@@ -28,6 +29,7 @@ const SERVICES_TEASER = [
     idealFor: "Homeowners with fading, peeling, or chalking exterior coatings.",
     startingAt: "From $4,500",
     ratePer: "$3.50–$6.00/sq ft · varies by siding type and sun exposure",
+    timeline: "5–7 days (single-story)",
     img: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=600&q=75",
     alt: "Exterior house painting",
   },
@@ -38,6 +40,7 @@ const SERVICES_TEASER = [
     idealFor: "Homes with water damage, cracks, or holes before a repaint.",
     startingAt: "From $400",
     ratePer: "$8–$15/sq ft of damaged area · most patches under $600",
+    timeline: "1–2 days (per room)",
     img: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=600&q=75",
     alt: "Drywall repair and finishing",
   },
@@ -48,6 +51,7 @@ const SERVICES_TEASER = [
     idealFor: "Homeowners with graying, splintering, or peeling deck surfaces.",
     startingAt: "From $1,200",
     ratePer: "$4–$7/sq ft · strip + sand + 2 coats · 200 sq ft avg deck",
+    timeline: "2–3 days (200 sq ft deck)",
     img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=75",
     alt: "Deck refinishing and staining",
   },
@@ -58,6 +62,7 @@ const SERVICES_TEASER = [
     idealFor: "Homeowners who want a new kitchen look without $40k+ gut renovation.",
     startingAt: "From $3,200",
     ratePer: "$120–$180/cabinet door · avg kitchen 20–30 doors",
+    timeline: "5–8 days (full kitchen)",
     img: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=600&q=75",
     alt: "Kitchen cabinet painting and remodeling",
   },
@@ -68,6 +73,7 @@ const SERVICES_TEASER = [
     idealFor: "Homeowners updating tile, vanities, or dealing with mildew-prone surfaces.",
     startingAt: "From $2,800",
     ratePer: "$45–$65/sq ft · tile + paint + fixtures · avg bath 40–60 sq ft",
+    timeline: "4–6 days (full bath)",
     img: "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?auto=format&fit=crop&w=600&q=75",
     alt: "Bathroom renovation and tile work",
   },
@@ -879,6 +885,8 @@ export default function Home() {
             { label: "Google 4.8 ★ · 47 Reviews", category: "rating", href: "https://maps.google.com/?cid=12364976460210408014" },
             { label: "Yelp 4.6 ★ · 43 Reviews", category: "rating", href: "https://www.yelp.com/biz/hawaii-elite-painting-honolulu" },
             { label: "Nextdoor · Recommended by 28 Neighbors", category: "rating", href: undefined },
+            { label: "BBB Accredited · A+ Rating Since 2018", category: "award", href: "https://www.bbb.org/us/hi/honolulu" },
+            { label: "Angi Super Service Award 2023, 2024", category: "award", href: undefined },
             { label: "Best of Houzz 2023, 2024, 2025", category: "award", href: undefined },
             { label: "2024 PCA Image Award · Residential Exterior", category: "award", href: undefined },
             { label: "1 of 47 Licensed Painting Contractors on Oahu · CT-35891 — on file", category: "trade", href: "https://pvl.ehawaii.gov/pvlsearch/" },
@@ -1863,6 +1871,9 @@ export default function Home() {
                 <span style={{ fontSize: "0.62rem", fontFamily: "var(--font-body)", letterSpacing: "0.02em", color: "hsl(40 30% 92% / 0.4)", fontStyle: "italic" }}>
                   {SERVICES_TEASER[0].ratePer}
                 </span>
+                <span style={{ fontSize: "0.62rem", fontFamily: "var(--font-accent)", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", color: "var(--color-accent)", opacity: 0.7 }}>
+                  Timeline: {SERVICES_TEASER[0].timeline}
+                </span>
               </div>
             </div>
           </div>
@@ -1926,6 +1937,9 @@ export default function Home() {
                 </div>
                 <span style={{ fontSize: "0.58rem", fontFamily: "var(--font-body)", letterSpacing: "0.02em", color: "hsl(40 30% 92% / 0.4)", fontStyle: "italic" }}>
                   {SERVICES_TEASER[1].ratePer}
+                </span>
+                <span style={{ fontSize: "0.58rem", fontFamily: "var(--font-accent)", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", color: "var(--color-accent)", opacity: 0.7 }}>
+                  Timeline: {SERVICES_TEASER[1].timeline}
                 </span>
               </div>
             </div>
@@ -1995,6 +2009,9 @@ export default function Home() {
                 <span style={{ fontSize: "0.6rem", fontFamily: "var(--font-body)", letterSpacing: "0.02em", color: "var(--color-text-muted)", opacity: 0.5, fontStyle: "italic" }}>
                   {svc.ratePer}
                 </span>
+                <span style={{ fontSize: "0.6rem", fontFamily: "var(--font-accent)", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", color: "var(--color-accent)", opacity: 0.7 }}>
+                  Timeline: {svc.timeline}
+                </span>
               </div>
             </div>
           ))}
@@ -2042,6 +2059,9 @@ export default function Home() {
                 </div>
                 <span style={{ fontSize: "0.6rem", fontFamily: "var(--font-body)", letterSpacing: "0.02em", color: "var(--color-text-muted)", opacity: 0.5, fontStyle: "italic" }}>
                   {SERVICES_TEASER[5].ratePer}
+                </span>
+                <span style={{ fontSize: "0.6rem", fontFamily: "var(--font-accent)", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", color: "var(--color-accent)", opacity: 0.7 }}>
+                  Timeline: {SERVICES_TEASER[5].timeline}
                 </span>
               </div>
             </div>
@@ -3627,6 +3647,119 @@ export default function Home() {
 
       {/* ── FAQ ── */}
       <FaqSection />
+
+      {/* ── WHAT YOUR ESTIMATE INCLUDES ── */}
+      <section
+        style={{
+          background: "var(--color-bg)",
+          borderTop: "1px solid var(--color-border)",
+          padding: "var(--space-block) 1.5rem",
+        }}
+      >
+        <div style={{ maxWidth: "800px", margin: "0 auto" }}>
+          <span className="section-label" style={{ display: "block", marginBottom: "0.75rem" }}>
+            Before We Start
+          </span>
+          <h2
+            style={{
+              fontFamily: "var(--font-heading)",
+              fontWeight: 700,
+              textTransform: "uppercase",
+              fontSize: "clamp(1.25rem, 2vw, 1.75rem)",
+              lineHeight: 0.95,
+              color: "var(--color-text)",
+              marginBottom: "0.75rem",
+            }}
+          >
+            What Your Estimate <span style={{ color: "var(--color-accent)" }}>Includes</span>
+          </h2>
+          <p
+            style={{
+              color: "var(--color-text-muted)",
+              fontSize: "0.85rem",
+              lineHeight: 1.6,
+              marginBottom: "2rem",
+              maxWidth: "520px",
+            }}
+          >
+            Every written estimate follows the same format. You see the full scope before we open a can.
+          </p>
+
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "1fr",
+              gap: "0",
+            }}
+            className="md:grid-cols-2"
+          >
+            {[
+              { num: "01", item: "Line-item pricing per surface", detail: "Walls, ceilings, trim, doors, cabinets. Each surface priced separately." },
+              { num: "02", item: "Coating spec per area", detail: "Manufacturer, product name, sheen, and number of coats for every surface." },
+              { num: "03", item: "Timeline in calendar days", detail: "Start date, room-by-room sequence, projected completion. Not 'approximately 1-2 weeks.'" },
+              { num: "04", item: "Payment schedule", detail: "Deposit, progress payment, final. Tied to milestones, not calendar dates." },
+              { num: "05", item: "Prep scope documented", detail: "What gets sanded, patched, primed, caulked. Listed before any painting line item." },
+              { num: "06", item: "Warranty terms in writing", detail: "2-year workmanship. Manufacturer coating warranty certificate. Both on file." },
+            ].map((row) => (
+              <div
+                key={row.num}
+                style={{
+                  padding: "1.25rem 1rem",
+                  borderBottom: "1px solid var(--color-border)",
+                  display: "flex",
+                  gap: "1rem",
+                  alignItems: "flex-start",
+                }}
+              >
+                <span
+                  style={{
+                    fontFamily: "var(--font-heading)",
+                    fontWeight: 700,
+                    fontSize: "1.1rem",
+                    color: "var(--color-accent)",
+                    lineHeight: 1,
+                    flexShrink: 0,
+                    width: "28px",
+                  }}
+                >
+                  {row.num}
+                </span>
+                <div>
+                  <span
+                    style={{
+                      display: "block",
+                      fontFamily: "var(--font-heading)",
+                      fontWeight: 700,
+                      textTransform: "uppercase",
+                      fontSize: "0.78rem",
+                      letterSpacing: "0.06em",
+                      color: "var(--color-text)",
+                      marginBottom: "0.25rem",
+                    }}
+                  >
+                    {row.item}
+                  </span>
+                  <span
+                    style={{
+                      fontSize: "0.78rem",
+                      color: "var(--color-text-muted)",
+                      lineHeight: 1.5,
+                    }}
+                  >
+                    {row.detail}
+                  </span>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div style={{ marginTop: "1.5rem", textAlign: "center" }}>
+            <Link to="/contact" className="btn-primary">
+              Request Your Written Estimate <ArrowRight size={14} />
+            </Link>
+          </div>
+        </div>
+      </section>
 
       {/* ── PAINTING TIPS (expertise proof) ── */}
       <section
