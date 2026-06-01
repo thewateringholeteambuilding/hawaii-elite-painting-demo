@@ -200,6 +200,10 @@ export default function Footer() {
                 <span style={{ color: "var(--color-text-muted)", fontSize: "0.875rem", lineHeight: 1.5 }}>
                   200 N Vineyard Blvd, Ste A325-148<br />
                   Honolulu, HI 96817
+                  <br />
+                  <span style={{ fontSize: "0.72rem", opacity: 0.6 }}>
+                    Shop &amp; material storage: Kalihi warehouse. Crew meets here at 7:00 AM.
+                  </span>
                 </span>
               </li>
               <li style={{ display: "flex", gap: "0.625rem", alignItems: "center" }}>

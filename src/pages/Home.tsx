@@ -7,7 +7,7 @@ const STATS = [
   { value: "483", label: "Projects Completed" },
   { value: "14", label: "Years on Oahu" },
   { value: "1.2M+", label: "Sq Ft Painted" },
-  { value: "4.8", label: "Google Rating" },
+  { value: "118", label: "Reviews · 3 Platforms" },
 ];
 
 const SERVICES_TEASER = [
@@ -152,10 +152,10 @@ const FAQ_ITEMS = [
 ];
 
 const WHY_ITEMS = [
-  { phrase: "We quote it before we touch it", detail: "Line-item pricing for every surface. You sign the scope before we open a can." },
-  { phrase: "We prep like the paint depends on it", detail: "70% of every project is surface prep. Sanding, caulking, priming. No shortcuts." },
-  { phrase: "We clean up every single day", detail: "Jobsite cleared at the end of every work day. Your routine stays the same." },
-  { phrase: "We answer the phone when you call", detail: "Same number, same crew. No call center, no voicemail maze." },
+  { phrase: "We quote it before we touch it", detail: "Line-item pricing for EVERY surface. You sign the scope before we open a can." },
+  { phrase: "We prep like the paint depends on it", detail: "70% of every project is surface prep. Sanding, caulking, priming. NEVER shortcuts." },
+  { phrase: "We clean up every single day", detail: "Jobsite cleared at the end of EVERY work day. Your routine stays the same." },
+  { phrase: "We answer the phone when you call", detail: "Same number, same crew. No call center, no voicemail maze. ALWAYS a person." },
   { phrase: "We stand behind the finish", detail: "2-year workmanship warranty. Manufacturer coating warranty on file. We call at 6 and 12 months." },
 ];
 
@@ -332,8 +332,9 @@ function QuickEstimateCalculator() {
             maxWidth: "480px",
           }}
         >
-          Ballpark range based on 2026 Oahu market rates. Your actual quote depends on
-          surface condition, access, and coating spec. Walk-through required for a real number.
+          Ballpark range based on 2026 Oahu market rates. Your actual quote is
+          measured on-site with QuickMeasure and priced per surface in our estimating system.
+          Walk-through required for a real number.
         </p>
 
         <div
@@ -602,11 +603,11 @@ export default function Home() {
               marginBottom: "2.25rem",
             }}
           >
+            Painting Oahu houses since 2004. Running his own crew since 2012.
             Same crew every day. 7:30 arrival. They prep every
             surface before a roller touches the wall, and they clean
             the jobsite before they leave. Two-year workmanship warranty
             on every job, manufacturer coating warranty on file.
-            Paint on the wall, scope in your hand, jobsite swept.
           </p>
 
           <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap", marginBottom: "2.5rem" }}>
