@@ -8,6 +8,7 @@ const STATS = [
   { value: "14", label: "Years on Oahu" },
   { value: "1.2M+", label: "Sq Ft Painted" },
   { value: "118", label: "Reviews · 3 Platforms" },
+  { value: "0", label: "Shortcuts Taken" },
 ];
 
 const SERVICES_TEASER = [
@@ -230,9 +231,30 @@ function FaqSection() {
                       letterSpacing: "0.04em",
                       color: isOpen ? "var(--color-accent)" : "var(--color-text)",
                       transition: "color 200ms ease",
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "0.625rem",
+                      flexWrap: "wrap",
                     }}
                   >
                     {item.q}
+                    {i === 0 && (
+                      <span
+                        style={{
+                          fontSize: "0.55rem",
+                          fontFamily: "var(--font-accent)",
+                          fontWeight: 700,
+                          textTransform: "uppercase",
+                          letterSpacing: "0.12em",
+                          color: "var(--color-bg)",
+                          background: "var(--color-accent)",
+                          padding: "0.15rem 0.5rem",
+                          lineHeight: 1.4,
+                        }}
+                      >
+                        Most Asked
+                      </span>
+                    )}
                   </span>
                   <ChevronDown
                     size={16}
@@ -825,7 +847,7 @@ export default function Home() {
             display: "grid",
             gridTemplateColumns: "repeat(2, 1fr)",
           }}
-          className="md:grid-cols-4"
+          className="md:grid-cols-5"
         >
           {STATS.map((stat, i) => (
             <div
@@ -1547,7 +1569,7 @@ export default function Home() {
               marginBottom: "1.5rem",
             }}
           >
-            Every crew hour we donate stays on Oahu. Named projects, named organizations, gallons we can count.
+            Every crew hour we donate stays on Oahu. Named projects, named organizations, gallons we can count. (Derek keeps a running tally on his clipboard. He's that guy.)
           </p>
           <div
             style={{
@@ -2883,21 +2905,21 @@ export default function Home() {
                 step: "02",
                 title: "Prep & Protect",
                 detail:
-                  "Furniture moved. Floors masked. Holes patched, caulk laid, surfaces sanded. 70% of the job happens before paint touches a wall.",
+                  "Shoe covers on at the door. Furniture moved, floors masked, pets accounted for. Holes patched, caulk laid, surfaces sanded. 70% of the job happens before paint touches a wall.",
                 timeline: "Day 1",
               },
               {
                 step: "03",
                 title: "Paint & Inspect",
                 detail:
-                  "Two coats minimum on every surface. Foreman inspects each room against the scope before calling it done.",
+                  "Two coats minimum on every surface. Foreman inspects each room against the scope before calling it done. Daily cleanup before we leave — your house looks lived-in, not worked-on.",
                 timeline: "Days 2-3",
               },
               {
                 step: "04",
                 title: "Walk-Through & Warranty",
                 detail:
-                  "Final walk-through with you. Touch-ups on the spot. Warranty card on file. We call at 6 and 12 months.",
+                  "Final walk-through with you. Touch-ups on the spot. Furniture back where it was. Doors locked behind us. Warranty card on file. We call at 6 and 12 months.",
                 timeline: "Final day",
               },
             ].map((s, i) => (
@@ -2963,6 +2985,96 @@ export default function Home() {
                   }}
                 >
                   {s.detail}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── AFTER YOU BOOK — communication timeline ── */}
+      <section
+        style={{
+          background: "var(--color-surface-raised)",
+          borderTop: "1px solid var(--color-border)",
+          padding: "var(--space-block) 1.5rem",
+        }}
+      >
+        <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
+          <span className="section-label" style={{ display: "block", marginBottom: "0.5rem" }}>
+            After You Book
+          </span>
+          <h2
+            style={{
+              fontFamily: "var(--font-heading)",
+              fontWeight: 700,
+              textTransform: "uppercase",
+              fontSize: "clamp(1.25rem, 2vw, 1.75rem)",
+              lineHeight: 0.95,
+              color: "var(--color-text)",
+              marginBottom: "1.5rem",
+            }}
+          >
+            How We Stay in{" "}
+            <span style={{ color: "var(--color-accent)" }}>Touch</span>
+          </h2>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "1fr",
+              gap: "1px",
+              background: "var(--color-border)",
+            }}
+            className="md:grid-cols-4"
+          >
+            {[
+              {
+                when: "Within 2 hours",
+                what: "Confirmation text with your estimator's name and direct number. Save it — that's who you call for everything.",
+              },
+              {
+                when: "Before day 1",
+                what: "Crew arrival time, parking plan, and a checklist of anything you need to move before we get there. No surprises at 7:30 AM.",
+              },
+              {
+                when: "Every evening",
+                what: "Photo of the day's progress texted to you. What we finished, what's next. You never have to wonder where we are.",
+              },
+              {
+                when: "Final day",
+                what: "Walk-through scheduled at your pace. We don't leave until you sign off. Warranty paperwork and touch-up kit handed over in person.",
+              },
+            ].map((step) => (
+              <div
+                key={step.when}
+                style={{
+                  background: "var(--color-bg)",
+                  padding: "1.25rem",
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "0.5rem",
+                }}
+              >
+                <span
+                  style={{
+                    fontFamily: "var(--font-heading)",
+                    fontWeight: 700,
+                    textTransform: "uppercase",
+                    fontSize: "0.78rem",
+                    letterSpacing: "0.06em",
+                    color: "var(--color-accent)",
+                  }}
+                >
+                  {step.when}
+                </span>
+                <p
+                  style={{
+                    fontSize: "0.82rem",
+                    color: "var(--color-text-muted)",
+                    lineHeight: 1.6,
+                  }}
+                >
+                  {step.what}
                 </p>
               </div>
             ))}
