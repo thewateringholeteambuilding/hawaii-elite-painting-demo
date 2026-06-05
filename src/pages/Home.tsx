@@ -625,11 +625,12 @@ export default function Home() {
               marginBottom: "2.25rem",
             }}
           >
-            Painting Oahu houses since 2004. Running his own crew since 2012.
-            Same crew every day. 7:30 arrival. They prep every
-            surface before a roller touches the wall, and they clean
-            the jobsite before they leave. Two-year workmanship warranty
-            on every job, manufacturer coating warranty on file.
+            Derek Kang has been painting Oahu houses since 2004.
+            Running his own crew since 2012. Same four guys every day.
+            7:30 arrival. They prep every surface before a roller
+            touches the wall, and they clean the jobsite before they
+            leave. Two-year workmanship warranty on every job,
+            manufacturer coating warranty on file.
           </p>
 
           <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap", marginBottom: "2.5rem" }}>
@@ -716,7 +717,7 @@ export default function Home() {
                   lineHeight: 1.4,
                 }}
               >
-                Peeling, cracking, adhesion. We come back.
+                Industry standard: 1 year. Ours: 2. Peeling, cracking, adhesion. We come back.
               </span>
             </div>
           </div>
@@ -912,7 +913,7 @@ export default function Home() {
             { label: "Angi Super Service Award 2023, 2024", category: "award", href: undefined },
             { label: "Best of Houzz 2023, 2024, 2025", category: "award", href: undefined },
             { label: "2024 PCA Image Award · Residential Exterior", category: "award", href: undefined },
-            { label: "1 of 47 Licensed Painting Contractors on Oahu · CT-35891 — on file", category: "trade", href: "https://pvl.ehawaii.gov/pvlsearch/" },
+            { label: "1 of 47 Licensed Painting Contractors on Oahu · CT-35891 · C-33 Painting & Decorating · DCCA-PVL verified", category: "trade", href: "https://pvl.ehawaii.gov/pvlsearch/" },
             { label: "GL + Workers Comp — on file with every estimate", category: "trade", href: undefined },
             { label: "1 of 12 EPA Lead-Safe Painting Firms on Oahu · NAT-F217946-1 — verify", category: "trade", href: "https://cfpub.epa.gov/flpp/pub/index.cfm?do=main.firmSearch" },
             { label: "Background Checked Crew — cleared before first job", category: "trust", href: undefined },
@@ -1097,6 +1098,59 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ── DIRECT LINE PROMISE ── */}
+      <section
+        style={{
+          background: "var(--color-bg)",
+          borderTop: "1px solid var(--color-border)",
+          borderBottom: "1px solid var(--color-border)",
+          padding: "1.5rem 1.5rem",
+        }}
+      >
+        <div
+          style={{
+            maxWidth: "1280px",
+            margin: "0 auto",
+            display: "grid",
+            gridTemplateColumns: "1fr",
+            gap: "1rem",
+            alignItems: "center",
+          }}
+          className="md:grid-cols-3"
+        >
+          <div>
+            <span
+              style={{
+                fontFamily: "var(--font-heading)",
+                fontWeight: 700,
+                textTransform: "uppercase",
+                fontSize: "clamp(0.9rem, 1.2vw, 1.1rem)",
+                letterSpacing: "0.06em",
+                color: "var(--color-text)",
+                lineHeight: 1.2,
+              }}
+            >
+              No Call Center. No AI.{" "}
+              <span style={{ color: "var(--color-accent)" }}>Talk to Derek.</span>
+            </span>
+          </div>
+          <div className="md:col-span-2">
+            <p
+              style={{
+                color: "var(--color-text-muted)",
+                fontSize: "0.82rem",
+                lineHeight: 1.6,
+                margin: 0,
+              }}
+            >
+              You call (808) 555-0192, Derek or his crew lead picks up.
+              Same number since 2012. No phone tree, no "press 1 for scheduling."
+              If we're on a ladder, we call back within 2 hours.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* ── CREW TRUST STRIP ── */}
       <section
         style={{
@@ -1125,7 +1179,7 @@ export default function Home() {
                 lineHeight: 1.1,
               }}
             >
-              Background Checked. Drug Tested.{" "}
+              Zero Subcontractors. Background Checked. Drug Tested.{" "}
               <span style={{ color: "var(--color-accent)" }}>Trusted in Your Home.</span>
             </h2>
             <p
@@ -1137,8 +1191,9 @@ export default function Home() {
                 margin: "0 auto",
               }}
             >
-              Every crew member passes a background check and drug screening before
-              their first job. You get the same faces on day one and day five.
+              We never subcontract. Every crew member passes a background check and
+              drug screening before their first job. You get the same four faces
+              on day one and day five.
             </p>
           </div>
           <div

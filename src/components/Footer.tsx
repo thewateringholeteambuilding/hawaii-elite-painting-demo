@@ -245,7 +245,7 @@ export default function Footer() {
             &copy; {year} Hawaii Elite Painting and Renovation. All rights reserved.
           </p>
           <p style={{ color: "var(--color-text-muted)", fontSize: "0.8rem" }}>
-            Licensed &amp; Insured · CT-35891 · Honolulu, HI · Est. 2012 · Prep-First Painting™
+            Licensed &amp; Insured · CT-35891 · C-33 Painting &amp; Decorating · Honolulu, HI · Est. 2012 · Prep-First Painting™
           </p>
         </div>
       </div>
