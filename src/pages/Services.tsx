@@ -2,9 +2,27 @@ import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { ArrowRight } from "lucide-react";
 
-const SERVICES = [
+interface ServiceItem {
+  title: string;
+  img: string;
+  alt: string;
+  scope: string;
+  detail: string[];
+  note: string;
+  category: "interior" | "exterior" | "remodeling" | "commercial";
+}
+
+const CATEGORIES: { key: ServiceItem["category"]; label: string; sublabel: string }[] = [
+  { key: "interior", label: "Interior", sublabel: "Walls, ceilings, trim, and everything you live inside" },
+  { key: "exterior", label: "Exterior", sublabel: "Every surface the sun and salt air can reach" },
+  { key: "remodeling", label: "Remodeling", sublabel: "Kitchen and bath refreshes without the gut-job price tag" },
+  { key: "commercial", label: "Commercial", sublabel: "Offices, retail, warehouses, and common areas" },
+];
+
+const SERVICES: ServiceItem[] = [
   {
     title: "Interior Painting",
+    category: "interior",
     img: "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&w=800&q=75",
     alt: "Interior painting in a Honolulu home",
     scope: "Walls, ceilings, trim, doors, window frames, built-ins, and cabinetry.",
@@ -19,6 +37,7 @@ const SERVICES = [
   },
   {
     title: "Exterior Painting",
+    category: "exterior",
     img: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=800&q=75",
     alt: "Exterior house painting Oahu",
     scope: "Siding, stucco, concrete block, wood trim, fascia, soffits, gates, fences.",
@@ -34,6 +53,7 @@ const SERVICES = [
   },
   {
     title: "Drywall Repair",
+    category: "interior",
     img: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=75",
     alt: "Drywall repair and finishing",
     scope: "Patches, water damage repairs, texture matching, full skim coats.",
@@ -48,6 +68,7 @@ const SERVICES = [
   },
   {
     title: "Deck Refinishing",
+    category: "exterior",
     img: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=800&q=75",
     alt: "Deck sanding and refinishing",
     scope: "Wood decks, composite decks, railings, stairs, and pool surrounds.",
@@ -62,6 +83,7 @@ const SERVICES = [
   },
   {
     title: "Kitchen Remodeling",
+    category: "remodeling",
     img: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=800&q=75",
     alt: "Kitchen cabinet painting and remodeling in Honolulu",
     scope: "Cabinet painting, hardware replacement, backsplash tile, countertop coordination.",
@@ -76,6 +98,7 @@ const SERVICES = [
   },
   {
     title: "Bathroom Remodeling",
+    category: "remodeling",
     img: "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?auto=format&fit=crop&w=800&q=75",
     alt: "Bathroom renovation with tile and paint",
     scope: "Full paint refresh, tile replacement, vanity painting, fixture coordination.",
@@ -90,6 +113,7 @@ const SERVICES = [
   },
   {
     title: "Commercial Painting",
+    category: "commercial",
     img: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=75",
     alt: "Commercial painting project on Oahu",
     scope: "Office interiors, retail spaces, warehouses, common areas, and exterior facades.",
@@ -210,9 +234,50 @@ export default function Services() {
         </div>
       </nav>
 
-      {/* Service list */}
+      {/* Service list — grouped by category */}
       <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
-        {SERVICES.map((svc, i) => (
+        {CATEGORIES.map((cat) => {
+          const catServices = SERVICES.filter((s) => s.category === cat.key);
+          if (catServices.length === 0) return null;
+          return (
+            <div key={cat.key}>
+              {/* Category header */}
+              <div
+                style={{
+                  padding: "2.5rem 1.5rem 0.75rem",
+                  borderBottom: "1px solid var(--color-border)",
+                  display: "flex",
+                  alignItems: "baseline",
+                  gap: "1rem",
+                  flexWrap: "wrap",
+                }}
+              >
+                <h2
+                  style={{
+                    fontFamily: "var(--font-heading)",
+                    fontWeight: 700,
+                    textTransform: "uppercase",
+                    fontSize: "clamp(1rem, 1.5vw, 1.25rem)",
+                    letterSpacing: "0.08em",
+                    color: "var(--color-accent)",
+                    lineHeight: 1,
+                    margin: 0,
+                  }}
+                >
+                  {cat.label}
+                </h2>
+                <span
+                  style={{
+                    fontFamily: "var(--font-accent)",
+                    fontSize: "0.72rem",
+                    color: "var(--color-text-muted)",
+                    lineHeight: 1.4,
+                  }}
+                >
+                  {cat.sublabel}
+                </span>
+              </div>
+              {catServices.map((svc, i) => (
           <section
             key={svc.title}
             id={svc.title.toLowerCase().replace(/\s+/g, "-")}
@@ -344,7 +409,10 @@ export default function Services() {
               </div>
             </div>
           </section>
-        ))}
+              ))}
+            </div>
+          );
+        })}
       </div>
 
       {/* CTA */}

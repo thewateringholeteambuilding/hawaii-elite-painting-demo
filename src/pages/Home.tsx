@@ -91,8 +91,8 @@ const TESTIMONIALS = [
     source: "via Google Reviews",
     reviewDate: "Nov 14, 2024",
     detail: "Exterior repaint · Crew: Jason & Mike · November 2024",
-    followUp: "They called us at 6 months to check if the south-facing wall was holding. It was.",
-    followUpLabel: "6-month check-in",
+    followUp: "Jason called at 6 months to check the south-facing wall. Sent us a photo of the coating thickness test he ran on-site. Still holding.",
+    followUpLabel: "6-month follow-up call",
     stars: 5,
   },
   {
@@ -105,8 +105,8 @@ const TESTIMONIALS = [
     source: "via Yelp",
     reviewDate: "Feb 28, 2025",
     detail: "Interior + drywall repair · Foreman: Derek · February 2025",
-    followUp: "House sold in 9 days. Agent said the paint job was the first thing buyers mentioned.",
-    followUpLabel: "Result",
+    followUp: "Derek emailed us the final touch-up checklist he walked before leaving. House sold in 9 days. Agent said the paint was the first thing buyers mentioned at every showing.",
+    followUpLabel: "Post-project result",
     stars: 5,
   },
   {
@@ -119,7 +119,7 @@ const TESTIMONIALS = [
     source: "via Nextdoor referral",
     reviewDate: "Mar 19, 2025",
     detail: "Cabinet refinishing · Crew: Kai & Brandon · March 2025",
-    followUp: "Guests started commenting on the kitchen in reviews within two weeks of relisting.",
+    followUp: "Kai left us a labeled paint-can with the exact batch number for touch-ups. Guests started commenting on the kitchen in Airbnb reviews within two weeks of relisting.",
     followUpLabel: "2-week update",
     stars: 5,
   },
@@ -140,7 +140,7 @@ const FAQ_ITEMS = [
   },
   {
     q: "Do I need to move out during the project?",
-    a: "No. We work room by room and seal off active areas with plastic sheeting. You keep access to kitchens, bathrooms, and bedrooms at all times. We clean at the end of every work day so your routine stays the same.",
+    a: "No. We work room by room and seal off active areas with plastic sheeting. Your kids still get to the fridge, your dog still has his spot on the couch. We clean at the end of every work day so your routine stays the same.",
   },
   {
     q: "What does the written estimate include?",
@@ -625,12 +625,12 @@ export default function Home() {
               marginBottom: "2.25rem",
             }}
           >
-            Derek Kang has been painting Oahu houses since 2004.
-            Running his own crew since 2012. Same four guys every day.
-            7:30 arrival. They prep every surface before a roller
-            touches the wall, and they clean the jobsite before they
-            leave. Two-year workmanship warranty on every job,
-            manufacturer coating warranty on file.
+            Your walls look tired. We get it. Derek Kang has been
+            fixing that since 2004. Running his own crew since 2012.
+            Same four guys every day. 7:30 arrival. They prep every
+            surface before a roller touches the wall, and they clean
+            the jobsite before they leave. Two-year workmanship
+            warranty on every job, manufacturer coating warranty on file.
           </p>
 
           <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap", marginBottom: "2.5rem" }}>
@@ -1803,6 +1803,169 @@ export default function Home() {
                     {c.callout}
                   </span>
                 )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── TRANSFORMATION RESULTS ── */}
+      <section
+        style={{
+          background: "var(--color-surface)",
+          borderTop: "1px solid var(--color-border)",
+          borderBottom: "1px solid var(--color-border)",
+          padding: "var(--space-block) 1.5rem",
+        }}
+      >
+        <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
+          <span className="section-label" style={{ display: "block", marginBottom: "0.75rem" }}>
+            Real Results
+          </span>
+          <h2
+            style={{
+              fontFamily: "var(--font-heading)",
+              fontWeight: 700,
+              textTransform: "uppercase",
+              fontSize: "clamp(1.25rem, 2vw, 1.75rem)",
+              lineHeight: 0.95,
+              color: "var(--color-text)",
+              marginBottom: "2rem",
+            }}
+          >
+            Before We Showed Up.{" "}
+            <span style={{ color: "var(--color-accent)" }}>After We Left.</span>
+          </h2>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "1fr",
+              gap: "1px",
+              background: "var(--color-border)",
+            }}
+            className="md:grid-cols-3"
+          >
+            {[
+              {
+                project: "Kailua Beachside Exterior",
+                before: "Chalking, peeling latex over sun-blasted CMU block. Previous painter used interior-grade paint on the south wall.",
+                after: "Elastomeric coating rated for coastal UV. South wall held at 6-month check-in. Neighbor hired us the following month.",
+                timeline: "6 days · November 2024",
+              },
+              {
+                project: "Manoa Valley Interior",
+                before: "Water-stained ceiling, mismatched touch-up patches across three bedrooms. Seller needed it sale-ready in 10 days.",
+                after: "Full skim coat, two-coat finish, every trim piece hand-cut. House sold in 9 days. Agent said the paint was the first thing buyers noticed.",
+                timeline: "4 days · February 2025",
+              },
+              {
+                project: "Pearl City Kitchen Cabinets",
+                before: "Builder-grade oak cabinets from 2003. Yellowing, grease buildup, chipped edges. Owners quoted $22k for replacement.",
+                after: "Spray-finished satin white. Three sample doors brought home for sheen comparison before full set. Guests started commenting in Airbnb reviews within two weeks.",
+                timeline: "5 days · March 2025",
+              },
+            ].map((result) => (
+              <div
+                key={result.project}
+                style={{
+                  background: "var(--color-bg)",
+                  padding: "1.5rem",
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "1rem",
+                }}
+              >
+                <div>
+                  <span
+                    style={{
+                      fontFamily: "var(--font-heading)",
+                      fontWeight: 700,
+                      textTransform: "uppercase",
+                      fontSize: "0.78rem",
+                      letterSpacing: "0.06em",
+                      color: "var(--color-text)",
+                      lineHeight: 1.2,
+                      display: "block",
+                      marginBottom: "0.25rem",
+                    }}
+                  >
+                    {result.project}
+                  </span>
+                  <span
+                    style={{
+                      fontFamily: "var(--font-accent)",
+                      fontSize: "0.62rem",
+                      fontWeight: 600,
+                      textTransform: "uppercase",
+                      letterSpacing: "0.14em",
+                      color: "var(--color-text-muted)",
+                    }}
+                  >
+                    {result.timeline}
+                  </span>
+                </div>
+                <div
+                  style={{
+                    borderLeft: "2px solid var(--color-border)",
+                    paddingLeft: "0.75rem",
+                  }}
+                >
+                  <span
+                    style={{
+                      fontFamily: "var(--font-accent)",
+                      fontSize: "0.58rem",
+                      fontWeight: 700,
+                      textTransform: "uppercase",
+                      letterSpacing: "0.14em",
+                      color: "var(--color-text-muted)",
+                      display: "block",
+                      marginBottom: "0.25rem",
+                    }}
+                  >
+                    Before
+                  </span>
+                  <p
+                    style={{
+                      fontSize: "0.82rem",
+                      color: "var(--color-text-muted)",
+                      lineHeight: 1.5,
+                      margin: 0,
+                    }}
+                  >
+                    {result.before}
+                  </p>
+                </div>
+                <div
+                  style={{
+                    borderLeft: "2px solid var(--color-accent)",
+                    paddingLeft: "0.75rem",
+                  }}
+                >
+                  <span
+                    style={{
+                      fontFamily: "var(--font-accent)",
+                      fontSize: "0.58rem",
+                      fontWeight: 700,
+                      textTransform: "uppercase",
+                      letterSpacing: "0.14em",
+                      color: "var(--color-accent)",
+                      display: "block",
+                      marginBottom: "0.25rem",
+                    }}
+                  >
+                    After
+                  </span>
+                  <p
+                    style={{
+                      fontSize: "0.82rem",
+                      color: "var(--color-text)",
+                      lineHeight: 1.5,
+                      margin: 0,
+                    }}
+                  >
+                    {result.after}
+                  </p>
+                </div>
               </div>
             ))}
           </div>
