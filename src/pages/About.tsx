@@ -609,6 +609,18 @@ export default function About() {
             >
               Prep first. Paint right. Every house.
             </span>
+            <span
+              style={{
+                display: "block",
+                fontFamily: "var(--font-accent)",
+                fontSize: "0.72rem",
+                color: "var(--color-text-muted)",
+                marginTop: "0.375rem",
+                letterSpacing: "0.04em",
+              }}
+            >
+              Derek Kang, Owner since 2012
+            </span>
           </div>
         </div>
       </section>

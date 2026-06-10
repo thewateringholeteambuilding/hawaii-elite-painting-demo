@@ -2648,10 +2648,10 @@ export default function Home() {
           className="md:grid-cols-4"
         >
           {[
-            { step: "01", title: "Call or Request Online", desc: "Describe the job. Quote returned within 24 hours. No forms longer than 4 fields." },
-            { step: "02", title: "Walk-Through & Estimate", desc: "We measure every surface, photograph existing conditions, and hand you a written scope with line-item pricing before you commit to anything." },
-            { step: "03", title: "Prep, Paint, Inspect", desc: "70% of every project is surface prep. Two coats minimum. Daily cleanup. You walk every room before we pack up." },
-            { step: "04", title: "Warranty & Follow-Up", desc: "2-year workmanship warranty. Manufacturer coating warranty on file. We call at 6 months and 12 months to check adhesion." },
+            { step: "01", title: "Call or Request Online", role: "You → Derek", desc: "Describe the job. Quote returned within 24 hours. No forms longer than 4 fields.", relief: "So you never wait three days wondering if anyone got your message." },
+            { step: "02", title: "Walk-Through & Estimate", role: "Your Project Consultant", desc: "We measure every surface, photograph existing conditions, and hand you a written scope with line-item pricing before you commit to anything.", relief: "So you never get a lump-sum surprise on invoice day." },
+            { step: "03", title: "Prep, Paint, Inspect", role: "Your Lead Painter", desc: "70% of every project is surface prep. Two coats minimum. Daily cleanup. You walk every room before we pack up.", relief: "So you never find paint on your baseboards or dust on your counters." },
+            { step: "04", title: "Warranty & Follow-Up", role: "Your Warranty Coordinator", desc: "2-year workmanship warranty. Manufacturer coating warranty on file. We call at 6 months and 12 months to check adhesion.", relief: "So you never discover peeling six months later with no one to call." },
           ].map((item) => (
             <div key={item.step} style={{ display: "flex", gap: "1rem", alignItems: "flex-start" }}>
               <span
@@ -2668,6 +2668,20 @@ export default function Home() {
                 {item.step}
               </span>
               <div>
+                <span
+                  style={{
+                    display: "block",
+                    fontFamily: "var(--font-accent)",
+                    fontSize: "0.58rem",
+                    fontWeight: 600,
+                    textTransform: "uppercase",
+                    letterSpacing: "0.16em",
+                    color: "var(--color-accent)",
+                    marginBottom: "0.25rem",
+                  }}
+                >
+                  {item.role}
+                </span>
                 <h3
                   style={{
                     fontFamily: "var(--font-heading)",
@@ -2683,6 +2697,18 @@ export default function Home() {
                 </h3>
                 <p style={{ color: "var(--color-text-muted)", fontSize: "0.85rem", lineHeight: 1.55 }}>
                   {item.desc}
+                </p>
+                <p
+                  style={{
+                    color: "var(--color-text-muted)",
+                    fontSize: "0.78rem",
+                    lineHeight: 1.5,
+                    fontStyle: "italic",
+                    marginTop: "0.5rem",
+                    opacity: 0.7,
+                  }}
+                >
+                  {item.relief}
                 </p>
               </div>
             </div>
@@ -3335,9 +3361,9 @@ export default function Home() {
                 marginBottom: "1.5rem",
               }}
             >
-              Five Things
+              Five Things That Go Wrong
               <br />
-              <span style={{ color: "var(--color-accent)" }}>We Never Break.</span>
+              <span style={{ color: "var(--color-accent)" }}>When Your Painter Cuts Corners.</span>
             </h2>
             <p
               style={{
@@ -3348,9 +3374,9 @@ export default function Home() {
                 fontSize: "0.95rem",
               }}
             >
-              If you want the lowest bid on Oahu, it won't come from us.
-              If you want the last paint job your house needs for 7 years, keep reading.
-              These are commitments we make on every job. Break one, tell us, we fix it the same day.
+              Lump-sum quotes with no detail. Skipped prep. Crew turnover mid-project.
+              Voicemail instead of a person. No warranty follow-up.
+              We built our process around preventing all five. Here's how.
             </p>
             <Link to="/contact" className="btn-primary">
               Request Estimate <ArrowRight size={14} />
@@ -3480,22 +3506,22 @@ export default function Home() {
               {
                 region: "Metro Honolulu",
                 projects: 187,
-                areas: ["Downtown", "Makiki", "Manoa", "Kaimuki", "Kahala", "Aina Haina", "Portlock", "Hawaii Loa Ridge"],
+                areas: ["Downtown 96813", "Makiki 96822", "Manoa 96822", "Kaimuki 96816", "Kahala 96816", "Aina Haina 96821", "Portlock 96825", "Hawaii Loa Ridge 96825"],
               },
               {
                 region: "Windward Side",
                 projects: 134,
-                areas: ["Kailua Beachside", "Lanikai", "Enchanted Lake", "Kaneohe Bay", "Ahuimanu", "Heeia"],
+                areas: ["Kailua Beachside 96734", "Lanikai 96734", "Enchanted Lake 96734", "Kaneohe Bay 96744", "Ahuimanu 96744", "Heeia 96744"],
               },
               {
                 region: "Central & Leeward",
                 projects: 112,
-                areas: ["Pearl City", "Aiea Heights", "Mililani", "Mililani Mauka", "Kapolei", "Ewa Beach", "Ko Olina"],
+                areas: ["Pearl City 96782", "Aiea Heights 96701", "Mililani 96789", "Mililani Mauka 96789", "Kapolei 96707", "Ewa Beach 96706", "Ko Olina 96707"],
               },
               {
                 region: "North Shore & Windward",
                 projects: 50,
-                areas: ["Haleiwa", "Waialua", "Sunset Beach", "Laie", "Hauula", "Punaluu"],
+                areas: ["Haleiwa 96712", "Waialua 96791", "Sunset Beach 96712", "Laie 96762", "Hauula 96717", "Punaluu 96717"],
               },
             ].map((zone) => (
               <div
