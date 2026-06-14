@@ -179,6 +179,61 @@ export default function Footer() {
             </ul>
           </div>
 
+          {/* Color guides — expertise proof */}
+          <div>
+            <h4
+              style={{
+                fontFamily: "var(--font-heading)",
+                fontWeight: 600,
+                textTransform: "uppercase",
+                letterSpacing: "0.15em",
+                fontSize: "0.75rem",
+                color: "var(--color-accent)",
+                marginBottom: "1rem",
+              }}
+            >
+              Color Guides
+            </h4>
+            <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+              {[
+                "Oahu's favorite exterior whites",
+                "Best front door colors for curb appeal",
+                "Grays that work in tropical light",
+                "Cabinet colors our clients keep choosing",
+                "Colors to avoid on sun-facing walls",
+              ].map((guide) => (
+                <li key={guide}>
+                  <span
+                    style={{
+                      color: "var(--color-text-muted)",
+                      fontSize: "0.82rem",
+                      lineHeight: 1.4,
+                      display: "block",
+                    }}
+                  >
+                    {guide}
+                  </span>
+                </li>
+              ))}
+              <li>
+                <span
+                  style={{
+                    fontFamily: "var(--font-accent)",
+                    fontSize: "0.65rem",
+                    fontWeight: 600,
+                    textTransform: "uppercase",
+                    letterSpacing: "0.14em",
+                    color: "var(--color-accent)",
+                    marginTop: "0.25rem",
+                    display: "block",
+                  }}
+                >
+                  Free with every estimate
+                </span>
+              </li>
+            </ul>
+          </div>
+
           {/* Contact info */}
           <div>
             <h4

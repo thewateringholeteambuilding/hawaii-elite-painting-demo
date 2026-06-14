@@ -8,7 +8,7 @@ const STATS = [
   { value: "14", label: "Years on Oahu" },
   { value: "1.2M+", label: "Sq Ft Painted" },
   { value: "118", label: "Reviews · 3 Platforms" },
-  { value: "0", label: "Shortcuts Taken" },
+  { value: "W-2", label: "All Crew · No Subs" },
 ];
 
 const SERVICES_TEASER = [
@@ -625,12 +625,13 @@ export default function Home() {
               marginBottom: "2.25rem",
             }}
           >
-            Your walls look tired. We get it. Derek Kang has been
-            fixing that since 2004. Running his own crew since 2012.
-            Same four guys every day. 7:30 arrival. They prep every
-            surface before a roller touches the wall, and they clean
-            the jobsite before they leave. Two-year workmanship
-            warranty on every job, manufacturer coating warranty on file.
+            A small operation by design. Derek Kang keeps it that way
+            so he's on every estimate and every walk-through himself.
+            Same four W-2 crew members every day. 7:30 arrival. They
+            prep every surface before a roller touches the wall, and
+            they clean the jobsite before they leave. Two-year
+            workmanship warranty on every job, manufacturer coating
+            warranty on file.
           </p>
 
           <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap", marginBottom: "2.5rem" }}>
@@ -899,6 +900,24 @@ export default function Home() {
           style={{
             maxWidth: "1280px",
             margin: "0 auto",
+          }}
+        >
+          <p
+            style={{
+              textAlign: "center",
+              fontFamily: "var(--font-accent)",
+              fontSize: "0.68rem",
+              fontWeight: 600,
+              textTransform: "uppercase",
+              letterSpacing: "0.18em",
+              color: "var(--color-text-muted)",
+              marginBottom: "1.25rem",
+            }}
+          >
+            Click any badge to verify our reputation directly
+          </p>
+        <div
+          style={{
             display: "flex",
             flexWrap: "wrap",
             gap: "1rem",
@@ -973,6 +992,7 @@ export default function Home() {
             );
           })}
         </div>
+        </div>
       </section>
 
       {/* ── EPA LEAD-SAFE BADGE ── */}
@@ -1042,6 +1062,125 @@ export default function Home() {
                 Firm #NAT-F217946-1 · Required for pre-1978 homes
               </span>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── THE SCIENCE OF A DURABLE FINISH ── */}
+      <section
+        style={{
+          background: "var(--color-bg)",
+          borderBottom: "1px solid var(--color-border)",
+          padding: "var(--space-block) 1.5rem",
+        }}
+      >
+        <div style={{ maxWidth: "900px", margin: "0 auto" }}>
+          <span className="section-label" style={{ display: "block", marginBottom: "0.75rem" }}>
+            Technical Standards
+          </span>
+          <h2
+            style={{
+              fontFamily: "var(--font-heading)",
+              fontWeight: 700,
+              textTransform: "uppercase",
+              fontSize: "clamp(1.25rem, 2vw, 1.75rem)",
+              lineHeight: 0.95,
+              color: "var(--color-text)",
+              marginBottom: "0.75rem",
+            }}
+          >
+            The Science of a{" "}
+            <span style={{ color: "var(--color-accent)" }}>Durable Finish</span>
+          </h2>
+          <p
+            style={{
+              color: "var(--color-text-muted)",
+              fontSize: "0.9rem",
+              lineHeight: 1.65,
+              maxWidth: "620px",
+              marginBottom: "2rem",
+            }}
+          >
+            Hawaii's UV load, salt air, and humidity cycling break coatings
+            faster than mainland climate guides predict. We follow a set of
+            technical specifications engineered for island conditions.
+          </p>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(2, 1fr)",
+              gap: "1px",
+              background: "var(--color-border)",
+              border: "1px solid var(--color-border)",
+            }}
+            className="md:grid-cols-4"
+          >
+            {[
+              {
+                stat: "15%",
+                label: "Moisture Ceiling",
+                detail: "We verify substrate moisture reads below 15% before any coating application. Above that, paint traps moisture and blisters within months.",
+              },
+              {
+                stat: "100%",
+                label: "Substrate Integrity",
+                detail: "Every surface is scraped, sanded, and primed for adhesion. No coating goes over chalking, peeling, or contaminated substrate.",
+              },
+              {
+                stat: "W-2",
+                label: "In-House Technicians",
+                detail: "Every crew member is a W-2 employee with background check, workers comp, and training documentation. No day labor. No subcontractors.",
+              },
+              {
+                stat: "2-coat",
+                label: "Minimum System",
+                detail: "Primer plus two finish coats is the baseline. Single-coat coverage exists in marketing brochures, not on Oahu exteriors.",
+              },
+            ].map((item, i) => (
+              <div
+                key={i}
+                style={{
+                  background: "var(--color-surface)",
+                  padding: "1.5rem 1.25rem",
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "0.5rem",
+                }}
+              >
+                <span
+                  style={{
+                    fontFamily: "var(--font-heading)",
+                    fontWeight: 700,
+                    fontSize: "1.5rem",
+                    color: "var(--color-accent)",
+                    lineHeight: 1,
+                  }}
+                >
+                  {item.stat}
+                </span>
+                <span
+                  style={{
+                    fontFamily: "var(--font-accent)",
+                    fontSize: "0.65rem",
+                    fontWeight: 700,
+                    textTransform: "uppercase",
+                    letterSpacing: "0.14em",
+                    color: "var(--color-text)",
+                  }}
+                >
+                  {item.label}
+                </span>
+                <span
+                  style={{
+                    fontSize: "0.78rem",
+                    color: "var(--color-text-muted)",
+                    lineHeight: 1.55,
+                  }}
+                >
+                  {item.detail}
+                </span>
+              </div>
+            ))}
           </div>
         </div>
       </section>
