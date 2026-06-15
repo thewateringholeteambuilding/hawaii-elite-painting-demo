@@ -190,6 +190,11 @@ img {
 .stat-block {
   border-left: 2px solid var(--color-accent);
   padding-left: 1.25rem;
+  transition: background 200ms ease;
+}
+
+.stat-block:hover {
+  background: hsla(38, 85%, 55%, 0.06);
 }
 
 .iron-label {

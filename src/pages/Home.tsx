@@ -7,7 +7,7 @@ const STATS = [
   { value: "483", label: "Projects Completed" },
   { value: "14", label: "Years on Oahu" },
   { value: "1.2M+", label: "Sq Ft Painted" },
-  { value: "118", label: "Reviews · 3 Platforms" },
+  { value: "118", label: "Reviews · Google + Yelp + Nextdoor" },
   { value: "W-2", label: "All Crew · No Subs" },
 ];
 
@@ -91,6 +91,7 @@ const TESTIMONIALS = [
     source: "via Google Reviews",
     reviewDate: "Nov 14, 2024",
     detail: "Exterior repaint · Crew: Jason & Mike · November 2024",
+    timeSince: "Written 7 months after completion",
     followUp: "Jason called at 6 months to check the south-facing wall. Sent us a photo of the coating thickness test he ran on-site. Still holding.",
     followUpLabel: "6-month follow-up call",
     stars: 5,
@@ -105,6 +106,7 @@ const TESTIMONIALS = [
     source: "via Yelp",
     reviewDate: "Feb 28, 2025",
     detail: "Interior + drywall repair · Foreman: Derek · February 2025",
+    timeSince: "Written 4 months after completion",
     followUp: "Derek emailed us the final touch-up checklist he walked before leaving. House sold in 9 days. Agent said the paint was the first thing buyers mentioned at every showing.",
     followUpLabel: "Post-project result",
     stars: 5,
@@ -119,6 +121,7 @@ const TESTIMONIALS = [
     source: "via Nextdoor referral",
     reviewDate: "Mar 19, 2025",
     detail: "Cabinet refinishing · Crew: Kai & Brandon · March 2025",
+    timeSince: "Written 3 months after completion",
     followUp: "Kai left us a labeled paint-can with the exact batch number for touch-ups. Guests started commenting on the kitchen in Airbnb reviews within two weeks of relisting.",
     followUpLabel: "2-week update",
     stars: 5,
@@ -833,6 +836,78 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ── CURRENTLY BOOKING STRIP ── */}
+      <section
+        style={{
+          background: "var(--color-accent)",
+          padding: "0.75rem 1.5rem",
+        }}
+      >
+        <div
+          style={{
+            maxWidth: "1280px",
+            margin: "0 auto",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: "1.5rem",
+            flexWrap: "wrap",
+          }}
+        >
+          <span
+            style={{
+              fontFamily: "var(--font-heading)",
+              fontWeight: 700,
+              textTransform: "uppercase",
+              fontSize: "0.72rem",
+              letterSpacing: "0.12em",
+              color: "hsl(220 45% 7%)",
+            }}
+          >
+            Currently Booking: July 2026
+          </span>
+          <span
+            style={{
+              width: "1px",
+              height: "14px",
+              background: "hsla(220, 45%, 7%, 0.3)",
+            }}
+          />
+          <span
+            style={{
+              fontSize: "0.72rem",
+              fontFamily: "var(--font-accent)",
+              fontWeight: 500,
+              color: "hsla(220, 45%, 7%, 0.8)",
+            }}
+          >
+            Average lead time: 5 business days from estimate to start
+          </span>
+          <span
+            style={{
+              width: "1px",
+              height: "14px",
+              background: "hsla(220, 45%, 7%, 0.3)",
+            }}
+          />
+          <Link
+            to="/contact"
+            style={{
+              fontSize: "0.68rem",
+              fontFamily: "var(--font-accent)",
+              fontWeight: 700,
+              textTransform: "uppercase",
+              letterSpacing: "0.1em",
+              color: "hsl(220 45% 7%)",
+              textDecoration: "underline",
+              textUnderlineOffset: "3px",
+            }}
+          >
+            Reserve Your Spot →
+          </Link>
+        </div>
+      </section>
+
       {/* ── STATS STRIP ── */}
       <section
         style={{
@@ -1234,6 +1309,64 @@ export default function Home() {
             Your $2M Portlock home or $800k Kailua bungalow is fully covered
             while we work.
           </span>
+        </div>
+      </section>
+
+      {/* ── SEASONAL ADVISORY ── */}
+      <section
+        style={{
+          background: "var(--color-bg)",
+          borderTop: "1px solid var(--color-border)",
+          padding: "1.25rem 1.5rem",
+        }}
+      >
+        <div
+          style={{
+            maxWidth: "1280px",
+            margin: "0 auto",
+            display: "flex",
+            alignItems: "flex-start",
+            gap: "1rem",
+            justifyContent: "center",
+          }}
+        >
+          <div
+            style={{
+              width: "8px",
+              height: "8px",
+              background: "hsl(120 60% 45%)",
+              borderRadius: "50%",
+              flexShrink: 0,
+              marginTop: "5px",
+            }}
+          />
+          <div>
+            <span
+              style={{
+                display: "block",
+                fontFamily: "var(--font-heading)",
+                fontWeight: 700,
+                textTransform: "uppercase",
+                fontSize: "0.72rem",
+                letterSpacing: "0.08em",
+                color: "var(--color-text)",
+                lineHeight: 1.2,
+                marginBottom: "0.25rem",
+              }}
+            >
+              June–September: Prime Exterior Season on Oahu
+            </span>
+            <span
+              style={{
+                fontSize: "0.78rem",
+                color: "var(--color-text-muted)",
+                lineHeight: 1.5,
+              }}
+            >
+              Low rain probability, consistent drying windows, and predictable humidity.
+              Best 4-month stretch for exterior coatings. Book now for summer scheduling.
+            </span>
+          </div>
         </div>
       </section>
 
@@ -4010,6 +4143,24 @@ export default function Home() {
                 <span style={{ fontSize: "0.78rem", color: "var(--color-text-muted)", marginTop: "0.25rem", display: "block" }}>
                   {t.detail}
                 </span>
+                {"timeSince" in t && t.timeSince && (
+                  <span
+                    style={{
+                      display: "inline-block",
+                      marginTop: "0.375rem",
+                      fontSize: "0.6rem",
+                      fontFamily: "var(--font-accent)",
+                      fontWeight: 600,
+                      textTransform: "uppercase",
+                      letterSpacing: "0.14em",
+                      color: "var(--color-accent)",
+                      border: "1px solid var(--color-accent)",
+                      padding: "0.2rem 0.5rem",
+                    }}
+                  >
+                    {t.timeSince}
+                  </span>
+                )}
                 {t.followUp && (
                   <div
                     style={{
