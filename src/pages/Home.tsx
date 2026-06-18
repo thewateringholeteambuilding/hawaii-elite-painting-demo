@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
-import { ArrowRight, CheckCircle, Star, Mail, ChevronDown } from "lucide-react";
+import { ArrowRight, CheckCircle, Star, Mail, ChevronDown, Phone } from "lucide-react";
 
 const STATS = [
   { value: "483", label: "Projects Completed" },
@@ -547,6 +547,16 @@ function QuickEstimateCalculator() {
 }
 
 export default function Home() {
+  const [showTrustBar, setShowTrustBar] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowTrustBar(window.scrollY > 600);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <>
       <Helmet>
@@ -556,6 +566,78 @@ export default function Home() {
           content="Painting and renovation contractors serving Oahu. Interior, exterior, drywall, decks, kitchens, and bathrooms. Licensed and insured. Free estimates."
         />
       </Helmet>
+
+      {/* ── SCROLL-TRIGGERED MINI TRUST BAR ── */}
+      <div
+        aria-hidden={!showTrustBar}
+        style={{
+          position: "fixed",
+          top: 0,
+          left: 0,
+          right: 0,
+          zIndex: 100,
+          background: "var(--color-surface)",
+          borderBottom: "1px solid var(--color-border)",
+          padding: "0.5rem 1.5rem",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          gap: "1.25rem",
+          flexWrap: "wrap",
+          transform: showTrustBar ? "translateY(0)" : "translateY(-100%)",
+          opacity: showTrustBar ? 1 : 0,
+          transition: "transform 300ms cubic-bezier(0.4, 0, 0.2, 1), opacity 300ms ease",
+          pointerEvents: showTrustBar ? "auto" : "none",
+        }}
+      >
+        <div style={{ display: "flex", alignItems: "center", gap: "0.375rem" }}>
+          <Star size={11} fill="hsl(38 85% 55%)" color="hsl(38 85% 55%)" />
+          <span
+            style={{
+              fontFamily: "var(--font-accent)",
+              fontSize: "0.65rem",
+              fontWeight: 600,
+              textTransform: "uppercase",
+              letterSpacing: "0.1em",
+              color: "var(--color-text-muted)",
+            }}
+          >
+            4.8 Google · 118 Reviews
+          </span>
+        </div>
+        <span style={{ width: "1px", height: "12px", background: "var(--color-border)" }} />
+        <span
+          style={{
+            fontFamily: "var(--font-accent)",
+            fontSize: "0.65rem",
+            fontWeight: 600,
+            textTransform: "uppercase",
+            letterSpacing: "0.1em",
+            color: "var(--color-text-muted)",
+          }}
+        >
+          Licensed CT-35891 · Insured
+        </span>
+        <span style={{ width: "1px", height: "12px", background: "var(--color-border)" }} />
+        <a
+          href="tel:+18085550192"
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: "0.375rem",
+            fontFamily: "var(--font-accent)",
+            fontSize: "0.65rem",
+            fontWeight: 700,
+            textTransform: "uppercase",
+            letterSpacing: "0.1em",
+            color: "var(--color-accent)",
+            textDecoration: "none",
+          }}
+        >
+          <Phone size={11} />
+          (808) 555-0192
+        </a>
+      </div>
 
       {/* ── HERO ── split desktop layout */}
       <section
@@ -4000,6 +4082,83 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ── COMPANY MILESTONES ── */}
+      <section
+        style={{
+          background: "var(--color-bg)",
+          borderTop: "1px solid var(--color-border)",
+          padding: "2rem 1.5rem",
+        }}
+      >
+        <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
+          <span className="section-label" style={{ display: "block", marginBottom: "1.25rem", textAlign: "center" }}>
+            14 Years on Oahu
+          </span>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(2, 1fr)",
+              gap: "1px",
+              background: "var(--color-border)",
+              border: "1px solid var(--color-border)",
+            }}
+            className="md:grid-cols-4"
+          >
+            {[
+              { year: "2012", event: "Founded", detail: "Derek Kang starts with one van and a crew of two on the Windward Side." },
+              { year: "2018", event: "BBB Accredited", detail: "A+ rating earned. First year with zero complaints on file." },
+              { year: "2023", event: "PCA Image Award", detail: "Residential Exterior category. First Hawaii firm to win in 6 years." },
+              { year: "2026", event: "483 Projects", detail: "Same four-person crew. Same phone number. Still showing up at 7:30." },
+            ].map((m) => (
+              <div
+                key={m.year}
+                style={{
+                  background: "var(--color-surface)",
+                  padding: "1.25rem",
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "0.375rem",
+                }}
+              >
+                <span
+                  style={{
+                    fontFamily: "var(--font-heading)",
+                    fontWeight: 700,
+                    fontSize: "1.75rem",
+                    color: "var(--color-accent)",
+                    lineHeight: 1,
+                  }}
+                >
+                  {m.year}
+                </span>
+                <span
+                  style={{
+                    fontFamily: "var(--font-heading)",
+                    fontWeight: 700,
+                    textTransform: "uppercase",
+                    fontSize: "0.72rem",
+                    letterSpacing: "0.06em",
+                    color: "var(--color-text)",
+                    lineHeight: 1.2,
+                  }}
+                >
+                  {m.event}
+                </span>
+                <span
+                  style={{
+                    fontSize: "0.75rem",
+                    color: "var(--color-text-muted)",
+                    lineHeight: 1.5,
+                  }}
+                >
+                  {m.detail}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ── TESTIMONIALS ── */}
       <section
         style={{
@@ -4018,19 +4177,35 @@ export default function Home() {
             marginBottom: "3rem",
           }}
         >
-          <h2
-            style={{
-              fontSize: "var(--text-h2)",
-              fontFamily: "var(--font-heading)",
-              fontWeight: 700,
-              textTransform: "uppercase",
-              lineHeight: 0.92,
-              color: "var(--color-text)",
-            }}
-          >
-            68% Come Back.
-            <br />The Rest Refer.
-          </h2>
+          <div>
+            <h2
+              style={{
+                fontSize: "var(--text-h2)",
+                fontFamily: "var(--font-heading)",
+                fontWeight: 700,
+                textTransform: "uppercase",
+                lineHeight: 0.92,
+                color: "var(--color-text)",
+                marginBottom: "0.625rem",
+              }}
+            >
+              68% Come Back.
+              <br />The Rest Refer.
+            </h2>
+            <span
+              style={{
+                display: "block",
+                fontFamily: "var(--font-accent)",
+                fontSize: "0.72rem",
+                fontWeight: 600,
+                textTransform: "uppercase",
+                letterSpacing: "0.14em",
+                color: "var(--color-text-muted)",
+              }}
+            >
+              118 verified reviews across Google, Yelp, and Nextdoor
+            </span>
+          </div>
 
           {/* Google badge — linked to verify */}
           <a
@@ -4087,22 +4262,41 @@ export default function Home() {
                 ...(i === 0 ? { gridTemplateColumns: "1fr", gap: "1rem" } : {}),
                 ...(i !== 0 ? { flexDirection: "column" as const, gap: "1rem" } : {}),
                 borderTop: "3px solid transparent",
+                borderLeft: i === 0 ? "4px solid var(--color-accent)" : "none",
                 transition: "border-color 200ms ease",
               }}
               onMouseEnter={(e) => { e.currentTarget.style.borderTopColor = "var(--color-accent)"; }}
               onMouseLeave={(e) => { e.currentTarget.style.borderTopColor = "transparent"; }}
             >
-              <div style={{ display: "flex", gap: "2px" }}>
+              <div style={{ display: "flex", gap: "2px", alignItems: "center" }}>
                 {[...Array(t.stars)].map((_, j) => (
-                  <Star key={j} size={12} fill="hsl(38 85% 55%)" color="hsl(38 85% 55%)" />
+                  <Star key={j} size={i === 0 ? 14 : 12} fill="hsl(38 85% 55%)" color="hsl(38 85% 55%)" />
                 ))}
+                {i === 0 && (
+                  <span
+                    style={{
+                      marginLeft: "0.5rem",
+                      fontSize: "0.55rem",
+                      fontFamily: "var(--font-accent)",
+                      fontWeight: 700,
+                      textTransform: "uppercase",
+                      letterSpacing: "0.12em",
+                      color: "var(--color-bg)",
+                      background: "var(--color-accent)",
+                      padding: "0.15rem 0.5rem",
+                      lineHeight: 1.4,
+                    }}
+                  >
+                    Featured Review
+                  </span>
+                )}
               </div>
               <span
                 style={{
                   fontFamily: "var(--font-heading)",
                   fontWeight: 700,
                   textTransform: "uppercase",
-                  fontSize: "0.78rem",
+                  fontSize: i === 0 ? "0.95rem" : "0.78rem",
                   letterSpacing: "0.06em",
                   color: "var(--color-accent)",
                   lineHeight: 1.2,
@@ -4113,8 +4307,8 @@ export default function Home() {
               <blockquote
                 style={{
                   color: "var(--color-text)",
-                  fontSize: i === 0 ? "1.1rem" : "0.925rem",
-                  lineHeight: i === 0 ? 1.7 : 1.6,
+                  fontSize: i === 0 ? "1.2rem" : "0.925rem",
+                  lineHeight: i === 0 ? 1.75 : 1.6,
                   fontStyle: "italic",
                   flex: 1,
                   maxWidth: i === 0 ? "640px" : undefined,
@@ -4199,6 +4393,137 @@ export default function Home() {
               </div>
             </div>
           ))}
+        </div>
+      </section>
+
+      {/* ── YOUR PROJECT IN 4 STEPS ── */}
+      <section
+        style={{
+          background: "var(--color-bg)",
+          borderTop: "1px solid var(--color-border)",
+          padding: "var(--space-block) 1.5rem",
+        }}
+      >
+        <div style={{ maxWidth: "960px", margin: "0 auto" }}>
+          <span className="section-label" style={{ display: "block", marginBottom: "0.75rem" }}>
+            How It Works
+          </span>
+          <h2
+            style={{
+              fontFamily: "var(--font-heading)",
+              fontWeight: 700,
+              textTransform: "uppercase",
+              fontSize: "clamp(1.25rem, 2vw, 1.75rem)",
+              lineHeight: 0.95,
+              color: "var(--color-text)",
+              marginBottom: "2rem",
+            }}
+          >
+            Your Project in{" "}
+            <span style={{ color: "var(--color-accent)" }}>4 Steps</span>
+          </h2>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "1fr",
+              gap: "0",
+            }}
+            className="md:grid-cols-4"
+          >
+            {[
+              {
+                step: "01",
+                title: "Call",
+                time: "5 min",
+                detail: "You call Derek directly. He asks about the scope, the timeline, and your budget range. No sales pitch.",
+              },
+              {
+                step: "02",
+                title: "Walk-Through",
+                time: "45 min on-site",
+                detail: "Derek measures every surface with QuickMeasure. You get a written estimate within 24 hours. Line items, product specs, timeline.",
+              },
+              {
+                step: "03",
+                title: "Prep & Paint",
+                time: "3–7 days typical",
+                detail: "Same crew from start to finish. 70% of the job is prep. Daily cleanup. Daily progress photo texted to you.",
+              },
+              {
+                step: "04",
+                title: "Final Walk-Through",
+                time: "30 min",
+                detail: "You and Derek walk every surface. Touch-ups happen before the crew packs up. Warranty paperwork in hand.",
+              },
+            ].map((s, i) => (
+              <div
+                key={s.step}
+                style={{
+                  padding: "1.5rem 1.25rem",
+                  borderLeft: i === 0 ? "none" : "1px solid var(--color-border)",
+                  borderBottom: "1px solid var(--color-border)",
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "0.5rem",
+                  position: "relative",
+                }}
+              >
+                <div style={{ display: "flex", alignItems: "baseline", gap: "0.5rem" }}>
+                  <span
+                    style={{
+                      fontFamily: "var(--font-heading)",
+                      fontWeight: 700,
+                      fontSize: "1.5rem",
+                      color: "var(--color-accent)",
+                      lineHeight: 1,
+                    }}
+                  >
+                    {s.step}
+                  </span>
+                  <span
+                    style={{
+                      fontFamily: "var(--font-heading)",
+                      fontWeight: 700,
+                      textTransform: "uppercase",
+                      fontSize: "0.82rem",
+                      letterSpacing: "0.06em",
+                      color: "var(--color-text)",
+                      lineHeight: 1.2,
+                    }}
+                  >
+                    {s.title}
+                  </span>
+                </div>
+                <span
+                  style={{
+                    fontFamily: "var(--font-accent)",
+                    fontSize: "0.6rem",
+                    fontWeight: 600,
+                    textTransform: "uppercase",
+                    letterSpacing: "0.14em",
+                    color: "var(--color-accent)",
+                    opacity: 0.8,
+                  }}
+                >
+                  {s.time}
+                </span>
+                <span
+                  style={{
+                    fontSize: "0.78rem",
+                    color: "var(--color-text-muted)",
+                    lineHeight: 1.55,
+                  }}
+                >
+                  {s.detail}
+                </span>
+              </div>
+            ))}
+          </div>
+          <div style={{ marginTop: "1.5rem" }}>
+            <Link to="/contact" className="btn-primary">
+              Start With Step 1 <ArrowRight size={14} />
+            </Link>
+          </div>
         </div>
       </section>
 
