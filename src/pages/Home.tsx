@@ -7,7 +7,7 @@ const STATS = [
   { value: "483", label: "Projects Completed" },
   { value: "14", label: "Years on Oahu" },
   { value: "1.2M+", label: "Sq Ft Painted" },
-  { value: "118", label: "Reviews · Google + Yelp + Nextdoor" },
+  { value: "118", label: "Reviews · Google 47 · Yelp 34 · Nextdoor 29 · BBB 8" },
   { value: "W-2", label: "All Crew · No Subs" },
 ];
 
@@ -662,7 +662,7 @@ export default function Home() {
           }}
         >
           <span className="section-label" style={{ marginBottom: "1.25rem" }}>
-            Est. 2012 · Honolulu, Oahu · Prep-First Painting™
+            Painting Oahu 2012–2026 · Honolulu · Prep-First Painting™
           </span>
 
           <h1
@@ -710,13 +710,13 @@ export default function Home() {
               marginBottom: "2.25rem",
             }}
           >
-            A small operation by design. Derek Kang keeps it that way
-            so he's on every estimate and every walk-through himself.
-            Same four W-2 crew members every day. 7:30 arrival. They
-            prep every surface before a roller touches the wall, and
-            they clean the jobsite before they leave. Two-year
-            workmanship warranty on every job, manufacturer coating
-            warranty on file.
+            Derek Kang started this company in 2012 after watching three
+            Oahu painters quote his mother's house without measuring a
+            single wall. A small operation by design. He's on every
+            estimate and every walk-through himself. Same four W-2 crew
+            members every day. 7:30 arrival. They prep every surface
+            before a roller touches the wall, and they clean the jobsite
+            before they leave.
           </p>
 
           <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap", marginBottom: "2.5rem" }}>
@@ -912,7 +912,20 @@ export default function Home() {
                 fontFamily: "var(--font-accent)",
               }}
             >
-              47 reviews · Verify on Google →
+              47 Google · 34 Yelp · 29 Nextdoor · 8 BBB
+            </span>
+            <span
+              style={{
+                display: "flex",
+                gap: "0.625rem",
+                marginTop: "0.375rem",
+                fontSize: "0.6rem",
+                fontFamily: "var(--font-accent)",
+                textTransform: "uppercase",
+                letterSpacing: "0.1em",
+              }}
+            >
+              <span style={{ color: "var(--color-accent)" }}>Verify on Google →</span>
             </span>
           </a>
         </div>
@@ -1545,9 +1558,11 @@ export default function Home() {
                 margin: "0 auto",
               }}
             >
-              We never subcontract. Every crew member passes a background check and
-              drug screening before their first job. You get the same four faces
-              on day one and day five.
+              Minimum five years residential painting experience to join
+              this crew. No day-laborers. No rotators. Every member
+              passes a background check and drug screening before their
+              first job. You get the same four faces on day one and day
+              five.
             </p>
           </div>
           <div
