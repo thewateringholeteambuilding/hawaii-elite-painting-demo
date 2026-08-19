@@ -959,7 +959,7 @@ export default function Home() {
               color: "hsl(220 45% 7%)",
             }}
           >
-            Currently Booking: July 2026
+            Currently Booking: September 2026
           </span>
           <span
             style={{
@@ -1520,6 +1520,7 @@ export default function Home() {
 
       {/* ── CREW TRUST STRIP ── */}
       <section
+        id="crew"
         style={{
           background: "var(--color-surface-raised)",
           borderTop: "1px solid var(--color-border)",
@@ -3730,9 +3731,9 @@ export default function Home() {
                 marginBottom: "1.5rem",
               }}
             >
-              Five Things That Go Wrong
+              Five Commitments
               <br />
-              <span style={{ color: "var(--color-accent)" }}>When Your Painter Cuts Corners.</span>
+              <span style={{ color: "var(--color-accent)" }}>We Make on Every Job.</span>
             </h2>
             <p
               style={{
@@ -3743,9 +3744,9 @@ export default function Home() {
                 fontSize: "0.95rem",
               }}
             >
-              Lump-sum quotes with no detail. Skipped prep. Crew turnover mid-project.
-              Voicemail instead of a person. No warranty follow-up.
-              We built our process around preventing all five. Here's how.
+              Line-item pricing before we start. Surface prep on every wall. Same crew
+              from day one to walk-through. A person picks up when you call. Warranty
+              follow-up at 6 and 12 months. Five promises, in writing.
             </p>
             <Link to="/contact" className="btn-primary">
               Request Estimate <ArrowRight size={14} />
@@ -4405,8 +4406,80 @@ export default function Home() {
                     </span>
                   </div>
                 )}
+                <a
+                  href="#crew"
+                  style={{
+                    display: "inline-block",
+                    marginTop: "0.625rem",
+                    fontSize: "0.6rem",
+                    fontFamily: "var(--font-accent)",
+                    fontWeight: 600,
+                    textTransform: "uppercase",
+                    letterSpacing: "0.14em",
+                    color: "var(--color-text-muted)",
+                    textDecoration: "none",
+                    transition: "color 150ms ease",
+                  }}
+                  onMouseEnter={(e) => { e.currentTarget.style.color = "var(--color-accent)"; }}
+                  onMouseLeave={(e) => { e.currentTarget.style.color = "var(--color-text-muted)"; }}
+                >
+                  Meet this crew ↑
+                </a>
               </div>
             </div>
+          ))}
+        </div>
+
+        {/* ── VERIFY OUR REVIEWS ── */}
+        <div
+          style={{
+            marginTop: "2rem",
+            display: "flex",
+            flexWrap: "wrap",
+            gap: "0.75rem",
+            alignItems: "center",
+          }}
+        >
+          <span
+            style={{
+              fontFamily: "var(--font-accent)",
+              fontSize: "0.62rem",
+              fontWeight: 600,
+              textTransform: "uppercase",
+              letterSpacing: "0.14em",
+              color: "var(--color-text-muted)",
+              marginRight: "0.25rem",
+            }}
+          >
+            Verify directly:
+          </span>
+          {[
+            { label: "Google · 47 reviews", href: "https://maps.google.com/?cid=12364976460210408014" },
+            { label: "Yelp · 34 reviews", href: "https://www.yelp.com/biz/hawaii-elite-painting-honolulu" },
+            { label: "BBB · A+ since 2018", href: "https://www.bbb.org/us/hi/honolulu" },
+          ].map((platform) => (
+            <a
+              key={platform.label}
+              href={platform.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                fontSize: "0.68rem",
+                fontFamily: "var(--font-accent)",
+                fontWeight: 600,
+                textTransform: "uppercase",
+                letterSpacing: "0.1em",
+                color: "var(--color-accent)",
+                border: "1px solid var(--color-border)",
+                padding: "0.375rem 0.875rem",
+                textDecoration: "none",
+                transition: "border-color 150ms ease",
+              }}
+              onMouseEnter={(e) => { e.currentTarget.style.borderColor = "var(--color-accent)"; }}
+              onMouseLeave={(e) => { e.currentTarget.style.borderColor = "var(--color-border)"; }}
+            >
+              {platform.label} →
+            </a>
           ))}
         </div>
       </section>
@@ -5540,6 +5613,53 @@ export default function Home() {
           </a>
         </div>
       </section>
+
+      {/* ── STICKY MOBILE CTA BAR ── */}
+      <div
+        className="md:hidden"
+        style={{
+          position: "fixed",
+          bottom: 0,
+          left: 0,
+          right: 0,
+          zIndex: 90,
+          background: "var(--color-surface)",
+          borderTop: "1px solid var(--color-border)",
+          padding: "0.625rem 1rem",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          gap: "0.75rem",
+        }}
+      >
+        <a
+          href="tel:+18085550192"
+          className="btn-outline"
+          style={{
+            padding: "0.625rem 1rem",
+            fontSize: "0.72rem",
+            display: "inline-flex",
+            alignItems: "center",
+            gap: "0.375rem",
+            flex: "0 0 auto",
+          }}
+        >
+          <Phone size={13} />
+          Call Now
+        </a>
+        <Link
+          to="/contact"
+          className="btn-primary"
+          style={{
+            padding: "0.625rem 1.25rem",
+            fontSize: "0.72rem",
+            flex: 1,
+            justifyContent: "center",
+          }}
+        >
+          Free Estimate <ArrowRight size={13} />
+        </Link>
+      </div>
     </>
   );
 }
