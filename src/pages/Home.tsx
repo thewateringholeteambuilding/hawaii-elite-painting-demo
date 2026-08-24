@@ -153,6 +153,14 @@ const FAQ_ITEMS = [
     q: "What does a typical project cost?",
     a: "Interior rooms run $2.80–$4.50/sq ft (roughly $490–$790 per room, assuming 175 sq ft walls). A 3-bedroom full interior: $5,500–$8,000. Exterior single-story: $4,500–$6,500 ($3.50–$6.00/sq ft depending on siding). Two-story with wood trim: $7,000–$9,000+. Cabinet refinishing: $3,200–$5,500 per kitchen ($120–$180 per door, average kitchen has 20–30 doors). These are 2026 Oahu rates. Surface condition, access, and coating choice shift the number. Walk-through required for a real quote.",
   },
+  {
+    q: "Are you the cheapest painter on Oahu?",
+    a: "No, and we are deliberate about that. Our crew members are W-2 employees with benefits. Every one passes a background check and drug screening before their first job. We use Sherwin-Williams and Benjamin Moore coatings specified by surface type. Our quotes are line-item, surface-by-surface, so you see exactly where every dollar goes. The price reflects prep time, coating quality, and crew experience. Our minimum project investment is $1,800 for interiors and $4,500 for exteriors.",
+  },
+  {
+    q: "Is there a minimum project size?",
+    a: "Our minimum investment is $1,800 for interior work and $4,500 for exterior projects. For single-room jobs below that threshold, we offer the One-Room Refresh at $490. This floor exists because mobilization, surface prep, and cleanup take the same effort whether we paint one wall or four. Below $1,800, the prep-to-paint ratio means you're paying mostly for setup, not finish.",
+  },
 ];
 
 const WHY_ITEMS = [
@@ -616,7 +624,7 @@ export default function Home() {
             color: "var(--color-text-muted)",
           }}
         >
-          Licensed CT-35891 · Insured
+          Licensed CT-35891 · Insured · 2-Year Warranty
         </span>
         <span style={{ width: "1px", height: "12px", background: "var(--color-border)" }} />
         <a
@@ -1513,6 +1521,83 @@ export default function Home() {
               You call (808) 555-0192, Derek or his crew lead picks up.
               Same number since 2012. No phone tree, no "press 1 for scheduling."
               If we're on a ladder, we call back within 2 hours.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ── FOUNDER DIRECT ── */}
+      <section
+        style={{
+          background: "var(--color-surface)",
+          borderTop: "1px solid var(--color-border)",
+          borderBottom: "1px solid var(--color-border)",
+          padding: "2rem 1.5rem",
+        }}
+      >
+        <div
+          style={{
+            maxWidth: "720px",
+            margin: "0 auto",
+            display: "grid",
+            gridTemplateColumns: "1fr",
+            gap: "1.5rem",
+            alignItems: "center",
+          }}
+          className="md:grid-cols-[64px_1fr]"
+        >
+          <div
+            style={{
+              width: "64px",
+              height: "64px",
+              border: "2px solid var(--color-accent)",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              flexShrink: 0,
+            }}
+          >
+            <span
+              style={{
+                fontFamily: "var(--font-heading)",
+                fontWeight: 700,
+                fontSize: "1.1rem",
+                color: "var(--color-accent)",
+                letterSpacing: "0.04em",
+              }}
+            >
+              DK
+            </span>
+          </div>
+          <div>
+            <span
+              style={{
+                display: "block",
+                fontFamily: "var(--font-heading)",
+                fontWeight: 700,
+                textTransform: "uppercase",
+                fontSize: "0.82rem",
+                letterSpacing: "0.06em",
+                color: "var(--color-text)",
+                marginBottom: "0.5rem",
+              }}
+            >
+              From Derek Kang, Owner
+            </span>
+            <p
+              style={{
+                color: "var(--color-text-muted)",
+                fontSize: "0.88rem",
+                lineHeight: 1.65,
+                fontStyle: "italic",
+                margin: 0,
+              }}
+            >
+              "I started this crew because I watched too many Oahu homeowners get
+              a number on a napkin instead of a real scope. Every estimate I write
+              has your surfaces measured, your coatings named, and a timeline in
+              calendar days. I want your next paint job to be the one you stop
+              thinking about because the finish just holds."
             </p>
           </div>
         </div>

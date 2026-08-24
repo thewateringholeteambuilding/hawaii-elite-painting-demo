@@ -284,6 +284,70 @@ export default function Footer() {
           </div>
         </div>
 
+        {/* Social platform links */}
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: "1.25rem",
+            flexWrap: "wrap",
+            marginBottom: "1.5rem",
+          }}
+        >
+          <span
+            style={{
+              fontFamily: "var(--font-accent)",
+              fontSize: "0.62rem",
+              fontWeight: 600,
+              textTransform: "uppercase",
+              letterSpacing: "0.14em",
+              color: "var(--color-text-muted)",
+              opacity: 0.6,
+            }}
+          >
+            Verify us on
+          </span>
+          {[
+            { label: "Google", icon: "G", href: "#" },
+            { label: "Yelp", icon: "Y", href: "#" },
+            { label: "Facebook", icon: "F", href: "#" },
+            { label: "Instagram", icon: "IG", href: "#" },
+            { label: "BBB", icon: "BBB", href: "#" },
+          ].map((platform) => (
+            <a
+              key={platform.label}
+              href={platform.href}
+              aria-label={`${platform.label} profile`}
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "0.375rem",
+                fontFamily: "var(--font-accent)",
+                fontSize: "0.68rem",
+                fontWeight: 600,
+                textTransform: "uppercase",
+                letterSpacing: "0.08em",
+                color: "var(--color-text-muted)",
+                textDecoration: "none",
+                padding: "0.375rem 0.625rem",
+                border: "1px solid var(--color-border)",
+                transition: "color 200ms ease, border-color 200ms ease",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.color = "var(--color-accent)";
+                e.currentTarget.style.borderColor = "var(--color-accent)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.color = "var(--color-text-muted)";
+                e.currentTarget.style.borderColor = "var(--color-border)";
+              }}
+            >
+              {platform.icon}
+              <span style={{ fontSize: "0.58rem", opacity: 0.7 }}>{platform.label}</span>
+            </a>
+          ))}
+        </div>
+
         {/* Bottom bar */}
         <div
           style={{
@@ -300,7 +364,7 @@ export default function Footer() {
             &copy; {year} Hawaii Elite Painting and Renovation. All rights reserved.
           </p>
           <p style={{ color: "var(--color-text-muted)", fontSize: "0.8rem" }}>
-            Licensed &amp; Insured · CT-35891 · C-33 Painting &amp; Decorating · Honolulu, HI · Est. 2012 · Prep-First Painting™
+            Licensed &amp; Insured · CT-35891 · C-33 Painting &amp; Decorating · Honolulu, HI · Est. 2012 · 2-Year Warranty · Prep-First Painting™
           </p>
         </div>
       </div>
