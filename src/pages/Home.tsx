@@ -135,7 +135,7 @@ const FAQ_ITEMS = [
   },
   {
     q: "What paint brands do you use?",
-    a: "We specify coatings by the surface, not by a single brand. Sherwin-Williams Duration for most exteriors, Benjamin Moore Regal for interiors, and specialty products like elastomeric coatings for stucco. Every spec is documented in your written scope before work begins.",
+    a: "We specify coatings by the surface, not by a single brand. Sherwin-Williams Duration for most exteriors, Benjamin Moore Regal for interiors, Farrow & Ball Estate Emulsion for heritage and feature walls, and specialty products like Meoded Venetian plaster and elastomeric coatings for stucco. Every spec is documented in your written scope before work begins.",
   },
   {
     q: "How long does a typical interior repaint take?",
@@ -160,6 +160,10 @@ const FAQ_ITEMS = [
   {
     q: "Is there a minimum project size?",
     a: "Our minimum investment is $1,800 for interior work and $4,500 for exterior projects. For single-room jobs below that threshold, we offer the One-Room Refresh at $490. This floor exists because mobilization, surface prep, and cleanup take the same effort whether we paint one wall or four. Below $1,800, the prep-to-paint ratio means you're paying mostly for setup, not finish.",
+  },
+  {
+    q: "Can I just paint it myself?",
+    a: "Absolutely, and we would never discourage that. A single bedroom with clean walls and no repairs is a solid weekend project. Where professionals earn the difference is in prep-heavy rooms (water damage, lead paint, textured ceilings), multi-story exteriors that need scaffolding, and cabinet refinishing that requires spray equipment. If you are weighing it, we are happy to walk your space during a free estimate and tell you honestly which rooms are DIY-friendly and which ones benefit from a crew.",
   },
 ];
 
@@ -1855,8 +1859,10 @@ export default function Home() {
             {[
               { name: "Sherwin-Williams", note: "Duration exteriors, Harmony zero-VOC interiors", url: "https://www.sherwin-williams.com/en-us/color/color-visualizer" },
               { name: "Benjamin Moore", note: "Regal Select interiors, Arborcoat stains", url: "https://www.benjaminmoore.com/en-us/paint-colors/color-a-room" },
+              { name: "Farrow & Ball", note: "Estate Emulsion for heritage interiors, Dead Flat for low-sheen feature walls", url: "https://www.farrow-ball.com/colour-by-nature" },
               { name: "PPG Diamond", note: "Commercial and high-traffic surfaces", url: "https://www.ppgpaints.com/color/color-tools" },
               { name: "Penofin", note: "UV-hardwood deck finishes rated for tropical exposure", url: "https://www.penofin.com/" },
+              { name: "Meoded", note: "Venetian plaster, lime wash, and decorative mineral finishes", url: "https://www.meodedpaint.com/" },
             ].map((brand) => (
               <a
                 key={brand.name}
@@ -3106,7 +3112,7 @@ export default function Home() {
             { step: "01", title: "Call or Request Online", role: "You → Derek", desc: "Describe the job. Quote returned within 24 hours. No forms longer than 4 fields.", relief: "So you never wait three days wondering if anyone got your message." },
             { step: "02", title: "Walk-Through & Estimate", role: "Your Project Consultant", desc: "We measure every surface, photograph existing conditions, and hand you a written scope with line-item pricing before you commit to anything.", relief: "So you never get a lump-sum surprise on invoice day." },
             { step: "03", title: "Prep, Paint, Inspect", role: "Your Lead Painter", desc: "70% of every project is surface prep. Two coats minimum. Daily cleanup. You walk every room before we pack up.", relief: "So you never find paint on your baseboards or dust on your counters." },
-            { step: "04", title: "Warranty & Follow-Up", role: "Your Warranty Coordinator", desc: "2-year workmanship warranty. Manufacturer coating warranty on file. We call at 6 months and 12 months to check adhesion.", relief: "So you never discover peeling six months later with no one to call." },
+            { step: "04", title: "Warranty & Maintenance Plan", role: "Your Warranty Coordinator", desc: "2-year workmanship warranty. Manufacturer coating warranty on file. Every project includes a complimentary maintenance plan: we call at 6 and 12 months to check adhesion, photograph sun-exposed surfaces, and flag recoat timing before damage starts.", relief: "So you never discover peeling six months later with no one to call." },
           ].map((item) => (
             <div key={item.step} style={{ display: "flex", gap: "1rem", alignItems: "flex-start" }}>
               <span
@@ -3390,9 +3396,10 @@ export default function Home() {
             }}
           >
             {[
+              { date: "May 2025", ref: "HEP-053", job: "Living room + dining feature wall, Kahala. Client picked Farrow & Ball Elephants Breath at 75% strength for the main walls and full-strength on the chimney breast. Three coats Estate Emulsion.", lead: "Lead: Derek", color: "F&B No.229 Elephants Breath (75%)" },
               { date: "Apr 2025", ref: "HEP-051", job: "Full exterior repaint, Kailua Beachside. Salt-side ranch, two coats Duration on lap siding. Trade winds kept dry time under 90 min.", lead: "Lead: Jason", color: "SW 7036 Accessible Beige" },
               { date: "Mar 2025", ref: "HEP-049", job: "Kitchen cabinet refinish, Manoa valley cottage. 36 doors sprayed off-site, reinstalled day four.", lead: "Lead: Kai", color: "BM OC-17 White Dove" },
-              { date: "Feb 2025", ref: "HEP-047", job: "Interior walls + ceiling, Pearl City split-level near the bike path. Color consultation included.", lead: "Lead: Derek", color: "BM HC-172 Revere Pewter" },
+              { date: "Feb 2025", ref: "HEP-047", job: "Interior walls + ceiling, Pearl City split-level near the bike path. Derek matched the existing trim to Revere Pewter at 50% on the sample board before committing.", lead: "Lead: Derek", color: "BM HC-172 Revere Pewter (50%)" },
               { date: "Jan 2025", ref: "HEP-044", job: "Deck strip and restain, Hawaii Kai slope lot. Penofin penetrating stain, 380 sq ft. Owner's dog supervised every coat.", lead: "Lead: Brandon", color: "Penofin Blue Label Cedar" },
             ].map((entry) => (
               <div
