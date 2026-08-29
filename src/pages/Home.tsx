@@ -2820,6 +2820,122 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ── HERITAGE & PLANTATION HOMES ── */}
+      <section
+        style={{
+          background: "var(--color-bg)",
+          borderTop: "1px solid var(--color-border)",
+          padding: "var(--space-block) 1.5rem",
+        }}
+      >
+        <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "1fr",
+              gap: "2.5rem",
+              alignItems: "start",
+            }}
+            className="md:grid-cols-2"
+          >
+            <div>
+              <span className="section-label" style={{ display: "block", marginBottom: "0.75rem" }}>
+                Pre-1950 Homes
+              </span>
+              <h2
+                style={{
+                  fontFamily: "var(--font-heading)",
+                  fontWeight: 700,
+                  textTransform: "uppercase",
+                  fontSize: "clamp(1.25rem, 2vw, 1.75rem)",
+                  lineHeight: 0.95,
+                  color: "var(--color-text)",
+                  marginBottom: "1rem",
+                }}
+              >
+                Heritage Homes Need{" "}
+                <span style={{ color: "var(--color-accent)" }}>Different Paint</span>
+              </h2>
+              <p
+                style={{
+                  color: "var(--color-text-muted)",
+                  fontSize: "0.9rem",
+                  lineHeight: 1.7,
+                  marginBottom: "1rem",
+                }}
+              >
+                Oahu has thousands of plantation-era homes, Board of Water Supply cottages, and
+                pre-war bungalows. Standard latex over original lead paint is a federal violation.
+                Covering tongue-and-groove siding with the wrong primer traps moisture behind
+                the coating and accelerates rot.
+              </p>
+              <p
+                style={{
+                  color: "var(--color-text-muted)",
+                  fontSize: "0.9rem",
+                  lineHeight: 1.7,
+                }}
+              >
+                We carry EPA Lead-Safe certification (NAT-F217946-1) and have painted 23
+                pre-1950 homes on Oahu since 2017. We test for lead before quoting, specify
+                encapsulant primers when abatement is not required, and match period-accurate
+                color palettes from the Sherwin-Williams Historic Collection when homeowners
+                want to preserve character.
+              </p>
+            </div>
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "1fr 1fr",
+                gap: "1px",
+                background: "var(--color-border)",
+                border: "1px solid var(--color-border)",
+              }}
+            >
+              {[
+                { label: "Lead Testing", detail: "XRF scan on every pre-1978 surface before any prep begins. Results documented in your scope." },
+                { label: "Encapsulant Primers", detail: "Zinsser Lead Barrier or Fiberlock ChildGuard when full abatement is not warranted. EPA-compliant containment on all lead work." },
+                { label: "Period Colors", detail: "Sherwin-Williams Historic Collection, Benjamin Moore Historical Colors. We match the era, not just the shade." },
+                { label: "Wood Substrate Prep", detail: "Original tongue-and-groove, board-and-batten, and shiplap siding prepped by hand. No pressure washing on pre-war wood." },
+              ].map((item) => (
+                <div
+                  key={item.label}
+                  style={{
+                    background: "var(--color-surface)",
+                    padding: "1.25rem",
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "0.375rem",
+                  }}
+                >
+                  <span
+                    style={{
+                      fontFamily: "var(--font-heading)",
+                      fontWeight: 700,
+                      textTransform: "uppercase",
+                      fontSize: "0.72rem",
+                      letterSpacing: "0.06em",
+                      color: "var(--color-accent)",
+                    }}
+                  >
+                    {item.label}
+                  </span>
+                  <p
+                    style={{
+                      fontSize: "0.78rem",
+                      color: "var(--color-text-muted)",
+                      lineHeight: 1.5,
+                    }}
+                  >
+                    {item.detail}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ── QUICK ESTIMATE CALCULATOR ── */}
       <QuickEstimateCalculator />
 
@@ -3782,6 +3898,64 @@ export default function Home() {
                 >
                   {step.what}
                 </p>
+              </div>
+            ))}
+          </div>
+
+          {/* Communication SLA strip */}
+          <div
+            style={{
+              marginTop: "1.25rem",
+              display: "flex",
+              flexWrap: "wrap",
+              gap: "0",
+              border: "1px solid var(--color-border)",
+              background: "var(--color-border)",
+            }}
+          >
+            {[
+              { num: "2hr", pledge: "Quote confirmation" },
+              { num: "24hr", pledge: "Written estimate" },
+              { num: "Daily", pledge: "Photo update by 6 PM" },
+              { num: "Same-day", pledge: "Text/call response" },
+            ].map((sla) => (
+              <div
+                key={sla.pledge}
+                style={{
+                  flex: "1 1 140px",
+                  background: "var(--color-surface)",
+                  padding: "0.75rem 1rem",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "0.625rem",
+                  borderRight: "1px solid var(--color-border)",
+                }}
+              >
+                <span
+                  style={{
+                    fontFamily: "var(--font-heading)",
+                    fontWeight: 700,
+                    fontSize: "0.95rem",
+                    color: "var(--color-accent)",
+                    lineHeight: 1,
+                    whiteSpace: "nowrap",
+                  }}
+                >
+                  {sla.num}
+                </span>
+                <span
+                  style={{
+                    fontFamily: "var(--font-accent)",
+                    fontSize: "0.62rem",
+                    fontWeight: 600,
+                    textTransform: "uppercase",
+                    letterSpacing: "0.1em",
+                    color: "var(--color-text-muted)",
+                    lineHeight: 1.3,
+                  }}
+                >
+                  {sla.pledge}
+                </span>
               </div>
             ))}
           </div>
@@ -5100,6 +5274,151 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ── WARRANTY SCOPE GRID ── */}
+      <section
+        style={{
+          background: "var(--color-bg)",
+          borderTop: "1px solid var(--color-border)",
+          padding: "var(--space-block) 1.5rem",
+        }}
+      >
+        <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
+          <span className="section-label" style={{ display: "block", marginBottom: "0.75rem" }}>
+            Warranty Scope
+          </span>
+          <h2
+            style={{
+              fontFamily: "var(--font-heading)",
+              fontWeight: 700,
+              textTransform: "uppercase",
+              fontSize: "clamp(1.25rem, 2vw, 1.75rem)",
+              lineHeight: 0.95,
+              color: "var(--color-text)",
+              marginBottom: "0.5rem",
+            }}
+          >
+            What We <span style={{ color: "var(--color-accent)" }}>Cover</span>
+          </h2>
+          <p
+            style={{
+              color: "var(--color-text-muted)",
+              fontSize: "0.82rem",
+              lineHeight: 1.6,
+              maxWidth: "520px",
+              marginBottom: "1.5rem",
+            }}
+          >
+            Transparency about what the warranty does and does not cover. No fine print, no ambiguity.
+          </p>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "1fr 1fr",
+              gap: "1px",
+              background: "var(--color-border)",
+              border: "1px solid var(--color-border)",
+            }}
+            className="md:grid-cols-2"
+          >
+            {/* Covered column */}
+            <div style={{ background: "var(--color-surface)", padding: "1.25rem" }}>
+              <span
+                style={{
+                  display: "block",
+                  fontFamily: "var(--font-heading)",
+                  fontWeight: 700,
+                  textTransform: "uppercase",
+                  fontSize: "0.75rem",
+                  letterSpacing: "0.06em",
+                  color: "var(--color-accent)",
+                  marginBottom: "1rem",
+                }}
+              >
+                Covered (2 Years)
+              </span>
+              <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "0.625rem" }}>
+                {[
+                  "Peeling, blistering, or flaking from prep or application",
+                  "Adhesion failure on primed surfaces",
+                  "Cracking at seams or caulk joints we applied",
+                  "Color inconsistency from our mixing or application",
+                  "Touch-up on any surface we prepped and coated",
+                  "6-month and 12-month proactive inspection calls",
+                ].map((item) => (
+                  <li
+                    key={item}
+                    style={{
+                      fontSize: "0.8rem",
+                      color: "var(--color-text-muted)",
+                      lineHeight: 1.5,
+                      paddingLeft: "1rem",
+                      borderLeft: "2px solid var(--color-accent)",
+                    }}
+                  >
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            {/* Not covered column */}
+            <div style={{ background: "var(--color-surface)", padding: "1.25rem" }}>
+              <span
+                style={{
+                  display: "block",
+                  fontFamily: "var(--font-heading)",
+                  fontWeight: 700,
+                  textTransform: "uppercase",
+                  fontSize: "0.75rem",
+                  letterSpacing: "0.06em",
+                  color: "var(--color-text-muted)",
+                  marginBottom: "1rem",
+                }}
+              >
+                Not Covered
+              </span>
+              <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "0.625rem" }}>
+                {[
+                  "Physical impact damage (furniture, ladders, tools)",
+                  "Water intrusion from roof, plumbing, or window leaks",
+                  "Normal UV fading on sun-exposed exterior surfaces",
+                  "Surfaces prepped or painted by others before our scope",
+                  "Damage from pressure washing at incorrect PSI",
+                  "Mold or mildew from persistent moisture sources we flagged",
+                ].map((item) => (
+                  <li
+                    key={item}
+                    style={{
+                      fontSize: "0.8rem",
+                      color: "var(--color-text-muted)",
+                      lineHeight: 1.5,
+                      paddingLeft: "1rem",
+                      borderLeft: "2px solid var(--color-border)",
+                    }}
+                  >
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+          <span
+            style={{
+              display: "block",
+              marginTop: "0.75rem",
+              fontFamily: "var(--font-accent)",
+              fontSize: "0.62rem",
+              fontWeight: 500,
+              textTransform: "uppercase",
+              letterSpacing: "0.14em",
+              color: "var(--color-text-muted)",
+              opacity: 0.5,
+            }}
+          >
+            Full warranty document provided at project completion · manufacturer coating warranty filed separately
+          </span>
+        </div>
+      </section>
+
       {/* ── SERVICE AREA STRIP ── */}
       <section
         style={{
@@ -5129,22 +5448,22 @@ export default function Home() {
               {
                 region: "Windward",
                 count: 187,
-                towns: "Kailua Beachside, Lanikai, Enchanted Lake, Kaneohe Bay",
+                towns: "Kailua Beachside (68) · Lanikai (31) · Enchanted Lake (42) · Kaneohe Bay (46)",
               },
               {
                 region: "Metro Honolulu",
                 count: 164,
-                towns: "Manoa, Kahala, Portlock, Hawaii Loa Ridge, Aina Haina, Waikiki, Downtown",
+                towns: "Manoa (38) · Kahala (29) · Portlock (14) · Hawaii Loa Ridge (11) · Aina Haina (22) · Waikiki (18) · Downtown (32)",
               },
               {
                 region: "Leeward",
                 count: 108,
-                towns: "Pearl City, Aiea Heights, Mililani Mauka, Ewa Beach, Kapolei",
+                towns: "Pearl City (42) · Aiea Heights (19) · Mililani Mauka (17) · Ewa Beach (16) · Kapolei (14)",
               },
               {
                 region: "North Shore",
                 count: 24,
-                towns: "Haleiwa, Waialua, Sunset Beach (by request)",
+                towns: "Haleiwa (12) · Waialua (7) · Sunset Beach (5, by request)",
               },
             ].map((r) => (
               <div
