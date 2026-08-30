@@ -16,6 +16,7 @@ const SERVICES_TEASER = [
     title: "Interior Painting",
     hook: "Nobody sees the prep. Everyone sees the finish.",
     desc: "Walls, ceilings, trim, and cabinetry. Specialty finishes available: limewash, Venetian plaster, roman clay.",
+    finish: "Smooth, even coverage with zero lap marks. Your walls look like glass.",
     idealFor: "Homeowners refreshing rooms, preparing for sale, or moving in.",
     startingAt: "From $1,800",
     ratePer: "$2.80–$4.50/sq ft · based on 175 sq ft avg room",
@@ -27,6 +28,7 @@ const SERVICES_TEASER = [
     title: "Exterior Painting",
     hook: "Salt air punishes every surface it touches.",
     desc: "Weather-rated coatings built for Hawaii's sun, salt air, and heavy rain.",
+    finish: "Uniform sheen from eave to foundation. No brush marks, no roller stipple.",
     idealFor: "Homeowners with fading, peeling, or chalking exterior coatings.",
     startingAt: "From $4,500",
     ratePer: "$3.50–$6.00/sq ft · varies by siding type and sun exposure",
@@ -38,6 +40,7 @@ const SERVICES_TEASER = [
     title: "Drywall Repair",
     hook: "The wall underneath determines the wall you see.",
     desc: "Patch, skim, sand, prime. Invisible repairs before we roll a single drop of paint.",
+    finish: "Run your hand across the wall. You will not find the patch.",
     idealFor: "Homes with water damage, cracks, or holes before a repaint.",
     startingAt: "From $400",
     ratePer: "$8–$15/sq ft of damaged area · most patches under $600",
@@ -49,6 +52,7 @@ const SERVICES_TEASER = [
     title: "Deck Refinishing",
     hook: "Mainland stains last 18 months here. Ours last longer.",
     desc: "Strip, sand, stain, seal. Decks that take the sun beating without cracking or peeling.",
+    finish: "Rich, saturated grain with a matte hand-feel. Bare feet welcome.",
     idealFor: "Homeowners with graying, splintering, or peeling deck surfaces.",
     startingAt: "From $1,200",
     ratePer: "$4–$7/sq ft · strip + sand + 2 coats · 200 sq ft avg deck",
@@ -60,6 +64,7 @@ const SERVICES_TEASER = [
     title: "Kitchen Remodeling",
     hook: "A new kitchen look without the $40k gut job.",
     desc: "Cabinet painting, new hardware, tile work, countertop coordination. Full kitchen refresh without a full demo.",
+    finish: "Factory-smooth cabinet faces with a sprayed lacquer feel. No brush strokes.",
     idealFor: "Homeowners who want a new kitchen look without $40k+ gut renovation.",
     startingAt: "From $3,200",
     ratePer: "$120–$180/cabinet door · avg kitchen 20–30 doors",
@@ -71,6 +76,7 @@ const SERVICES_TEASER = [
     title: "Bathroom Remodeling",
     hook: "Humidity, mildew, grout. We handle all three.",
     desc: "Tile, paint, fixtures, and finish work. We coordinate trades so you get one crew, one timeline.",
+    finish: "Clean grout lines, flush tile edges, and a ceiling that stays white in humidity.",
     idealFor: "Homeowners updating tile, vanities, or dealing with mildew-prone surfaces.",
     startingAt: "From $2,800",
     ratePer: "$45–$65/sq ft · tile + paint + fixtures · avg bath 40–60 sq ft",
@@ -674,7 +680,7 @@ export default function Home() {
           }}
         >
           <span className="section-label" style={{ marginBottom: "1.25rem" }}>
-            Painting Oahu 2012–2026 · Honolulu · Prep-First Painting™
+            Painting Oahu 2012–2026 · Honolulu · Prep-First Painting™ · Gallery-Grade Finishes
           </span>
 
           <h1
@@ -1648,11 +1654,11 @@ export default function Home() {
                 margin: "0 auto",
               }}
             >
-              Minimum five years residential painting experience to join
-              this crew. No day-laborers. No rotators. Every member
-              passes a background check and drug screening before their
-              first job. You get the same four faces on day one and day
-              five.
+              Minimum five years residential painting experience to earn
+              a spot on this crew. No day-laborers. No rotators. Every
+              craftsman passes a background check and drug screening
+              before their first job. You get the same four artisans on
+              day one and day five.
             </p>
           </div>
           <div
@@ -1665,10 +1671,10 @@ export default function Home() {
             className="md:grid-cols-4"
           >
             {[
-              { initials: "JK", name: "Jason K.", years: 8, specialty: "Exteriors & salt-air coatings" },
-              { initials: "DK", name: "Derek K.", years: 14, specialty: "Interiors & color consulting" },
-              { initials: "KM", name: "Kai M.", years: 6, specialty: "Cabinet refinishing & spray work" },
-              { initials: "BT", name: "Brandon T.", years: 4, specialty: "Deck staining & wood restoration" },
+              { initials: "JK", name: "Jason K.", title: "Journeyman Painter", years: 8, specialty: "Exteriors & salt-air coatings" },
+              { initials: "DK", name: "Derek K.", title: "Master Craftsman", years: 14, specialty: "Interiors & color consulting" },
+              { initials: "KM", name: "Kai M.", title: "Finishing Artisan", years: 6, specialty: "Cabinet refinishing & spray work" },
+              { initials: "BT", name: "Brandon T.", title: "Journeyman Painter", years: 4, specialty: "Deck staining & wood restoration" },
             ].map((crew) => (
               <div
                 key={crew.initials}
@@ -1717,6 +1723,19 @@ export default function Home() {
                     }}
                   >
                     {crew.name}
+                  </span>
+                  <span
+                    style={{
+                      display: "block",
+                      fontFamily: "var(--font-accent)",
+                      fontSize: "0.6rem",
+                      color: "var(--color-text-muted)",
+                      textTransform: "uppercase",
+                      letterSpacing: "0.08em",
+                      marginTop: "0.125rem",
+                    }}
+                  >
+                    {crew.title}
                   </span>
                   <span
                     style={{
@@ -2483,7 +2502,7 @@ export default function Home() {
               opacity: 0.6,
             }}
           >
-            The Prep-First Painting™ method. Six services, one crew.
+            The Prep-First Painting™ method. Six services, one crew. Gallery-grade finishes on every surface.
           </span>
         </div>
 
@@ -2561,6 +2580,9 @@ export default function Home() {
               >
                 {SERVICES_TEASER[0].desc}
               </p>
+              <p style={{ fontSize: "0.78rem", fontStyle: "italic", color: "var(--color-accent)", opacity: 0.85, lineHeight: 1.5, marginTop: "0.375rem", maxWidth: "360px" }}>
+                The finish: {SERVICES_TEASER[0].finish}
+              </p>
               <div style={{ display: "flex", flexDirection: "column", gap: "0.25rem", marginTop: "0.5rem" }}>
                 <div style={{ display: "flex", gap: "1.5rem", alignItems: "baseline" }}>
                   <span style={{ fontSize: "0.72rem", fontFamily: "var(--font-accent)", textTransform: "uppercase", letterSpacing: "0.12em", color: "var(--color-accent)" }}>
@@ -2627,6 +2649,9 @@ export default function Home() {
               </span>
               <p style={{ color: "hsl(40 30% 92% / 0.75)", fontSize: "0.85rem", lineHeight: 1.5 }}>
                 {SERVICES_TEASER[1].desc}
+              </p>
+              <p style={{ fontSize: "0.75rem", fontStyle: "italic", color: "var(--color-accent)", opacity: 0.85, lineHeight: 1.5, marginTop: "0.25rem" }}>
+                The finish: {SERVICES_TEASER[1].finish}
               </p>
               <div style={{ display: "flex", flexDirection: "column", gap: "0.25rem", marginTop: "0.375rem" }}>
                 <div style={{ display: "flex", gap: "1rem", alignItems: "baseline" }}>
@@ -2699,6 +2724,11 @@ export default function Home() {
               <p style={{ color: "var(--color-text-muted)", fontSize: "0.875rem", lineHeight: 1.6 }}>
                 {svc.desc}
               </p>
+              {svc.finish && (
+                <p style={{ fontSize: "0.75rem", fontStyle: "italic", color: "var(--color-accent)", opacity: 0.85, lineHeight: 1.5, marginTop: "0.25rem" }}>
+                  The finish: {svc.finish}
+                </p>
+              )}
               <div style={{ display: "flex", flexDirection: "column", gap: "0.25rem", marginTop: "0.5rem" }}>
                 <div style={{ display: "flex", gap: "1rem", alignItems: "baseline" }}>
                   <span style={{ fontSize: "0.72rem", fontFamily: "var(--font-accent)", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.12em", color: "var(--color-accent)" }}>
@@ -2750,6 +2780,11 @@ export default function Home() {
               <p style={{ color: "var(--color-text-muted)", fontSize: "0.875rem", lineHeight: 1.6, maxWidth: "500px" }}>
                 {SERVICES_TEASER[5].desc}
               </p>
+              {SERVICES_TEASER[5].finish && (
+                <p style={{ fontSize: "0.75rem", fontStyle: "italic", color: "var(--color-accent)", opacity: 0.85, lineHeight: 1.5, marginTop: "0.25rem" }}>
+                  The finish: {SERVICES_TEASER[5].finish}
+                </p>
+              )}
               <div style={{ display: "flex", flexDirection: "column", gap: "0.25rem", marginTop: "0.375rem" }}>
                 <div style={{ display: "flex", gap: "1rem", alignItems: "baseline" }}>
                   <span style={{ fontSize: "0.72rem", fontFamily: "var(--font-accent)", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.12em", color: "var(--color-accent)" }}>
@@ -2817,6 +2852,106 @@ export default function Home() {
               From $490. No minimum project size.
             </span>
           </div>
+        </div>
+      </section>
+
+      {/* ── ARTISANAL FINISHES SPOTLIGHT ── */}
+      <section
+        style={{
+          background: "var(--color-surface)",
+          borderTop: "1px solid var(--color-border)",
+          padding: "2.5rem 1.5rem",
+        }}
+      >
+        <div
+          style={{
+            maxWidth: "960px",
+            margin: "0 auto",
+            display: "grid",
+            gridTemplateColumns: "1fr",
+            gap: "1.5rem",
+          }}
+          className="md:grid-cols-3"
+        >
+          <div style={{ gridColumn: "1 / -1", marginBottom: "0.5rem" }}>
+            <span className="section-label" style={{ display: "block", marginBottom: "0.5rem" }}>
+              Beyond Standard Paint
+            </span>
+            <h2
+              style={{
+                fontFamily: "var(--font-heading)",
+                fontWeight: 700,
+                textTransform: "uppercase",
+                fontSize: "clamp(1.1rem, 1.5vw, 1.4rem)",
+                letterSpacing: "0.06em",
+                color: "var(--color-text)",
+                lineHeight: 1.1,
+              }}
+            >
+              Artisanal Finishes.{" "}
+              <span style={{ color: "var(--color-accent)" }}>Applied by Hand.</span>
+            </h2>
+            <p style={{ color: "var(--color-text-muted)", fontSize: "0.88rem", lineHeight: 1.6, maxWidth: "600px", marginTop: "0.75rem" }}>
+              Not every wall wants a roller. Some surfaces call for a craftsman's hand, a trowel,
+              and a material that builds texture in layers. Kai specializes in these finishes
+              and applies every coat himself.
+            </p>
+          </div>
+          {[
+            {
+              name: "Limewash",
+              desc: "Chalky, matte depth with natural color variation. Breathes with plaster and masonry. Each coat builds character the next one deepens.",
+              brands: "Romabio Classico, Portola Paints",
+            },
+            {
+              name: "Venetian Plaster",
+              desc: "Burnished, stone-like surface with a luminous sheen. Three to five coats troweled by hand, each polished before the next.",
+              brands: "Meoded, Behr Veneziano",
+            },
+            {
+              name: "Roman Clay",
+              desc: "Soft, suede-like matte with subtle movement. Applied in thin plaster layers with a Japanese trowel. No two walls look the same.",
+              brands: "Portola Roman Clay",
+            },
+          ].map((finish) => (
+            <div
+              key={finish.name}
+              style={{
+                background: "var(--color-bg)",
+                padding: "1.25rem",
+                borderLeft: "3px solid var(--color-accent)",
+              }}
+            >
+              <h3
+                style={{
+                  fontFamily: "var(--font-heading)",
+                  fontWeight: 700,
+                  textTransform: "uppercase",
+                  fontSize: "0.88rem",
+                  letterSpacing: "0.06em",
+                  color: "var(--color-accent)",
+                  marginBottom: "0.5rem",
+                }}
+              >
+                {finish.name}
+              </h3>
+              <p style={{ color: "var(--color-text-muted)", fontSize: "0.82rem", lineHeight: 1.6, marginBottom: "0.5rem" }}>
+                {finish.desc}
+              </p>
+              <span
+                style={{
+                  fontFamily: "var(--font-accent)",
+                  fontSize: "0.62rem",
+                  textTransform: "uppercase",
+                  letterSpacing: "0.1em",
+                  color: "var(--color-text-muted)",
+                  opacity: 0.6,
+                }}
+              >
+                Specified: {finish.brands}
+              </span>
+            </div>
+          ))}
         </div>
       </section>
 
@@ -3225,10 +3360,10 @@ export default function Home() {
           className="md:grid-cols-4"
         >
           {[
-            { step: "01", title: "Call or Request Online", role: "You → Derek", desc: "Describe the job. Quote returned within 24 hours. No forms longer than 4 fields.", relief: "So you never wait three days wondering if anyone got your message." },
-            { step: "02", title: "Walk-Through & Estimate", role: "Your Project Consultant", desc: "We measure every surface, photograph existing conditions, and hand you a written scope with line-item pricing before you commit to anything.", relief: "So you never get a lump-sum surprise on invoice day." },
-            { step: "03", title: "Prep, Paint, Inspect", role: "Your Lead Painter", desc: "70% of every project is surface prep. Two coats minimum. Daily cleanup. You walk every room before we pack up.", relief: "So you never find paint on your baseboards or dust on your counters." },
-            { step: "04", title: "Warranty & Maintenance Plan", role: "Your Warranty Coordinator", desc: "2-year workmanship warranty. Manufacturer coating warranty on file. Every project includes a complimentary maintenance plan: we call at 6 and 12 months to check adhesion, photograph sun-exposed surfaces, and flag recoat timing before damage starts.", relief: "So you never discover peeling six months later with no one to call." },
+            { step: "01", title: "Call or Request Online", role: "You → Derek, Master Craftsman", desc: "Describe the job. Quote returned within 24 hours. No forms longer than 4 fields.", relief: "So you never wait three days wondering if anyone got your message." },
+            { step: "02", title: "Walk-Through & Estimate", role: "Your Estimator & Craftsman", desc: "We measure every surface, photograph existing conditions, and hand you a written scope with line-item pricing before you commit to anything.", relief: "So you never get a lump-sum surprise on invoice day." },
+            { step: "03", title: "Prep, Paint, Inspect", role: "Your Lead Artisan", desc: "70% of every project is surface prep: orbital sanding to 120 grit, caulking every seam, Zinsser primer on bare wood, and two full coats rolled with a 3/8\" nap. Daily cleanup. You walk every room before we pack up.", relief: "So you never find paint on your baseboards or dust on your counters." },
+            { step: "04", title: "Warranty & Maintenance Plan", role: "Your Warranty Craftsman", desc: "2-year workmanship warranty. Manufacturer coating warranty on file. Every project includes a complimentary maintenance plan: we call at 6 and 12 months to check adhesion, photograph sun-exposed surfaces, and flag recoat timing before damage starts.", relief: "So you never discover peeling six months later with no one to call." },
           ].map((item) => (
             <div key={item.step} style={{ display: "flex", gap: "1rem", alignItems: "flex-start" }}>
               <span
@@ -4795,13 +4930,13 @@ export default function Home() {
                 step: "02",
                 title: "Walk-Through",
                 time: "45 min on-site",
-                detail: "Derek measures every surface with QuickMeasure. You get a written estimate within 24 hours. Line items, product specs, timeline.",
+                detail: "Derek measures every surface with QuickMeasure and photographs existing conditions. You get a written estimate within 24 hours: line items per surface, coating product and sheen specified, calendar timeline.",
               },
               {
                 step: "03",
                 title: "Prep & Paint",
                 time: "3–7 days typical",
-                detail: "Same crew from start to finish. 70% of the job is prep. Daily cleanup. Daily progress photo texted to you.",
+                detail: "Same craftsmen from start to finish. 70% of the job is prep: 120-grit orbital sanding, caulk every seam, Zinsser primer on bare wood, two full coats. Daily cleanup. Daily progress photo texted to you.",
               },
               {
                 step: "04",
