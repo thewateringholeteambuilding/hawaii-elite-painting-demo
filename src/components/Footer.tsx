@@ -90,6 +90,20 @@ export default function Footer() {
             >
               483 houses on Oahu and counting. We've probably already painted on your street.
             </p>
+            <p
+              style={{
+                fontFamily: "var(--font-accent)",
+                fontSize: "0.72rem",
+                fontWeight: 600,
+                fontStyle: "italic",
+                color: "var(--color-accent)",
+                lineHeight: 1.55,
+                marginTop: "0.75rem",
+                maxWidth: "260px",
+              }}
+            >
+              Built for the homeowners who live in these walls and the artisans who paint them.
+            </p>
           </div>
 
           {/* Navigation */}

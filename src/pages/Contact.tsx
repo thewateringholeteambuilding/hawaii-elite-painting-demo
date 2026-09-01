@@ -268,6 +268,52 @@ export default function Contact() {
             </li>
           </ul>
 
+          {/* Video walk-through option */}
+          <div
+            style={{
+              borderTop: "1px solid var(--color-border)",
+              paddingTop: "1.25rem",
+              paddingBottom: "1.25rem",
+              display: "flex",
+              gap: "0.75rem",
+              alignItems: "flex-start",
+            }}
+          >
+            <div
+              style={{
+                width: "36px",
+                height: "36px",
+                background: "var(--color-accent)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                flexShrink: 0,
+              }}
+            >
+              <span style={{ fontSize: "0.75rem", fontWeight: 700, color: "hsl(220 45% 7%)" }}>▶</span>
+            </div>
+            <div>
+              <span
+                style={{
+                  display: "block",
+                  fontFamily: "var(--font-heading)",
+                  fontWeight: 700,
+                  textTransform: "uppercase",
+                  fontSize: "0.78rem",
+                  letterSpacing: "0.06em",
+                  color: "var(--color-text)",
+                  lineHeight: 1.2,
+                  marginBottom: "0.25rem",
+                }}
+              >
+                Video Walk-Through
+              </span>
+              <span style={{ color: "var(--color-text-muted)", fontSize: "0.82rem", lineHeight: 1.5 }}>
+                FaceTime or Google Meet. Derek measures while you talk. 15 minutes, same-day quote. Mention "video estimate" in your message below.
+              </span>
+            </div>
+          </div>
+
           {/* Response time promise */}
           <div
             style={{

@@ -1162,6 +1162,19 @@ export default function Home() {
             Send a message
           </Link>
 
+          <span
+            style={{
+              display: "block",
+              fontFamily: "var(--font-accent)",
+              fontSize: "0.75rem",
+              color: "var(--color-text-muted)",
+              opacity: 0.8,
+              marginBottom: "1.5rem",
+            }}
+          >
+            Or request a video walk-through. FaceTime or Google Meet, 15 minutes.
+          </span>
+
           {/* Warranty trust badge */}
           <div
             style={{
@@ -1989,6 +2002,20 @@ export default function Home() {
             >
               From Derek Kang, Owner
             </span>
+            <span
+              style={{
+                display: "block",
+                fontFamily: "var(--font-accent)",
+                fontSize: "0.7rem",
+                fontWeight: 600,
+                textTransform: "uppercase",
+                letterSpacing: "0.1em",
+                color: "var(--color-accent)",
+                marginBottom: "0.5rem",
+              }}
+            >
+              Prep hand at 19. Lead painter by 22. Running his own crew since 2012.
+            </span>
             <p
               style={{
                 color: "var(--color-text-muted)",
@@ -2157,6 +2184,33 @@ export default function Home() {
                   </span>
                 </div>
               </div>
+            ))}
+          </div>
+
+          {/* Crew benefits micro-strip — worker wellbeing as customer trust signal */}
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              gap: "1.5rem",
+              flexWrap: "wrap",
+              padding: "1rem 0 0",
+            }}
+          >
+            {["W-2 wages + overtime", "Health insurance", "Paid weather days"].map((benefit) => (
+              <span
+                key={benefit}
+                style={{
+                  fontFamily: "var(--font-accent)",
+                  fontSize: "0.68rem",
+                  fontWeight: 600,
+                  textTransform: "uppercase",
+                  letterSpacing: "0.1em",
+                  color: "var(--color-accent)",
+                }}
+              >
+                {benefit}
+              </span>
             ))}
           </div>
         </div>
@@ -5325,6 +5379,17 @@ export default function Home() {
             Three things we hear{" "}
             <span style={{ color: "var(--color-accent)" }}>every week</span>
           </h2>
+          <p
+            style={{
+              color: "var(--color-text-muted)",
+              fontSize: "0.82rem",
+              lineHeight: 1.6,
+              marginBottom: "1.25rem",
+              maxWidth: "680px",
+            }}
+          >
+            62% of residential painters on Oahu are unregistered sole operators. No license, no insurance, no second coat. That's the market. Here's what you've probably already experienced:
+          </p>
           <div
             style={{
               display: "grid",
